@@ -9,6 +9,7 @@
               {{ item.label }}
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
             </NuxtLink>
+            <!-- Sous-menu sur deux colonnes -->
             <div class="nav__panel">
               <NuxtLink v-for="l in item.links" :key="l.label" :to="l.to" class="nav__sub" @click="open = false">
                 <span class="nav__sub-i"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path :d="NAV_ICONS[l.icon]" /></svg></span>
@@ -54,6 +55,7 @@ const NAV_ICONS = {
   ads: 'M3 11v2a1 1 0 0 0 1 1h3l6 5V5L7 10H4a1 1 0 0 0-1 1zM17 8a5 5 0 0 1 0 8',
   social: 'M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12zM9 11h.01M12 11h.01M15 11h.01',
   grid: 'M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z',
+  ai: 'M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9zM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z',
   pin: 'M12 21s-7-6.1-7-11.5a7 7 0 1 1 14 0C19 14.9 12 21 12 21zM12 7a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z',
   globe: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z'
 }
@@ -78,13 +80,13 @@ const switchTo = computed(() => en.value
   ? { code: 'fr' as const, short: 'FR', long: 'Version française' }
   : { code: 'en' as const, short: 'EN', long: 'English version' })
 
-const ICON_BY_KEY: Record<string, NavLink['icon']> = { web: 'web', app: 'app', mobile: 'mobile', seo: 'seo', ads: 'ads', social: 'social' }
+const ICON_BY_KEY: Record<string, NavLink['icon']> = { web: 'web', app: 'app', mobile: 'mobile', seo: 'seo', ads: 'ads', social: 'social', ai: 'ai' }
 const SVC_DESC = {
-  fr: { web: 'Vitrine, e-commerce, landing page', app: 'CRM, back-office, portail client', mobile: 'iOS & Android, de la maquette aux stores', seo: 'Google et moteurs IA', ads: 'Meta, Google & TikTok Ads', social: 'Stratégie, visuels, vidéo courte' },
-  en: { web: 'Showcase sites, e-commerce, landing pages', app: 'CRM, back office, client portals', mobile: 'iOS & Android, from mock-up to stores', seo: 'Google and AI search engines', ads: 'Meta, Google & TikTok Ads', social: 'Strategy, visuals, short-form video' }
+  fr: { web: 'Vitrine, e-commerce, landing page', app: 'CRM, back-office, portail client', mobile: 'iOS & Android, de la maquette aux stores', seo: 'Google et moteurs IA', ads: 'Meta, Google & TikTok Ads', social: 'Stratégie, visuels, vidéo courte', ai: 'Agents IA, chatbots, automatisations' },
+  en: { web: 'Showcase sites, e-commerce, landing pages', app: 'CRM, back office, client portals', mobile: 'iOS & Android, from mock-up to stores', seo: 'Google and AI search engines', ads: 'Meta, Google & TikTok Ads', social: 'Strategy, visuals, short-form video', ai: 'AI agents, chatbots, automation' }
 } as Record<'fr' | 'en', Record<string, string>>
-// Ordre du menu : sites, apps, mobile, SEO, ADS, social
-const MENU_ORDER = ['creation-site-web', 'application-metier', 'application-mobile', 'referencement-seo-geo', 'marketing-digital-ads', 'social-media']
+// Ordre du menu : sites, apps, mobile, IA, SEO, ADS, social
+const MENU_ORDER = ['creation-site-web', 'application-metier', 'application-mobile', 'ia-automatisation', 'referencement-seo-geo', 'marketing-digital-ads', 'social-media']
 
 const navItems = computed<NavItem[]>(() => {
   const lang = en.value ? 'en' : 'fr'
@@ -131,7 +133,7 @@ const blogSwitch = computed(() => {
 .nav__dd svg { transition: transform .2s; }
 .nav__item { position: relative; }
 .nav__item::after { content: ''; position: absolute; left: 0; right: 0; top: 100%; height: 18px; }
-.nav__panel { position: absolute; top: calc(100% + 18px); left: -20px; z-index: 60; min-width: 320px; padding: 10px; display: grid; gap: 2px; background: var(--white); border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 24px 48px -24px rgba(10, 26, 71, .3); opacity: 0; visibility: hidden; transform: translateY(6px); transition: opacity .18s, transform .18s, visibility .18s; }
+.nav__panel { position: absolute; top: calc(100% + 18px); left: -20px; z-index: 60; width: max-content; max-width: min(640px, calc(100vw - 48px)); padding: 10px; display: grid; grid-template-columns: repeat(2, minmax(250px, 1fr)); gap: 2px 6px; background: var(--white); border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 24px 48px -24px rgba(10, 26, 71, .3); opacity: 0; visibility: hidden; transform: translateY(6px); transition: opacity .18s, transform .18s, visibility .18s; }
 .nav__item:hover .nav__panel, .nav__item:focus-within .nav__panel { opacity: 1; visibility: visible; transform: none; }
 .nav__item:hover .nav__dd svg, .nav__item:focus-within .nav__dd svg { transform: rotate(180deg); }
 .nav__sub { display: flex; align-items: center; gap: 14px; padding: 10px 14px; border-radius: 10px; }
@@ -176,7 +178,7 @@ const blogSwitch = computed(() => {
   .nav__link, .nav__dd { padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 17px; }
   .nav__dd { display: flex; }
   .nav__item::after { display: none; }
-  .nav__panel { position: static; min-width: 0; padding: 4px 0 8px 12px; background: none; border: none; box-shadow: none; opacity: 1; visibility: visible; transform: none; }
+  .nav__panel { position: static; width: auto; max-width: none; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 12px; min-width: 0; padding: 4px 0 8px 12px; background: none; border: none; box-shadow: none; opacity: 1; visibility: visible; transform: none; }
   .nav__sub { padding: 8px 0; gap: 12px; }
   .nav__sub-i { width: 30px; height: 30px; border-radius: 8px; }
   .nav__sub-d { display: none; }

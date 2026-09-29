@@ -18,6 +18,8 @@ const fr = {
       { num: '03', slug: 'referencement-seo-geo', tag: 'Google + IA', title: 'Référencement SEO & GEO', desc: 'Soyez trouvé sur Google et cité par ChatGPT, Gemini et Perplexity.', items: ['Audit SEO', 'SEO local', 'Contenu', 'GEO / IA'], cta: 'Découvrir', theme: 'light' },
       { num: '04', slug: 'application-mobile', tag: 'iOS & Android', title: 'Application mobile', desc: 'Des apps natives ou cross-platform, de la maquette à la publication sur les stores.', items: ['iOS', 'Android', 'Flutter', 'React Native'], cta: 'Découvrir', theme: 'light' },
       { num: '05', slug: 'marketing-digital-ads', tag: 'Acquisition', title: 'Marketing digital & ADS', desc: 'Des campagnes rentables sur Google, Meta et TikTok, pilotées par la donnée.', items: ['Google Ads', 'Meta Ads', 'TikTok Ads', 'Social media'], cta: 'Découvrir', theme: 'light' },
+      { num: '06', slug: 'social-media', tag: 'Contenus', title: 'Social media', desc: 'Stratégie éditoriale, visuels et vidéos courtes pour TikTok et Instagram.', items: ['Stratégie', 'Visuels', 'Vidéo courte'], cta: 'Découvrir', theme: 'light' },
+      { num: '07', slug: 'ia-automatisation', tag: 'Nouveau', title: 'IA & automatisation', desc: 'Agents IA, chatbots et automatisations qui font gagner du temps à vos équipes.', items: ['Agents IA', 'Chatbots', 'Automatisation'], cta: 'Découvrir', theme: 'light' },
       { num: '?', slug: '', tag: 'Gratuit', title: 'Pas sûr de ce qu’il vous faut ?', desc: 'On analyse votre présence en ligne et on vous dit exactement par où commencer.', items: ['Audit offert', '30 min', 'Sans engagement'], cta: 'Demander mon audit', theme: 'soft' }
     ]
   },
@@ -120,6 +122,8 @@ const en: typeof fr = {
       { num: '03', slug: 'referencement-seo-geo', tag: 'Google + AI', title: 'SEO & GEO', desc: 'Get found on Google and cited by ChatGPT, Gemini and Perplexity.', items: ['SEO audit', 'Local SEO', 'Content', 'GEO / AI'], cta: 'Discover', theme: 'light' },
       { num: '04', slug: 'application-mobile', tag: 'iOS & Android', title: 'Mobile apps', desc: 'Native or cross-platform apps, from mock-up to App Store release.', items: ['iOS', 'Android', 'Flutter', 'React Native'], cta: 'Discover', theme: 'light' },
       { num: '05', slug: 'marketing-digital-ads', tag: 'Acquisition', title: 'Digital marketing & ads', desc: 'Profitable, data-driven campaigns on Google, Meta and TikTok.', items: ['Google Ads', 'Meta Ads', 'TikTok Ads', 'Social media'], cta: 'Discover', theme: 'light' },
+      { num: '06', slug: 'social-media', tag: 'Content', title: 'Social media', desc: 'Editorial strategy, visuals and short-form video for TikTok and Instagram.', items: ['Strategy', 'Visuals', 'Short video'], cta: 'Discover', theme: 'light' },
+      { num: '07', slug: 'ia-automatisation', tag: 'New', title: 'AI & automation', desc: 'AI agents, chatbots and automations that save your team time.', items: ['AI agents', 'Chatbots', 'Automation'], cta: 'Discover', theme: 'light' },
       { num: '?', slug: '', tag: 'Free', title: 'Not sure what you need?', desc: 'We review your online presence and tell you exactly where to start.', items: ['Free audit', '30 min', 'No commitment'], cta: 'Request my audit', theme: 'soft' }
     ]
   },

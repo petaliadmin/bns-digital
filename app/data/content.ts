@@ -52,7 +52,7 @@ export const organizationSchema = (site: string, lang: 'fr' | 'en' = 'fr') => ({
   address: { '@type': 'PostalAddress', ...(filled(COMPANY.street) ? { streetAddress: COMPANY.street } : {}), addressLocality: COMPANY.city, addressCountry: COMPANY.country },
   areaServed: AREA_SERVED,
   priceRange: lang === 'en' ? 'On quote' : 'Sur devis',
-  knowsAbout: ['Création de site web', 'E-commerce', 'Application métier', 'Application mobile', 'Référencement SEO', 'GEO (Generative Engine Optimization)', 'Google Ads', 'Meta Ads', 'Social media'],
+  knowsAbout: ['Création de site web', 'E-commerce', 'Application métier', 'Application mobile', 'Référencement SEO', 'GEO (Generative Engine Optimization)', 'Google Ads', 'Meta Ads', 'Social media', 'Agents IA', 'Chatbots', 'Automatisation des processus'],
   ...(COMPANY.sameAs.length ? { sameAs: COMPANY.sameAs } : {})
 })
 
@@ -273,6 +273,28 @@ export const SERVICES: Service[] = [
     methTitle: 'De la stratégie au contenu publié.',
     steps: [s('1', 'Le Choix', 'Définition de vos objectifs et des formats : visuel, vidéo ou les deux.'), s('2', 'Le Brief', 'Vous nous transmettez votre vision et vos assets.'), s('3', 'La Stratégie', 'Nous analysons, créons et optimisons.'), s('4', 'Le Décollage', 'Livraison des contenus prêts à publier.')],
     related: [], cta: 'Envie de faire rayonner votre marque ?'
+  },
+  {
+    slug: 'ia-automatisation', key: 'ai', num: '07', crumb: 'IA & automatisation', eyebrow: 'Intelligence artificielle & automatisation',
+    h1: 'Mettez l’IA au travail dans votre entreprise.',
+    sub: 'Agents IA, chatbots, automatisation des tâches répétitives et intégration de l’IA dans vos outils : nous concevons des solutions concrètes qui font gagner du temps à vos équipes et améliorent l’expérience de vos clients.',
+    offersTitle: 'Des solutions d’IA utiles, pas des gadgets.', offersSub: 'Chaque projet part d’un cas d’usage précis et mesurable dans votre activité.',
+    offers: [
+      o('01', 'Agents IA & chatbots', 'Un assistant qui répond à vos clients à toute heure sur votre site, WhatsApp ou Messenger, à partir de vos propres contenus.', ['Service client', 'WhatsApp', 'Site web']),
+      o('02', 'Automatisation des processus', 'Relances, saisies, devis, reporting : nous connectons vos outils et automatisons les tâches répétitives de vos équipes.', ['Workflows', 'Intégrations', 'API']),
+      o('03', 'L’IA dans vos outils', 'Recherche dans vos documents, rédaction assistée, analyse de données : l’IA intégrée à votre CRM, votre back-office ou votre site.', ['Base de connaissances', 'Documents', 'Données']),
+      o('04', 'Audit & accompagnement IA', 'Identification des cas d’usage à fort impact, choix des outils, formation de vos équipes et cadrage de la protection des données.', ['Audit', 'Formation', 'RGPD'])
+    ],
+    benTitle: 'Moins de tâches manuelles, plus de valeur.',
+    benefits: [
+      b('Gain de temps', 'Les tâches répétitives sont prises en charge : vos équipes se concentrent sur ce qui compte.'),
+      b('Disponibilité', 'Un service client qui répond à toute heure, dans la langue de vos clients.'),
+      b('Fiabilité', 'Moins de ressaisies, moins d’erreurs, des données à jour dans tous vos outils.'),
+      b('Maîtrise', 'Des solutions supervisées, des données protégées et des coûts d’usage suivis.')
+    ],
+    methTitle: 'Du cas d’usage à l’automatisation en production.',
+    steps: [s('1', 'Audit', 'Cartographie de vos processus et choix des cas d’usage prioritaires.'), s('2', 'Prototype', 'Une première version testée sur vos données réelles.'), s('3', 'Déploiement', 'Intégration à vos outils et formation de vos équipes.'), s('4', 'Amélioration', 'Suivi des résultats et ajustements continus.')],
+    related: ['nagaw'], cta: 'Un processus à automatiser ?'
   }
 ]
 
@@ -283,7 +305,8 @@ export const SERVICE_SEO: Record<string, { title: string; h1: string; desc: stri
   'application-mobile': { title: 'Création d’application mobile iOS & Android', h1: 'Création d’application mobile iOS & Android', desc: 'Conception et développement d’applications mobiles iOS et Android, de la maquette UX à la publication sur les stores. Pour la France, l’Europe et le Canada.' },
   'referencement-seo-geo': { title: 'Agence SEO & GEO : Google et IA génératives', h1: 'Agence SEO & GEO', desc: 'Référencement naturel SEO et GEO : audit, SEO technique, contenus et visibilité dans ChatGPT, Gemini et Perplexity, sur le marché français, belge, suisse ou canadien.' },
   'marketing-digital-ads': { title: 'Agence Google Ads, Meta Ads & TikTok Ads', h1: 'Agence marketing digital & publicité en ligne', desc: 'Campagnes Google Ads, Meta Ads et TikTok Ads pilotées par la donnée, en France, en Europe et au Canada : stratégie, création, diffusion et optimisation continue.' },
-  'social-media': { title: 'Agence social media : contenus TikTok & Instagram', h1: 'Agence social media & création de contenus', desc: 'Stratégie social media, création visuelle et vidéos courtes pour TikTok et Instagram : des contenus qui renforcent votre image et créent l’engagement.' }
+  'social-media': { title: 'Agence social media : contenus TikTok & Instagram', h1: 'Agence social media & création de contenus', desc: 'Stratégie social media, création visuelle et vidéos courtes pour TikTok et Instagram : des contenus qui renforcent votre image et créent l’engagement.' },
+  'ia-automatisation': { title: 'IA & automatisation : agents IA et chatbots', h1: 'Agence IA & automatisation', desc: 'Agents IA, chatbots, automatisation des processus et intégration de l’IA dans vos outils, pour les PME en France, en Europe et au Canada. Devis sous 48 h.' }
 }
 
 
@@ -300,6 +323,21 @@ export interface LocalPage {
   slug: string; crumbParent: string; crumb: string; eyebrow: string; h1: string; sub: string
   svcTitle: string; whyTitle: string; why: Benefit[]; refTitle: string; refs: string[]
   faq: [string, string][]; cta: string; title: string; description: string
+}
+
+const country = (name: string, code: string) => ({ '@type': 'Country', name, identifier: code })
+const city = (name: string, region: string, code: string) => ({ '@type': 'City', name, containedInPlace: { '@type': 'AdministrativeArea', name: region, containedInPlace: country({ FR: 'France', CA: 'Canada', SN: 'Sénégal' }[code]!, code) } })
+/** Zone servie par chaque page marché (données structurées Service.areaServed), par slug FR */
+export const LOCAL_AREA: Record<string, object> = {
+  france: country('France', 'FR'),
+  paris: city('Paris', 'Île-de-France', 'FR'),
+  lyon: city('Lyon', 'Auvergne-Rhône-Alpes', 'FR'),
+  belgique: country('Belgique', 'BE'),
+  suisse: country('Suisse', 'CH'),
+  canada: [country('Canada', 'CA'), { '@type': 'AdministrativeArea', name: 'Québec', containedInPlace: country('Canada', 'CA') }],
+  montreal: city('Montréal', 'Québec', 'CA'),
+  toronto: city('Toronto', 'Ontario', 'CA'),
+  dakar: city('Dakar', 'Dakar', 'SN')
 }
 
 // Pages marchés : une équipe à Dakar, des clients en France, en Belgique, en Suisse et au Canada.
@@ -336,7 +374,7 @@ export const LOCAL_PAGES: LocalPage[] = [
       b('Un budget mieux investi', 'Des prix plus abordables qu’une agence parisienne et une production accélérée par l’IA : votre projet est livré plus vite, pour moins cher.'),
       b('Les mêmes horaires, ou presque', 'Une à deux heures de décalage seulement : réunions, validations et ajustements se font dans la journée.'),
       b('Le SEO local parisien', 'Fiche Google, pages locales et données structurées pour être visible sur les recherches géolocalisées à Paris et en Île-de-France.'),
-      b('Une équipe complète', 'Six expertises réunies pour mener votre projet de bout en bout, avec un seul interlocuteur.')
+      b('Une équipe complète', 'Sept expertises réunies pour mener votre projet de bout en bout, avec un seul interlocuteur.')
     ],
     refTitle: 'Quelques-unes de nos références', refs: [],
     faq: [
@@ -345,6 +383,26 @@ export const LOCAL_PAGES: LocalPage[] = [
       ['Intervenez-vous dans toute l’Île-de-France ?', 'Oui. Nous accompagnons les entreprises de Paris et de toute l’Île-de-France, et plus largement de toute la France.']
     ],
     cta: 'Un projet digital à Paris ?'
+  },
+  {
+    slug: 'lyon', crumbParent: 'Agence digitale', crumb: 'Lyon', eyebrow: 'Agence web pour les entreprises lyonnaises',
+    title: 'Agence web pour les entreprises de Lyon', description: 'Sites web, applications, SEO & GEO et publicité en ligne pour les entreprises de Lyon et d’Auvergne-Rhône-Alpes : une équipe francophone basée à Dakar, à coût maîtrisé.',
+    h1: 'Votre agence web pour Lyon et la région Auvergne-Rhône-Alpes.',
+    sub: 'Création de sites, applications sur mesure, référencement SEO & GEO et marketing digital : BNS Digital accompagne les entreprises de Lyon, de sa métropole et de toute la région, en français et à coût maîtrisé.',
+    svcTitle: 'Toutes nos expertises, au service des entreprises lyonnaises.', whyTitle: 'Pourquoi travailler avec BNS Digital depuis Lyon ?',
+    why: [
+      b('Le SEO local lyonnais', 'Fiche Google, pages locales et données structurées pour être visible sur les recherches « votre métier + Lyon » et dans les communes de la métropole.'),
+      b('Un décalage horaire minime', 'Une heure de décalage avec Lyon en hiver, deux en été : nos journées de travail se recouvrent presque entièrement.'),
+      b('Prix abordables, livraison rapide', 'Des tarifs accessibles aux PME et des délais courts : une équipe à Dakar et une production accélérée par l’IA, sans renoncer à la qualité.'),
+      b('Un chef de projet dédié', 'Un interlocuteur unique, des points réguliers en visio et un suivi transparent à chaque étape.')
+    ],
+    refTitle: 'Quelques-unes de nos références', refs: [],
+    faq: [
+      ['Travaillez-vous le SEO local pour Lyon ?', 'Oui : optimisation de votre fiche Google, pages dédiées à vos zones d’intervention (Lyon, Villeurbanne, Vénissieux, Caluire-et-Cuire…) et données structurées locales.'],
+      ['Intervenez-vous dans toute la région ?', 'Oui : Lyon et sa métropole, mais aussi Grenoble, Saint-Étienne, Clermont-Ferrand ou Annecy, et plus largement toute la France.'],
+      ['Comment se déroule un projet à distance ?', 'Un chef de projet dédié organise des points réguliers en visio ; vous suivez l’avancement et validez chaque étape.']
+    ],
+    cta: 'Un projet digital à Lyon ?'
   },
   {
     slug: 'belgique', crumbParent: 'Agence digitale', crumb: 'Belgique', eyebrow: 'Agence digitale pour les entreprises belges',
@@ -408,11 +466,52 @@ export const LOCAL_PAGES: LocalPage[] = [
     cta: 'Un projet digital au Québec ou au Canada ?'
   },
   {
+    slug: 'montreal', crumbParent: 'Agence digitale', crumb: 'Montréal', eyebrow: 'Agence web pour les entreprises montréalaises',
+    title: 'Agence web pour les entreprises de Montréal', description: 'Sites bilingues, applications, SEO & GEO et publicité en ligne pour les entreprises du Grand Montréal : une équipe francophone et anglophone basée à Dakar.',
+    h1: 'Votre agence web à Montréal, en français comme en anglais.',
+    sub: 'Sites bilingues, applications sur mesure, référencement local et campagnes : BNS Digital accompagne les entreprises de Montréal, de Laval et de la Rive-Sud depuis Dakar, avec quelques heures d’avance sur votre journée.',
+    svcTitle: 'Toutes nos expertises, au service des entreprises montréalaises.', whyTitle: 'Pourquoi BNS Digital pour votre entreprise montréalaise ?',
+    why: [
+      b('Le bilinguisme, bien fait', 'Un site en français et en anglais, avec des URL et des balises hreflang propres à chaque langue, et le français en tête pour le marché québécois.'),
+      b('Le SEO local montréalais', 'Fiche Google, pages locales et données structurées pour les recherches du type « votre métier + Montréal ».'),
+      b('Votre demande avance pendant la nuit', 'Dakar a 4 à 5 heures d’avance sur Montréal : ce que vous envoyez en fin de journée avance avant votre arrivée au bureau.'),
+      b('Prix abordables, livraison rapide', 'Des tarifs accessibles aux PME et des délais courts : une équipe à Dakar et une production accélérée par l’IA, sans renoncer à la qualité.')
+    ],
+    refTitle: 'Quelques-unes de nos références', refs: [],
+    faq: [
+      ['Quel est le décalage horaire entre Dakar et Montréal ?', 'Dakar est à l’heure GMT toute l’année : 4 heures d’avance sur Montréal en été, 5 heures en hiver. Nos rendez-vous ont lieu le matin, heure de l’Est.'],
+      ['Le français est-il la langue principale de vos sites québécois ?', 'Oui. Sur les sites bilingues destinés au Québec, la version française est la version principale, et la version anglaise a ses propres URL.'],
+      ['Vos sites respectent-ils la Loi 25 ?', 'Oui. Consentement aux témoins (cookies), politique de confidentialité et formulaires sont conçus pour répondre à la Loi 25 et à la LPRPDE.'],
+      ['Intervenez-vous dans tout le Grand Montréal ?', 'Oui : Montréal, Laval, Longueuil, la Rive-Sud et la Rive-Nord, et plus largement tout le Québec.']
+    ],
+    cta: 'Un projet digital à Montréal ?'
+  },
+  {
+    slug: 'toronto', crumbParent: 'Agence digitale', crumb: 'Toronto', eyebrow: 'Agence digitale pour les entreprises de Toronto',
+    title: 'Agence digitale pour les entreprises de Toronto', description: 'Sites web, applications, SEO & GEO et publicité en ligne pour les entreprises de Toronto et de l’Ontario : une équipe anglophone et francophone basée à Dakar.',
+    h1: 'Une agence digitale anglophone pour Toronto et l’Ontario.',
+    sub: 'Sites web, applications sur mesure, référencement et campagnes : BNS Digital accompagne les entreprises de Toronto, du Grand Toronto et de tout l’Ontario, en anglais comme en français, à coût maîtrisé.',
+    svcTitle: 'Toutes nos expertises, au service des entreprises de Toronto.', whyTitle: 'Pourquoi BNS Digital pour votre entreprise à Toronto ?',
+    why: [
+      b('Une équipe qui travaille en anglais', 'Échanges, contenus et campagnes en anglais pour le marché ontarien, avec une version française si vous visez aussi le Québec.'),
+      b('Le SEO local à Toronto', 'Fiche Google, pages locales et données structurées pour les recherches géolocalisées à Toronto et dans le Grand Toronto.'),
+      b('De l’avance sur votre journée', 'Dakar a 4 à 5 heures d’avance sur Toronto : vos demandes de fin de journée avancent pendant votre nuit.'),
+      b('Renseignements personnels', 'Consentement, politique de confidentialité et formulaires conçus pour respecter la LPRPDE.')
+    ],
+    refTitle: 'Quelques-unes de nos références', refs: [],
+    faq: [
+      ['Travaillez-vous en anglais ?', 'Oui. Toute la relation projet peut se faire en anglais : appels, documents et contenus du site.'],
+      ['Quel est le décalage horaire avec Toronto ?', 'Dakar est à l’heure GMT toute l’année : 4 heures d’avance sur Toronto en été, 5 heures en hiver. Nos rendez-vous ont lieu le matin, heure de l’Est.'],
+      ['Pouvez-vous ajouter une version française ?', 'Oui. Nous concevons des sites bilingues anglais-français, avec des URL et des balises hreflang propres à chaque langue, pour toucher aussi le Québec et les francophones de l’Ontario.']
+    ],
+    cta: 'Un projet digital à Toronto ?'
+  },
+  {
     slug: 'dakar', crumbParent: 'Agence digitale', crumb: 'Dakar', eyebrow: 'Agence digitale à Dakar',
     title: 'Agence digitale à Dakar, Sénégal', description: 'BNS Digital, agence digitale basée à Dakar : sites web, applications, SEO & GEO, publicité et social media pour les entreprises en Europe, au Canada et au Sénégal.',
     h1: 'Une agence digitale à Dakar, tournée vers l’Europe et le Canada.',
     sub: 'Depuis Dakar, BNS Digital conçoit sites web, applications, stratégies de référencement et campagnes pour des entreprises françaises, européennes et canadiennes, comme pour les entreprises sénégalaises.',
-    svcTitle: 'Six expertises réunies à Dakar.', whyTitle: 'Pourquoi Dakar ?',
+    svcTitle: 'Sept expertises réunies à Dakar.', whyTitle: 'Pourquoi Dakar ?',
     why: [
       b('Un hub digital francophone', 'Dakar réunit des talents du web, du design et du marketing digital qui travaillent en français et en anglais.'),
       b('Au centre des fuseaux', 'À l’heure GMT, Dakar est à une ou deux heures de l’Europe et à quatre ou cinq heures de l’Est du Canada.'),

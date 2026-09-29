@@ -15,12 +15,18 @@
     <section class="bg-white section--96">
       <div class="container">
         <h2 class="h2 h2--52 svc-h">{{ page.svcTitle }}</h2>
-        <div class="grid grid-3 m-swipe">
+        <div class="grid grid-4 m-swipe">
           <NuxtLink v-for="s in services" :key="s.slug" :to="link.service(s.slug)" class="svc">
             <span class="svc__n">{{ s.num }}</span>
             <h3 class="svc__t">{{ s.crumb }}</h3>
             <p class="svc__d">{{ t.short[s.key] }}</p>
             <span class="svc__more">{{ t.more }} →</span>
+          </NuxtLink>
+          <NuxtLink :to="link.contact()" class="svc svc--soft">
+            <span class="svc__n">+</span>
+            <h3 class="svc__t">{{ t.customT }}</h3>
+            <p class="svc__d">{{ t.customD }}</p>
+            <span class="svc__more">{{ t.customCta }} →</span>
           </NuxtLink>
         </div>
       </div>
@@ -52,7 +58,7 @@
 </template>
 
 <script setup lang="ts">
-import { organizationSchema, type Project } from '~/data/content'
+import { LOCAL_AREA, organizationSchema, type Project } from '~/data/content'
 
 const route = useRoute()
 const { en, link, services, projects, hasWork, localPages, localSlug } = useSite()
@@ -65,11 +71,13 @@ const refs = computed(() => (page.value?.refs ?? []).map(slug => projects.value.
 const t = useLocaleText({
   fr: {
     home: 'Accueil', talk: 'Parler de votre projet', seeWork: 'Voir les réalisations', call: 'Réserver un appel', more: 'En savoir plus', faq: 'Questions fréquentes',
-    short: { web: 'Vitrine, blog, landing page, e-commerce.', app: 'Des outils sur mesure pour vos équipes.', seo: 'Visibilité sur Google et les IA génératives.', mobile: 'iOS et Android, de l’UX aux stores.', ads: 'Des campagnes pilotées par la donnée.', social: 'Visuel, vidéo et stratégie éditoriale.' } as Record<string, string>
+    short: { web: 'Vitrine, blog, landing page, e-commerce.', app: 'Des outils sur mesure pour vos équipes.', seo: 'Visibilité sur Google et les IA génératives.', mobile: 'iOS et Android, de l’UX aux stores.', ads: 'Des campagnes pilotées par la donnée.', social: 'Visuel, vidéo et stratégie éditoriale.', ai: 'Agents IA, chatbots et automatisations.' } as Record<string, string>,
+    customT: 'Un besoin sur mesure ?', customD: 'Décrivez votre projet : nous vous proposons la bonne combinaison d’expertises.', customCta: 'Parler de votre projet'
   },
   en: {
     home: 'Home', talk: 'Discuss your project', seeWork: 'See our work', call: 'Book a call', more: 'Learn more', faq: 'Frequently asked questions',
-    short: { web: 'Showcase sites, blogs, landing pages, e-commerce.', app: 'Tailor-made tools for your teams.', seo: 'Visibility on Google and generative AI.', mobile: 'iOS and Android, from UX to the stores.', ads: 'Data-driven campaigns.', social: 'Visuals, video and editorial strategy.' } as Record<string, string>
+    short: { web: 'Showcase sites, blogs, landing pages, e-commerce.', app: 'Tailor-made tools for your teams.', seo: 'Visibility on Google and generative AI.', mobile: 'iOS and Android, from UX to the stores.', ads: 'Data-driven campaigns.', social: 'Visuals, video and editorial strategy.', ai: 'AI agents, chatbots and automation.' } as Record<string, string>,
+    customT: 'Something tailor-made?', customD: 'Tell us about your project: we’ll suggest the right mix of expertise.', customCta: 'Discuss your project'
   }
 })
 
@@ -85,7 +93,15 @@ useHead({
         organizationSchema(site, en.value ? 'en' : 'fr'),
         {
           '@type': 'WebPage', '@id': `${site}${route.path}#webpage`, url: `${site}${route.path}`, name: page.value?.title, description: page.value?.description,
-          inLanguage: en.value ? 'en' : 'fr', about: { '@id': `${site}/#organization` }, isPartOf: { '@id': `${site}/#website` }
+          inLanguage: en.value ? 'en' : 'fr', about: { '@id': `${site}/#organization` }, isPartOf: { '@id': `${site}/#website` },
+          mainEntity: { '@id': `${site}${route.path}#service` }
+        },
+        {
+          // Zone ciblée par la page (pays, région ou ville) : signal géographique pour Google
+          '@type': 'Service', '@id': `${site}${route.path}#service`, name: page.value?.title, description: page.value?.description,
+          serviceType: en.value ? 'Digital agency services' : 'Services d’agence digitale',
+          provider: { '@id': `${site}/#organization` }, areaServed: LOCAL_AREA[page.value?.slug ?? ''],
+          availableLanguage: ['fr', 'en'], url: `${site}${route.path}`
         },
         {
           '@type': 'FAQPage', '@id': `${site}${route.path}#faq`,
@@ -106,6 +122,7 @@ useHead({
 .svc-h { max-width: 900px; margin-bottom: 40px; }
 .svc { display: flex; flex-direction: column; gap: 12px; padding: 28px; min-height: 200px; background: var(--bg); border: 1px solid var(--line); border-radius: 20px; color: var(--ink); transition: transform .2s ease; }
 .svc:hover { color: var(--ink); transform: translateY(-3px); }
+.svc--soft { background: var(--accent-soft); border-color: var(--accent-tint); }
 .svc__n { font-family: var(--font-display); font-size: 15px; font-weight: 800; color: var(--accent); }
 .svc__t { font-size: 24px; font-weight: 700; letter-spacing: -.4px; }
 .svc__d { font-size: 15px; line-height: 1.55; color: var(--muted); }

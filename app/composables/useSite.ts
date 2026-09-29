@@ -59,13 +59,13 @@ export function useSite() {
   const footerCols = computed(() => en.value
     ? [
         { title: 'Websites', links: [['Showcase website', link.service('creation-site-web', '#offre-01')], ['Blog', link.service('creation-site-web', '#offre-02')], ['Landing page', link.service('creation-site-web', '#offre-03')], ['E-commerce', link.service('creation-site-web', '#offre-04')]] },
-        { title: 'Apps & SEO', links: [['Business software', link.service('application-metier')], ['Mobile apps', link.service('application-mobile')], ['SEO & GEO', link.service('referencement-seo-geo')]] },
+        { title: 'Apps & SEO', links: [['Business software', link.service('application-metier')], ['Mobile apps', link.service('application-mobile')], ['AI & automation', link.service('ia-automatisation')], ['SEO & GEO', link.service('referencement-seo-geo')]] },
         { title: 'Marketing', links: [['Digital marketing & ads', link.service('marketing-digital-ads')], ['Social media & content', link.service('social-media')]] },
         { title: 'Agency', links: agencyLinks([['About us', link.about()], ['Our work', link.work()], ['Client reviews', link.reviews()], ['Blog', link.blog()], ['Book a call', link.booking()], ['Contact & quote', link.contact()]]) }
       ]
     : [
         { title: 'Sites web', links: [['Site vitrine', link.service('creation-site-web', '#offre-01')], ['Blog', link.service('creation-site-web', '#offre-02')], ['Landing page', link.service('creation-site-web', '#offre-03')], ['E-commerce', link.service('creation-site-web', '#offre-04')]] },
-        { title: 'Apps & SEO', links: [['Application métier', link.service('application-metier')], ['Application mobile', link.service('application-mobile')], ['SEO & GEO', link.service('referencement-seo-geo')]] },
+        { title: 'Apps & SEO', links: [['Application métier', link.service('application-metier')], ['Application mobile', link.service('application-mobile')], ['IA & automatisation', link.service('ia-automatisation')], ['SEO & GEO', link.service('referencement-seo-geo')]] },
         { title: 'Marketing', links: [['Marketing digital & ADS', link.service('marketing-digital-ads')], ['Social media & contenus', link.service('social-media')]] },
         { title: 'L’agence', links: agencyLinks([['À propos', link.about()], ['Réalisations', link.work()], ['Avis clients', link.reviews()], ['Blog', link.blog()], ['Réserver un appel', link.booking()], ['Contact & devis', link.contact()]]) }
       ])

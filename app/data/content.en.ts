@@ -12,9 +12,10 @@ export const SERVICE_SLUG_EN: Record<string, string> = {
   'application-mobile': 'mobile-app-development',
   'referencement-seo-geo': 'seo-geo',
   'marketing-digital-ads': 'digital-marketing-ads',
-  'social-media': 'social-media'
+  'social-media': 'social-media',
+  'ia-automatisation': 'ai-automation'
 }
-export const LOCAL_SLUG_EN: Record<string, string> = { france: 'france', paris: 'paris', belgique: 'belgium', suisse: 'switzerland', canada: 'canada', dakar: 'dakar' }
+export const LOCAL_SLUG_EN: Record<string, string> = { france: 'france', paris: 'paris', lyon: 'lyon', belgique: 'belgium', suisse: 'switzerland', canada: 'canada', montreal: 'montreal', toronto: 'toronto', dakar: 'dakar' }
 
 const COMMON_STEPS = [
   s('1', 'Scoping', 'We analyse your market, competitors and goals to set clear priorities.'),
@@ -150,6 +151,28 @@ export const SERVICES_EN: Record<string, Omit<Service, 'slug' | 'key' | 'num' | 
     methTitle: 'From strategy to published content.',
     steps: [s('1', 'The choice', 'Defining your goals and formats: visuals, video or both.'), s('2', 'The brief', 'You share your vision and your assets.'), s('3', 'The strategy', 'We analyse, create and optimise.'), s('4', 'Take-off', 'Delivery of ready-to-publish content.')],
     cta: 'Ready to make your brand shine?'
+  },
+  'ia-automatisation': {
+    crumb: 'AI & automation', eyebrow: 'Artificial intelligence & automation',
+    h1: 'Put AI to work in your business.',
+    sub: 'AI agents, chatbots, automation of repetitive tasks and AI built into your tools: we design practical solutions that save your team time and improve your customers’ experience.',
+    offersTitle: 'Useful AI, not gimmicks.', offersSub: 'Every project starts from a specific, measurable use case in your business.',
+    offers: [
+      o('01', 'AI agents & chatbots', 'An assistant that answers your customers at any time on your website, WhatsApp or Messenger, based on your own content.', ['Customer service', 'WhatsApp', 'Website']),
+      o('02', 'Process automation', 'Follow-ups, data entry, quotes, reporting: we connect your tools and automate your team’s repetitive tasks.', ['Workflows', 'Integrations', 'API']),
+      o('03', 'AI in your tools', 'Document search, assisted writing, data analysis: AI built into your CRM, back office or website.', ['Knowledge base', 'Documents', 'Data']),
+      o('04', 'AI audit & support', 'Identifying high-impact use cases, choosing tools, training your team and setting up data protection.', ['Audit', 'Training', 'Privacy'])
+    ],
+    benTitle: 'Less manual work, more value.',
+    benefits: [
+      b('Time saved', 'Repetitive tasks are handled for you: your team focuses on what matters.'),
+      b('Availability', 'Customer service that answers at any time, in your customers’ language.'),
+      b('Reliability', 'Less re-keying, fewer errors, up-to-date data across all your tools.'),
+      b('Control', 'Supervised solutions, protected data and monitored usage costs.')
+    ],
+    methTitle: 'From use case to automation in production.',
+    steps: [s('1', 'Audit', 'Mapping your processes and choosing priority use cases.'), s('2', 'Prototype', 'A first version tested on your real data.'), s('3', 'Deployment', 'Integration into your tools and team training.'), s('4', 'Improvement', 'Results tracking and continuous adjustments.')],
+    cta: 'A process to automate?'
   }
 }
 
@@ -160,7 +183,8 @@ export const SERVICE_SEO_EN: Record<string, { title: string; h1: string; desc: s
   'application-mobile': { title: 'iOS & Android mobile app development', h1: 'iOS & Android mobile app development', desc: 'Design and development of iOS and Android mobile apps, from UX mock-ups to App Store and Google Play release, for companies in Canada, France and Europe.' },
   'referencement-seo-geo': { title: 'SEO & GEO agency: Google and generative AI', h1: 'SEO & GEO agency', desc: 'SEO and GEO: audits, technical SEO, content and visibility in ChatGPT, Gemini and Perplexity, for the Canadian, French, Belgian or Swiss market, in English and French.' },
   'marketing-digital-ads': { title: 'Google Ads, Meta Ads & TikTok Ads agency', h1: 'Digital marketing & paid ads agency', desc: 'Data-driven Google Ads, Meta Ads and TikTok Ads campaigns in Canada, France and Europe: strategy, creative, delivery and continuous optimisation.' },
-  'social-media': { title: 'Social media agency: TikTok & Instagram content', h1: 'Social media & content agency', desc: 'Social media strategy, visual design and short-form video for TikTok and Instagram: content that strengthens your brand image and drives real engagement.' }
+  'social-media': { title: 'Social media agency: TikTok & Instagram content', h1: 'Social media & content agency', desc: 'Social media strategy, visual design and short-form video for TikTok and Instagram: content that strengthens your brand image and drives real engagement.' },
+  'ia-automatisation': { title: 'AI & automation agency: agents and chatbots', h1: 'AI & automation agency', desc: 'AI agents, chatbots, process automation and AI built into your tools, for SMEs in Canada, France and Europe. Free quote within 48 hours.' }
 }
 
 export const SERVICE_FAQ_EN: [string, string][] = [
@@ -204,7 +228,7 @@ export const LOCAL_PAGES_EN: Record<string, Omit<LocalPage, 'slug' | 'refs'>> = 
       b('A better-invested budget', 'More affordable than a Paris agency, with AI-accelerated production: your project is delivered faster, for less.'),
       b('Nearly the same hours', 'Only one to two hours’ difference: meetings, approvals and adjustments happen within the day.'),
       b('Paris local SEO', 'Google Business Profile, local pages and structured data to rank in location-based searches in Paris and Île-de-France.'),
-      b('A full team', 'Six areas of expertise to run your project end to end, with a single point of contact.')
+      b('A full team', 'Seven areas of expertise to run your project end to end, with a single point of contact.')
     ],
     refTitle: 'Some of our references',
     faq: [
@@ -213,6 +237,26 @@ export const LOCAL_PAGES_EN: Record<string, Omit<LocalPage, 'slug' | 'refs'>> = 
       ['Do you work across Île-de-France?', 'Yes. We support companies in Paris and throughout Île-de-France, and across France more broadly.']
     ],
     cta: 'A digital project in Paris?'
+  },
+  lyon: {
+    crumbParent: 'Digital agency', crumb: 'Lyon', eyebrow: 'Web agency for Lyon-based companies',
+    title: 'Web agency for companies in Lyon', description: 'Websites, software, SEO & GEO and paid ads for companies in Lyon and Auvergne-Rhône-Alpes: a French-speaking team based in Dakar, at a controlled cost.',
+    h1: 'Your web agency for Lyon and the Auvergne-Rhône-Alpes region.',
+    sub: 'Website design, custom software, SEO & GEO and digital marketing: BNS Digital supports companies in Lyon, its metropolitan area and the wider region, in French and at a controlled cost.',
+    svcTitle: 'All our services, working for Lyon-based businesses.', whyTitle: 'Why work with BNS Digital from Lyon?',
+    why: [
+      b('Lyon local SEO', 'Google Business Profile, local pages and structured data to rank for “your trade + Lyon” searches and across the metropolitan area.'),
+      b('Minimal time difference', 'One hour behind Lyon in winter, two in summer: our working days overlap almost entirely.'),
+      b('Affordable, fast delivery', 'SME-friendly prices and short timelines: a team in Dakar and AI-accelerated production, without compromising on quality.'),
+      b('A dedicated project manager', 'A single point of contact, regular video calls and transparent follow-up at every stage.')
+    ],
+    refTitle: 'Some of our references',
+    faq: [
+      ['Do you handle local SEO for Lyon?', 'Yes: Google Business Profile optimisation, pages for the areas you serve (Lyon, Villeurbanne, Vénissieux, Caluire-et-Cuire…) and local structured data.'],
+      ['Do you work across the region?', 'Yes: Lyon and its metropolitan area, as well as Grenoble, Saint-Étienne, Clermont-Ferrand or Annecy, and across France more broadly.'],
+      ['How does a remote project work?', 'A dedicated project manager runs regular video check-ins; you follow progress and approve each stage.']
+    ],
+    cta: 'A digital project in Lyon?'
   },
   belgique: {
     crumbParent: 'Digital agency', crumb: 'Belgium', eyebrow: 'Digital agency for Belgian companies',
@@ -275,12 +319,53 @@ export const LOCAL_PAGES_EN: Record<string, Omit<LocalPage, 'slug' | 'refs'>> = 
     ],
     cta: 'A digital project in Canada?'
   },
+  montreal: {
+    crumbParent: 'Digital agency', crumb: 'Montreal', eyebrow: 'Web agency for Montreal businesses',
+    title: 'Web agency for companies in Montreal', description: 'Bilingual websites, software, SEO & GEO and paid ads for companies in Greater Montreal: a French- and English-speaking team based in Dakar.',
+    h1: 'Your Montreal web agency, in French and English.',
+    sub: 'Bilingual websites, custom software, local SEO and campaigns: BNS Digital supports companies in Montreal, Laval and the South Shore from Dakar, a few hours ahead of your day.',
+    svcTitle: 'All our services, working for Montreal businesses.', whyTitle: 'Why BNS Digital for your Montreal business?',
+    why: [
+      b('Bilingual, done right', 'A French and English website with dedicated URLs and hreflang tags for each language, and French first for the Quebec market.'),
+      b('Montreal local SEO', 'Google Business Profile, local pages and structured data for “your trade + Montreal” searches.'),
+      b('Your request moves overnight', 'Dakar is 4 to 5 hours ahead of Montreal: what you send at the end of your day moves forward before you get to the office.'),
+      b('Affordable, fast delivery', 'SME-friendly prices and short timelines: a team in Dakar and AI-accelerated production, without compromising on quality.')
+    ],
+    refTitle: 'Some of our references',
+    faq: [
+      ['What is the time difference between Dakar and Montreal?', 'Dakar is on GMT all year round: 4 hours ahead of Montreal in summer, 5 hours in winter. Our meetings take place in the morning, Eastern time.'],
+      ['Is French the main language of your Quebec websites?', 'Yes. On bilingual websites for Quebec, the French version is the main version and the English version has its own URLs.'],
+      ['Are your websites compliant with Law 25?', 'Yes. Cookie consent, privacy policy and forms are designed to meet Quebec’s Law 25 and PIPEDA.'],
+      ['Do you work across Greater Montreal?', 'Yes: Montreal, Laval, Longueuil, the South Shore and the North Shore, and across Quebec more broadly.']
+    ],
+    cta: 'A digital project in Montreal?'
+  },
+  toronto: {
+    crumbParent: 'Digital agency', crumb: 'Toronto', eyebrow: 'Digital agency for Toronto businesses',
+    title: 'Digital agency for companies in Toronto', description: 'Websites, software, SEO & GEO and paid ads for companies in Toronto and Ontario: an English- and French-speaking team based in Dakar, at a controlled cost.',
+    h1: 'A digital agency for Toronto and Ontario businesses.',
+    sub: 'Websites, custom software, SEO and campaigns: BNS Digital supports companies in Toronto, the GTA and across Ontario, in English and French, at a controlled cost.',
+    svcTitle: 'All our services, working for Toronto businesses.', whyTitle: 'Why BNS Digital for your Toronto business?',
+    why: [
+      b('A team that works in English', 'Communication, content and campaigns in English for the Ontario market, with a French version if you also target Quebec.'),
+      b('Toronto local SEO', 'Google Business Profile, local pages and structured data to rank in location-based searches in Toronto and the GTA.'),
+      b('A head start on your day', 'Dakar is 4 to 5 hours ahead of Toronto: requests sent at the end of your day move forward overnight.'),
+      b('Privacy compliance', 'Consent, privacy policy and forms designed to meet PIPEDA.')
+    ],
+    refTitle: 'Some of our references',
+    faq: [
+      ['Do you work in English?', 'Yes. The whole project can run in English: calls, documents and website content.'],
+      ['What is the time difference with Toronto?', 'Dakar is on GMT all year round: 4 hours ahead of Toronto in summer, 5 hours in winter. Our meetings take place in the morning, Eastern time.'],
+      ['Can you add a French version?', 'Yes. We build bilingual English-French websites with dedicated URLs and hreflang tags for each language, to reach Quebec and French speakers in Ontario too.']
+    ],
+    cta: 'A digital project in Toronto?'
+  },
   dakar: {
     crumbParent: 'Digital agency', crumb: 'Dakar', eyebrow: 'Digital agency in Dakar',
     title: 'Digital agency in Dakar, Senegal', description: 'BNS Digital, a Dakar-based digital agency: websites, software, SEO & GEO, paid ads and social media for companies in Europe, Canada and Senegal.',
     h1: 'A digital agency in Dakar, working for Europe and Canada.',
     sub: 'From Dakar, BNS Digital designs websites, software, SEO strategies and campaigns for French, European and Canadian companies, as well as for businesses in Senegal.',
-    svcTitle: 'Six areas of expertise, based in Dakar.', whyTitle: 'Why Dakar?',
+    svcTitle: 'Seven areas of expertise, based in Dakar.', whyTitle: 'Why Dakar?',
     why: [
       b('A French-speaking digital hub', 'Dakar is home to web, design and digital marketing talent working in French and English.'),
       b('Between time zones', 'On GMT, Dakar is one or two hours from Europe and four or five hours from Eastern Canada.'),

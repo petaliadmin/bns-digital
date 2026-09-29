@@ -1,5 +1,5 @@
-# KPS Agency — règles serveur (Hostinger : Apache / LiteSpeed)
-# URL canoniques : https://kps-agency.com/page (HTTPS, sans www, sans slash final)
+# BNS Digital — règles serveur (Apache / LiteSpeed)
+# URL canoniques : https://bns-digital.com/page (HTTPS, sans www, sans slash final)
 
 Options -MultiViews -Indexes
 DirectorySlash Off
@@ -8,7 +8,7 @@ RewriteEngine On
 # 1. Forcer HTTPS et le domaine sans www (une seule version du site pour Google)
 RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} ^www\. [NC]
-RewriteRule ^ https://kps-agency.com%{REQUEST_URI} [R=301,L]
+RewriteRule ^ https://bns-digital.com%{REQUEST_URI} [R=301,L]
 
 # 2. Supprimer le slash final (sauf la racine)
 RewriteCond %{REQUEST_FILENAME} !-f

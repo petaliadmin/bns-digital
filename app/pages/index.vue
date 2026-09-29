@@ -39,7 +39,7 @@
             </div>
             <p class="text-18 sec-head__p">{{ t.services.p }}</p>
           </div>
-          <div class="grid grid-3 svc-grid m-swipe">
+          <div class="grid grid-4 svc-grid m-swipe">
             <NuxtLink v-for="sv in t.services.items" :key="sv.num" :to="sv.slug ? link.service(sv.slug) : link.contact()" class="svc" :class="`svc--${sv.theme}`">
               <div class="svc__top"><span class="svc__num">{{ sv.num }}</span><span class="svc__tag">{{ sv.tag }}</span></div>
               <h3 class="svc__title">{{ sv.title }}</h3>
@@ -366,7 +366,7 @@ async function submit() {
 .center-head .text-18 { max-width: 620px; }
 
 /* Services */
-.svc { display: flex; flex-direction: column; gap: 18px; padding: 32px; min-height: 330px; border: 1px solid var(--line); border-radius: 20px; transition: transform .2s ease; }
+.svc { display: flex; flex-direction: column; gap: 16px; padding: 28px; min-height: 320px; border: 1px solid var(--line); border-radius: 20px; transition: transform .2s ease; }
 .svc:hover { transform: translateY(-3px); }
 .svc--dark { background: var(--ink); color: var(--white); } .svc--dark:hover { color: var(--white); }
 .svc--light { background: var(--bg); color: var(--ink); } .svc--light:hover { color: var(--ink); }
@@ -377,7 +377,7 @@ async function submit() {
 .svc__tag { font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line-2); }
 .svc--dark .svc__tag { border-color: var(--dark-line-2); }
 .svc--soft .svc__tag { border-color: var(--accent-tint-2); }
-.svc__title { font-size: 28px; line-height: 1.15; letter-spacing: -.6px; font-weight: 700; }
+.svc__title { font-size: 24px; line-height: 1.15; letter-spacing: -.5px; font-weight: 700; }
 .svc__desc { font-size: 16px; line-height: 1.55; color: var(--muted); }
 .svc--dark .svc__desc { color: var(--dark-muted); }
 .svc__pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }

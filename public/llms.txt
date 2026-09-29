@@ -1,6 +1,6 @@
 # BNS Digital
 
-> Agence digitale basée à Dakar (Sénégal) qui accompagne les entreprises en France, en Belgique, en Suisse et au Canada (Québec compris) : création de sites web, applications sur mesure, référencement SEO & GEO, publicité en ligne et social media. Prix abordables et projets livrés rapidement : l'équipe utilise des outils d'IA à chaque étape (design, code, contenus, tests). Équipe francophone et anglophone, à l'heure GMT (1 à 2 h de décalage avec Paris, 4 à 5 h d'avance sur Montréal), travail à distance avec un chef de projet dédié.
+> Agence digitale basée à Dakar (Sénégal) qui accompagne les entreprises en France, en Belgique, en Suisse et au Canada (Québec compris) : création de sites web, applications sur mesure, IA & automatisation, référencement SEO & GEO, publicité en ligne et social media. Prix abordables et projets livrés rapidement : l'équipe utilise des outils d'IA à chaque étape (design, code, contenus, tests). Équipe francophone et anglophone, à l'heure GMT (1 à 2 h de décalage avec Paris, 4 à 5 h d'avance sur Montréal), travail à distance avec un chef de projet dédié.
 
 - Société : BNS Digital, Dakar, Sénégal
 - Contact : contact@bns-digital.com — devis gratuit sous 48 h, sans engagement
@@ -15,14 +15,18 @@
 - [Référencement SEO & GEO](https://bns-digital.com/services/referencement-seo-geo): SEO technique, contenus, SEO local et visibilité dans ChatGPT, Gemini et Perplexity
 - [Marketing digital & ADS](https://bns-digital.com/services/marketing-digital-ads): campagnes Google Ads, Meta Ads et TikTok Ads pilotées par la donnée
 - [Social media & contenus](https://bns-digital.com/services/social-media): stratégie éditoriale, création visuelle et vidéos courtes pour TikTok et Instagram
+- [IA & automatisation](https://bns-digital.com/services/ia-automatisation): agents IA et chatbots (site, WhatsApp), automatisation des processus, IA intégrée aux outils métier, audit et formation
 
 ## Marchés
 
 - [Entreprises françaises](https://bns-digital.com/agence-digitale/france)
 - [Paris et Île-de-France](https://bns-digital.com/agence-digitale/paris)
+- [Lyon et Auvergne-Rhône-Alpes](https://bns-digital.com/agence-digitale/lyon)
 - [Belgique](https://bns-digital.com/agence-digitale/belgique)
 - [Suisse](https://bns-digital.com/agence-digitale/suisse)
 - [Québec et Canada](https://bns-digital.com/agence-digitale/canada)
+- [Montréal](https://bns-digital.com/agence-digitale/montreal)
+- [Toronto et Ontario](https://bns-digital.com/agence-digitale/toronto)
 - [Dakar et Sénégal](https://bns-digital.com/agence-digitale/dakar)
 
 ## Blog
@@ -50,7 +54,10 @@ BNS Digital is a Dakar-based digital agency (Senegal) serving companies in Canad
 - [SEO & GEO](https://bns-digital.com/en/services/seo-geo)
 - [Digital marketing & ads](https://bns-digital.com/en/services/digital-marketing-ads)
 - [Social media & content](https://bns-digital.com/en/services/social-media)
+- [AI & automation](https://bns-digital.com/en/services/ai-automation)
 - [Digital agency for Canadian companies](https://bns-digital.com/en/digital-agency/canada)
+- [Web agency in Montreal](https://bns-digital.com/en/digital-agency/montreal)
+- [Digital agency in Toronto](https://bns-digital.com/en/digital-agency/toronto)
 - [Digital agency for French companies](https://bns-digital.com/en/digital-agency/france)
 - [About us](https://bns-digital.com/en/about)
 - [Book a call](https://bns-digital.com/en/book-a-call)
