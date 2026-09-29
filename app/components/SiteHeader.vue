@@ -21,14 +21,14 @@
           </div>
           <NuxtLink v-else :to="item.to" class="nav__link" :class="{ 'is-active': isActive(item) }" @click="open = false">{{ item.label }}</NuxtLink>
         </template>
-        <span class="nav__lang nav__lang--mobile" @click="open = false"><SwitchLocalePathLink :locale="switchTo.code" :hreflang="switchTo.code" :lang="switchTo.code">{{ switchTo.long }}</SwitchLocalePathLink></span>
+        <span class="nav__lang nav__lang--mobile" @click="open = false"><NuxtLink v-if="blogSwitch" :to="blogSwitch" :hreflang="switchTo.code" :lang="switchTo.code">{{ switchTo.long }}</NuxtLink><SwitchLocalePathLink v-else :locale="switchTo.code" :hreflang="switchTo.code" :lang="switchTo.code">{{ switchTo.long }}</SwitchLocalePathLink></span>
         <div class="nav__mobile-ctas">
           <NuxtLink :to="link.booking()" class="btn btn--ghost btn--sm" @click="open = false">{{ t.call }}</NuxtLink>
           <NuxtLink :to="link.contact()" class="btn btn--dark btn--sm" @click="open = false">{{ t.quote }}</NuxtLink>
         </div>
       </nav>
       <div class="nav__ctas">
-        <span class="nav__lang"><SwitchLocalePathLink :locale="switchTo.code" :hreflang="switchTo.code" :lang="switchTo.code" :aria-label="switchTo.long">{{ switchTo.short }}</SwitchLocalePathLink></span>
+        <span class="nav__lang"><NuxtLink v-if="blogSwitch" :to="blogSwitch" :hreflang="switchTo.code" :lang="switchTo.code" :aria-label="switchTo.long">{{ switchTo.short }}</NuxtLink><SwitchLocalePathLink v-else :locale="switchTo.code" :hreflang="switchTo.code" :lang="switchTo.code" :aria-label="switchTo.long">{{ switchTo.short }}</SwitchLocalePathLink></span>
         <NuxtLink :to="link.booking()" class="nav__call">{{ t.call }}</NuxtLink>
         <NuxtLink :to="link.contact()" class="nav__quote">{{ t.quote }}</NuxtLink>
       </div>
@@ -40,6 +40,8 @@
 </template>
 
 <script setup lang="ts">
+import { blogArticle } from '~/data/blog'
+
 const route = useRoute()
 const open = ref(false)
 watch(() => route.fullPath, () => { open.value = false })
@@ -104,11 +106,22 @@ const navItems = computed<NavItem[]>(() => {
         { label: en.value ? 'Events' : 'Événementiel', desc: 'Tunisia Franchise Show, Galeries LIVE', icon: 'event', to: link.project('tunisia-franchise-show') }
       ]
     },
+    { label: 'Blog', to: link.blog(), match: ['blog', 'blog-slug'] },
     { label: en.value ? 'About' : 'L’agence', to: link.about(), match: ['agence'] }
   ]
 })
 
 const isActive = (item: NavItem) => !!item.match?.includes(getRouteBaseName(route) ?? '')
+
+// Article de blog : l'autre langue pointe vers sa traduction si elle existe, sinon vers la liste des articles
+const localePath = useLocalePath()
+const blogSwitch = computed(() => {
+  if (getRouteBaseName(route) !== 'blog-slug') return ''
+  const from = en.value ? 'en' : 'fr'
+  const to = switchTo.value.code
+  const translation = blogArticle(from, String(route.params.slug))?.meta.translation
+  return translation && blogArticle(to, translation) ? localePath({ name: 'blog-slug', params: { slug: translation } }, to) : localePath('blog', to)
+})
 </script>
 
 <style scoped>

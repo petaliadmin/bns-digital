@@ -22,6 +22,12 @@
 - [Agence digitale à Paris](https://kps-agency.com/agence-digitale/paris)
 - [Agence digitale pour le secteur de l'énergie](https://kps-agency.com/agence-digitale/energie)
 
+## Blog
+
+- [Blog : conseils digitaux par secteur](https://kps-agency.com/blog)
+- [Site internet pour une entreprise des énergies renouvelables](https://kps-agency.com/blog/site-internet-entreprise-energie-renouvelable)
+- [Référencement local pour l'immobilier](https://kps-agency.com/blog/referencement-local-agence-immobiliere)
+
 ## Informations
 
 - [L'agence](https://kps-agency.com/agence)
@@ -43,3 +49,4 @@ KPS Agency is a Paris-based digital agency (59 rue de Ponthieu, 75008 Paris) hel
 - [Our work](https://kps-agency.com/en/work)
 - [About us](https://kps-agency.com/en/about)
 - [Contact & quote](https://kps-agency.com/en/contact)
+- [Blog](https://kps-agency.com/en/blog)

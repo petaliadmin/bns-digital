@@ -50,7 +50,9 @@ export default defineNuxtConfig({
       'agence-digitale/[slug]': { fr: '/agence-digitale/[slug]', en: '/digital-agency/[slug]' },
       'cgv': { fr: '/cgv', en: '/terms' },
       'mentions-legales': { fr: '/mentions-legales', en: '/legal-notice' },
-      'rendez-vous': { fr: '/rendez-vous', en: '/book-a-call' }
+      'rendez-vous': { fr: '/rendez-vous', en: '/book-a-call' },
+      'blog/index': { fr: '/blog', en: '/blog' },
+      'blog/[slug]': { fr: '/blog/[slug]', en: '/blog/[slug]' }
     },
     experimental: { strictSeo: true }
   },
@@ -71,9 +73,11 @@ export default defineNuxtConfig({
     }
   },
   nitro: {
+    // Articles du blog accessibles côté serveur (sitemap, flux RSS)
+    serverAssets: [{ baseName: 'blog', dir: '../content/blog' }],
     prerender: {
       crawlLinks: true,
-      routes: ['/', '/en', '/sitemap.xml'],
+      routes: ['/', '/en', '/sitemap.xml', '/blog/rss.xml', '/en/blog/rss.xml'],
       // /services → services.html (et non services/index.html) : URL sans slash final, servie par public/.htaccess
       autoSubfolderIndex: false
     }
