@@ -85,10 +85,21 @@ const IMG = '/images/realisations/'
 export const project = (slug: string, cat: ProjectCat, client: string, label: string, desc: string, metric: string, bg: string, fg: string, url?: string): Project =>
   ({ slug, cat, client, label, desc, metric, bg, fg, img: `${IMG}${slug}.webp`, alt: `Réalisation ${client} — ${label}`, url })
 
-// Réalisations de BNS Digital : à compléter. Tant que la liste est vide, le portfolio est masqué
-// (accueil, menu, pages services) et la page Réalisations affiche un message d'attente.
-// Exemple : project('mon-client', 'Web', 'Mon client', 'Secteur', 'Description du projet', 'Résultat chiffré', '#DDE3FF', '#1A2A8A', 'https://…')
-export const PROJECTS: Project[] = []
+// Réalisations de BNS Digital (ordre éditorial). Si la liste est vide, le portfolio est masqué partout.
+// Descriptions tirées des sites en ligne ; résultats chiffrés à compléter ([Résultat] n'est jamais affiché).
+// Visuels : captures d'écran des pages d'accueil (public/images/realisations).
+const R = '[Résultat]'
+export const PROJECTS: Project[] = [
+  project('petalia', 'Web', 'Petalia', 'Agritech · IoT & IA', 'Site de Petalia, plateforme d’agriculture intelligente en Afrique : capteurs IoT, intelligence artificielle et drones pour piloter les exploitations, présentation des solutions, offres et démo.', R, '#DCFCE7', '#166534', 'https://www.petalia.sn/'),
+  project('nagaw', 'Web', 'Nagaw', 'SaaS · Pilotage d’entreprise', 'Site produit de Nagaw, plateforme qui connecte les données et les outils d’une PME (ERP, CRM, comptabilité, Excel, API) et exécute analyses, rapports et tableaux de bord demandés en langage naturel.', R, '#E4EFE9', '#14532D', 'https://preprod.naagaw.com/'),
+  project('permis2', 'Web', 'PERMIS 2.0', 'EdTech · Permis de conduire', 'Plateforme PERMIS 2.0 pour le permis de conduire au Sénégal : révision du code de la route, examens blancs, comparateur d’auto-écoles et outil de gestion pour les écoles de conduite.', R, '#E0F2FE', '#075985', 'https://www.permis2.com/'),
+  project('power-energy-solutions', 'Web', 'Power Energy Solutions', 'Énergie & ingénierie', 'Site corporate de Power Energy Solutions, entreprise africaine d’ingénierie énergétique : conception, réalisation et maintenance de systèmes énergétiques et fourniture d’équipements industriels.', R, '#DDE3FF', '#1A2A8A', 'https://www.powerenergysolutions.sn/'),
+  project('vianego', 'Web', 'VIANEGO', 'Conseil · Intermédiation', 'Site bilingue de VIANEGO, cabinet d’intermédiation commerciale qui connecte entreprises, investisseurs et partenaires pour concrétiser des projets en Afrique de l’Ouest (agriculture, énergie, hydrocarbures).', R, '#FEF3C7', '#92400E', 'https://vianego.vercel.app/'),
+  project('le-jardin-d-enfants', 'Web', 'Le Jardin d’Enfants', 'E-commerce · Éducation', 'Boutique en ligne de ressources pédagogiques pour la maternelle : fiches imprimables par niveau, outils pour enseignants et parents, et ressources multilingues (wolof, bambara, lingala…).', R, '#FCE7F3', '#9D174D', 'https://lejardindenfants.com/'),
+  project('techub', 'Web', 'TechHub Africa', 'Plateforme · Écosystème tech', 'Plateforme TechHub Africa qui réunit l’écosystème technologique africain : annuaire de startups, carte de l’innovation, événements, offres d’emploi et communauté de développeurs.', R, '#EDE7F6', '#4C1D95', 'https://techub-beta.vercel.app/'),
+  project('petalia-soil', 'Web', 'Petalia Soil', 'Agritech · Place de marché', 'Petalia Soil, place de marché des terres agricoles : recherche de parcelles sur carte, analyse des paramètres du sol, cultures recommandées et mise en relation directe avec les propriétaires.', R, '#DCFCE7', '#166534', 'https://petalia-soil.vercel.app/'),
+  project('kps-agency', 'Web', 'KPS Agency', 'Agence créative · Paris', 'Site de KPS Agency, agence créative parisienne spécialisée dans le social media, les sites web et la publicité en ligne sur TikTok et Instagram.', R, '#E6ECF5', '#0B3A75', 'https://kps-agency.com/')
+]
 
 export const CAT_LABEL: Record<ProjectCat, string> = { Web: 'Site web', ADS: 'ADS', Social: 'Social/Médias' }
 /** Vignette 800 px générée à côté de chaque visuel (cartes, listes) */
@@ -136,7 +147,7 @@ export const SERVICES: Service[] = [
       b('Cohérence de marque', 'Un design fidèle à votre identité, décliné avec rigueur sur chaque écran.')
     ],
     methTitle: 'De l’idée à la mise en ligne.', steps: COMMON_STEPS,
-    related: [], cta: 'Un site à créer ou à refondre ?'
+    related: ['power-energy-solutions', 'vianego', 'le-jardin-d-enfants'], cta: 'Un site à créer ou à refondre ?'
   },
   {
     slug: 'application-metier', key: 'app', num: '02', crumb: 'Application métier', eyebrow: 'Application métier sur mesure',
@@ -156,7 +167,7 @@ export const SERVICES: Service[] = [
       b('Évolutivité', 'Une architecture qui grandit avec votre entreprise.'),
       b('Sécurité', 'Gestion des accès et protection de vos données au cœur de la conception.')
     ],
-    methTitle: 'Du besoin métier à l’outil déployé.', steps: COMMON_STEPS, related: [], cta: 'Un processus à digitaliser ?'
+    methTitle: 'Du besoin métier à l’outil déployé.', steps: COMMON_STEPS, related: ['nagaw', 'permis2', 'petalia-soil'], cta: 'Un processus à digitaliser ?'
   },
   {
     slug: 'referencement-seo-geo', key: 'seo', num: '03', crumb: 'Référencement SEO & GEO', eyebrow: 'Référencement SEO & GEO',

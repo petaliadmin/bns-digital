@@ -16,8 +16,8 @@
 
     <section v-if="hasWork" class="container work">
       <div class="work__bar">
-        <div class="filters" role="group" :aria-label="t.filterLabel">
-          <button v-for="f in t.filters" :key="f.id" type="button" :aria-pressed="filter === f.id" :class="{ 'is-on': filter === f.id }" @click="filter = f.id">{{ f.label }}</button>
+        <div v-if="filters.length > 2" class="filters" role="group" :aria-label="t.filterLabel">
+          <button v-for="f in filters" :key="f.id" type="button" :aria-pressed="filter === f.id" :class="{ 'is-on': filter === f.id }" @click="filter = f.id">{{ f.label }}</button>
         </div>
         <span class="work__count" aria-live="polite">{{ list.length }} {{ t.projects }}</span>
       </div>
@@ -46,22 +46,22 @@ const { en, link, projects, hasWork } = useSite()
 // Chiffres clés du portfolio : à renseigner avec les résultats réels des projets BNS Digital
 const t = useLocaleText({
   fr: {
-    eyebrow: 'Réalisations', h1: 'Des projets concrets. Des résultats mesurables.', lead: 'Sites web, applications, campagnes et contenus : découvrez comment nous accompagnons des entreprises en France, en Europe et au Canada.',
+    eyebrow: 'Réalisations', h1: 'Des projets concrets. Des résultats mesurables.', lead: 'Sites corporate, plateformes SaaS, e-commerce : découvrez les projets que nous avons conçus pour des entreprises au Sénégal, en Afrique de l’Ouest et en France.',
     emptyH1: 'Nos études de cas arrivent bientôt.', emptyLead: 'Nous préparons la présentation détaillée de nos projets pour des entreprises en France, en Europe et au Canada.',
     emptyP: 'En attendant, parlons de votre projet : en 30 minutes, nous vous présentons notre approche et des exemples adaptés à votre secteur.', emptyCall: 'Réserver un appel', emptyServices: 'Voir nos expertises',
     filterLabel: 'Filtrer les réalisations', filters: [{ id: 'all', label: 'Tous' }, { id: 'Web', label: 'Sites Web' }, { id: 'Social', label: 'Social/Médias' }, { id: 'ADS', label: 'ADS' }],
     projects: 'projets', ctaTitle: 'Votre projet sera notre prochaine référence.', ctaLabel: 'Parler de votre projet',
     stats: [] as { v: string; l: string }[],
-    title: 'Réalisations : sites web & campagnes digitales', desc: 'Sites web, applications, campagnes Google & Meta Ads et social media : les projets de BNS Digital pour des entreprises en France, en Europe et au Canada.'
+    title: 'Réalisations : sites web & campagnes digitales', desc: 'Sites corporate, plateformes SaaS et e-commerce : les projets web de BNS Digital pour des entreprises au Sénégal, en Afrique de l’Ouest et en France.'
   },
   en: {
-    eyebrow: 'Our work', h1: 'Real projects. Measurable results.', lead: 'Websites, software, campaigns and content: see how we support companies in Canada, France and Europe.',
+    eyebrow: 'Our work', h1: 'Real projects. Measurable results.', lead: 'Corporate websites, SaaS platforms, e-commerce: explore the projects we have built for companies in Senegal, West Africa and France.',
     emptyH1: 'Our case studies are coming soon.', emptyLead: 'We are preparing detailed write-ups of our projects for companies in Canada, France and Europe.',
     emptyP: 'In the meantime, let’s talk about your project: in 30 minutes, we’ll walk you through our approach and examples relevant to your industry.', emptyCall: 'Book a call', emptyServices: 'See our services',
     filterLabel: 'Filter projects', filters: [{ id: 'all', label: 'All' }, { id: 'Web', label: 'Websites' }, { id: 'Social', label: 'Social media' }, { id: 'ADS', label: 'Paid ads' }],
     projects: 'projects', ctaTitle: 'Your project could be our next reference.', ctaLabel: 'Discuss your project',
     stats: [],
-    title: 'Our work: websites & digital campaigns', desc: 'Websites, software, Google & Meta Ads campaigns and social media: BNS Digital projects for companies in Canada, France and Europe.'
+    title: 'Our work: websites & digital campaigns', desc: 'Corporate websites, SaaS platforms and e-commerce: BNS Digital web projects for companies in Senegal, West Africa and France.'
   }
 })
 // Page vide tant que le portfolio n'est pas rempli : hors index
@@ -79,6 +79,7 @@ useHead({
 })
 
 const filter = ref('all')
+const filters = computed(() => t.value.filters.filter(f => f.id === 'all' || projects.value.some(p => p.cat === f.id)))
 const list = computed(() => filter.value === 'all' ? projects.value : projects.value.filter(p => p.cat === filter.value))
 </script>
 

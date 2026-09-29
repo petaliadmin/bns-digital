@@ -100,8 +100,8 @@
               <div class="eyebrow">{{ t.work.eyebrow }}</div>
               <h2 class="h2">{{ t.work.h2a }}<br>{{ t.work.h2b }}</h2>
             </div>
-            <div class="filters" role="group" :aria-label="t.work.filterLabel">
-              <button v-for="f in t.work.filters" :key="f.id" type="button" :aria-pressed="filter === f.id" :class="{ 'is-on': filter === f.id }" @click="filter = f.id">{{ f.label }}</button>
+            <div v-if="workFilters.length > 2" class="filters" role="group" :aria-label="t.work.filterLabel">
+              <button v-for="f in workFilters" :key="f.id" type="button" :aria-pressed="filter === f.id" :class="{ 'is-on': filter === f.id }" @click="filter = f.id">{{ f.label }}</button>
             </div>
           </div>
           <div class="grid grid-3 work m-swipe">
@@ -311,6 +311,7 @@ useHead({
 // Réalisations mises en avant : les 12 premières de content.ts ; textes courts propres à l'accueil si définis dans home.ts
 const catShort = computed(() => (en.value ? { Web: 'Web', ADS: 'Ads', Social: 'Social' } : { Web: 'Web', ADS: 'ADS', Social: 'Social' }))
 const filter = ref('all')
+const workFilters = computed(() => t.value.work.filters.filter(f => f.id === 'all' || PROJECTS.some(p => p.cat === f.id)))
 const shown = computed(() => PROJECTS.slice(0, 12)
   .map((pr) => {
     const txt = t.value.work.items[pr.slug] ?? { client: pr.client, sector: pr.label, title: pr.label, metric: pr.metric.startsWith('[') ? '' : pr.metric }

@@ -300,4 +300,14 @@ export const LOCAL_PAGES_EN: Record<string, Omit<LocalPage, 'slug' | 'refs'>> = 
 export const CAT_LABEL_EN: Record<ProjectCat, string> = { Web: 'Website', ADS: 'Paid ads', Social: 'Social media' }
 
 /** Project texts, keyed by slug (client names, images and links come from content.ts) */
-export const PROJECT_TEXT_EN: Record<string, { label: string; desc?: string; metric?: string }> = {}
+export const PROJECT_TEXT_EN: Record<string, { label: string; desc?: string; metric?: string }> = {
+  petalia: { label: 'Agritech · IoT & AI', desc: 'Website for Petalia, a smart farming platform in Africa: IoT sensors, artificial intelligence and drones to run farms, with solutions, plans and a demo request.' },
+  nagaw: { label: 'SaaS · Business management', desc: 'Product website for Nagaw, a platform that connects an SME’s data and tools (ERP, CRM, accounting, Excel, APIs) and runs analyses, reports and dashboards requested in plain language.' },
+  permis2: { label: 'EdTech · Driving licence', desc: 'PERMIS 2.0, a driving licence platform for Senegal: highway code revision, mock exams, a driving school comparison tool and management software for driving schools.' },
+  'power-energy-solutions': { label: 'Energy & engineering', desc: 'Corporate website for Power Energy Solutions, an African energy engineering company: design, delivery and maintenance of energy systems and supply of industrial equipment.' },
+  vianego: { label: 'Consulting · Business development', desc: 'Bilingual website for VIANEGO, a business development firm connecting companies, investors and partners to deliver projects in West Africa (agriculture, energy, oil and gas).' },
+  'le-jardin-d-enfants': { label: 'E-commerce · Education', desc: 'Online store of teaching resources for preschool: printable worksheets by level, tools for teachers and parents, and multilingual resources (Wolof, Bambara, Lingala…).' },
+  techub: { label: 'Platform · Tech ecosystem', desc: 'TechHub Africa, a platform bringing together Africa’s tech ecosystem: startup directory, innovation map, events, job listings and a developer community.' },
+  'petalia-soil': { label: 'Agritech · Marketplace', desc: 'Petalia Soil, a farmland marketplace: map-based plot search, soil parameter analysis, recommended crops and direct contact with landowners.' },
+  'kps-agency': { label: 'Creative agency · Paris', desc: 'Website for KPS Agency, a Paris-based creative agency specialising in social media, websites and paid advertising on TikTok and Instagram.' }
+}
