@@ -13,7 +13,7 @@ export default defineEventHandler(async (event) => {
     ['/services', '/en/services', '0.9', 'monthly'],
     ...SERVICES.map(s => [`/services/${s.slug}`, `/en/services/${SERVICE_SLUG_EN[s.slug]}`, '0.9', 'monthly'] as [string, string, string, string]),
     ...LOCAL_PAGES.map(l => [`/agence-digitale/${l.slug}`, `/en/digital-agency/${LOCAL_SLUG_EN[l.slug]}`, '0.8', 'monthly'] as [string, string, string, string]),
-    ['/realisations', '/en/work', '0.8', 'monthly'],
+    ...(PROJECTS.length ? [['/realisations', '/en/work', '0.8', 'monthly'] as [string, string, string, string]] : []),
     // Même règle que la page projet : indexée seulement si l'étude de cas a un vrai contenu
     ...PROJECTS.filter(p => !p.desc.startsWith('[')).map(p => [`/realisations/${p.slug}`, `/en/work/${p.slug}`, '0.6', 'yearly'] as [string, string, string, string]),
     ['/agence', '/en/about', '0.7', 'yearly'],
@@ -25,7 +25,7 @@ export default defineEventHandler(async (event) => {
   const url = (loc: string, fr: string, en: string, priority: string, changefreq: string) => [
     '  <url>',
     `    <loc>${site}${loc}</loc>`,
-    `    <xhtml:link rel="alternate" hreflang="fr-FR" href="${site}${fr}"/>`,
+    `    <xhtml:link rel="alternate" hreflang="fr" href="${site}${fr}"/>`,
     `    <xhtml:link rel="alternate" hreflang="en" href="${site}${en}"/>`,
     `    <xhtml:link rel="alternate" hreflang="x-default" href="${site}${fr}"/>`,
     `    <lastmod>${today}</lastmod>`,
@@ -45,7 +45,7 @@ export default defineEventHandler(async (event) => {
     return [
       '  <url>',
       `    <loc>${site}${self}</loc>`,
-      ...(fr ? [`    <xhtml:link rel="alternate" hreflang="fr-FR" href="${site}${fr}"/>`] : []),
+      ...(fr ? [`    <xhtml:link rel="alternate" hreflang="fr" href="${site}${fr}"/>`] : []),
       ...(en ? [`    <xhtml:link rel="alternate" hreflang="en" href="${site}${en}"/>`] : []),
       ...(fr && en ? [`    <xhtml:link rel="alternate" hreflang="x-default" href="${site}${fr}"/>`] : []),
       `    <lastmod>${a.updated ?? a.date}</lastmod>`,

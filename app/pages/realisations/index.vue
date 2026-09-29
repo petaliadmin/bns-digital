@@ -3,18 +3,18 @@
     <section class="container head">
       <div class="head__title">
         <div class="eyebrow">{{ t.eyebrow }}</div>
-        <h1 class="head__h1">{{ t.h1 }}</h1>
+        <h1 class="head__h1">{{ hasWork ? t.h1 : t.emptyH1 }}</h1>
       </div>
-      <p class="head__p">{{ t.lead }}</p>
+      <p class="head__p">{{ hasWork ? t.lead : t.emptyLead }}</p>
     </section>
 
-    <section class="container">
+    <section v-if="hasWork && t.stats.length" class="container">
       <dl class="stats">
         <div v-for="s in t.stats" :key="s.v" class="stats__item"><dt class="sr-only">{{ s.l }}</dt><dd class="stats__v">{{ s.v }}</dd><dd class="stats__l">{{ s.l }}</dd></div>
       </dl>
     </section>
 
-    <section class="container work">
+    <section v-if="hasWork" class="container work">
       <div class="work__bar">
         <div class="filters" role="group" :aria-label="t.filterLabel">
           <button v-for="f in t.filters" :key="f.id" type="button" :aria-pressed="filter === f.id" :class="{ 'is-on': filter === f.id }" @click="filter = f.id">{{ f.label }}</button>
@@ -26,36 +26,53 @@
       </div>
     </section>
 
+    <!-- Portfolio en cours de constitution : on oriente vers les expertises et la prise de contact -->
+    <section v-else class="container work">
+      <div class="empty">
+        <p class="empty__p">{{ t.emptyP }}</p>
+        <div class="empty__ctas">
+          <NuxtLink :to="link.booking()" class="btn btn--primary">{{ t.emptyCall }} <IconArrow /></NuxtLink>
+          <NuxtLink :to="link.services()" class="btn btn--ghost">{{ t.emptyServices }}</NuxtLink>
+        </div>
+      </div>
+    </section>
+
     <CtaBand :title="t.ctaTitle" :label="t.ctaLabel" />
   </div>
 </template>
 
 <script setup lang="ts">
-const { en, link, projects } = useSite()
+const { en, link, projects, hasWork } = useSite()
+// Chiffres clés du portfolio : à renseigner avec les résultats réels des projets BNS Digital
 const t = useLocaleText({
   fr: {
-    eyebrow: 'Réalisations', h1: 'Des projets concrets. Des résultats mesurables.', lead: 'Sites corporate, campagnes social media, dispositifs d’acquisition : découvrez comment nous accompagnons des marques en France et à l’international.',
+    eyebrow: 'Réalisations', h1: 'Des projets concrets. Des résultats mesurables.', lead: 'Sites web, applications, campagnes et contenus : découvrez comment nous accompagnons des entreprises en France, en Europe et au Canada.',
+    emptyH1: 'Nos études de cas arrivent bientôt.', emptyLead: 'Nous préparons la présentation détaillée de nos projets pour des entreprises en France, en Europe et au Canada.',
+    emptyP: 'En attendant, parlons de votre projet : en 30 minutes, nous vous présentons notre approche et des exemples adaptés à votre secteur.', emptyCall: 'Réserver un appel', emptyServices: 'Voir nos expertises',
     filterLabel: 'Filtrer les réalisations', filters: [{ id: 'all', label: 'Tous' }, { id: 'Web', label: 'Sites Web' }, { id: 'Social', label: 'Social/Médias' }, { id: 'ADS', label: 'ADS' }],
     projects: 'projets', ctaTitle: 'Votre projet sera notre prochaine référence.', ctaLabel: 'Parler de votre projet',
-    stats: [{ v: '5M', l: 'paid reach · YASSIR' }, { v: '6.4M', l: 'impressions · groupado PRO' }, { v: '2.2M', l: 'reach · Tunisia Franchise Show' }, { v: '308.8K', l: 'couverture · ZAYN' }],
-    title: 'Réalisations : sites web & campagnes digitales', desc: 'Sites corporate, campagnes Google & Meta Ads et social media : découvrez les projets de KPS Agency pour des marques en France et à l’international.'
+    stats: [] as { v: string; l: string }[],
+    title: 'Réalisations : sites web & campagnes digitales', desc: 'Sites web, applications, campagnes Google & Meta Ads et social media : les projets de BNS Digital pour des entreprises en France, en Europe et au Canada.'
   },
   en: {
-    eyebrow: 'Our work', h1: 'Real projects. Measurable results.', lead: 'Corporate websites, social media campaigns, acquisition set-ups: see how we support brands in France and internationally.',
+    eyebrow: 'Our work', h1: 'Real projects. Measurable results.', lead: 'Websites, software, campaigns and content: see how we support companies in Canada, France and Europe.',
+    emptyH1: 'Our case studies are coming soon.', emptyLead: 'We are preparing detailed write-ups of our projects for companies in Canada, France and Europe.',
+    emptyP: 'In the meantime, let’s talk about your project: in 30 minutes, we’ll walk you through our approach and examples relevant to your industry.', emptyCall: 'Book a call', emptyServices: 'See our services',
     filterLabel: 'Filter projects', filters: [{ id: 'all', label: 'All' }, { id: 'Web', label: 'Websites' }, { id: 'Social', label: 'Social media' }, { id: 'ADS', label: 'Paid ads' }],
     projects: 'projects', ctaTitle: 'Your project could be our next reference.', ctaLabel: 'Discuss your project',
-    stats: [{ v: '5M', l: 'paid reach · YASSIR' }, { v: '6.4M', l: 'impressions · groupado PRO' }, { v: '2.2M', l: 'reach · Tunisia Franchise Show' }, { v: '308.8K', l: 'reach · ZAYN' }],
-    title: 'Our work: websites & digital campaigns', desc: 'Corporate websites, Google & Meta Ads campaigns and social media: discover the projects KPS Agency has delivered for brands in France and worldwide.'
+    stats: [],
+    title: 'Our work: websites & digital campaigns', desc: 'Websites, software, Google & Meta Ads campaigns and social media: BNS Digital projects for companies in Canada, France and Europe.'
   }
 })
-usePageSeo({ title: () => t.value.title, description: () => t.value.desc })
+// Page vide tant que le portfolio n'est pas rempli : hors index
+usePageSeo({ title: () => t.value.title, description: () => t.value.desc, noindex: !hasWork })
 const site = useRuntimeConfig().public.siteUrl as string
 useHead({
   script: [{
     type: 'application/ld+json',
     innerHTML: () => JSON.stringify({
       '@context': 'https://schema.org',
-      '@type': 'CollectionPage', '@id': `${site}${link.work()}#webpage`, url: `${site}${link.work()}`, name: t.value.title, inLanguage: en.value ? 'en' : 'fr-FR',
+      '@type': 'CollectionPage', '@id': `${site}${link.work()}#webpage`, url: `${site}${link.work()}`, name: t.value.title, inLanguage: en.value ? 'en' : 'fr',
       mainEntity: { '@type': 'ItemList', numberOfItems: projects.value.length, itemListElement: projects.value.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: `${site}${link.project(p.slug)}`, name: `${p.client} — ${p.label}` })) }
     })
   }]
@@ -77,6 +94,9 @@ const list = computed(() => filter.value === 'all' ? projects.value : projects.v
 .stats__v { font-family: var(--font-display); font-size: 52px; font-weight: 800; letter-spacing: -1.5px; }
 .stats__l { font-size: 15px; color: var(--dark-muted); }
 .work { padding-bottom: 112px; }
+.empty { display: flex; flex-direction: column; gap: 28px; padding: 56px; border: 1px dashed var(--line-3); border-radius: 28px; background: var(--white); }
+.empty__p { font-size: 20px; line-height: 1.55; max-width: 720px; }
+.empty__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
 .work__bar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 32px; flex-wrap: wrap; }
 .filters { display: flex; gap: 8px; padding: 6px; background: var(--white); border: 1px solid var(--line); border-radius: 999px; flex-wrap: wrap; }
 .filters button { padding: 10px 18px; border: none; border-radius: 999px; font-size: 14px; font-weight: 600; background: transparent; color: var(--muted); }
@@ -98,5 +118,6 @@ const list = computed(() => filter.value === 'all' ? projects.value : projects.v
   .stats__v { font-size: 38px; }
   .stats__item { padding: 24px 20px; }
   .work { padding-bottom: 64px; }
+  .empty { padding: 32px 22px; }
 }
 </style>

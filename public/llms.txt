@@ -1,52 +1,58 @@
-# KPS Agency
+# BNS Digital
 
-> Agence digitale basée à Paris (59 rue de Ponthieu, 75008) qui accompagne les PME et TPE en France et à l'international : création de sites web, applications sur mesure, référencement SEO & GEO, publicité en ligne et social media, avec un interlocuteur unique.
+> Agence digitale basée à Dakar (Sénégal) qui accompagne les entreprises en France, en Belgique, en Suisse et au Canada (Québec compris) : création de sites web, applications sur mesure, référencement SEO & GEO, publicité en ligne et social media. Équipe francophone et anglophone, à l'heure GMT (1 à 2 h de décalage avec Paris, 4 à 5 h d'avance sur Montréal), travail à distance avec un chef de projet dédié.
 
-- Société : KPS Agency, SAS au capital de 1 000 €, SIRET 102 909 728 00010, Paris
-- Contact : contact@kps-agency.com — devis gratuit sous 48 h, sans engagement
-- Avis Google : note 5,0 (8 avis)
+- Société : BNS Digital, Dakar, Sénégal
+- Contact : contact@bns-digital.com — devis gratuit sous 48 h, sans engagement
+- Appels découverte : 30 minutes en visio ou par téléphone, du lundi au samedi de 9 h à 18 h (heure de Dakar)
 - Conditions : paiement 50 % à la commande et 50 % à la livraison, deux cycles de révision inclus, 12 mois de maintenance technique inclus pour les sites, applications et agents IA
 
 ## Expertises
 
-- [Création de site web](https://kps-agency.com/services/creation-site-web): sites vitrines, blogs, landing pages et e-commerce rapides et optimisés pour le référencement
-- [Application métier sur mesure](https://kps-agency.com/services/application-metier): CRM, back-office, portail client et automatisations
-- [Application mobile](https://kps-agency.com/services/application-mobile): applications iOS et Android, de la conception UX à la publication sur les stores
-- [Référencement SEO & GEO](https://kps-agency.com/services/referencement-seo-geo): SEO technique, contenus, SEO local et visibilité dans ChatGPT, Gemini et Perplexity
-- [Marketing digital & ADS](https://kps-agency.com/services/marketing-digital-ads): campagnes Google Ads, Meta Ads et TikTok Ads pilotées par la donnée
-- [Social media & contenus](https://kps-agency.com/services/social-media): stratégie éditoriale, création visuelle et vidéos courtes pour TikTok et Instagram
+- [Création de site web](https://bns-digital.com/services/creation-site-web): sites vitrines, blogs, landing pages et e-commerce rapides et optimisés pour le référencement
+- [Application métier sur mesure](https://bns-digital.com/services/application-metier): CRM, back-office, portail client et automatisations
+- [Application mobile](https://bns-digital.com/services/application-mobile): applications iOS et Android, de la conception UX à la publication sur les stores
+- [Référencement SEO & GEO](https://bns-digital.com/services/referencement-seo-geo): SEO technique, contenus, SEO local et visibilité dans ChatGPT, Gemini et Perplexity
+- [Marketing digital & ADS](https://bns-digital.com/services/marketing-digital-ads): campagnes Google Ads, Meta Ads et TikTok Ads pilotées par la donnée
+- [Social media & contenus](https://bns-digital.com/services/social-media): stratégie éditoriale, création visuelle et vidéos courtes pour TikTok et Instagram
 
-## Références
+## Marchés
 
-- [Réalisations](https://kps-agency.com/realisations): PowerCell Group, Copenhagen Energy, Cushman & Wakefield Veritas, Fibbl, KPMG, YASSIR (5M de paid reach), groupado PRO (6,4M d'impressions), Brasileia Cosmetics, Tunisia Franchise Show (2,2M de reach), ZAYN
-- [Agence digitale à Paris](https://kps-agency.com/agence-digitale/paris)
-- [Agence digitale pour le secteur de l'énergie](https://kps-agency.com/agence-digitale/energie)
+- [Entreprises françaises](https://bns-digital.com/agence-digitale/france)
+- [Paris et Île-de-France](https://bns-digital.com/agence-digitale/paris)
+- [Belgique](https://bns-digital.com/agence-digitale/belgique)
+- [Suisse](https://bns-digital.com/agence-digitale/suisse)
+- [Québec et Canada](https://bns-digital.com/agence-digitale/canada)
+- [Dakar et Sénégal](https://bns-digital.com/agence-digitale/dakar)
 
 ## Blog
 
-- [Blog : conseils digitaux par secteur](https://kps-agency.com/blog)
-- [Site internet pour une entreprise des énergies renouvelables](https://kps-agency.com/blog/site-internet-entreprise-energie-renouvelable)
-- [Référencement local pour l'immobilier](https://kps-agency.com/blog/referencement-local-agence-immobiliere)
+- [Blog : conseils digitaux par secteur](https://bns-digital.com/blog)
+- [Site internet pour une entreprise des énergies renouvelables](https://bns-digital.com/blog/site-internet-entreprise-energie-renouvelable)
+- [Référencement local pour l'immobilier](https://bns-digital.com/blog/referencement-local-agence-immobiliere)
 
 ## Informations
 
-- [L'agence](https://kps-agency.com/agence)
-- [Contact et devis](https://kps-agency.com/contact)
-- [Conditions générales de vente](https://kps-agency.com/cgv)
-- [Mentions légales](https://kps-agency.com/mentions-legales)
+- [L'agence](https://bns-digital.com/agence)
+- [Réserver un appel](https://bns-digital.com/rendez-vous)
+- [Contact et devis](https://bns-digital.com/contact)
+- [Conditions générales de vente](https://bns-digital.com/cgv)
+- [Mentions légales](https://bns-digital.com/mentions-legales)
 
 ## English version
 
-KPS Agency is a Paris-based digital agency (59 rue de Ponthieu, 75008 Paris) helping SMEs in France and internationally with website design, custom software, mobile apps, SEO & GEO, paid ads and social media. Free quote within 48 hours: contact@kps-agency.com.
+BNS Digital is a Dakar-based digital agency (Senegal) serving companies in Canada, France, Belgium and Switzerland with website design, custom software, mobile apps, SEO & GEO, paid ads and social media. Bilingual English/French team on GMT, 4 to 5 hours ahead of Toronto and Montreal. Free quote within 48 hours: contact@bns-digital.com.
 
-- [Home (English)](https://kps-agency.com/en)
-- [Website design](https://kps-agency.com/en/services/website-design)
-- [Custom business software](https://kps-agency.com/en/services/custom-business-software)
-- [Mobile app development](https://kps-agency.com/en/services/mobile-app-development)
-- [SEO & GEO](https://kps-agency.com/en/services/seo-geo)
-- [Digital marketing & ads](https://kps-agency.com/en/services/digital-marketing-ads)
-- [Social media & content](https://kps-agency.com/en/services/social-media)
-- [Our work](https://kps-agency.com/en/work)
-- [About us](https://kps-agency.com/en/about)
-- [Contact & quote](https://kps-agency.com/en/contact)
-- [Blog](https://kps-agency.com/en/blog)
+- [Home (English)](https://bns-digital.com/en)
+- [Website design](https://bns-digital.com/en/services/website-design)
+- [Custom business software](https://bns-digital.com/en/services/custom-business-software)
+- [Mobile app development](https://bns-digital.com/en/services/mobile-app-development)
+- [SEO & GEO](https://bns-digital.com/en/services/seo-geo)
+- [Digital marketing & ads](https://bns-digital.com/en/services/digital-marketing-ads)
+- [Social media & content](https://bns-digital.com/en/services/social-media)
+- [Digital agency for Canadian companies](https://bns-digital.com/en/digital-agency/canada)
+- [Digital agency for French companies](https://bns-digital.com/en/digital-agency/france)
+- [About us](https://bns-digital.com/en/about)
+- [Book a call](https://bns-digital.com/en/book-a-call)
+- [Contact & quote](https://bns-digital.com/en/contact)
+- [Blog](https://bns-digital.com/en/blog)

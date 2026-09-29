@@ -1,6 +1,6 @@
 import { BOOKING, candidateSlots } from '#shared/booking'
 
-// Créneaux disponibles : règles (lun–sam, 10 h–17 h Paris, jours fériés, délai 2 h, 30 jours) moins les périodes occupées de l'agenda (kSuite ou Google).
+// Créneaux disponibles : règles (lun–sam, 9 h–18 h Dakar, jours fériés, délai 2 h, 30 jours) moins les périodes occupées de l'agenda (kSuite ou Google).
 export default defineEventHandler(async (event) => {
   if (bookingCors(event)) return
   setHeader(event, 'cache-control', 'no-store')

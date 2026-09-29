@@ -1,5 +1,19 @@
-Contexte projet — Refonte du site KPS Agency
-Document de passation pour reprendre le projet dans une autre session, un autre outil ou avec un autre développeur. Dernière mise à jour : 28 septembre 2026.
+Contexte projet — Site BNS Digital (ex-refonte KPS Agency)
+Document de passation pour reprendre le projet dans une autre session, un autre outil ou avec un autre développeur. Dernière mise à jour : 29 septembre 2026.
+
+
+0. Repositionnement BNS Digital (29 septembre 2026) — prévaut sur les sections suivantes
+Le site KPS Agency a été repris pour BNS Digital : agence digitale basée à Dakar (Sénégal) qui propose ses services aux entreprises européennes (France en priorité, Belgique, Suisse) et canadiennes (Québec et reste du Canada).
+Décisions du client :
+Marque et logo : BNS Digital, logo public/bns_digital_logo.png (recadré en public/logo-bns.webp). Palette tirée du logo : bleu marine #0A1A47 (--ink), bleu roi #0A56D8 (--accent), cyan #22B8F5 (--accent-light, sur fond sombre).
+Domaine : https://bns-digital.com — e-mail contact@bns-digital.com.
+Portfolio et avis KPS retirés (ce n'étaient pas des projets BNS) : PROJECTS et REVIEWS sont vides, les sections correspondantes sont masquées automatiquement ; la page /realisations affiche un message d'attente en noindex.
+Pages marchés : france, paris, belgique, suisse, canada (Québec + Canada ; slug EN identique), dakar.
+Arguments : qualité agence à coût maîtrisé, fuseau horaire proche (GMT : 1–2 h de Paris, 4–5 h d'avance sur Montréal), équipe francophone (et anglophone), chef de projet dédié / réactivité.
+Rendez-vous : fuseau Africa/Dakar, lundi–samedi 9 h–18 h (choix par défaut, à valider), jours fériés sénégalais fixes ; fêtes musulmanes à ajouter dans BOOKING.closedDates.
+Langues : hreflang « fr » et « en » génériques (au lieu de fr-FR / en-GB) pour couvrir France, Belgique, Suisse, Québec et Canada anglophone.
+À compléter : raison sociale, forme juridique, RCCM, NINEA, adresse à Dakar, téléphone, directeur de la publication, hébergeur, droit applicable des CGV et mentions légales (emplacements [ ... ] dans content.ts, mentions-legales.vue, cgv.vue, legal.en.ts), profils sociaux (COMPANY.sameAs), fiche Google et avis, réalisations BNS.
+Les sections 1 à 8 ci-dessous décrivent l'historique KPS Agency ; les données clients KPS qui y figurent ne doivent plus être utilisées sur le site.
 
 
 1. Le client et l'objectif

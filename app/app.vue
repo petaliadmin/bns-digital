@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-// lang="fr-FR"/"en", canonical, hreflang (fr, en, x-default), og:url et og:locale sont posés automatiquement
+// lang="fr"/"en", canonical, hreflang (fr, en, x-default), og:url et og:locale sont posés automatiquement
 // par @nuxtjs/i18n (experimental.strictSeo) à partir des URL traduites et de baseUrl.
-useSeoMeta({ ogSiteName: 'KPS Agency' })
+useSeoMeta({ ogSiteName: 'BNS Digital' })
 </script>

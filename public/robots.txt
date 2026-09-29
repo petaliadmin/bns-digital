@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kps-agency.com/sitemap.xml
+Sitemap: https://bns-digital.com/sitemap.xml

@@ -29,24 +29,24 @@ const I = {
 }
 const t = useLocaleText({
   fr: {
-    title: 'Réserver un appel découverte gratuit (30 min)', desc: 'Réservez en ligne un appel découverte gratuit de 30 minutes avec KPS Agency, agence digitale à Paris : visio ou téléphone, du lundi au samedi de 10 h à 17 h.',
+    title: 'Réserver un appel découverte gratuit (30 min)', desc: 'Réservez en ligne un appel découverte gratuit de 30 minutes avec BNS Digital, agence digitale basée à Dakar : visio ou téléphone, du lundi au samedi, horaires affichés dans votre fuseau.',
     home: 'Accueil', crumb: 'Réserver un appel', eyebrow: 'Réserver un appel', h1: 'Parlons de votre projet, en 30 minutes.',
     lead: 'Choisissez un créneau qui vous convient : nous faisons le point sur vos objectifs et vous repartez avec des premières recommandations concrètes.',
     facts: [
       { icon: I.clock, t: '30 minutes', d: ' pour comprendre votre activité et vos priorités' },
-      { icon: I.cal, t: 'Du lundi au samedi', d: ', de 10 h à 17 h (heure de Paris)' },
+      { icon: I.cal, t: 'Du lundi au samedi', d: ', de 9 h à 18 h à Dakar (GMT), horaires affichés dans votre fuseau' },
       { icon: I.video, t: 'Visio (kMeet) ou téléphone', d: ', selon votre préférence' },
       { icon: I.gift, t: 'Gratuit et sans engagement', d: ', devis sous 48 h si besoin' }
     ],
     alt: 'Vous préférez écrire ?', altLink: 'Envoyer une demande de devis →'
   },
   en: {
-    title: 'Book a free 30-minute discovery call', desc: 'Book a free 30-minute discovery call online with KPS Agency, a digital agency in Paris: video or phone, Monday to Saturday from 10 am to 5 pm Paris time.',
+    title: 'Book a free 30-minute discovery call', desc: 'Book a free 30-minute discovery call online with BNS Digital, a Dakar-based digital agency: video or phone, Monday to Saturday, with times shown in your own time zone.',
     home: 'Home', crumb: 'Book a call', eyebrow: 'Book a call', h1: 'Let’s talk about your project in 30 minutes.',
     lead: 'Pick a time that suits you: we’ll review your goals together and you’ll leave with first concrete recommendations.',
     facts: [
       { icon: I.clock, t: '30 minutes', d: ' to understand your business and priorities' },
-      { icon: I.cal, t: 'Monday to Saturday', d: ', 10 am to 5 pm (Paris time)' },
+      { icon: I.cal, t: 'Monday to Saturday', d: ', 9 am to 6 pm Dakar time (GMT), shown in your own time zone' },
       { icon: I.video, t: 'Video (kMeet) or phone', d: ', whichever you prefer' },
       { icon: I.gift, t: 'Free, no commitment', d: ', quote within 48 hours if needed' }
     ],
@@ -61,7 +61,7 @@ useHead({
     type: 'application/ld+json',
     innerHTML: () => JSON.stringify({
       '@context': 'https://schema.org', '@type': 'WebPage', '@id': `${site}${link.booking()}#webpage`, url: `${site}${link.booking()}`,
-      name: t.value.title, description: t.value.desc, inLanguage: en.value ? 'en-GB' : 'fr-FR', about: { '@id': `${site}/#organization` },
+      name: t.value.title, description: t.value.desc, inLanguage: en.value ? 'en' : 'fr', about: { '@id': `${site}/#organization` },
       potentialAction: { '@type': 'ReserveAction', target: `${site}${link.booking()}`, name: t.value.crumb }
     })
   }]

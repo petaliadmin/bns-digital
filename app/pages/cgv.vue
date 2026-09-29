@@ -31,21 +31,21 @@ const keysFr = [
 
 const articlesFr: LegalArticle[] = [
   { t: 'Présentation de la société', blocks: [
-    'Les présentes Conditions Générales de Vente (CGV) régissent les relations contractuelles entre KPS Agency, agence digitale spécialisée dans la conception, la gestion et le déploiement de solutions digitales, ci-après « KPS Agency », et toute personne physique ou morale souhaitant bénéficier de ses services, ci-après « le Client ».',
+    'Les présentes Conditions Générales de Vente (CGV) régissent les relations contractuelles entre BNS Digital, agence digitale spécialisée dans la conception, la gestion et le déploiement de solutions digitales, ci-après « BNS Digital », et toute personne physique ou morale souhaitant bénéficier de ses services, ci-après « le Client ».',
     'La validation d’un devis, d’une commande ou d’une prestation implique l’acceptation pleine et entière des présentes CGV.'
   ] },
   { t: 'Objet', blocks: [
-    'Les présentes CGV ont pour objet de définir les conditions dans lesquelles KPS Agency fournit ses services digitaux. Les services proposés peuvent notamment comprendre :',
+    'Les présentes CGV ont pour objet de définir les conditions dans lesquelles BNS Digital fournit ses services digitaux. Les services proposés peuvent notamment comprendre :',
     ['la création de contenus pour les réseaux sociaux (posts, vidéos courtes) ;', 'la gestion et la stratégie des réseaux sociaux ;', 'la création de sites web ;', 'le développement de sites e-commerce ;', 'le développement d’applications ;', 'la conception et le déploiement d’agents d’intelligence artificielle ;', 'l’automatisation digitale ;', 'le design graphique ;', 'le marketing digital ;', 'le conseil en stratégie digitale.'],
     'Chaque prestation fait l’objet d’un devis ou d’une proposition commerciale.'
   ] },
   { t: 'Commande', blocks: [
     'Toute commande devient ferme et définitive après :',
     ['la validation du devis par le Client ;', 'le paiement de l’acompte prévu.'],
-    'KPS Agency se réserve le droit de refuser une commande en cas de litige antérieur avec le Client.'
+    'BNS Digital se réserve le droit de refuser une commande en cas de litige antérieur avec le Client.'
   ] },
   { t: 'Prix', blocks: [
-    'Les prix sont exprimés en euros, hors taxes ou toutes taxes comprises selon la situation fiscale. Les tarifs peuvent varier en fonction :',
+    'Les prix sont exprimés dans la devise indiquée sur le devis, hors taxes ou toutes taxes comprises selon la situation fiscale. Les tarifs peuvent varier en fonction :',
     ['de la complexité du projet ;', 'de la charge de travail ;', 'des technologies utilisées ;', 'des délais demandés.'],
     'Sauf mention contraire, les devis sont valables 30 jours.'
   ] },
@@ -53,13 +53,13 @@ const articlesFr: LegalArticle[] = [
     'Le paiement des prestations s’effectue selon les modalités suivantes :',
     ['50 % du montant total à la commande ;', '50 % à la livraison ou à la mise à disposition du projet.'],
     'La livraison finale ou la mise en production peut être conditionnée au paiement intégral du solde. Les paiements peuvent être effectués par :',
-    ['virement bancaire ;', 'carte bancaire ;', 'tout autre moyen accepté par KPS Agency.'],
+    ['virement bancaire ;', 'carte bancaire ;', 'tout autre moyen accepté par BNS Digital.'],
     'Tout retard de paiement peut entraîner l’application de pénalités conformément à la réglementation en vigueur.'
   ] },
   { t: 'Délais de réalisation', blocks: [
     'Les délais de réalisation sont donnés à titre indicatif. Ils peuvent varier en fonction :',
     ['de la complexité du projet ;', 'de la disponibilité des ressources ;', 'de la réactivité du Client ;', 'de la transmission des contenus nécessaires.'],
-    'KPS Agency ne saurait être tenue responsable des retards causés par un défaut de validation ou d’information de la part du Client.'
+    'BNS Digital ne saurait être tenue responsable des retards causés par un défaut de validation ou d’information de la part du Client.'
   ] },
   { t: 'Révisions et modifications', blocks: [
     'Chaque prestation comprend deux cycles de révision inclus dans le prix initial. Une révision correspond à une demande de modification raisonnable portant sur le travail livré.',
@@ -73,45 +73,45 @@ const articlesFr: LegalArticle[] = [
     'La livraison est réputée effectuée dès la mise à disposition du livrable au Client.'
   ] },
   { t: 'Maintenance des solutions digitales', blocks: [
-    'À la livraison d’un site web, d’une plateforme e-commerce, d’une application ou d’un agent IA, KPS Agency inclut une maintenance technique initiale de 12 mois à compter de la mise en production. Cette maintenance comprend :',
+    'À la livraison d’un site web, d’une plateforme e-commerce, d’une application ou d’un agent IA, BNS Digital inclut une maintenance technique initiale de 12 mois à compter de la mise en production. Cette maintenance comprend :',
     ['la correction des bugs liés au développement initial ;', 'le maintien du bon fonctionnement général de la solution ;', 'la compatibilité technique de base avec les technologies utilisées.'],
     'Cette maintenance ne couvre pas :',
     ['les évolutions fonctionnelles ;', 'l’ajout de nouvelles fonctionnalités ;', 'les modifications demandées par le Client ;', 'les modifications effectuées par un tiers ;', 'les changements liés à des services externes.'],
     { h: 'Maintenance après la première année' },
-    'À l’issue de cette période, la maintenance peut être prolongée dans le cadre d’un abonnement proposé par KPS Agency. Cet abonnement peut inclure :',
+    'À l’issue de cette période, la maintenance peut être prolongée dans le cadre d’un abonnement proposé par BNS Digital. Cet abonnement peut inclure :',
     ['la maintenance technique continue ;', 'les mises à jour de sécurité ;', 'le suivi des performances ;', 'l’optimisation technique ;', 'l’ajustement des agents IA.'],
-    'En l’absence de contrat de maintenance actif, KPS Agency ne saurait être tenue responsable de l’évolution technique des solutions.'
+    'En l’absence de contrat de maintenance actif, BNS Digital ne saurait être tenue responsable de l’évolution technique des solutions.'
   ] },
   { t: 'Intervention de prestataires externes', blocks: [
-    'Dans le cadre de ses prestations, KPS Agency agit en qualité d’intermédiaire et de coordinateur de services digitaux. Pour certains projets, KPS Agency peut faire appel à des prestataires externes indépendants, qui peuvent intervenir en :',
+    'Dans le cadre de ses prestations, BNS Digital agit en qualité d’intermédiaire et de coordinateur de services digitaux. Pour certains projets, BNS Digital peut faire appel à des prestataires externes indépendants, qui peuvent intervenir en :',
     ['développement web ;', 'production de contenus ;', 'design ;', 'marketing digital ;', 'développement d’applications ;', 'développement d’agents IA.']
   ] },
   { t: 'Responsabilité des prestataires', blocks: [
     'Les prestataires externes interviennent en tant que professionnels indépendants et sont pleinement responsables de leurs prestations.',
-    'KPS Agency ne saurait être tenue responsable des défauts, retards ou dysfonctionnements imputables à ces prestataires.'
+    'BNS Digital ne saurait être tenue responsable des défauts, retards ou dysfonctionnements imputables à ces prestataires.'
   ] },
   { t: 'Interlocuteur unique', blocks: [
-    'Dans le cadre de l’organisation du projet, KPS Agency demeure l’interlocuteur unique du Client et assure la coordination des intervenants.',
+    'Dans le cadre de l’organisation du projet, BNS Digital demeure l’interlocuteur unique du Client et assure la coordination des intervenants.',
     'Toutefois, la responsabilité technique de l’exécution des prestations incombe aux prestataires qui ont réalisé les travaux.'
   ] },
   { t: 'Limitation de responsabilité', blocks: [
-    'La responsabilité de KPS Agency ne peut être engagée qu’en cas de faute prouvée. En tout état de cause, la responsabilité totale de KPS Agency est limitée au montant payé par le Client pour la prestation concernée.',
-    'KPS Agency ne saurait être tenue responsable des dommages indirects, tels que :',
+    'La responsabilité de BNS Digital ne peut être engagée qu’en cas de faute prouvée. En tout état de cause, la responsabilité totale de BNS Digital est limitée au montant payé par le Client pour la prestation concernée.',
+    'BNS Digital ne saurait être tenue responsable des dommages indirects, tels que :',
     ['la perte de chiffre d’affaires ;', 'la perte de données ;', 'la perte d’exploitation ;', 'la perte d’opportunités commerciales.']
   ] },
   { t: 'Dépendance aux services externes', blocks: [
     'Certaines prestations reposent sur l’utilisation de services tiers, tels que :',
     ['les réseaux sociaux ;', 'les hébergeurs web ;', 'les CMS ;', 'les solutions e-commerce ;', 'les API ;', 'les services d’intelligence artificielle.'],
-    'KPS Agency ne saurait être tenue responsable des interruptions, modifications ou suppressions de services liées à ces plateformes.'
+    'BNS Digital ne saurait être tenue responsable des interruptions, modifications ou suppressions de services liées à ces plateformes.'
   ] },
   { t: 'Hébergement et sécurité', blocks: [
-    'Sauf mention contraire, l’hébergement des solutions développées est assuré par des prestataires spécialisés. KPS Agency ne saurait être tenue responsable :',
+    'Sauf mention contraire, l’hébergement des solutions développées est assuré par des prestataires spécialisés. BNS Digital ne saurait être tenue responsable :',
     ['d’une défaillance de l’hébergeur ;', 'd’une faille de sécurité externe ;', 'd’une perte de données causée par un tiers.']
   ] },
   { t: 'Utilisation de solutions d’intelligence artificielle', blocks: [
     'Les solutions d’intelligence artificielle peuvent produire des résultats variables. Le Client reconnaît que :',
     ['les résultats peuvent nécessiter une validation humaine ;', 'les performances peuvent évoluer selon les technologies utilisées.'],
-    'KPS Agency ne peut garantir un résultat spécifique lié à l’utilisation d’un agent IA.'
+    'BNS Digital ne peut garantir un résultat spécifique lié à l’utilisation d’un agent IA.'
   ] },
   { t: 'Prestations récurrentes', blocks: [
     'Certaines prestations peuvent être proposées sous forme d’abonnement mensuel. Sauf mention contraire, elles sont conclues pour une durée minimale de 3 mois, puis reconduites tacitement de mois en mois.',
@@ -122,19 +122,19 @@ const articlesFr: LegalArticle[] = [
     'Au-delà de 30 jours, le projet peut être suspendu. Sa reprise peut entraîner des frais supplémentaires.'
   ] },
   { t: 'Propriété intellectuelle', blocks: [
-    'Les créations deviennent la propriété du Client après paiement intégral. KPS Agency reste propriétaire :',
+    'Les créations deviennent la propriété du Client après paiement intégral. BNS Digital reste propriétaire :',
     ['de ses méthodes ;', 'de ses outils internes ;', 'de ses frameworks ;', 'de ses composants techniques réutilisables.'],
-    'KPS Agency peut présenter les travaux réalisés dans son portfolio.'
+    'BNS Digital peut présenter les travaux réalisés dans son portfolio.'
   ] },
   { t: 'Confidentialité', blocks: [
-    'KPS Agency s’engage à respecter la confidentialité des informations communiquées par le Client.'
+    'BNS Digital s’engage à respecter la confidentialité des informations communiquées par le Client.'
   ] },
   { t: 'Résiliation', blocks: [
     'En cas d’annulation du projet après son démarrage :',
-    ['l’acompte versé reste acquis à KPS Agency ;', 'les travaux réalisés peuvent être facturés.']
+    ['l’acompte versé reste acquis à BNS Digital ;', 'les travaux réalisés peuvent être facturés.']
   ] },
   { t: 'Absence de remboursement', blocks: [
-    'Les prestations étant personnalisées, aucun remboursement ne peut être exigé une fois la prestation commencée, sauf faute grave imputable à KPS Agency.'
+    'Les prestations étant personnalisées, aucun remboursement ne peut être exigé une fois la prestation commencée, sauf faute grave imputable à BNS Digital.'
   ] },
   { t: 'Validation des livrables', blocks: [
     'Le Client dispose d’un délai de 7 jours après la livraison pour demander une révision ou signaler un problème.',
@@ -144,8 +144,8 @@ const articlesFr: LegalArticle[] = [
     'Toute réclamation doit être formulée dans un délai maximal de 7 jours après la livraison. Passé ce délai, la prestation est réputée conforme.'
   ] },
   { t: 'Droit applicable', blocks: [
-    'Les présentes CGV sont soumises au droit français. En cas de litige, les parties s’efforceront de trouver une solution amiable.',
-    'À défaut, le litige sera porté devant les tribunaux compétents du siège social de KPS Agency.'
+    'Les présentes CGV sont soumises au [droit applicable à confirmer]. En cas de litige, les parties s’efforceront de trouver une solution amiable.',
+    'À défaut, le litige sera porté devant les tribunaux compétents du siège social de BNS Digital.'
   ] }
 ]
 
@@ -154,8 +154,8 @@ const t = useLocaleText({
   fr: {
     title: 'Conditions Générales de Vente', eyebrow: 'Conditions générales', lead: 'Parce que des engagements clairs font les meilleurs partenariats.',
     articlesTitle: 'Conditions détaillées', articles: articlesFr, keys: keysFr.map(({ t, d }) => ({ t, d })),
-    footnote: 'Les présentes conditions générales sont applicables à compter du 1er janvier 2026. KPS Agency se réserve le droit de les modifier à tout moment. Les modifications s’appliquent uniquement aux commandes et devis émis après la date de mise à jour.',
-    seoTitle: 'Conditions Générales de Vente', seoDesc: 'Conditions générales de vente de KPS Agency : devis, paiement, délais, maintenance, propriété intellectuelle et responsabilités.'
+    footnote: 'Les présentes conditions générales sont applicables à compter du 1er janvier 2026. BNS Digital se réserve le droit de les modifier à tout moment. Les modifications s’appliquent uniquement aux commandes et devis émis après la date de mise à jour.',
+    seoTitle: 'Conditions Générales de Vente', seoDesc: 'Conditions générales de vente de BNS Digital : devis, paiement, délais, maintenance, propriété intellectuelle et responsabilités.'
   },
   en: TERMS_EN
 })

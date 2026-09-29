@@ -8,7 +8,7 @@
     </div>
 
     <!-- Défilé continu des clients (liste doublée pour une boucle sans à-coup ; la copie est masquée aux lecteurs d'écran) -->
-    <div class="marquee" :class="{ 'is-static': reducedMotion }">
+    <div v-if="hasWork" class="marquee" :class="{ 'is-static': reducedMotion }">
       <div class="marquee__track">
         <ul v-for="copy in (reducedMotion ? 1 : 2)" :key="copy" class="marquee__list" :aria-hidden="copy === 2 ? 'true' : undefined">
           <li v-for="c in clients" :key="`${copy}-${c.slug}`">
@@ -37,33 +37,37 @@
 <script setup lang="ts">
 import { REVIEWS, REVIEWS_AVG } from '~/data/content'
 
-const { en, link, projects } = useSite()
+const { en, link, projects, hasWork, hasReviews } = useSite()
 const titleId = useId()
 const DOT = { Web: 'var(--accent)', ADS: 'var(--accent-mid)', Social: 'var(--accent-light)' } as const
 
-// Toutes les marques clientes (hors regroupement multi-marques), dans l'ordre éditorial des réalisations
-const clients = computed(() => projects.value.filter(p => p.slug !== 'campagnes-beaute-sante'))
+// Marques clientes, dans l'ordre éditorial des réalisations (défilé masqué tant qu'il n'y en a pas)
+const clients = computed(() => projects.value)
 
 const t = useLocaleText({
   fr: {
-    title: 'Ils nous ont fait confiance en France et à l’international',
-    countriesLabel: 'Pays de nos clients',
-    countries: ['France', 'Suisse', 'Suède', 'Danemark', 'Géorgie', 'Tunisie'],
-    projects: 'réalisations en ligne', rating: 'sur Google', ratingCount: 'avis', expertise: 'expertises réunies', countriesStat: 'pays servis'
+    title: 'Une équipe basée à Dakar, au service des entreprises en France, en Europe et au Canada',
+    countriesLabel: 'Nos marchés',
+    countries: ['France', 'Belgique', 'Suisse', 'Canada', 'Sénégal'],
+    projects: 'réalisations en ligne', rating: 'sur Google', ratingCount: 'avis', expertise: 'expertises réunies', countriesStat: 'marchés servis',
+    tz: 'fuseau de Dakar, 1 à 2 h de Paris', langsL: 'langues de travail'
   },
   en: {
-    title: 'Trusted by companies in France and internationally',
-    countriesLabel: 'Our clients’ countries',
-    countries: ['France', 'Switzerland', 'Sweden', 'Denmark', 'Georgia', 'Tunisia'],
-    projects: 'projects showcased', rating: 'on Google', ratingCount: 'reviews', expertise: 'areas of expertise', countriesStat: 'countries served'
+    title: 'A Dakar-based team serving companies in Canada, France and Europe',
+    countriesLabel: 'Our markets',
+    countries: ['Canada', 'France', 'Belgium', 'Switzerland', 'Senegal'],
+    projects: 'projects showcased', rating: 'on Google', ratingCount: 'reviews', expertise: 'areas of expertise', countriesStat: 'markets served',
+    tz: 'Dakar time, 4–5 h ahead of Toronto', langsL: 'working languages'
   }
 })
 
 const stats = computed(() => [
-  { v: String(projects.value.length), l: t.value.projects },
-  { v: en.value ? REVIEWS_AVG.toFixed(1) : REVIEWS_AVG.toFixed(1).replace('.', ','), star: true, l: `${t.value.rating} · ${REVIEWS.length} ${t.value.ratingCount}` },
+  ...(hasWork ? [{ v: String(projects.value.length), l: t.value.projects }] : []),
+  ...(hasReviews ? [{ v: en.value ? REVIEWS_AVG.toFixed(1) : REVIEWS_AVG.toFixed(1).replace('.', ','), star: true, l: `${t.value.rating} · ${REVIEWS.length} ${t.value.ratingCount}` }] : []),
   { v: '6', l: t.value.expertise },
-  { v: String(t.value.countries.length), l: t.value.countriesStat }
+  { v: String(t.value.countries.length), l: t.value.countriesStat },
+  ...(!hasWork || !hasReviews ? [{ v: 'GMT', l: t.value.tz }] : []),
+  ...(!hasWork && !hasReviews ? [{ v: 'FR · EN', l: t.value.langsL }] : [])
 ])
 
 const reducedMotion = ref(false)
@@ -84,7 +88,7 @@ onMounted(() => { reducedMotion.value = window.matchMedia('(prefers-reduced-moti
 .marquee:hover .marquee__track, .marquee:focus-within .marquee__track { animation-play-state: paused; }
 .marquee__list { list-style: none; margin: 0; padding: 0 12px 0 0; display: flex; gap: 12px; }
 .client { display: flex; align-items: center; gap: 12px; padding: 14px 20px 14px 16px; border: 1px solid var(--line); border-radius: 16px; background: var(--white); color: var(--ink); white-space: nowrap; transition: border-color .2s, box-shadow .2s, transform .2s; }
-.client:hover { color: var(--ink); border-color: var(--accent-tint-2); box-shadow: 0 14px 28px -20px rgba(79, 47, 214, .55); transform: translateY(-2px); }
+.client:hover { color: var(--ink); border-color: var(--accent-tint-2); box-shadow: 0 14px 28px -20px rgba(10, 86, 216, .55); transform: translateY(-2px); }
 .client__dot { flex: none; width: 10px; height: 10px; border-radius: 99px; }
 .client__txt { display: flex; flex-direction: column; gap: 1px; }
 .client__name { font-family: var(--font-display); font-size: 19px; font-weight: 800; letter-spacing: -.3px; line-height: 1.15; }

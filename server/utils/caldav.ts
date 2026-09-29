@@ -1,5 +1,5 @@
 import { randomUUID } from 'node:crypto'
-import { parisToUtc } from '#shared/booking'
+import { agencyToUtc } from '#shared/booking'
 
 // Connecteur CalDAV (calendrier Infomaniak kSuite, ou tout serveur CalDAV) — sans dépendance.
 // Configuration : NUXT_CALDAV_URL (adresse de l'agenda), NUXT_CALDAV_USERNAME, NUXT_CALDAV_PASSWORD (mot de passe d'application).
@@ -34,15 +34,15 @@ function fold(line: string) {
   return out.join('\r\n')
 }
 
-/** Lit une date iCalendar (UTC « Z », heure locale avec TZID — traitée en heure de Paris — ou journée entière) */
+/** Lit une date iCalendar (UTC « Z », heure locale avec TZID — traitée en heure de Dakar — ou journée entière) */
 function parseIcsDate(value: string, params: string): { time: number; allDay: boolean } {
   const m = value.match(/^(\d{4})(\d{2})(\d{2})(?:T(\d{2})(\d{2})(\d{2})(Z)?)?$/)
   if (!m) return { time: Number.NaN, allDay: false }
   const [, y, mo, d, hh, mi, ss, z] = m
-  if (!hh || /VALUE=DATE(?!-)/.test(params)) return { time: parisToUtc(+y!, +mo!, +d!, 0, 0).getTime(), allDay: true }
+  if (!hh || /VALUE=DATE(?!-)/.test(params)) return { time: agencyToUtc(+y!, +mo!, +d!, 0, 0).getTime(), allDay: true }
   if (z) return { time: Date.UTC(+y!, +mo! - 1, +d!, +hh, +mi!, +ss!), allDay: false }
-  // Heure « flottante » ou avec TZID : l'agenda de l'agence est à Paris
-  return { time: parisToUtc(+y!, +mo!, +d!, +hh, +mi!).getTime() + +ss! * 1000, allDay: false }
+  // Heure « flottante » ou avec TZID : l'agenda de l'agence est à Dakar
+  return { time: agencyToUtc(+y!, +mo!, +d!, +hh, +mi!).getTime() + +ss! * 1000, allDay: false }
 }
 
 /** Durée iCalendar (P1D, PT30M, PT1H30M…) en ms */
@@ -111,13 +111,13 @@ export interface CaldavEvent {
 /** Construit le VCALENDAR d'un rendez-vous (réutilisé pour la pièce jointe de l'e-mail) */
 export function buildIcs(ev: CaldavEvent & { uid: string; method?: 'PUBLISH' | 'REQUEST' }) {
   const lines = [
-    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//KPS Agency//Booking//FR', 'CALSCALE:GREGORIAN',
+    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//BNS Digital//Booking//FR', 'CALSCALE:GREGORIAN',
     ...(ev.method ? [`METHOD:${ev.method}`] : []),
     'BEGIN:VEVENT',
     `UID:${ev.uid}`, `DTSTAMP:${icsUtc(new Date())}`, `DTSTART:${icsUtc(ev.start)}`, `DTEND:${icsUtc(ev.end)}`,
     `SUMMARY:${icsText(ev.summary)}`, `DESCRIPTION:${icsText(ev.description)}`,
     ...(ev.location ? [`LOCATION:${icsText(ev.location)}`] : []),
-    ...(ev.organizerEmail ? [`ORGANIZER;CN=KPS Agency:mailto:${ev.organizerEmail}`] : []),
+    ...(ev.organizerEmail ? [`ORGANIZER;CN=BNS Digital:mailto:${ev.organizerEmail}`] : []),
     ...(ev.attendee ? [`ATTENDEE;CN=${icsText(ev.attendee.name)};ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED:mailto:${ev.attendee.email}`] : []),
     'STATUS:CONFIRMED', 'TRANSP:OPAQUE',
     'BEGIN:VALARM', 'ACTION:DISPLAY', 'DESCRIPTION:Rendez-vous', 'TRIGGER:-PT15M', 'END:VALARM',
@@ -128,7 +128,7 @@ export function buildIcs(ev: CaldavEvent & { uid: string; method?: 'PUBLISH' | '
 
 /** Crée l'événement dans l'agenda (PUT d'une nouvelle ressource .ics, sans écraser l'existant) */
 export async function caldavCreate(cfg: CaldavConfig, ev: CaldavEvent) {
-  const uid = `${randomUUID()}@kps-agency.com`
+  const uid = `${randomUUID()}@bns-digital.com`
   const res = await fetch(`${cfg.url}${encodeURIComponent(uid)}.ics`, {
     method: 'PUT',
     headers: { 'authorization': auth(cfg), 'content-type': 'text/calendar; charset=utf-8', 'if-none-match': '*' },

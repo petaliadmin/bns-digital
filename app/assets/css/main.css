@@ -1,33 +1,33 @@
 /* ==========================================================================
-   KPS Agency — design tokens & base (from the Design canvas maquettes)
+   BNS Digital — design tokens & base (from the Design canvas maquettes)
    ========================================================================== */
 :root {
-  /* Palette dérivée du logo KPS : indigo profond + une seule couleur d'accent indigo-violet */
-  --bg: #F8F7FC;
+  /* Palette dérivée du logo BNS Digital : bleu marine profond, bleu roi (accent) et cyan (accent sur fond sombre) */
+  --bg: #F6F8FC;
   --white: #FFFFFF;
-  --ink: #17123D;
-  --ink-hover: #251E5A;
-  --muted: #4D4A63;
-  --muted-2: #5E5B74;
-  --muted-3: #7D7A90;
-  --line: #E4E2EE;
-  --line-soft: #EEEDF5;
-  --line-2: #D9D6E6;
-  --line-3: #C9C5DB;
-  --surface-hover: #F2F0FA;
-  --accent: #4F2FD6;
-  --accent-hover: #3E22B8;
-  --accent-soft: #F0EDFE;
-  --accent-tint: #E0D9FC;
-  --accent-tint-2: #C8BCF8;
-  --accent-mid: #8B72F0;
-  --accent-light: #AE9CFA;
-  --dark-2: #231D52;
-  --dark-line: #2F2862;
-  --dark-line-2: #463E7E;
-  --dark-muted: #C9C5DE;
-  --dark-muted-2: #ABA6C8;
-  --dark-muted-3: #8E89AE;
+  --ink: #0A1A47;
+  --ink-hover: #122A66;
+  --muted: #4A5570;
+  --muted-2: #5A6682;
+  --muted-3: #7A849C;
+  --line: #E1E6F0;
+  --line-soft: #ECF0F7;
+  --line-2: #D4DBE8;
+  --line-3: #C2CCDD;
+  --surface-hover: #EFF3FA;
+  --accent: #0A56D8;
+  --accent-hover: #0845B5;
+  --accent-soft: #EAF2FE;
+  --accent-tint: #D3E5FD;
+  --accent-tint-2: #A9D2FB;
+  --accent-mid: #3A8FF0;
+  --accent-light: #22B8F5;
+  --dark-2: #132A63;
+  --dark-line: #1E3775;
+  --dark-line-2: #33508F;
+  --dark-muted: #C3CDE3;
+  --dark-muted-2: #A3B0CE;
+  --dark-muted-3: #8391B3;
   --green: #1B7A4B;
   --red: #B42318;
   --font-display: 'Bricolage Grotesque Variable', 'Bricolage Grotesque', Georgia, serif;

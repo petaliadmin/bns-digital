@@ -6,9 +6,7 @@ date: 2026-09-29
 sector: energie
 service: creation-site-web
 tags: [corporate website, renewable energy, B2B, SEO]
-author: KPS Agency team
-cover: /images/realisations/powercell-group.webp
-coverAlt: PowerCell Group website homepage, a renewable energy company
+author: BNS Digital team
 translation: site-internet-entreprise-energie-renouvelable
 ---
 
@@ -60,6 +58,6 @@ Many energy companies address several countries. A multilingual website is more 
 
 ## In practice
 
-We have worked with industry players such as [PowerCell Group](/en/work/powercell-group) and [Copenhagen Energy](/en/work/copenhagen-energy) on corporate websites designed for demanding international audiences.
+From Dakar, our team builds multilingual corporate websites for companies in Canada, France and Europe, with dedicated URLs and `hreflang` tags for each language.
 
-Planning a redesign of your energy company's website? Discover our [website design service](/en/services/website-design) or our page dedicated to the [energy sector](/en/digital-agency/energy).
+Planning a redesign of your energy company's website? Discover our [website design service](/en/services/website-design) or see how we work with [Canadian](/en/digital-agency/canada) and [French](/en/digital-agency/france) companies.

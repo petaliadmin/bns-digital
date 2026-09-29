@@ -58,7 +58,7 @@
       </div>
     </section>
 
-    <section class="container section">
+    <section v-if="hasReviews" class="container section">
       <div class="eyebrow">{{ t.reviewsEyebrow }}</div>
       <h2 class="h2 h2--52 team__h">{{ t.reviewsH2 }}</h2>
       <ReviewCarousel :reviews="REVIEWS" />
@@ -71,59 +71,59 @@
 <script setup lang="ts">
 import { REVIEWS, organizationSchema } from '~/data/content'
 
-const { en, link } = useSite()
+const { en, link, hasReviews } = useSite()
 const t = useLocaleText({
   fr: {
-    title: 'L’agence KPS : équipe digitale basée à Paris', desc: 'KPS Agency, agence digitale basée à Paris 8e : six expertises (web, apps, SEO & GEO, Ads, social media) réunies dans une même équipe pour faire grandir les PME.',
+    title: 'L’agence BNS Digital : une équipe digitale à Dakar', desc: 'BNS Digital, agence digitale basée à Dakar : six expertises (web, apps, SEO & GEO, Ads, social media) au service des entreprises en France, en Europe et au Canada.',
     eyebrow: 'L’agence', h1: 'Plus qu’une agence, votre co-pilote digital.',
-    lead: 'Nous combinons créativité humaine et intelligence data pour construire des présences digitales qui font grandir les entreprises.',
-    intro: 'Basée à Paris, KPS réunit au sein d’une même équipe six expertises complémentaires : création de sites, applications métier, applications mobiles, référencement SEO & GEO, marketing digital et social media. Une organisation pensée pour que stratégie, design, technologie et acquisition avancent dans la même direction.',
+    lead: 'Depuis Dakar, nous accompagnons les entreprises françaises, européennes et canadiennes avec les standards d’une grande agence et un budget maîtrisé.',
+    intro: 'Basée à Dakar, BNS Digital réunit au sein d’une même équipe six expertises complémentaires : création de sites, applications métier, applications mobiles, référencement SEO & GEO, marketing digital et social media. Une équipe francophone et anglophone, à l’heure GMT, qui travaille à distance avec ses clients comme une extension de leurs propres équipes.',
     adnEyebrow: 'Notre ADN', adnH2: 'Trois convictions guident chacun de nos projets.',
     adn: [
-      { n: '01', t: 'Vision stratégique', d: 'Nous ne nous contentons pas d’exécuter. Nous construisons une feuille de route précise pour vous aider à dominer votre marché.' },
-      { n: '02', t: 'Le Crew KPS', d: 'Une équipe de passionnés qui devient l’extension directe de votre marque et s’engage sur vos objectifs.' },
-      { n: '03', t: 'Croissance accélérée', d: 'Des résultats tangibles : plus de visibilité, plus d’engagement, plus de conversions.' }
+      { n: '01', t: 'Vision stratégique', d: 'Nous ne nous contentons pas d’exécuter. Nous construisons une feuille de route précise pour vous aider à gagner des parts de marché.' },
+      { n: '02', t: 'Une équipe engagée', d: 'Une équipe de passionnés qui devient l’extension directe de votre marque et s’engage sur vos objectifs, quel que soit le fuseau horaire.' },
+      { n: '03', t: 'Une croissance mesurable', d: 'Plus de visibilité, plus d’engagement, plus de conversions : des objectifs définis ensemble et suivis dans la durée.' }
     ],
-    methodEyebrow: 'Méthode', methodH2: 'Une méthode claire, du brief au décollage.', methodP: 'Un cadre précis, des étapes validées ensemble, aucune zone d’ombre.',
+    methodEyebrow: 'Méthode', methodH2: 'Une méthode claire, du brief au décollage.', methodP: 'Un cadre précis, des étapes validées ensemble, aucune zone d’ombre, même à distance.',
     steps: [
       { n: '01', t: 'Cadrage', d: 'Nous analysons votre marché, vos concurrents et vos objectifs pour définir ensemble les priorités et le périmètre du projet.' },
       { n: '02', t: 'Stratégie & conception', d: 'Parcours utilisateurs, maquettes, plan média : la stratégie prend forme et vous la validez avant toute production.' },
-      { n: '03', t: 'Production', d: 'Design, développement, contenus ou campagnes : nos équipes produisent avec exigence et vous associent à chaque jalon.' },
+      { n: '03', t: 'Production', d: 'Design, développement, contenus ou campagnes : nos équipes produisent avec exigence et vous associent à chaque jalon, lors de points réguliers en visio.' },
       { n: '04', t: 'Lancement & croissance', d: 'Mise en ligne, mesure des performances, optimisation continue. Un projet digital ne s’arrête pas le jour de sa livraison.' }
     ],
-    whyEyebrow: 'Pourquoi KPS', whyH2: 'L’exigence d’une grande agence, l’agilité d’une équipe engagée.',
+    whyEyebrow: 'Pourquoi BNS Digital', whyH2: 'La qualité d’une agence européenne, depuis Dakar.',
     why: [
-      { tag: '# 360°', t: 'Une vision globale', d: 'Site, référencement, publicité et contenus conçus ensemble, pour une présence cohérente.' },
-      { tag: '# DATA', t: 'Des décisions fondées sur la donnée', d: 'Audits, analyses d’audience, suivi des KPIs : des recommandations appuyées sur des chiffres.' },
-      { tag: '# RÉACTIVITÉ', t: 'Le rythme du digital', d: 'Le digital n’attend pas. Nous livrons vite pour que vous gardiez une longueur d’avance.' },
-      { tag: '# EXIGENCE', t: 'Une qualité premium', d: 'L’image de votre marque est sacrée. Chaque livrable est pensé, relu et optimisé.' }
+      { tag: '# QUALITÉ', t: 'Coût maîtrisé, exigence intacte', d: 'Les méthodes d’une agence européenne avec une structure de coûts plus légère : votre budget va davantage à la production.' },
+      { tag: '# GMT', t: 'Un fuseau horaire proche', d: '1 à 2 h de décalage avec Paris, Bruxelles et Genève ; une matinée de travail en commun avec Montréal et Toronto.' },
+      { tag: '# FR · EN', t: 'Une équipe francophone', d: 'Des échanges fluides en français comme en anglais, sans intermédiaire.' },
+      { tag: '# SUIVI', t: 'Un chef de projet dédié', d: 'Un interlocuteur unique, des points réguliers en visio et un suivi transparent de l’avancement.' }
     ],
     reviewsEyebrow: 'Avis Google', reviewsH2: 'Ce que nos clients disent de nous.', ctaTitle: 'Envie de travailler avec nous ?', ctaLabel: 'Parler de votre projet'
   },
   en: {
-    title: 'About KPS: a Paris-based digital team', desc: 'KPS Agency, a digital agency in Paris 8th: six areas of expertise (web, apps, SEO & GEO, ads, social media) in one team, helping SMEs grow online.',
+    title: 'About BNS Digital: a digital team in Dakar', desc: 'BNS Digital, a Dakar-based digital agency: six areas of expertise (web, apps, SEO & GEO, ads, social media) serving companies in Canada, France and Europe.',
     eyebrow: 'About us', h1: 'More than an agency, your digital co-pilot.',
-    lead: 'We combine human creativity and data intelligence to build digital presences that help companies grow.',
-    intro: 'Based in Paris, KPS brings six complementary areas of expertise together in one team: website design, business software, mobile apps, SEO & GEO, digital marketing and social media. An organisation designed so that strategy, design, technology and acquisition move in the same direction.',
+    lead: 'From Dakar, we support Canadian, French and European companies with the standards of a large agency and a controlled budget.',
+    intro: 'Based in Dakar, BNS Digital brings six complementary areas of expertise together in one team: website design, business software, mobile apps, SEO & GEO, digital marketing and social media. A bilingual English- and French-speaking team on GMT, working remotely with clients as an extension of their own teams.',
     adnEyebrow: 'Our DNA', adnH2: 'Three convictions guide every project we take on.',
     adn: [
-      { n: '01', t: 'Strategic vision', d: 'We don’t just execute. We build a precise roadmap to help you lead your market.' },
-      { n: '02', t: 'The KPS crew', d: 'A passionate team that becomes a direct extension of your brand and commits to your goals.' },
-      { n: '03', t: 'Accelerated growth', d: 'Tangible results: more visibility, more engagement, more conversions.' }
+      { n: '01', t: 'Strategic vision', d: 'We don’t just execute. We build a precise roadmap to help you win market share.' },
+      { n: '02', t: 'A committed team', d: 'A passionate team that becomes a direct extension of your brand and commits to your goals, whatever the time zone.' },
+      { n: '03', t: 'Measurable growth', d: 'More visibility, more engagement, more conversions: goals agreed together and tracked over time.' }
     ],
-    methodEyebrow: 'Method', methodH2: 'A clear method, from brief to take-off.', methodP: 'A precise framework, steps agreed together, no grey areas.',
+    methodEyebrow: 'Method', methodH2: 'A clear method, from brief to take-off.', methodP: 'A precise framework, steps agreed together, no grey areas — even remotely.',
     steps: [
       { n: '01', t: 'Scoping', d: 'We analyse your market, competitors and goals to agree on priorities and project scope together.' },
       { n: '02', t: 'Strategy & design', d: 'User journeys, mock-ups, media plan: the strategy takes shape and you approve it before anything is produced.' },
-      { n: '03', t: 'Production', d: 'Design, development, content or campaigns: our team delivers to a high standard and involves you at every milestone.' },
+      { n: '03', t: 'Production', d: 'Design, development, content or campaigns: our team delivers to a high standard and involves you at every milestone through regular video calls.' },
       { n: '04', t: 'Launch & growth', d: 'Go-live, performance tracking, continuous optimisation. A digital project doesn’t end on delivery day.' }
     ],
-    whyEyebrow: 'Why KPS', whyH2: 'The standards of a large agency, the agility of a committed team.',
+    whyEyebrow: 'Why BNS Digital', whyH2: 'European agency quality, from Dakar.',
     why: [
-      { tag: '# 360°', t: 'A global view', d: 'Website, SEO, advertising and content designed together for a consistent presence.' },
-      { tag: '# DATA', t: 'Data-driven decisions', d: 'Audits, audience analysis, KPI tracking: recommendations backed by numbers.' },
-      { tag: '# SPEED', t: 'Digital pace', d: 'Digital doesn’t wait. We deliver fast so you stay one step ahead.' },
-      { tag: '# QUALITY', t: 'Premium quality', d: 'Your brand image matters. Every deliverable is thought through, reviewed and optimised.' }
+      { tag: '# QUALITY', t: 'Controlled cost, same standards', d: 'European agency methods with a lighter cost structure: more of your budget goes into production.' },
+      { tag: '# GMT', t: 'A convenient time zone', d: 'A shared working morning with Toronto and Montreal; only 1 to 2 hours from Paris, Brussels and Geneva.' },
+      { tag: '# EN · FR', t: 'A bilingual team', d: 'Smooth communication in English and French, with no middleman.' },
+      { tag: '# FOLLOW-UP', t: 'A dedicated project manager', d: 'A single point of contact, regular video calls and transparent progress tracking.' }
     ],
     reviewsEyebrow: 'Google reviews', reviewsH2: 'What our clients say about us.', ctaTitle: 'Want to work with us?', ctaLabel: 'Discuss your project'
   }
@@ -138,7 +138,7 @@ useHead({
       '@context': 'https://schema.org',
       '@graph': [
         organizationSchema(site, en.value ? 'en' : 'fr'),
-        { '@type': 'AboutPage', '@id': `${site}${link.about()}#webpage`, url: `${site}${link.about()}`, name: t.value.title, inLanguage: en.value ? 'en' : 'fr-FR', about: { '@id': `${site}/#organization` }, mainEntity: { '@id': `${site}/#organization` } }
+        { '@type': 'AboutPage', '@id': `${site}${link.about()}#webpage`, url: `${site}${link.about()}`, name: t.value.title, inLanguage: en.value ? 'en' : 'fr', about: { '@id': `${site}/#organization` }, mainEntity: { '@id': `${site}/#organization` } }
       ]
     })
   }]

@@ -16,7 +16,8 @@
           <p class="lead hero__lead">{{ t.hero.lead }}</p>
           <div class="hero__ctas">
             <NuxtLink :to="link.contact()" class="btn btn--primary">{{ t.hero.cta }} <IconArrow /></NuxtLink>
-            <NuxtLink :to="link.work()" class="btn btn--ghost">{{ t.hero.cta2 }}</NuxtLink>
+            <NuxtLink v-if="hasWork" :to="link.work()" class="btn btn--ghost">{{ t.hero.cta2 }}</NuxtLink>
+            <NuxtLink v-else :to="link.booking()" class="btn btn--ghost">{{ t.hero.cta2Call }}</NuxtLink>
           </div>
           <ul class="hero__trust">
             <li v-for="x in t.hero.trust" :key="x"><IconCheck />{{ x }}</li>
@@ -50,8 +51,33 @@
         </div>
       </section>
 
+      <!-- POURQUOI BNS DIGITAL : Dakar → France, Europe, Canada -->
+      <section id="pourquoi" class="container section">
+        <div class="sec-head">
+          <div class="sec-head__title">
+            <div class="eyebrow">{{ t.dakar.eyebrow }}</div>
+            <h2 class="h2">{{ t.dakar.h2 }}</h2>
+          </div>
+          <p class="text-18 sec-head__p">{{ t.dakar.p }}</p>
+        </div>
+        <div class="grid grid-4 m-swipe">
+          <div v-for="(it, i) in t.dakar.items" :key="it.t" class="card why">
+            <span class="why__i"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path :d="WHY_ICONS[i]" /></svg></span>
+            <h3 class="why__t">{{ it.t }}</h3>
+            <p class="why__d">{{ it.d }}</p>
+          </div>
+        </div>
+        <dl class="clocks" :aria-label="t.dakar.clocksLabel">
+          <div v-for="c in t.dakar.clocks" :key="c.tz" class="clock" :class="{ 'clock--us': c.tz === 'Africa/Dakar' }">
+            <dt class="clock__city">{{ c.city }}</dt>
+            <dd class="clock__time">{{ clock(c.tz) }}</dd>
+            <dd class="clock__note">{{ c.note }}</dd>
+          </div>
+        </dl>
+      </section>
+
       <!-- METHODE -->
-      <section id="methode" class="container section">
+      <section id="methode" class="bg-white section--96"><div class="container">
         <div class="center-head">
           <div class="eyebrow">{{ t.method.eyebrow }}</div>
           <h2 class="h2">{{ t.method.h2 }}</h2>
@@ -64,10 +90,10 @@
             <p class="step__desc">{{ st.desc }}</p>
           </li>
         </ol>
-      </section>
+      </div></section>
 
       <!-- REALISATIONS -->
-      <section id="realisations" class="bg-dark section">
+      <section v-if="hasWork" id="realisations" class="bg-dark section">
         <div class="container">
           <div class="sec-head">
             <div class="sec-head__title">
@@ -108,7 +134,7 @@
             <thead>
               <tr>
                 <td />
-                <th scope="col" class="compare__kps"><img src="/icon-192.png" alt="" width="28" height="28" class="compare__k">KPS Agency</th>
+                <th scope="col" class="compare__us"><img src="/icon-192.png" alt="" width="28" height="28" class="compare__k">BNS Digital</th>
                 <th v-for="h in t.compare.cols" :key="h" scope="col">{{ h }}</th>
               </tr>
             </thead>
@@ -131,14 +157,14 @@
       </section>
 
       <!-- TEMOIGNAGES -->
-      <section id="avis" class="bg-white section--96">
+      <section v-if="hasReviews" id="avis" class="bg-white section--96">
         <div class="container">
           <div class="sec-head">
             <div class="sec-head__title">
               <div class="eyebrow">{{ t.reviews.eyebrow }}</div>
               <h2 class="h2">{{ t.reviews.h2 }}</h2>
             </div>
-            <a :href="GOOGLE_REVIEWS_URL" target="_blank" rel="noopener" class="rating">
+            <a :href="GOOGLE_REVIEWS_URL || undefined" target="_blank" rel="noopener" class="rating">
               <svg class="rating__g" width="28" height="28" viewBox="0 0 48 48" aria-hidden="true"><path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h11.8c-.5 2.8-2.1 5.1-4.4 6.7v5.6h7.1c4.2-3.8 6.6-9.5 6.6-16.3z" /><path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.3l-7.1-5.5c-2 1.3-4.5 2.1-7.4 2.1-5.7 0-10.5-3.8-12.3-9H4.4v5.7C8 41.1 15.4 46 24 46z" /><path fill="#FBBC05" d="M11.7 28.3c-.4-1.3-.7-2.8-.7-4.3s.3-3 .7-4.3V14H4.4C2.9 17 2 20.4 2 24s.9 7 2.4 10z" /><path fill="#EA4335" d="M24 10.7c3.2 0 6.1 1.1 8.4 3.3l6.3-6.3C34.9 4.2 29.9 2 24 2 15.4 2 8 6.9 4.4 14l7.3 5.7c1.8-5.2 6.6-9 12.3-9z" /></svg>
               <span class="rating__v">{{ en ? REVIEWS_AVG.toFixed(1) : REVIEWS_AVG.toFixed(1).replace('.', ',') }}</span>
               <span class="rating__t">
@@ -214,7 +240,7 @@
           <div class="hfoot__brand">
             <SiteLogo light />
             <p>{{ t.footer.desc }}</p>
-            <address>{{ CONTACT.address }} Paris<br><a :href="`mailto:${CONTACT.email}`">{{ CONTACT.email }}</a></address>
+            <address>{{ CONTACT.address }}<br><a :href="`mailto:${CONTACT.email}`">{{ CONTACT.email }}</a></address>
           </div>
           <div v-for="col in footerCols" :key="col.title" class="hfoot__col">
             <div class="hfoot__title">{{ col.title }}</div>
@@ -225,7 +251,7 @@
           <div><span>{{ t.footer.local }}</span><NuxtLink v-for="[label, to] in footerLocal" :key="label" :to="to" class="hfoot__pill">{{ label }}</NuxtLink></div>
         </div>
         <div class="hfoot__bottom">
-          <span>© 2026 KPS Agency · Paris, France</span>
+          <span>© 2026 BNS Digital · Dakar, Sénégal</span>
           <div><NuxtLink :to="link.legal()">{{ t.footer.legal }}</NuxtLink><NuxtLink :to="link.legal('#article-7')">{{ t.footer.privacy }}</NuxtLink><NuxtLink :to="link.terms()">{{ t.footer.terms }}</NuxtLink></div>
         </div>
       </div>
@@ -238,7 +264,7 @@ import { CONTACT, REVIEWS, REVIEWS_AVG, GOOGLE_REVIEWS_URL, PROJECTS, organizati
 import { HOME } from '~/data/home'
 definePageMeta({ layout: false })
 
-const { en, locale, link, footerCols, footerLocal } = useSite()
+const { en, locale, link, hasWork, hasReviews, footerCols, footerLocal } = useSite()
 const site = useRuntimeConfig().public.siteUrl as string
 const STAR = 'M12 2l3 7 7 .6-5.3 4.7 1.6 7.2L12 17.8 5.7 21.5l1.6-7.2L2 9.6 9 9z'
 const BOOK_ICONS = [
@@ -247,7 +273,22 @@ const BOOK_ICONS = [
   'M3 7h12v10H3zM15 10l6-3v10l-6-3',
   'M9 12l2 2 4-4M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z'
 ]
+const WHY_ICONS = [
+  'M12 2l3 7 7 .6-5.3 4.7 1.6 7.2L12 17.8 5.7 21.5l1.6-7.2L2 9.6 9 9z',
+  'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM12 7v5l3 2',
+  'M4 5h16v11H8l-4 4zM8 9h8M8 12h5',
+  'M16 11a4 4 0 1 0-8 0M12 3a4 4 0 1 1 0 8M4 21c0-4 3.6-6 8-6s8 2 8 6'
+]
 const t = useLocaleText(HOME)
+
+// Horloges des marchés : calculées côté client uniquement (pas d'écart d'hydratation), rafraîchies toutes les 30 s
+const now = ref<Date | null>(null)
+let tick: ReturnType<typeof setInterval> | undefined
+onMounted(() => { now.value = new Date(); tick = setInterval(() => { now.value = new Date() }, 30000) })
+onBeforeUnmount(() => clearInterval(tick))
+const clock = (timeZone: string) => (now.value
+  ? new Intl.DateTimeFormat(en.value ? 'en-GB' : 'fr-FR', { hour: '2-digit', minute: '2-digit', timeZone }).format(now.value)
+  : '--:--')
 
 usePageSeo({ title: () => t.value.seo.title, description: () => t.value.seo.desc })
 useHead({
@@ -259,22 +300,21 @@ useHead({
         '@context': 'https://schema.org',
         '@graph': [
           organizationSchema(site, en.value ? 'en' : 'fr'),
-          { '@type': 'WebSite', '@id': `${site}/#website`, url: `${site}/`, name: 'KPS Agency', inLanguage: ['fr-FR', 'en'], publisher: { '@id': `${site}/#organization` } },
-          { '@type': 'WebPage', '@id': `${url}#webpage`, url, name: t.value.seo.title, isPartOf: { '@id': `${site}/#website` }, about: { '@id': `${site}/#organization` }, inLanguage: en.value ? 'en' : 'fr-FR' }
+          { '@type': 'WebSite', '@id': `${site}/#website`, url: `${site}/`, name: 'BNS Digital', inLanguage: ['fr', 'en'], publisher: { '@id': `${site}/#organization` } },
+          { '@type': 'WebPage', '@id': `${url}#webpage`, url, name: t.value.seo.title, isPartOf: { '@id': `${site}/#website` }, about: { '@id': `${site}/#organization` }, inLanguage: en.value ? 'en' : 'fr' }
         ]
       })
     }
   }]
 })
 
-// Réalisations mises en avant (ordre éditorial) ; textes courts propres à l'accueil
-const featured = ['powercell-group', 'yassir', 'zayn', 'cushman-wakefield-veritas', 'groupado-pro', 'kpmg', 'fibbl', 'copenhagen-energy', 'brasileia-cosmetics', 'tunisia-franchise-show', 'jardins-de-carthage', 'dunstan']
+// Réalisations mises en avant : les 12 premières de content.ts ; textes courts propres à l'accueil si définis dans home.ts
 const catShort = computed(() => (en.value ? { Web: 'Web', ADS: 'Ads', Social: 'Social' } : { Web: 'Web', ADS: 'ADS', Social: 'Social' }))
 const filter = ref('all')
-const shown = computed(() => featured
-  .map((slug) => {
-    const pr = PROJECTS.find(x => x.slug === slug)!
-    return { ...t.value.work.items[slug]!, slug, img: pr.img, bg: pr.bg, cat: catShort.value[pr.cat], type: pr.cat }
+const shown = computed(() => PROJECTS.slice(0, 12)
+  .map((pr) => {
+    const txt = t.value.work.items[pr.slug] ?? { client: pr.client, sector: pr.label, title: pr.label, metric: pr.metric.startsWith('[') ? '' : pr.metric }
+    return { ...txt, slug: pr.slug, img: pr.img, bg: pr.bg, cat: catShort.value[pr.cat], type: pr.cat }
   })
   .filter(x => filter.value === 'all' || x.type === filter.value)
   .slice(0, 6))
@@ -339,9 +379,23 @@ async function submit() {
 .svc--dark .svc__pills span { background: var(--dark-2); }
 .svc__cta { display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 600; }
 
+/* Pourquoi BNS Digital */
+.why { display: flex; flex-direction: column; gap: 14px; padding: 28px; min-height: 260px; }
+.why__i { width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; border-radius: 12px; background: var(--accent-soft); color: var(--accent); }
+.why__t { font-size: 21px; line-height: 1.2; letter-spacing: -.3px; font-weight: 700; }
+.why__d { font-size: 15px; line-height: 1.6; color: var(--muted); }
+.clocks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 24px 0 0; }
+.clock { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 4px 16px; padding: 20px 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--white); }
+.clock--us { background: var(--ink); border-color: var(--ink); color: var(--white); }
+.clock__city { font-size: 14px; font-weight: 600; }
+.clock__time { grid-row: span 2; grid-column: 2; grid-row-start: 1; margin: 0; font-family: var(--font-display); font-size: 34px; font-weight: 800; font-variant-numeric: tabular-nums; color: var(--accent); }
+.clock--us .clock__time { color: var(--accent-light); }
+.clock__note { margin: 0; font-size: 13px; color: var(--muted-2); }
+.clock--us .clock__note { color: var(--dark-muted-2); }
+
 /* Steps */
 .steps { list-style: none; margin: 0; padding: 0; }
-.step { display: flex; flex-direction: column; gap: 16px; padding: 32px 28px; min-height: 280px; }
+.step { display: flex; flex-direction: column; gap: 16px; padding: 32px 28px; min-height: 280px; background: var(--bg); }
 .step__top { display: flex; align-items: center; gap: 12px; }
 .step__n { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 99px; background: var(--ink); color: var(--white); font-weight: 600; }
 .step__time { font-size: 13px; font-weight: 600; color: var(--muted-2); }
@@ -359,7 +413,7 @@ async function submit() {
 .work__visual { position: relative; aspect-ratio: 16 / 9; overflow: hidden; }
 .work__img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform .4s ease; }
 .work__card:hover .work__img { transform: scale(1.04); }
-.work__cat { position: absolute; left: 16px; top: 16px; font-size: 12px; font-weight: 600; padding: 5px 10px; border-radius: 999px; background: var(--white); color: var(--ink); box-shadow: 0 4px 12px -4px rgba(23, 18, 61,.3); }
+.work__cat { position: absolute; left: 16px; top: 16px; font-size: 12px; font-weight: 600; padding: 5px 10px; border-radius: 999px; background: var(--white); color: var(--ink); box-shadow: 0 4px 12px -4px rgba(10, 26, 71, .3); }
 .work__body { display: flex; flex-direction: column; flex-grow: 1; gap: 8px; padding: 22px 24px 24px; }
 .work__sector { font-size: 13px; color: var(--dark-muted-2); font-weight: 500; }
 .work__title { font-size: 18px; font-weight: 600; line-height: 1.35; }
@@ -374,7 +428,7 @@ async function submit() {
 .compare-wrap { position: relative; overflow-x: auto; background: var(--white); border: 1px solid var(--line); border-radius: 24px; }
 .compare { width: 100%; min-width: 900px; border-collapse: collapse; table-layout: fixed; font-size: 15px; }
 .compare thead th, .compare thead td { padding: 22px 28px; font-weight: 600; text-align: left; border-bottom: 1px solid var(--line); }
-.compare__kps { background: var(--ink); color: var(--white); }
+.compare__us { background: var(--ink); color: var(--white); }
 .compare__k { display: inline-block; width: 28px; height: 28px; margin-right: 10px; vertical-align: middle; }
 .compare tbody th { padding: 20px 28px; font-weight: 500; text-align: left; }
 .compare tbody td { padding: 20px 28px; color: var(--muted); }
@@ -386,7 +440,7 @@ async function submit() {
 
 /* Reviews */
 .rating { display: flex; align-items: center; gap: 14px; padding: 14px 20px; border: 1px solid var(--line); border-radius: 16px; background: var(--white); color: var(--ink); transition: border-color .15s, box-shadow .15s; }
-.rating:hover { color: var(--ink); border-color: var(--line-3); box-shadow: 0 12px 24px -16px rgba(23, 18, 61, .3); }
+.rating:hover { color: var(--ink); border-color: var(--line-3); box-shadow: 0 12px 24px -16px rgba(10, 26, 71, .3); }
 .rating__v { font-family: var(--font-display); font-size: 32px; font-weight: 800; }
 .rating__t { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--muted); }
 .rating__t u { text-underline-offset: 2px; }
@@ -458,6 +512,7 @@ async function submit() {
   .book { grid-template-columns: minmax(0, 1fr); gap: 32px; }
   .book__intro { position: static; }
   .faq-sec { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .clocks { grid-template-columns: minmax(0, 1fr); }
   .faq-sec__list { grid-column: auto; }
   .final__box { grid-template-columns: minmax(0, 1fr); padding: 56px 40px; }
   .hfoot__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }

@@ -6,9 +6,7 @@ date: 2026-09-29
 sector: energie
 service: creation-site-web
 tags: [site corporate, énergies renouvelables, B2B, SEO]
-author: Équipe KPS Agency
-cover: /images/realisations/powercell-group.webp
-coverAlt: Page d'accueil du site de PowerCell Group, acteur des énergies renouvelables
+author: Équipe BNS Digital
 translation: website-renewable-energy-company
 ---
 
@@ -60,6 +58,6 @@ Beaucoup d'entreprises de l'énergie s'adressent à plusieurs pays. Un site mult
 
 ## En pratique
 
-Nous avons accompagné des acteurs du secteur comme [PowerCell Group](/realisations/powercell-group) et [Copenhagen Energy](/realisations/copenhagen-energy) sur des sites corporate pensés pour des audiences internationales et exigeantes.
+Depuis Dakar, notre équipe conçoit des sites corporate multilingues pour des entreprises en France, en Europe et au Canada, avec des URL et des balises `hreflang` propres à chaque langue.
 
-Vous préparez la refonte du site de votre entreprise de l'énergie ? Découvrez notre [offre de création de site web](/services/creation-site-web) ou notre page dédiée au [secteur de l'énergie](/agence-digitale/energie).
+Vous préparez la refonte du site de votre entreprise de l'énergie ? Découvrez notre [offre de création de site web](/services/creation-site-web) ou découvrez comment nous accompagnons les [entreprises françaises](/agence-digitale/france) et [canadiennes](/agence-digitale/canada).

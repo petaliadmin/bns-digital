@@ -30,14 +30,14 @@ const { en, link, catLabel } = useSite()
 <style scoped>
 /* Visuel en haut, bas de carte sur fond sombre (indigo de la palette) */
 .pcard { display: flex; flex-direction: column; background: var(--dark-2); border-radius: 20px; overflow: hidden; color: var(--white); transition: transform .2s ease, box-shadow .2s ease; }
-.pcard:hover { color: var(--white); transform: translateY(-3px); box-shadow: 0 24px 48px -28px rgba(23, 18, 61, .35); }
+.pcard:hover { color: var(--white); transform: translateY(-3px); box-shadow: 0 24px 48px -28px rgba(10, 26, 71, .35); }
 .pcard--bordered { border: 1px solid var(--dark-line); }
 .pcard__visual { position: relative; aspect-ratio: 16 / 9; overflow: hidden; }
 .pcard__img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform .4s ease; }
 .pcard:hover .pcard__img { transform: scale(1.04); }
 .pcard__client { font-family: var(--font-display); font-size: 22px; font-weight: 800; letter-spacing: -0.4px; line-height: 1.2; }
 .pcard__desc { color: var(--dark-muted); font-size: 15px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-.pcard__cat { position: absolute; left: 16px; top: 16px; font-size: 12px; font-weight: 600; padding: 5px 10px; border-radius: 999px; background: var(--white); color: var(--ink); box-shadow: 0 4px 12px -4px rgba(23, 18, 61, .3); }
+.pcard__cat { position: absolute; left: 16px; top: 16px; font-size: 12px; font-weight: 600; padding: 5px 10px; border-radius: 999px; background: var(--white); color: var(--ink); box-shadow: 0 4px 12px -4px rgba(10, 26, 71, .3); }
 .pcard__body { display: flex; flex-direction: column; gap: 8px; padding: 22px 24px 24px; flex-grow: 1; }
 .pcard__body--compact { gap: 8px; padding: 22px 24px; }
 .pcard__label { font-size: 13px; color: var(--dark-muted-2); font-weight: 500; }

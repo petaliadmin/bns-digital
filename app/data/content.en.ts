@@ -14,7 +14,7 @@ export const SERVICE_SLUG_EN: Record<string, string> = {
   'marketing-digital-ads': 'digital-marketing-ads',
   'social-media': 'social-media'
 }
-export const LOCAL_SLUG_EN: Record<string, string> = { paris: 'paris', energie: 'energy' }
+export const LOCAL_SLUG_EN: Record<string, string> = { france: 'france', paris: 'paris', belgique: 'belgium', suisse: 'switzerland', canada: 'canada', dakar: 'dakar' }
 
 const COMMON_STEPS = [
   s('1', 'Scoping', 'We analyse your market, competitors and goals to set clear priorities.'),
@@ -109,8 +109,8 @@ export const SERVICES_EN: Record<string, Omit<Service, 'slug' | 'key' | 'num' | 
   },
   'marketing-digital-ads': {
     crumb: 'Digital marketing & ads', eyebrow: 'Digital marketing & ads',
-    h1: 'Every euro invested has to work.',
-    sub: 'Campaigns and acquisition set-ups designed to increase visibility, structure distribution and drive our clients’ marketing performance.',
+    h1: 'Every dollar and every euro invested has to work.',
+    sub: 'Campaigns and acquisition set-ups designed to increase visibility, structure distribution and drive our clients’ marketing performance in Canada, France and across Europe.',
     offersTitle: 'Data-driven campaigns.', offersSub: 'Targeting, creative, distribution, optimisation: we handle the whole chain.',
     offers: [
       o('01', 'Acquisition strategy', 'The right platforms, audiences and objectives for your market.', ['Audiences', 'Platforms', 'Objectives']),
@@ -122,7 +122,7 @@ export const SERVICES_EN: Record<string, Omit<Service, 'slug' | 'key' | 'num' | 
     benefits: [
       b('Speed', 'Campaigns that generate visibility from day one.'),
       b('Precision', 'Every campaign is calibrated for your target audience.'),
-      b('Transparency', 'Clear dashboards to track the performance of every euro invested.'),
+      b('Transparency', 'Clear dashboards to track the performance of every dollar or euro invested.'),
       b('Optimisation', 'Analysis of top-performing posts and continuous adjustments.')
     ],
     methTitle: 'From targeting to return on investment.',
@@ -155,11 +155,11 @@ export const SERVICES_EN: Record<string, Omit<Service, 'slug' | 'key' | 'num' | 
 
 /** SEO tags for services (title ≤ 60 chars incl. brand, description 120–160 chars) */
 export const SERVICE_SEO_EN: Record<string, { title: string; h1: string; desc: string }> = {
-  'creation-site-web': { title: 'Website design agency in Paris', h1: 'Website design agency in Paris', desc: 'Website design agency in Paris: fast showcase websites, online stores and landing pages, optimised for Google and built to convert. Free quote within 48 hours.' },
-  'application-metier': { title: 'Custom business software development', h1: 'Custom business software', desc: 'Custom business software development: CRM, back office, client portals and automation tailored to your processes. Paris-based team, free quote in 48 hours.' },
-  'application-mobile': { title: 'iOS & Android mobile app development', h1: 'iOS & Android mobile app development', desc: 'Design and development of iOS and Android mobile apps, from UX mock-ups to App Store and Google Play release. Paris-based agency, free quote within 48 hours.' },
-  'referencement-seo-geo': { title: 'SEO & GEO agency in Paris: Google and AI', h1: 'SEO & GEO agency in Paris', desc: 'SEO and GEO agency in Paris: audits, technical SEO, content and visibility in ChatGPT, Gemini and Perplexity to capture qualified, long-term search demand.' },
-  'marketing-digital-ads': { title: 'Google Ads, Meta Ads & TikTok Ads agency', h1: 'Digital marketing & paid ads agency', desc: 'Data-driven Google Ads, Meta Ads and TikTok Ads campaigns: strategy, creative, delivery and continuous optimisation by a digital marketing agency in Paris.' },
+  'creation-site-web': { title: 'Website design agency: websites & e-commerce', h1: 'Website design for businesses', desc: 'Fast showcase websites, online stores and landing pages, optimised for Google and built to convert, for companies in Canada, France and Europe. Quote within 48 hours.' },
+  'application-metier': { title: 'Custom business software development', h1: 'Custom business software', desc: 'Custom business software development: CRM, back office, client portals and automation tailored to your processes. Dakar-based team serving Canada and Europe.' },
+  'application-mobile': { title: 'iOS & Android mobile app development', h1: 'iOS & Android mobile app development', desc: 'Design and development of iOS and Android mobile apps, from UX mock-ups to App Store and Google Play release, for companies in Canada, France and Europe.' },
+  'referencement-seo-geo': { title: 'SEO & GEO agency: Google and generative AI', h1: 'SEO & GEO agency', desc: 'SEO and GEO: audits, technical SEO, content and visibility in ChatGPT, Gemini and Perplexity, for the Canadian, French, Belgian or Swiss market, in English and French.' },
+  'marketing-digital-ads': { title: 'Google Ads, Meta Ads & TikTok Ads agency', h1: 'Digital marketing & paid ads agency', desc: 'Data-driven Google Ads, Meta Ads and TikTok Ads campaigns in Canada, France and Europe: strategy, creative, delivery and continuous optimisation.' },
   'social-media': { title: 'Social media agency: TikTok & Instagram content', h1: 'Social media & content agency', desc: 'Social media strategy, visual design and short-form video for TikTok and Instagram: content that strengthens your brand image and drives real engagement.' }
 }
 
@@ -171,72 +171,133 @@ export const SERVICE_FAQ_EN: [string, string][] = [
   ['Can we combine several services?', 'Yes — and that’s often where performance comes from: a well-ranked website, fuelled by consistent campaigns and content.']
 ]
 
-/** Local landing pages, keyed by French slug */
+/** Market landing pages, keyed by French slug */
 export const LOCAL_PAGES_EN: Record<string, Omit<LocalPage, 'slug' | 'refs'>> = {
-  paris: {
-    crumbParent: 'Digital agency', crumb: 'Paris', eyebrow: 'Digital agency in Paris',
-    title: 'Digital agency in Paris', description: 'Paris digital agency: website design, custom software, SEO & GEO and digital marketing for companies in Paris, the Île-de-France region and beyond.',
-    h1: 'Your digital agency in Paris.',
-    sub: 'Website design, custom software, SEO & GEO and digital marketing: KPS helps companies in Paris and the wider Île-de-France region grow online.',
-    svcTitle: 'All our services, working for Paris-based businesses.', whyTitle: 'Why a Paris-based agency?',
+  france: {
+    crumbParent: 'Digital agency', crumb: 'France', eyebrow: 'Digital agency for French companies',
+    title: 'Digital agency for French companies', description: 'Websites, software, SEO & GEO and paid ads for French SMEs: a French-speaking team based in Dakar, one or two hours from Paris, at a controlled cost.',
+    h1: 'The digital agency for French SMEs, based in Dakar.',
+    sub: 'Website design, custom software, SEO & GEO and digital marketing: BNS Digital supports French companies with the standards of a Paris agency and a controlled budget.',
+    svcTitle: 'All our services, working for French businesses.', whyTitle: 'Why work with a Dakar-based team?',
     why: [
-      b('Proximity', 'Direct conversations with a Paris-based team, by video call or in person.'),
-      b('Market knowledge', 'A clear understanding of customer expectations and competition in the Paris region.'),
-      b('Local SEO', 'Optimised visibility in your future customers’ location-based searches.'),
-      b('A full team', 'Six areas of expertise under one roof to run your project end to end.')
+      b('Agency quality, controlled cost', 'The same methods and standards as a European agency, with a lighter cost structure: more of your budget goes into production.'),
+      b('Minimal time difference', 'Dakar runs on GMT: one hour behind Paris in winter, two in summer. Our working days overlap almost entirely.'),
+      b('A French-speaking team', 'Smooth communication in French, content written for the French market and a good understanding of how it works.'),
+      b('A dedicated project manager', 'A single point of contact, regular video calls and transparent follow-up at every stage.')
     ],
     refTitle: 'Some of our references',
     faq: [
-      ['Do you work across the whole Île-de-France region?', 'Yes. We support companies in Paris and throughout the Île-de-France region, in person or by video call.'],
-      ['Can we meet you at your office?', 'Yes, by appointment: our office is at 59 rue de Ponthieu, in Paris’s 8th arrondissement. Email us at contact@kps-agency.com to book a slot.'],
-      ['Do you also work outside Paris?', 'Yes. We work with companies across France and internationally, including in Switzerland, Sweden, Denmark and Tunisia.']
+      ['How do you work remotely with French companies?', 'Everything happens over video calls, email and shared tracking tools. A dedicated project manager runs regular check-ins and you approve each stage before we move on.'],
+      ['What is the time difference between Dakar and Paris?', 'Dakar is on GMT all year round, with no daylight saving: when it is 9 am in Dakar, it is 10 am in Paris in winter and 11 am in summer. Our working days overlap widely.'],
+      ['Are your websites GDPR-compliant?', 'Yes. GDPR requirements are built in from the design stage: cookie consent, forms, legal notice and privacy policy.'],
+      ['Do you work across France?', 'Yes. Since everything is done remotely, we support companies in every region, from Paris to Lyon, Marseille, Bordeaux or Lille.']
+    ],
+    cta: 'A digital project in France?'
+  },
+  paris: {
+    crumbParent: 'Digital agency', crumb: 'Paris', eyebrow: 'Web agency for Paris-based companies',
+    title: 'Web agency for companies in Paris', description: 'Websites, software, SEO & GEO and paid ads for companies in Paris and Île-de-France, delivered by a Dakar-based team just one hour behind.',
+    h1: 'The standards of a Paris agency, without the Paris price tag.',
+    sub: 'Website design, custom software, SEO & GEO and digital marketing: BNS Digital supports companies in Paris and Île-de-France from Dakar, in French and at your pace.',
+    svcTitle: 'All our services, working for Paris-based businesses.', whyTitle: 'Why work with BNS Digital from Paris?',
+    why: [
+      b('A better-invested budget', 'A lighter cost structure than a Paris agency: for the same budget, more time spent on your project.'),
+      b('Nearly the same hours', 'Only one to two hours’ difference: meetings, approvals and adjustments happen within the day.'),
+      b('Paris local SEO', 'Google Business Profile, local pages and structured data to rank in location-based searches in Paris and Île-de-France.'),
+      b('A full team', 'Six areas of expertise to run your project end to end, with a single point of contact.')
+    ],
+    refTitle: 'Some of our references',
+    faq: [
+      ['Can we meet?', 'We work over video calls, which makes it easy to set up a meeting quickly. Book a free 30-minute discovery call online.'],
+      ['Do you handle local SEO for Paris?', 'Yes: Google Business Profile optimisation, pages for the areas you serve and structured data for “your trade + Paris” searches.'],
+      ['Do you work across Île-de-France?', 'Yes. We support companies in Paris and throughout Île-de-France, and across France more broadly.']
     ],
     cta: 'A digital project in Paris?'
   },
-  energie: {
-    crumbParent: 'Industries', crumb: 'Energy', eyebrow: 'Energy sector',
-    title: 'Digital agency for the energy sector', description: 'Digital agency for the energy sector: multilingual corporate websites, SEO and campaigns for renewable energy companies, investors and partners.',
-    h1: 'Digital expertise for energy companies.',
-    sub: 'Corporate websites, SEO and campaigns: we help energy and renewable energy companies showcase their expertise to clients, partners and investors.',
-    svcTitle: 'Our services for the energy sector.', whyTitle: 'A demanding sector with specific challenges.',
+  belgique: {
+    crumbParent: 'Digital agency', crumb: 'Belgium', eyebrow: 'Digital agency for Belgian companies',
+    title: 'Digital agency for Belgian companies', description: 'Multilingual websites, software, SEO & GEO and paid ads for Belgian companies: a French- and English-speaking team based in Dakar, at a controlled cost.',
+    h1: 'Your digital partner in Belgium, from Dakar.',
+    sub: 'Multilingual websites, custom software, SEO and campaigns: BNS Digital supports companies in Brussels and Wallonia with a French-speaking team and dedicated follow-up.',
+    svcTitle: 'All our services, working for Belgian businesses.', whyTitle: 'An agency built for the Belgian market.',
     why: [
-      b('Credibility', 'Corporate websites that inspire confidence among demanding audiences: investors, partners and institutions.'),
-      b('Clarity', 'Making complex offers and technologies easy to understand.'),
-      b('International reach', 'Websites designed for multi-country, multilingual audiences.'),
-      b('Visibility', 'Rankings on the strategic search terms of your market.')
+      b('Multilingual websites', 'An architecture designed for several languages with correct hreflang tags, so every version ranks properly.'),
+      b('One hour’s difference', 'Brussels and Dakar are one to two hours apart: we work the same hours as you.'),
+      b('Agency quality, controlled cost', 'European agency standards with a lighter cost structure.'),
+      b('GDPR compliance', 'Cookies, forms and legal notices that meet the European framework from day one.')
     ],
-    refTitle: 'Our references in energy',
+    refTitle: 'Some of our references',
     faq: [
-      ['Have you worked in the energy sector before?', 'Yes, notably for PowerCell Group and Copenhagen Energy.'],
-      ['Can you build a multilingual website?', 'Yes. We have designed websites for international energy players such as PowerCell Group in Sweden and Copenhagen Energy in Denmark, built for multi-country audiences.'],
-      ['Do you also handle financial communication?', 'Yes. We ran a financial communication campaign for BR Finanzen, with premium design and consistent branding.']
+      ['Can you build a website in French and Dutch?', 'Yes, we build multilingual websites. Translations can be supplied by you or by a partner translator; we handle the integration and SEO of each language.'],
+      ['How does a remote project work?', 'A dedicated project manager runs regular video check-ins; you follow progress and approve each stage.'],
+      ['Do you also work in Luxembourg?', 'Yes, we support French- and English-speaking companies across Europe.']
     ],
-    cta: 'An energy-sector project?'
+    cta: 'A digital project in Belgium?'
+  },
+  suisse: {
+    crumbParent: 'Digital agency', crumb: 'Switzerland', eyebrow: 'Digital agency for Swiss companies',
+    title: 'Digital agency for Swiss companies', description: 'Websites, software, SEO & GEO and paid ads for companies in Switzerland: a French- and English-speaking team based in Dakar, at a controlled cost.',
+    h1: 'Digital projects that meet Swiss standards.',
+    sub: 'Websites, custom software, SEO and campaigns: BNS Digital supports companies in Geneva, Lausanne and across Switzerland with rigour, in French or English, at a controlled cost.',
+    svcTitle: 'All our services, working for Swiss businesses.', whyTitle: 'Rigour, responsiveness and a controlled budget.',
+    why: [
+      b('Strong value for money', 'Compared with Swiss rates, a Dakar-based team brings the same standards for a more contained budget.'),
+      b('Shared hours', 'One to two hours’ difference with Geneva and Zurich: your contacts are available during your office hours.'),
+      b('Data protection', 'We build the requirements of the revised FADP (nFADP) and the GDPR into your websites and apps.'),
+      b('French and English', 'Communication and content in French or English, as your business requires.')
+    ],
+    refTitle: 'Some of our references',
+    faq: [
+      ['Do you work with all of Switzerland?', 'We work in French and English, with companies in French-speaking Switzerland and across the country when they communicate in those languages.'],
+      ['Are your websites nFADP-compliant?', 'Yes. Privacy policy, cookie management and forms are designed to meet the revised Federal Act on Data Protection and the GDPR.'],
+      ['How do you manage the project?', 'A dedicated project manager, regular video calls and approval milestones set during scoping.']
+    ],
+    cta: 'A digital project in Switzerland?'
+  },
+  canada: {
+    crumbParent: 'Digital agency', crumb: 'Canada & Quebec', eyebrow: 'Digital agency for Canadian companies',
+    title: 'Digital agency for Canadian companies', description: 'Bilingual websites, software, SEO & GEO and paid ads for companies in Canada and Quebec: an English- and French-speaking team based in Dakar.',
+    h1: 'Your digital agency for Canada, based in Dakar.',
+    sub: 'Bilingual websites, custom software, SEO and campaigns: BNS Digital supports companies in Toronto, Montreal, Quebec City and across Canada, in English and French, at a controlled cost.',
+    svcTitle: 'All our services, working for Canadian businesses.', whyTitle: 'Why a Dakar-based team for your Canadian project?',
+    why: [
+      b('Bilingual websites', 'English and French on one website, with proper SEO for each language and French given its rightful place for the Quebec market.'),
+      b('A head start on your day', 'Dakar is 4 to 5 hours ahead of Toronto and Montreal: a request sent at the end of your day can be handled before you wake up, and our shared mornings are for meetings.'),
+      b('Agency quality, controlled cost', 'North American agency standards with a lighter cost structure.'),
+      b('Privacy compliance', 'We build in the requirements of PIPEDA and Quebec’s Law 25: consent, privacy policy and forms.')
+    ],
+    refTitle: 'Some of our references',
+    faq: [
+      ['What is the time difference with Eastern Canada?', 'Dakar is on GMT all year round: 4 hours ahead of Toronto and Montreal in summer, 5 hours in winter. Our calls take place in the morning, Eastern time.'],
+      ['Can you build a website in English and French?', 'Yes. We build bilingual English-French websites, with dedicated URLs and hreflang tags for each language.'],
+      ['Are your websites compliant with PIPEDA and Law 25?', 'Yes. Cookie consent, privacy policy and forms are designed to meet PIPEDA and Quebec’s Law 25.'],
+      ['Do you work outside Quebec?', 'Yes, with companies across Canada, in English and French.']
+    ],
+    cta: 'A digital project in Canada?'
+  },
+  dakar: {
+    crumbParent: 'Digital agency', crumb: 'Dakar', eyebrow: 'Digital agency in Dakar',
+    title: 'Digital agency in Dakar, Senegal', description: 'BNS Digital, a Dakar-based digital agency: websites, software, SEO & GEO, paid ads and social media for companies in Europe, Canada and Senegal.',
+    h1: 'A digital agency in Dakar, working for Europe and Canada.',
+    sub: 'From Dakar, BNS Digital designs websites, software, SEO strategies and campaigns for French, European and Canadian companies, as well as for businesses in Senegal.',
+    svcTitle: 'Six areas of expertise, based in Dakar.', whyTitle: 'Why Dakar?',
+    why: [
+      b('A French-speaking digital hub', 'Dakar is home to web, design and digital marketing talent working in French and English.'),
+      b('Between time zones', 'On GMT, Dakar is one or two hours from Europe and four or five hours from Eastern Canada.'),
+      b('Agency quality, controlled cost', 'International agency methods with a lighter cost structure.'),
+      b('Dedicated follow-up', 'A single project manager, regular video calls and transparent communication.')
+    ],
+    refTitle: 'Some of our references',
+    faq: [
+      ['Do you also work with Senegalese companies?', 'Yes. We support companies in Dakar and across Senegal, alongside our European and Canadian clients.'],
+      ['Can we meet you in Dakar?', 'Yes, by appointment. Email us at contact@bns-digital.com to arrange a time.'],
+      ['Which languages do you work in?', 'French and English, both written and spoken.']
+    ],
+    cta: 'A digital project?'
   }
 }
 
 export const CAT_LABEL_EN: Record<ProjectCat, string> = { Web: 'Website', ADS: 'Paid ads', Social: 'Social media' }
 
 /** Project texts, keyed by slug (client names, images and links come from content.ts) */
-export const PROJECT_TEXT_EN: Record<string, { label: string; desc?: string; metric?: string }> = {
-  'powercell-group': { label: 'Renewable energy' },
-  yassir: { label: 'Multi-platform ad campaign', desc: 'Integrated paid-ads strategy with massive reach (3.9M on Facebook, 1.4M on Instagram, 5M paid reach) and competitive benchmarking for continuous optimisation.', metric: '5M paid reach' },
-  zayn: { label: 'Social media campaign', desc: 'Integrated campaign with premium product visuals, a multi-format content strategy and measurable results (308.8K reach, 6.5K interactions).', metric: '308.8K reach' },
-  'cushman-wakefield-veritas': { label: 'Real estate' },
-  'groupado-pro': { label: 'Performance ad campaign', desc: 'Acquisition campaign focused on ad trends, paid reach (1.7M) and massive impressions (6.4M) to maximise visibility.', metric: '6.4M impressions' },
-  kpmg: { label: 'Audience audit & analysis', desc: 'Detailed audience analysis report with insights on organic vs paid reach, content performance and user engagement.' },
-  fibbl: { label: 'B2B SaaS' },
-  'brasileia-cosmetics': { label: 'Beauty ad campaign', desc: 'Beauty product campaign with premium visuals, targeted messaging and detailed analytics (1.8M views, 996K reach).', metric: '1.8M views' },
-  'br-finanzen': { label: 'Digital financial strategy', desc: 'Financial communication campaign with premium design, savings advice and consistent branding for banking services.' },
-  'copenhagen-energy': { label: 'Energy' },
-  'tunisia-franchise-show': { label: 'Event ad campaign', desc: 'Event campaign with massive reach (2.2M), targeted engagement (2.9K interactions) and multi-platform traffic.', metric: '2.2M reach' },
-  'campagnes-beaute-sante': { label: 'Multi-brand beauty & health', desc: 'Management of integrated campaigns for beauty and health brands, with analytics dashboards, product visuals and a premium content strategy.' },
-  foscolo: { label: 'Professional services' },
-  'lore-and-heart': { label: 'Social ad campaign', desc: 'Facebook and Instagram acquisition campaign with detailed engagement analysis, top-performing post identification and reach optimisation.' },
-  'jardins-de-carthage': { label: 'Healthcare branding & communication', desc: 'Healthcare communication campaign with premium branding, medical visuals and a content strategy for a pharmaceutical laboratory.' },
-  dunstan: { label: 'Pet products' },
-  'galeries-live': { label: 'Engagement ad campaign', desc: 'Paid-ads strategy combining organic and paid reach, with analysis of top-performing posts to optimise ROI.' },
-  'radiumhemmets-forskningsfonder': { label: 'Research' },
-  'founa-com-by-smg': { label: 'Acquisition ad campaign', desc: 'Structured acquisition campaign with a complete analytics dashboard, KPI tracking and performance optimisation.' },
-  prostarseo: { label: 'Digital/SEO ad campaign', desc: 'Digital acquisition campaign with authority analysis, organic traffic and geographic distribution for optimised targeting.' }
-}
+export const PROJECT_TEXT_EN: Record<string, { label: string; desc?: string; metric?: string }> = {}

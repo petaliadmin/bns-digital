@@ -115,7 +115,7 @@
 <script setup lang="ts">
 const INTERVAL = 4800
 const BARS = [22, 36, 48, 64, 82, 100]
-const IG = ['#C8BCF8', '#AE9CFA', '#8B72F0', '#E0D9FC', '#4F2FD6', '#AE9CFA']
+const IG = ['#A9D2FB', '#22B8F5', '#3A8FF0', '#D3E5FD', '#0A56D8', '#22B8F5']
 
 interface Slide {
   key: 'web' | 'app' | 'mobile' | 'seo' | 'ads' | 'social'
@@ -125,7 +125,7 @@ interface Slide {
   columns?: string[]; query?: string; domain?: string; kpis?: string[]
 }
 
-// Chiffres de la carte sombre : résultats réels publiés (YASSIR, groupado PRO, ZAYN) ou engagements de l'agence (délais, maintenance)
+// Cartes flottantes : engagements de l'agence (délais, maintenance) et marchés servis — aucun chiffre client inventé
 const t = useLocaleText({
   fr: {
     carousel: 'carrousel', region: 'Aperçu de nos services', pause: 'Mettre en pause le défilement', play: 'Reprendre le défilement',
@@ -143,17 +143,17 @@ const t = useLocaleText({
         a: { label: 'Référencement Google', big: 'Top 3', kw: 'sur votre mot-clé' },
         b: { label: 'GEO · IA génératives', big: 'Cité', sub: 'par ChatGPT, Gemini et Perplexity' } },
       { key: 'ads', name: 'Marketing digital & ADS', short: 'Publicité', url: 'ads.dashboard', kpis: ['Portée', 'Clics', 'Leads'],
-        a: { label: 'Campagne ADS · groupado PRO', big: '6,4M', kw: 'impressions' },
-        b: { label: 'Campagne ADS · YASSIR', big: '5M', sub: 'de portée payante sur Meta' } },
+        a: { label: 'Campagnes Google & Meta', big: 'KPIs', kw: 'suivis en continu', chips: ['Portée', 'Leads', 'ROAS'] },
+        b: { label: 'Ciblage multi-pays', big: 'FR · CA', sub: 'des campagnes calibrées pour chaque marché' } },
       { key: 'social', name: 'Social media & contenus', short: 'Social', url: 'instagram.com/votre-marque',
-        a: { label: 'Engagement · ZAYN', big: '6,5K', kw: 'interactions' },
-        b: { label: 'Campagne social · ZAYN', big: '308,8K', sub: 'de couverture' } }
+        a: { label: 'Formats courts', big: 'Reels', kw: '& TikTok', chips: ['Visuels', 'Vidéo', 'Stories'] },
+        b: { label: 'Social media & contenus', big: 'FR · EN', sub: 'des contenus écrits pour chaque audience' } }
     ] as Slide[]
   },
   en: {
     carousel: 'carousel', region: 'Overview of our services', pause: 'Pause autoplay', play: 'Resume autoplay',
     slides: [
-      { key: 'web', name: 'Website design', short: 'Websites', url: 'your-company.com',
+      { key: 'web', name: 'Website design', short: 'Websites', url: 'your-company.ca',
         a: { label: 'Core Web Vitals', big: 'Fast', kw: 'on mobile', chips: ['LCP', 'INP', 'CLS'] },
         b: { label: 'Website design', big: '48 h', sub: 'to receive your detailed quote' } },
       { key: 'app', name: 'Custom business software', short: 'Software', url: 'app.your-company.com/crm', columns: ['Leads', 'Quotes', 'Won'],
@@ -162,15 +162,15 @@ const t = useLocaleText({
       { key: 'mobile', name: 'Mobile app development', short: 'Mobile', url: 'your-app.com',
         a: { label: 'Mobile experience', big: 'UX / UI', kw: 'prototyped', chips: ['Mock-ups', 'Prototype', 'Testing'] },
         b: { label: 'Mobile apps', big: '2 stores', sub: 'App Store and Google Play, from mock-up to release' } },
-      { key: 'seo', name: 'SEO & GEO', short: 'SEO & GEO', url: 'google.com/search', query: 'your trade + your city', domain: 'your-company.com',
+      { key: 'seo', name: 'SEO & GEO', short: 'SEO & GEO', url: 'google.com/search', query: 'your trade + your city', domain: 'your-company.ca',
         a: { label: 'Google rankings', big: 'Top 3', kw: 'for your keyword' },
         b: { label: 'GEO · generative AI', big: 'Cited', sub: 'by ChatGPT, Gemini and Perplexity' } },
       { key: 'ads', name: 'Digital marketing & ads', short: 'Paid ads', url: 'ads.dashboard', kpis: ['Reach', 'Clicks', 'Leads'],
-        a: { label: 'Ad campaign · groupado PRO', big: '6.4M', kw: 'impressions' },
-        b: { label: 'Ad campaign · YASSIR', big: '5M', sub: 'paid reach on Meta' } },
+        a: { label: 'Google & Meta campaigns', big: 'KPIs', kw: 'tracked continuously', chips: ['Reach', 'Leads', 'ROAS'] },
+        b: { label: 'Multi-country targeting', big: 'CA · FR', sub: 'campaigns calibrated for each market' } },
       { key: 'social', name: 'Social media & content', short: 'Social', url: 'instagram.com/your-brand',
-        a: { label: 'Engagement · ZAYN', big: '6.5K', kw: 'interactions' },
-        b: { label: 'Social campaign · ZAYN', big: '308.8K', sub: 'reach' } }
+        a: { label: 'Short-form video', big: 'Reels', kw: '& TikTok', chips: ['Visuals', 'Video', 'Stories'] },
+        b: { label: 'Social media & content', big: 'EN · FR', sub: 'content written for each audience' } }
     ] as Slide[]
   }
 })
@@ -213,7 +213,7 @@ onBeforeUnmount(() => clearTimeout(timer))
 .hs { position: relative; height: 600px; --ease: cubic-bezier(.22, 1, .36, 1); }
 
 /* Navigateur */
-.hs__browser { position: absolute; top: 0; left: 40px; right: 0; height: 400px; background: var(--white); border: 1px solid var(--line); border-radius: 20px; box-shadow: 0 30px 60px -30px rgba(23, 18, 61, .25); display: flex; flex-direction: column; overflow: hidden; }
+.hs__browser { position: absolute; top: 0; left: 40px; right: 0; height: 400px; background: var(--white); border: 1px solid var(--line); border-radius: 20px; box-shadow: 0 30px 60px -30px rgba(10, 26, 71, .25); display: flex; flex-direction: column; overflow: hidden; }
 .hs__bar { display: flex; align-items: center; gap: 6px; padding: 14px 16px; border-bottom: 1px solid var(--line-soft); }
 .hs__bar > span { width: 10px; height: 10px; border-radius: 99px; background: var(--line); }
 .hs__bar em { margin-left: 16px; padding: 2px 12px; background: var(--surface-hover); border-radius: 6px; font-size: 12px; color: var(--muted-2); font-style: normal; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -233,13 +233,13 @@ onBeforeUnmount(() => clearTimeout(timer))
 .web__hero i.soft { height: 9px; background: var(--accent-tint-2); animation-delay: .2s; }
 .web__cta { width: 120px; height: 32px; border-radius: 99px; background: var(--accent); margin-top: 6px; animation: hs-pop .5s var(--ease) .3s both; }
 .web__cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 26px; }
-.web__cards span { height: 66px; border-radius: 12px; background: var(--white); box-shadow: 0 8px 18px -12px rgba(23, 18, 61, .35); animation: hs-up .5s var(--ease) both; }
+.web__cards span { height: 66px; border-radius: 12px; background: var(--white); box-shadow: 0 8px 18px -12px rgba(10, 26, 71, .35); animation: hs-up .5s var(--ease) both; }
 
 /* Écran : application métier (pipeline) */
 .scr--app { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .kb { display: flex; flex-direction: column; gap: 8px; padding: 10px; border-radius: 12px; background: rgba(255, 255, 255, .55); }
 .kb__h { font-size: 11px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .6px; }
-.kb__card { display: flex; flex-direction: column; gap: 6px; padding: 10px; border-radius: 10px; background: var(--white); box-shadow: 0 6px 14px -10px rgba(23, 18, 61, .4); animation: hs-drop .5s var(--ease) both; }
+.kb__card { display: flex; flex-direction: column; gap: 6px; padding: 10px; border-radius: 10px; background: var(--white); box-shadow: 0 6px 14px -10px rgba(10, 26, 71, .4); animation: hs-drop .5s var(--ease) both; }
 .kb__card i:first-child { height: 8px; width: 80%; background: var(--ink); }
 .kb__card i:last-child { height: 6px; width: 55%; background: var(--accent-tint-2); }
 
@@ -259,7 +259,7 @@ onBeforeUnmount(() => clearTimeout(timer))
 .phone__tab i:first-child { background: var(--accent); }
 
 /* Écran : SERP */
-.serp__search { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-radius: 99px; background: var(--white); font-size: 13px; color: var(--muted); box-shadow: 0 6px 16px -12px rgba(23, 18, 61, .4); margin-bottom: 16px; }
+.serp__search { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-radius: 99px; background: var(--white); font-size: 13px; color: var(--muted); box-shadow: 0 6px 16px -12px rgba(10, 26, 71, .4); margin-bottom: 16px; }
 .serp__search svg { color: var(--accent); }
 .serp__res { display: flex; gap: 12px; align-items: flex-start; padding: 10px 12px; border-radius: 12px; margin-bottom: 8px; animation: hs-up .45s var(--ease) both; }
 .serp__res > div { flex: 1; display: flex; flex-direction: column; gap: 6px; }
@@ -267,7 +267,7 @@ onBeforeUnmount(() => clearTimeout(timer))
 .serp__res i { height: 9px; width: 90%; background: var(--line-2); }
 .serp__res i.w70 { height: 7px; width: 70%; }
 .serp__pos { flex: none; width: 24px; height: 24px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; background: var(--white); color: var(--muted-2); }
-.serp__res.is-you { background: var(--white); box-shadow: 0 10px 22px -14px rgba(79, 47, 214, .55); outline: 2px solid var(--accent); }
+.serp__res.is-you { background: var(--white); box-shadow: 0 10px 22px -14px rgba(10, 86, 216, .55); outline: 2px solid var(--accent); }
 .serp__res.is-you .serp__pos { background: var(--accent); color: var(--white); }
 .serp__res.is-you i:first-of-type { background: var(--accent); }
 
@@ -292,7 +292,7 @@ onBeforeUnmount(() => clearTimeout(timer))
 
 /* Cartes flottantes */
 .hs__float { position: absolute; padding: 22px; border-radius: 18px; display: flex; flex-direction: column; }
-.hs__float--light { left: 0; bottom: 64px; width: 290px; gap: 10px; background: var(--white); border: 1px solid var(--line); box-shadow: 0 24px 48px -24px rgba(23, 18, 61, .3); animation: hs-bob 6s ease-in-out infinite; }
+.hs__float--light { left: 0; bottom: 64px; width: 290px; gap: 10px; background: var(--white); border: 1px solid var(--line); box-shadow: 0 24px 48px -24px rgba(10, 26, 71, .3); animation: hs-bob 6s ease-in-out infinite; }
 .hs__float--dark { right: 24px; bottom: 48px; width: 270px; gap: 6px; background: var(--ink); color: var(--white); animation: hs-bob 6s ease-in-out 1.5s infinite; }
 .hs__label { font-size: 13px; color: var(--muted-2); font-weight: 500; }
 .hs__float--dark .hs__label { color: var(--dark-muted-2); }

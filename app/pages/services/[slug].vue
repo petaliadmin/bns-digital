@@ -9,7 +9,8 @@
         <p class="lead hero__sub">{{ svc.sub }}</p>
         <div class="hero__ctas">
           <NuxtLink :to="link.contact()" class="btn btn--primary">{{ t.talk }} →</NuxtLink>
-          <NuxtLink :to="link.work()" class="btn btn--ghost">{{ t.seeWork }}</NuxtLink>
+          <NuxtLink v-if="hasWork" :to="link.work()" class="btn btn--ghost">{{ t.seeWork }}</NuxtLink>
+          <NuxtLink v-else :to="link.booking()" class="btn btn--ghost">{{ t.call }}</NuxtLink>
         </div>
       </div>
       <div class="hero__offers card">
@@ -68,7 +69,7 @@
     </section>
 
     <!-- REALISATIONS LIEES -->
-    <section class="container section">
+    <section v-if="related.length" class="container section">
       <div class="rel-head">
         <h2 class="h2 h2--52">{{ t.trusted }}</h2>
         <NuxtLink :to="link.work()" class="btn btn--ghost btn--sm">{{ t.allWork }}</NuxtLink>
@@ -91,10 +92,11 @@
 </template>
 
 <script setup lang="ts">
+import { AREA_SERVED } from '~/data/content'
 import type { Project } from '~/data/content'
 
 const route = useRoute()
-const { en, link, services, projects, serviceFaq, serviceSeo, serviceSlug } = useSite()
+const { en, link, services, projects, hasWork, serviceFaq, serviceSeo, serviceSlug } = useSite()
 
 // Le slug doit correspondre à la langue de l'URL (/services/creation-site-web ↔ /en/services/website-design)
 const svc = computed(() => services.value.find(s => serviceSlug(s.slug) === String(route.params.slug)))
@@ -102,8 +104,8 @@ if (!svc.value) throw createError({ statusCode: 404, statusMessage: 'Page introu
 useSetI18nParams()({ fr: { slug: svc.value.slug }, en: { slug: serviceSlug(svc.value.slug, 'en') } })
 
 const t = useLocaleText({
-  fr: { home: 'Accueil', crumb: 'Expertises', talk: 'Parler de votre projet', seeWork: 'Voir les réalisations', offers: 'Nos offres', approach: 'L’approche KPS', method: 'Méthode', trusted: 'Ils nous ont fait confiance', allWork: 'Toutes les réalisations', faq: 'Questions fréquentes', ctaText: 'Décrivez-nous votre besoin : nous revenons vers vous avec une recommandation claire et un devis personnalisé.' },
-  en: { home: 'Home', crumb: 'Services', talk: 'Discuss your project', seeWork: 'See our work', offers: 'What we offer', approach: 'The KPS approach', method: 'Method', trusted: 'They trusted us', allWork: 'All our work', faq: 'Frequently asked questions', ctaText: 'Tell us what you need: we’ll come back to you with a clear recommendation and a tailored quote.' }
+  fr: { home: 'Accueil', crumb: 'Expertises', talk: 'Parler de votre projet', seeWork: 'Voir les réalisations', call: 'Réserver un appel', offers: 'Nos offres', approach: 'L’approche BNS Digital', method: 'Méthode', trusted: 'Ils nous ont fait confiance', allWork: 'Toutes les réalisations', faq: 'Questions fréquentes', ctaText: 'Décrivez-nous votre besoin : nous revenons vers vous avec une recommandation claire et un devis personnalisé.' },
+  en: { home: 'Home', crumb: 'Services', talk: 'Discuss your project', seeWork: 'See our work', call: 'Book a call', offers: 'What we offer', approach: 'The BNS Digital approach', method: 'Method', trusted: 'They trusted us', allWork: 'All our work', faq: 'Frequently asked questions', ctaText: 'Tell us what you need: we’ll come back to you with a clear recommendation and a tailored quote.' }
 })
 
 // Projets liés au service ; à défaut, les réalisations les plus récentes (jamais de carte vide)
@@ -120,7 +122,7 @@ useHead({
     type: 'application/ld+json',
     innerHTML: () => {
       const url = `${site}${link.service(svc.value!.slug)}`
-      const lang = en.value ? 'en' : 'fr-FR'
+      const lang = en.value ? 'en' : 'fr'
       return JSON.stringify({
         '@context': 'https://schema.org',
         '@graph': [
@@ -128,7 +130,7 @@ useHead({
             '@type': 'Service', '@id': `${url}#service`,
             name: seo.value.h1, serviceType: svc.value!.crumb, description: seo.value.desc, url, inLanguage: lang,
             provider: { '@id': `${site}/#organization` },
-            areaServed: [{ '@type': 'City', name: 'Paris' }, { '@type': 'Country', name: 'France' }],
+            areaServed: AREA_SERVED,
             hasOfferCatalog: {
               '@type': 'OfferCatalog', name: svc.value!.offersTitle,
               itemListElement: svc.value!.offers.map(of => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: of.t, description: of.d } }))

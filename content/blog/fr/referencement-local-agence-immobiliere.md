@@ -6,9 +6,7 @@ date: 2026-09-29
 sector: immobilier
 service: referencement-seo-geo
 tags: [SEO local, immobilier, fiche Google, avis clients]
-author: Équipe KPS Agency
-cover: /images/realisations/cushman-wakefield-veritas.webp
-coverAlt: Site de Cushman & Wakefield Veritas, acteur de l'immobilier
+author: Équipe BNS Digital
 translation: local-seo-real-estate-agency
 ---
 

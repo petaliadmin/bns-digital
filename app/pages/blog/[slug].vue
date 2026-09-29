@@ -96,13 +96,13 @@ useSeoMeta({
   articleTag: m.tags
 })
 useHead({
-  link: [{ rel: 'alternate', type: 'application/rss+xml', title: 'KPS Agency — Blog', href: `${site}${lang.value === 'en' ? '/en' : ''}/blog/rss.xml` }],
+  link: [{ rel: 'alternate', type: 'application/rss+xml', title: 'BNS Digital — Blog', href: `${site}${lang.value === 'en' ? '/en' : ''}/blog/rss.xml` }],
   script: [{
     type: 'application/ld+json',
     innerHTML: JSON.stringify({
       '@context': 'https://schema.org', '@type': 'BlogPosting', '@id': `${site}${link.article(m.slug)}#article`,
       headline: m.title, description: m.description, url: `${site}${link.article(m.slug)}`, mainEntityOfPage: `${site}${link.article(m.slug)}`,
-      datePublished: m.date, dateModified: m.updated ?? m.date, inLanguage: lang.value === 'en' ? 'en-GB' : 'fr-FR',
+      datePublished: m.date, dateModified: m.updated ?? m.date, inLanguage: lang.value === 'en' ? 'en' : 'fr',
       ...(m.cover ? { image: `${site}${m.cover}` } : {}),
       author: { '@type': 'Organization', name: m.author, url: `${site}/` },
       publisher: { '@id': `${site}/#organization` },

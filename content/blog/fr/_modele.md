@@ -1,7 +1,7 @@
 ---
 # ─── MODÈLE D'ARTICLE (ce fichier commence par « _ » : il n'est jamais publié) ───
 # 1. Copier ce fichier dans content/blog/fr/ (ou en/ pour l'anglais)
-# 2. Nommer le fichier avec l'URL voulue : mon-article.md → kps-agency.com/blog/mon-article
+# 2. Nommer le fichier avec l'URL voulue : mon-article.md → bns-digital.com/blog/mon-article
 #    (minuscules, sans accents, mots séparés par des tirets, 3 à 6 mots-clés)
 # 3. Remplir l'en-tête ci-dessous, écrire l'article en Markdown, puis publier (commit + déploiement)
 
@@ -21,7 +21,7 @@ sector: pme
 #   | referencement-seo-geo | marketing-digital-ads | social-media
 service: creation-site-web
 tags: [mot-clé 1, mot-clé 2]
-author: Équipe KPS Agency
+author: Équipe BNS Digital
 # Image de couverture (facultatif) : déposer l'image dans public/images/blog/ (WebP, 1600 px de large)
 # cover: /images/blog/mon-image.webp
 # coverAlt: Description précise de l'image
@@ -42,7 +42,7 @@ Paragraphes courts (3 à 4 lignes), listes à puces pour les étapes :
 
 ## Deuxième intertitre
 
-Faire des liens vers les pages du site : [notre offre SEO](/services/referencement-seo-geo), [nos réalisations](/realisations).
+Faire des liens vers les pages du site : [notre offre SEO](/services/referencement-seo-geo), [nos marchés](/agence-digitale/france).
 Ne citer que des chiffres vérifiables, avec leur source.
 
 ## En pratique

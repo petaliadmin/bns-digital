@@ -22,9 +22,9 @@ export default defineNuxtConfig({
     googleImpersonate: '',
     bookingAllowedOrigins: '',
     public: {
-      siteUrl: 'https://kps-agency.com',
+      siteUrl: 'https://bns-digital.com',
       formEndpoint: '',
-      // URL de l'API de réservation si elle est hébergée ailleurs que le site statique (ex. https://kps-agency.vercel.app)
+      // URL de l'API de réservation si elle est hébergée ailleurs que le site statique (ex. https://bns-digital.vercel.app)
       bookingApi: ''
     }
   },
@@ -32,12 +32,12 @@ export default defineNuxtConfig({
   i18n: {
     // Français à la racine (/), anglais sous /en, URL traduites (customRoutes)
     locales: [
-      { code: 'fr', language: 'fr-FR', name: 'Français' },
-      { code: 'en', language: 'en-GB', name: 'English' }
+      { code: 'fr', language: 'fr', name: 'Français' },
+      { code: 'en', language: 'en', name: 'English' }
     ],
     defaultLocale: 'fr',
     strategy: 'prefix_except_default',
-    baseUrl: 'https://kps-agency.com',
+    baseUrl: 'https://bns-digital.com',
     detectBrowserLanguage: false, // pas de redirection automatique : chaque URL reste stable pour Google
     customRoutes: 'config',
     pages: {
@@ -58,11 +58,11 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      titleTemplate: '%s · KPS Agency',
+      titleTemplate: '%s · BNS Digital',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'theme-color', content: '#17123D' }
+        { name: 'theme-color', content: '#0A1A47' }
       ],
       link: [
         { rel: 'icon', href: '/favicon.ico', sizes: '48x48' },

@@ -6,9 +6,7 @@ date: 2026-09-29
 sector: immobilier
 service: referencement-seo-geo
 tags: [local SEO, real estate, Google Business Profile, reviews]
-author: KPS Agency team
-cover: /images/realisations/cushman-wakefield-veritas.webp
-coverAlt: Cushman & Wakefield Veritas website, a real estate company
+author: BNS Digital team
 translation: referencement-local-agence-immobiliere
 ---
 

@@ -54,18 +54,19 @@ const NAV_ICONS = {
   ads: 'M3 11v2a1 1 0 0 0 1 1h3l6 5V5L7 10H4a1 1 0 0 0-1 1zM17 8a5 5 0 0 1 0 8',
   social: 'M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12zM9 11h.01M12 11h.01M15 11h.01',
   grid: 'M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z',
-  energy: 'M13 2 4 14h7l-1 8 9-12h-7l1-8z',
-  building: 'M4 21V5l8-3v19M12 21V8l8 3v10M3 21h18M8 8h.01M8 12h.01M8 16h.01M16 14h.01M16 17h.01',
-  cloud: 'M7 18a4.5 4.5 0 0 1-.6-9A6 6 0 0 1 18 9.5a4.3 4.3 0 0 1-.5 8.5z',
-  heart: 'M12 20s-7-4.4-9-8.6C1.6 8.3 3.5 5 6.7 5c2 0 3.3 1 4.3 2.4h2C14 6 15.3 5 17.3 5c3.2 0 5.1 3.3 3.7 6.4C19 15.6 12 20 12 20z',
-  finance: 'M4 20V10M10 20V4M16 20v-7M22 20H2',
-  event: 'M4 6h16v14H4zM4 10h16M8 3v4M16 3v4M9 15l2 2 4-4'
+  pin: 'M12 21s-7-6.1-7-11.5a7 7 0 1 1 14 0C19 14.9 12 21 12 21zM12 7a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z',
+  globe: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z'
 }
 
 interface NavLink { label: string; desc: string; icon: keyof typeof NAV_ICONS; to: string }
 interface NavItem { label: string; to: string; match?: string[]; links?: NavLink[] }
 
-const { en, link, services } = useSite()
+const { en, link, services, localPages, hasWork } = useSite()
+// Menu « Marchés » : pages pays / villes, dans l'ordre d'affichage (le Canada en tête pour les visiteurs anglophones)
+const MARKETS: Record<'fr' | 'en', [string, string][]> = {
+  fr: [['france', 'PME et ETI françaises'], ['paris', 'Paris et Île-de-France'], ['belgique', 'Bruxelles et Wallonie'], ['suisse', 'Genève, Lausanne, Suisse romande'], ['canada', 'Montréal, Québec et tout le Canada'], ['dakar', 'Notre équipe, et les entreprises sénégalaises']],
+  en: [['canada', 'Toronto, Montreal and across Canada'], ['france', 'French SMEs and mid-sized companies'], ['paris', 'Paris and Île-de-France'], ['belgique', 'Brussels and Wallonia'], ['suisse', 'Geneva, Lausanne and all of Switzerland'], ['dakar', 'Our team, and Senegalese companies']]
+}
 const getRouteBaseName = useRouteBaseName()
 
 const t = useLocaleText({
@@ -93,18 +94,13 @@ const navItems = computed<NavItem[]>(() => {
   })
   return [
     { label: 'Services', to: link.services(), match: ['services', 'services-slug'], links: [...svcLinks, { label: en.value ? 'All our services' : 'Toutes nos expertises', desc: en.value ? 'Overview of what we do' : 'Vue d’ensemble des services', icon: 'grid', to: link.services() }] },
-    { label: en.value ? 'Our work' : 'Réalisations', to: link.work(), match: ['realisations', 'realisations-slug'] },
+    ...(hasWork ? [{ label: en.value ? 'Our work' : 'Réalisations', to: link.work(), match: ['realisations', 'realisations-slug'] }] : []),
     { label: en.value ? 'Method' : 'Méthode', to: link.method() },
     {
-      label: en.value ? 'Industries' : 'Secteurs', to: link.local('energie'), match: ['agence-digitale-slug'],
-      links: [
-        { label: en.value ? 'Energy' : 'Énergie', desc: 'PowerCell Group, Copenhagen Energy', icon: 'energy', to: link.local('energie') },
-        { label: en.value ? 'Real estate' : 'Immobilier', desc: 'Cushman & Wakefield Veritas', icon: 'building', to: link.project('cushman-wakefield-veritas') },
-        { label: 'SaaS B2B', desc: 'Fibbl', icon: 'cloud', to: link.project('fibbl') },
-        { label: en.value ? 'Beauty & health' : 'Beauté & Santé', desc: 'Brasileia, Jardins de Carthage', icon: 'heart', to: link.project('campagnes-beaute-sante') },
-        { label: en.value ? 'Finance & consulting' : 'Finance & Conseil', desc: 'KPMG, BR Finanzen', icon: 'finance', to: link.project('kpmg') },
-        { label: en.value ? 'Events' : 'Événementiel', desc: 'Tunisia Franchise Show, Galeries LIVE', icon: 'event', to: link.project('tunisia-franchise-show') }
-      ]
+      label: en.value ? 'Markets' : 'Marchés', to: link.local(en.value ? 'canada' : 'france'), match: ['agence-digitale-slug'],
+      links: MARKETS[en.value ? 'en' : 'fr'].map(([slug, desc]) => ({
+        label: localPages.value.find(l => l.slug === slug)!.crumb, desc, icon: slug === 'dakar' ? 'pin' : 'globe', to: link.local(slug)
+      }) as NavLink)
     },
     { label: 'Blog', to: link.blog(), match: ['blog', 'blog-slug'] },
     { label: en.value ? 'About' : 'L’agence', to: link.about(), match: ['agence'] }
@@ -135,7 +131,7 @@ const blogSwitch = computed(() => {
 .nav__dd svg { transition: transform .2s; }
 .nav__item { position: relative; }
 .nav__item::after { content: ''; position: absolute; left: 0; right: 0; top: 100%; height: 18px; }
-.nav__panel { position: absolute; top: calc(100% + 18px); left: -20px; z-index: 60; min-width: 320px; padding: 10px; display: grid; gap: 2px; background: var(--white); border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 24px 48px -24px rgba(23, 18, 61,.3); opacity: 0; visibility: hidden; transform: translateY(6px); transition: opacity .18s, transform .18s, visibility .18s; }
+.nav__panel { position: absolute; top: calc(100% + 18px); left: -20px; z-index: 60; min-width: 320px; padding: 10px; display: grid; gap: 2px; background: var(--white); border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 24px 48px -24px rgba(10, 26, 71, .3); opacity: 0; visibility: hidden; transform: translateY(6px); transition: opacity .18s, transform .18s, visibility .18s; }
 .nav__item:hover .nav__panel, .nav__item:focus-within .nav__panel { opacity: 1; visibility: visible; transform: none; }
 .nav__item:hover .nav__dd svg, .nav__item:focus-within .nav__dd svg { transform: rotate(180deg); }
 .nav__sub { display: flex; align-items: center; gap: 14px; padding: 10px 14px; border-radius: 10px; }

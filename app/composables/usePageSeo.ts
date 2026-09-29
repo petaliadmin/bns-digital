@@ -24,7 +24,7 @@ export function usePageSeo(o: PageSeo) {
   useSeoMeta({
     title: () => toValue(o.title),
     description: () => toValue(o.description),
-    ogTitle: () => `${toValue(o.title)} · KPS Agency`,
+    ogTitle: () => `${toValue(o.title)} · BNS Digital`,
     ogDescription: () => toValue(o.description),
     ogType: o.type ?? 'website',
     ogImage: image,
@@ -32,7 +32,7 @@ export function usePageSeo(o: PageSeo) {
     ogImageHeight: () => (isDefault() ? 630 : undefined),
     ogImageAlt: () => toValue(o.title),
     twitterCard: 'summary_large_image',
-    twitterTitle: () => `${toValue(o.title)} · KPS Agency`,
+    twitterTitle: () => `${toValue(o.title)} · BNS Digital`,
     twitterDescription: () => toValue(o.description),
     twitterImage: image,
     robots: () => (toValue(o.noindex) ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1')

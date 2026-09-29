@@ -7,7 +7,7 @@
       <dl class="contact__info">
         <div><dt>{{ t.email }}</dt><dd><a :href="`mailto:${CONTACT.email}`">{{ CONTACT.email }}</a></dd></div>
         <div v-if="!CONTACT.phone.startsWith('[')"><dt>{{ t.phone }}</dt><dd>{{ CONTACT.phone }}</dd></div>
-        <div><dt>{{ t.address }}</dt><dd>{{ CONTACT.address }} Paris</dd></div>
+        <div><dt>{{ t.address }}</dt><dd>{{ CONTACT.address }}</dd></div>
       </dl>
     </div>
 
@@ -58,7 +58,7 @@
         <span class="done__icon"><IconCheck :size="30" /></span>
         <h2 class="wizard__h wizard__h--38">{{ t.doneH }}</h2>
         <p class="done__p">{{ t.doneP }}</p>
-        <NuxtLink :to="link.work()" class="btn btn--ghost btn--sm">{{ t.doneCta }}</NuxtLink>
+        <NuxtLink :to="hasWork ? link.work() : link.services()" class="btn btn--ghost btn--sm">{{ hasWork ? t.doneCta : t.doneSvc }}</NuxtLink>
       </div>
 
       <div v-if="step < 4" class="wizard__nav">
@@ -72,10 +72,10 @@
 <script setup lang="ts">
 import { CONTACT, organizationSchema } from '~/data/content'
 
-const { en, locale, link } = useSite()
+const { en, locale, link, hasWork } = useSite()
 const t = useLocaleText({
   fr: {
-    title: 'Contact & devis gratuit sous 48 h', desc: 'Contactez KPS Agency, agence digitale à Paris 8e : décrivez votre projet de site web, d’application, de SEO ou de publicité. Devis gratuit sous 48 h.',
+    title: 'Contact & devis gratuit sous 48 h', desc: 'Contactez BNS Digital, agence digitale basée à Dakar pour la France, l’Europe et le Canada : site web, application, SEO ou publicité. Devis gratuit sous 48 h.',
     eyebrow: 'Contact & devis', h1: 'Parlons de votre prochain projet.', lead: 'Décrivez-nous votre besoin en quelques étapes : nous revenons vers vous avec une recommandation claire et un devis personnalisé.',
     email: 'E-mail', phone: 'Téléphone', address: 'Adresse', step: 'Étape', of: 'sur', sentShort: 'Demande envoyée',
     s1: 'De quoi avez-vous besoin ?', s1hint: 'Plusieurs choix possibles.',
@@ -89,12 +89,12 @@ const t = useLocaleText({
     msg: 'Votre projet en quelques mots', msgPh: 'Objectifs, contexte, site actuel…',
     s3: 'Comment vous joindre ?', name: 'Prénom et nom', company: 'Entreprise', website: 'Site web actuel (facultatif)',
     consent: 'J’accepte que mes données soient utilisées pour traiter ma demande, conformément à la', privacy: 'politique de confidentialité',
-    doneH: 'Merci, votre demande est envoyée.', doneP: 'Notre équipe étudie votre projet et revient vers vous sous 48 h ouvrées avec une recommandation et un devis personnalisé.', doneCta: 'Découvrir nos réalisations',
+    doneH: 'Merci, votre demande est envoyée.', doneP: 'Notre équipe étudie votre projet et revient vers vous sous 48 h ouvrées avec une recommandation et un devis personnalisé.', doneCta: 'Découvrir nos réalisations', doneSvc: 'Découvrir nos expertises',
     back: 'Retour', next: 'Continuer', send: 'Envoyer ma demande', sending: 'Envoi…',
     errNeed: 'Sélectionnez au moins un besoin.', errId: 'Merci d’indiquer votre nom et une adresse e-mail valide.', errConsent: 'Merci d’accepter l’utilisation de vos données pour traiter votre demande.', errSend: 'L’envoi a échoué. Vous pouvez nous écrire directement à'
   },
   en: {
-    title: 'Contact us: free quote within 48 hours', desc: 'Contact KPS Agency, a digital agency in Paris: tell us about your website, software, SEO or paid ads project and get a free quote within 48 hours.',
+    title: 'Contact us: free quote within 48 hours', desc: 'Contact BNS Digital, a Dakar-based digital agency serving Canada and Europe: websites, software, SEO or paid ads. Free quote within 48 hours.',
     eyebrow: 'Contact & quote', h1: 'Let’s talk about your next project.', lead: 'Describe what you need in a few steps: we’ll come back to you with a clear recommendation and a tailored quote.',
     email: 'Email', phone: 'Phone', address: 'Address', step: 'Step', of: 'of', sentShort: 'Request sent',
     s1: 'What do you need?', s1hint: 'You can select several options.',
@@ -108,7 +108,7 @@ const t = useLocaleText({
     msg: 'Your project in a few words', msgPh: 'Goals, context, current website…',
     s3: 'How can we reach you?', name: 'Full name', company: 'Company', website: 'Current website (optional)',
     consent: 'I agree that my data may be used to process my request, in accordance with the', privacy: 'privacy policy',
-    doneH: 'Thank you, your request has been sent.', doneP: 'Our team is reviewing your project and will come back to you within 48 business hours with a recommendation and a tailored quote.', doneCta: 'Discover our work',
+    doneH: 'Thank you, your request has been sent.', doneP: 'Our team is reviewing your project and will come back to you within 48 business hours with a recommendation and a tailored quote.', doneCta: 'Discover our work', doneSvc: 'Discover our services',
     back: 'Back', next: 'Continue', send: 'Send my request', sending: 'Sending…',
     errNeed: 'Please select at least one option.', errId: 'Please enter your name and a valid email address.', errConsent: 'Please agree to the use of your data to process your request.', errSend: 'Sending failed. You can email us directly at'
   }
@@ -123,7 +123,7 @@ useHead({
       '@context': 'https://schema.org',
       '@graph': [
         organizationSchema(site, en.value ? 'en' : 'fr'),
-        { '@type': 'ContactPage', '@id': `${site}${link.contact()}#webpage`, url: `${site}${link.contact()}`, name: t.value.title, inLanguage: en.value ? 'en' : 'fr-FR', about: { '@id': `${site}/#organization` } }
+        { '@type': 'ContactPage', '@id': `${site}${link.contact()}#webpage`, url: `${site}${link.contact()}`, name: t.value.title, inLanguage: en.value ? 'en' : 'fr', about: { '@id': `${site}/#organization` } }
       ]
     })
   }]
@@ -171,7 +171,7 @@ async function onNext() {
 .contact__info > div { display: flex; flex-direction: column; gap: 4px; padding: 20px 0; border-bottom: 1px solid var(--line-2); }
 .contact__info dt { font-size: 13px; color: var(--muted-2); }
 .contact__info dd { margin: 0; font-size: 19px; font-weight: 600; }
-.wizard { grid-column: 7 / span 6; align-self: start; display: flex; flex-direction: column; gap: 28px; padding: 44px; background: var(--white); border: 1px solid var(--line); border-radius: 28px; box-shadow: 0 30px 60px -40px rgba(23, 18, 61,.3); }
+.wizard { grid-column: 7 / span 6; align-self: start; display: flex; flex-direction: column; gap: 28px; padding: 44px; background: var(--white); border: 1px solid var(--line); border-radius: 28px; box-shadow: 0 30px 60px -40px rgba(10, 26, 71, .3); }
 .wizard__bars { display: flex; gap: 8px; }
 .wizard__bars i { flex-grow: 1; height: 6px; border-radius: 99px; background: var(--line); display: block; transition: background .2s; }
 .wizard__bars i.is-on { background: var(--accent); }

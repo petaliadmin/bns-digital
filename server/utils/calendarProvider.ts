@@ -18,7 +18,7 @@ export interface CalendarProvider {
 function kmeetLink() {
   const base = String(useRuntimeConfig().kmeetBase || '').trim()
   if (!base) return null
-  const room = `kps-${randomBytes(6).toString('hex')}`
+  const room = `bns-${randomBytes(6).toString('hex')}`
   return `${base.endsWith('/') ? base : `${base}/`}${room}`
 }
 

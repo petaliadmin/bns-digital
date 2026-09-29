@@ -46,7 +46,7 @@ export default defineEventHandler(async (event) => {
   if (busy.some(b => Date.parse(startIso) < b.end && Date.parse(end) > b.start)) throw createError({ statusCode: 409, statusMessage: 'Créneau déjà réservé' })
 
   const description = [
-    `Appel découverte réservé depuis kps-agency.com (${locale.toUpperCase()})`,
+    `Appel découverte réservé depuis bns-digital.com (${locale.toUpperCase()})`,
     '',
     `Nom : ${name}`,
     company && `Entreprise : ${company}`,
@@ -70,8 +70,8 @@ export default defineEventHandler(async (event) => {
 
   // Confirmation au client (avec invitation .ics) + notification à l'équipe, si SMTP configuré
   const ics = buildIcs({
-    uid: `${randomUUID()}@kps-agency.com`, method: 'PUBLISH', start: startIso, end,
-    summary: locale === 'en' ? 'Discovery call with KPS Agency' : 'Appel découverte avec KPS Agency',
+    uid: `${randomUUID()}@bns-digital.com`, method: 'PUBLISH', start: startIso, end,
+    summary: locale === 'en' ? 'Discovery call with BNS Digital' : 'Appel découverte avec BNS Digital',
     description: mode === 'phone' ? `${locale === 'en' ? 'Phone call' : 'Appel téléphonique'} : ${phone}` : (created.meetLink ?? 'Visio'),
     location: created.meetLink ?? undefined
   })

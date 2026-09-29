@@ -56,14 +56,8 @@ const t = useLocaleText({
   en: { home: 'Home', work: 'Our work', visit: 'Visit', next: 'Next project', expertise: 'Expertise involved', discover: 'Discover our service:' }
 })
 
-// Indicateurs publiés sur kps-agency.com
-const KPIS: Record<string, { v: string; fr: string; en: string }[]> = {
-  yassir: [{ v: '5M', fr: 'paid reach', en: 'paid reach' }, { v: '3.9M', fr: 'reach Facebook', en: 'Facebook reach' }, { v: '1.4M', fr: 'reach Instagram', en: 'Instagram reach' }],
-  zayn: [{ v: '308.8K', fr: 'couverture', en: 'reach' }, { v: '6.5K', fr: 'interactions', en: 'interactions' }],
-  'groupado-pro': [{ v: '6.4M', fr: 'impressions', en: 'impressions' }, { v: '1.7M', fr: 'reach payante', en: 'paid reach' }],
-  'brasileia-cosmetics': [{ v: '1.8M', fr: 'vues', en: 'views' }, { v: '996K', fr: 'couverture', en: 'reach' }],
-  'tunisia-franchise-show': [{ v: '2.2M', fr: 'reach', en: 'reach' }, { v: '2.9K', fr: 'interactions', en: 'interactions' }]
-}
+// Indicateurs chiffrés par projet (clé = slug), affichés sous le visuel
+const KPIS: Record<string, { v: string; fr: string; en: string }[]> = {}
 
 // Service mobilisé selon le type de projet : maillage interne vers la page d'expertise
 const SERVICE_BY_CAT: Record<ProjectCat, string> = { Web: 'web', ADS: 'ads', Social: 'social' }
@@ -76,8 +70,8 @@ const c = computed(() => {
   const sub = hasDesc
     ? p.desc
     : en.value
-      ? `Website project by KPS Agency for ${p.client}, a company in the ${p.label.toLowerCase()} sector${p.url ? ': see the live website' : ''}.`
-      : `Réalisation web de KPS Agency pour ${p.client}, acteur du secteur ${p.label.toLowerCase()}${p.url ? ' : découvrez le site en ligne' : ''}.`
+      ? `Website project by BNS Digital for ${p.client}, a company in the ${p.label.toLowerCase()} sector${p.url ? ': see the live website' : ''}.`
+      : `Réalisation web de BNS Digital pour ${p.client}, acteur du secteur ${p.label.toLowerCase()}${p.url ? ' : découvrez le site en ligne' : ''}.`
   const blocks: Block[] = [{ k: t.value.expertise, t: svc.crumb, d: svc.sub, link: { to: link.service(svc.slug), label: `${t.value.discover} ${svc.crumb.toLowerCase()}` } }]
   const kpis = (KPIS[p.slug] ?? []).map(k => ({ v: k.v, l: en.value ? k.en : k.fr }))
   return { sub, kpis, blocks, hasDesc }
@@ -94,13 +88,13 @@ const metaDesc = computed(() => {
   if (c.value.hasDesc && p.desc.length >= 110) return p.desc
   const cat = catLabel.value[p.cat].toLowerCase()
   const long = c.value.hasDesc
-    ? (en.value ? `${p.desc} A ${cat} project delivered by KPS Agency, a digital agency in Paris.` : `${p.desc} Projet ${cat} réalisé par KPS Agency, agence digitale à Paris.`)
+    ? (en.value ? `${p.desc} A ${cat} project delivered by BNS Digital, a Dakar-based digital agency.` : `${p.desc} Projet ${cat} réalisé par BNS Digital, agence digitale basée à Dakar.`)
     : (en.value
-        ? `Website project by KPS Agency for ${p.client} (${p.label.toLowerCase()}): discover the project and the live website. Website design agency in Paris.`
-        : `Réalisation web de KPS Agency pour ${p.client} (${p.label.toLowerCase()}) : découvrez le projet et le site en ligne. Agence de création de site web à Paris.`)
+        ? `Website project by BNS Digital for ${p.client} (${p.label.toLowerCase()}): discover the project and the live website. Dakar-based website design agency.`
+        : `Réalisation web de BNS Digital pour ${p.client} (${p.label.toLowerCase()}) : découvrez le projet et le site en ligne. Agence de création de site web basée à Dakar.`)
   const short = c.value.hasDesc
     ? p.desc
-    : (en.value ? `Website project by KPS Agency for ${p.client} (${p.label.toLowerCase()}): discover the project and the live website.` : `Réalisation web de KPS Agency pour ${p.client} (${p.label.toLowerCase()}) : découvrez le projet et le site en ligne.`)
+    : (en.value ? `Website project by BNS Digital for ${p.client} (${p.label.toLowerCase()}): discover the project and the live website.` : `Réalisation web de BNS Digital pour ${p.client} (${p.label.toLowerCase()}) : découvrez le projet et le site en ligne.`)
   return long.length <= 160 ? long : short
 })
 // Titre ≤ 60 caractères avec la marque : libellé complet si possible, sinon le type de projet
@@ -126,7 +120,7 @@ useHead({
       return JSON.stringify({
         '@context': 'https://schema.org', '@type': 'CreativeWork', '@id': `${url}#projet`,
         name: `${project.value!.client} — ${project.value!.label}`, description: metaDesc.value, url,
-        image: site + project.value!.img, inLanguage: en.value ? 'en' : 'fr-FR', genre: catLabel.value[project.value!.cat],
+        image: site + project.value!.img, inLanguage: en.value ? 'en' : 'fr', genre: catLabel.value[project.value!.cat],
         creator: { '@id': `${site}/#organization` }, ...(project.value!.url ? { sameAs: project.value!.url } : {})
       })
     }
@@ -143,7 +137,7 @@ useHead({
 .head__h1 { font-size: 88px; line-height: 1; letter-spacing: -3px; font-weight: 800; max-width: 1100px; }
 .head__sub { max-width: 760px; }
 .head__site { align-self: flex-start; }
-.visual { margin: 0; border-radius: 28px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 30px 60px -30px rgba(23, 18, 61, .25); }
+.visual { margin: 0; border-radius: 28px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 30px 60px -30px rgba(10, 26, 71, .25); }
 .visual img { display: block; width: 100%; height: auto; }
 .kpis { padding-top: 64px; }
 .kpi { display: flex; flex-direction: column; gap: 8px; padding: 36px; }

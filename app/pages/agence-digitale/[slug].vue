@@ -7,7 +7,8 @@
       <p class="lead hero__sub">{{ page.sub }}</p>
       <div class="hero__ctas">
         <NuxtLink :to="link.contact()" class="btn btn--primary">{{ t.talk }} →</NuxtLink>
-        <NuxtLink :to="link.work()" class="btn btn--ghost">{{ t.seeWork }}</NuxtLink>
+        <NuxtLink v-if="hasWork" :to="link.work()" class="btn btn--ghost">{{ t.seeWork }}</NuxtLink>
+        <NuxtLink v-else :to="link.booking()" class="btn btn--ghost">{{ t.call }}</NuxtLink>
       </div>
     </section>
 
@@ -32,7 +33,7 @@
       </div>
     </section>
 
-    <section class="bg-dark section--96">
+    <section v-if="refs.length" class="bg-dark section--96">
       <div class="container">
         <h2 class="h2 h2--52 refs-h">{{ page.refTitle }}</h2>
         <div class="grid grid-3 m-swipe">
@@ -54,8 +55,8 @@
 import { organizationSchema, type Project } from '~/data/content'
 
 const route = useRoute()
-const { en, link, services, projects, localPages, localSlug } = useSite()
-// Le slug doit correspondre à la langue de l'URL (/agence-digitale/energie ↔ /en/digital-agency/energy)
+const { en, link, services, projects, hasWork, localPages, localSlug } = useSite()
+// Le slug doit correspondre à la langue de l'URL (/agence-digitale/belgique ↔ /en/digital-agency/belgium)
 const page = computed(() => localPages.value.find(l => localSlug(l.slug) === String(route.params.slug)))
 if (!page.value) throw createError({ statusCode: 404, statusMessage: 'Page introuvable', fatal: true })
 useSetI18nParams()({ fr: { slug: page.value.slug }, en: { slug: localSlug(page.value.slug, 'en') } })
@@ -63,11 +64,11 @@ const refs = computed(() => (page.value?.refs ?? []).map(slug => projects.value.
 
 const t = useLocaleText({
   fr: {
-    home: 'Accueil', talk: 'Parler de votre projet', seeWork: 'Voir les réalisations', more: 'En savoir plus', faq: 'Questions fréquentes',
+    home: 'Accueil', talk: 'Parler de votre projet', seeWork: 'Voir les réalisations', call: 'Réserver un appel', more: 'En savoir plus', faq: 'Questions fréquentes',
     short: { web: 'Vitrine, blog, landing page, e-commerce.', app: 'Des outils sur mesure pour vos équipes.', seo: 'Visibilité sur Google et les IA génératives.', mobile: 'iOS et Android, de l’UX aux stores.', ads: 'Des campagnes pilotées par la donnée.', social: 'Visuel, vidéo et stratégie éditoriale.' } as Record<string, string>
   },
   en: {
-    home: 'Home', talk: 'Discuss your project', seeWork: 'See our work', more: 'Learn more', faq: 'Frequently asked questions',
+    home: 'Home', talk: 'Discuss your project', seeWork: 'See our work', call: 'Book a call', more: 'Learn more', faq: 'Frequently asked questions',
     short: { web: 'Showcase sites, blogs, landing pages, e-commerce.', app: 'Tailor-made tools for your teams.', seo: 'Visibility on Google and generative AI.', mobile: 'iOS and Android, from UX to the stores.', ads: 'Data-driven campaigns.', social: 'Visuals, video and editorial strategy.' } as Record<string, string>
   }
 })
@@ -84,7 +85,7 @@ useHead({
         organizationSchema(site, en.value ? 'en' : 'fr'),
         {
           '@type': 'WebPage', '@id': `${site}${route.path}#webpage`, url: `${site}${route.path}`, name: page.value?.title, description: page.value?.description,
-          inLanguage: en.value ? 'en' : 'fr-FR', about: { '@id': `${site}/#organization` }, isPartOf: { '@id': `${site}/#website` }
+          inLanguage: en.value ? 'en' : 'fr', about: { '@id': `${site}/#organization` }, isPartOf: { '@id': `${site}/#website` }
         },
         {
           '@type': 'FAQPage', '@id': `${site}${route.path}#faq`,

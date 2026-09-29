@@ -55,7 +55,7 @@
               @click="selectedSlot = s"
             >
               <span>{{ time(s.start) }}</span>
-              <small v-if="showParis">{{ t.paris }} {{ time(s.start, BOOKING.timeZone) }}</small>
+              <small v-if="showAgency">{{ t.agency }} {{ time(s.start, BOOKING.timeZone) }}</small>
             </button>
           </div>
           <button type="button" class="btn btn--primary bk__next" :disabled="!selectedSlot" @click="step = 'form'">{{ t.continue }} →</button>
@@ -70,7 +70,7 @@
         <div>
           <span class="bk__recap-k">{{ t.yourSlot }}</span>
           <strong>{{ longDate(selectedDay!.date) }} · {{ time(selectedSlot!.start) }} – {{ time(selectedSlot!.end) }}</strong>
-          <span v-if="showParis" class="bk__muted">{{ t.paris }} {{ time(selectedSlot!.start, BOOKING.timeZone) }}</span>
+          <span v-if="showAgency" class="bk__muted">{{ t.agency }} {{ time(selectedSlot!.start, BOOKING.timeZone) }}</span>
         </div>
         <button type="button" class="bk__change" @click="step = 'pick'">{{ t.change }}</button>
       </div>
@@ -103,19 +103,19 @@
     <div v-else class="bk__done" role="status">
       <span class="bk__done-i"><IconCheck :size="30" /></span>
       <h3 class="bk__done-h">{{ t.doneH }}</h3>
-      <p class="bk__done-when">{{ longDate(selectedDay!.date) }} · {{ time(selectedSlot!.start) }} – {{ time(selectedSlot!.end) }}<template v-if="showParis"> ({{ t.paris }} {{ time(selectedSlot!.start, BOOKING.timeZone) }})</template></p>
+      <p class="bk__done-when">{{ longDate(selectedDay!.date) }} · {{ time(selectedSlot!.start) }} – {{ time(selectedSlot!.end) }}<template v-if="showAgency"> ({{ t.agency }} {{ time(selectedSlot!.start, BOOKING.timeZone) }})</template></p>
       <p class="bk__muted">{{ form.mode === 'phone' ? t.donePhone : result?.meetLink ? t.doneMeet : t.doneVisio }}<template v-if="result?.emailed"> {{ t.doneMail }}</template></p>
       <a v-if="result?.meetLink" :href="result.meetLink" target="_blank" rel="noopener" class="btn btn--primary btn--sm">{{ t.joinMeet }}</a>
       <div class="bk__add">
         <a :href="googleLink" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">{{ t.addGoogle }}</a>
-        <a :href="icsHref" download="rendez-vous-kps-agency.ics" class="btn btn--ghost btn--sm">{{ t.addIcs }}</a>
+        <a :href="icsHref" download="rendez-vous-bns-digital.ics" class="btn btn--ghost btn--sm">{{ t.addIcs }}</a>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { BOOKING, parisDate, type DaySlots, type Slot } from '#shared/booking'
+import { BOOKING, agencyDate, type DaySlots, type Slot } from '#shared/booking'
 import { CONTACT } from '~/data/content'
 
 const { en, locale, link } = useSite()
@@ -124,9 +124,9 @@ const api = (config.public.bookingApi as string || '').replace(/\/$/, '')
 
 const t = useLocaleText({
   fr: {
-    calendar: 'Choisir une date', prevMonth: 'Mois précédent', nextMonth: 'Mois suivant', legend: 'Jours avec des créneaux libres (du lundi au samedi, 10 h – 17 h, heure de Paris)',
+    calendar: 'Choisir une date', prevMonth: 'Mois précédent', nextMonth: 'Mois suivant', legend: 'Jours avec des créneaux libres (du lundi au samedi, 9 h – 18 h, heure de Dakar, GMT)',
     loading: 'Chargement des disponibilités…', loadError: 'Impossible de charger les disponibilités pour le moment.', retry: 'Réessayer', mailUs: 'Nous écrire', mailSubject: 'Demande de rendez-vous',
-    duration: 'Appel de 30 min', paris: 'Paris :', continue: 'Continuer', noSlots: 'Aucun créneau disponible pour le moment. Écrivez-nous, nous trouverons un moment.',
+    duration: 'Appel de 30 min', agency: 'Dakar :', continue: 'Continuer', noSlots: 'Aucun créneau disponible pour le moment. Écrivez-nous, nous trouverons un moment.',
     yourSlot: 'Votre créneau', change: 'Modifier', mode: 'Format de l’appel', visio: 'Visio', visioD: 'Lien kMeet envoyé par e-mail', phoneMode: 'Téléphone', phoneD: 'Nous vous appelons',
     name: 'Prénom et nom', company: 'Entreprise', email: 'E-mail', phone: 'Téléphone', message: 'Votre projet en quelques mots (facultatif)', messagePh: 'Objectifs, site actuel, échéance…',
     consent: 'J’accepte que mes données soient utilisées pour organiser ce rendez-vous, conformément à la', privacy: 'politique de confidentialité',
@@ -135,12 +135,12 @@ const t = useLocaleText({
     errTaken: 'Ce créneau vient d’être réservé. Choisissez-en un autre, les disponibilités ont été mises à jour.', errSetup: 'La réservation en ligne n’est pas encore active. Écrivez-nous à', errGeneric: 'La réservation a échoué. Réessayez ou écrivez-nous à',
     doneH: 'C’est réservé, à bientôt !', doneMeet: 'Voici votre lien de visio : il suffit de l’ouvrir à l’heure du rendez-vous.', doneVisio: 'Nous vous envoyons le lien de la visio par e-mail avant le rendez-vous.', donePhone: 'Nous vous appellerons au numéro indiqué, à l’heure prévue.', doneMail: 'Un e-mail de confirmation vient de vous être envoyé.',
     joinMeet: 'Ouvrir le lien de la visio', addGoogle: 'Ajouter à Google Agenda', addIcs: 'Ajouter à mon agenda (.ics)',
-    eventTitle: 'Appel découverte avec KPS Agency', tz: 'heure de Paris', tzLocal: 'heures affichées dans votre fuseau'
+    eventTitle: 'Appel découverte avec BNS Digital', tz: 'heure de Dakar (GMT)', tzLocal: 'heures affichées dans votre fuseau'
   },
   en: {
-    calendar: 'Choose a date', prevMonth: 'Previous month', nextMonth: 'Next month', legend: 'Days with available slots (Monday to Saturday, 10 am – 5 pm, Paris time)',
+    calendar: 'Choose a date', prevMonth: 'Previous month', nextMonth: 'Next month', legend: 'Days with available slots (Monday to Saturday, 9 am – 6 pm Dakar time, GMT)',
     loading: 'Loading availability…', loadError: 'We can’t load availability right now.', retry: 'Try again', mailUs: 'Email us', mailSubject: 'Call request',
-    duration: '30-minute call', paris: 'Paris:', continue: 'Continue', noSlots: 'No slots available right now. Email us and we’ll find a time.',
+    duration: '30-minute call', agency: 'Dakar:', continue: 'Continue', noSlots: 'No slots available right now. Email us and we’ll find a time.',
     yourSlot: 'Your slot', change: 'Change', mode: 'Call format', visio: 'Video call', visioD: 'kMeet link sent by email', phoneMode: 'Phone', phoneD: 'We call you',
     name: 'Full name', company: 'Company', email: 'Email', phone: 'Phone', message: 'Your project in a few words (optional)', messagePh: 'Goals, current website, timeline…',
     consent: 'I agree that my data may be used to arrange this call, in accordance with the', privacy: 'privacy policy',
@@ -149,7 +149,7 @@ const t = useLocaleText({
     errTaken: 'This slot has just been booked. Please choose another one — availability has been refreshed.', errSetup: 'Online booking isn’t active yet. Email us at', errGeneric: 'Booking failed. Please try again or email us at',
     doneH: 'You’re booked — talk soon!', doneMeet: 'Here is your video call link — just open it at the time of the meeting.', doneVisio: 'We’ll email you the video call link before the meeting.', donePhone: 'We’ll call you on the number you provided at the scheduled time.', doneMail: 'A confirmation email is on its way.',
     joinMeet: 'Open the video call link', addGoogle: 'Add to Google Calendar', addIcs: 'Add to my calendar (.ics)',
-    eventTitle: 'Discovery call with KPS Agency', tz: 'Paris time', tzLocal: 'times shown in your time zone'
+    eventTitle: 'Discovery call with BNS Digital', tz: 'Dakar time (GMT)', tzLocal: 'times shown in your time zone'
   }
 })
 
@@ -159,7 +159,7 @@ const loading = ref(true)
 const loadError = ref(false)
 const selectedDate = ref('')
 const selectedSlot = ref<Slot | null>(null)
-const today = parisDate()
+const today = agencyDate()
 
 async function load() {
   loading.value = true
@@ -188,7 +188,7 @@ function selectDate(date: string) {
   selectedSlot.value = null
 }
 
-// ---------- Grille du mois (semaines du lundi au dimanche, dates de Paris) ----------
+// ---------- Grille du mois (semaines du lundi au dimanche, dates de Dakar) ----------
 const months = computed(() => {
   const last = days.value.at(-1)?.date ?? today
   const list: string[] = []
@@ -224,16 +224,16 @@ const cells = computed<(Cell | null)[]>(() => {
   return out
 })
 
-// ---------- Affichage des heures (fuseau du visiteur, + heure de Paris si différente) ----------
+// ---------- Affichage des heures (fuseau du visiteur, + heure de Dakar si différente) ----------
 const visitorTz = ref(BOOKING.timeZone)
 onMounted(() => { visitorTz.value = Intl.DateTimeFormat().resolvedOptions().timeZone || BOOKING.timeZone })
 const time = (iso: string, timeZone = visitorTz.value) =>
   new Intl.DateTimeFormat(intlLocale.value, { hour: '2-digit', minute: '2-digit', timeZone }).format(new Date(iso))
-const showParis = computed(() => {
+const showAgency = computed(() => {
   const probe = days.value[0]?.slots[0]?.start
   return !!probe && time(probe) !== time(probe, BOOKING.timeZone)
 })
-const tzNote = computed(() => (showParis.value ? t.value.tzLocal : t.value.tz))
+const tzNote = computed(() => (showAgency.value ? t.value.tzLocal : t.value.tz))
 const longDate = (date: string) => {
   const [y, m, d] = date.split('-').map(Number) as [number, number, number]
   const s = new Intl.DateTimeFormat(intlLocale.value, { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' }).format(new Date(Date.UTC(y, m - 1, d)))
@@ -288,10 +288,10 @@ const googleLink = computed(() => {
 const icsHref = computed(() => {
   if (!selectedSlot.value) return '#'
   const ics = [
-    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//KPS Agency//Booking//FR', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH', 'BEGIN:VEVENT',
-    `UID:${stamp(selectedSlot.value.start)}-${form.email}@kps-agency.com`, `DTSTAMP:${stamp(new Date().toISOString())}`,
+    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//BNS Digital//Booking//FR', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH', 'BEGIN:VEVENT',
+    `UID:${stamp(selectedSlot.value.start)}-${form.email}@bns-digital.com`, `DTSTAMP:${stamp(new Date().toISOString())}`,
     `DTSTART:${stamp(selectedSlot.value.start)}`, `DTEND:${stamp(selectedSlot.value.end)}`,
-    `SUMMARY:${t.value.eventTitle}`, `DESCRIPTION:${eventDetails.value.replace(/[,;]/g, '\\$&')}`, `ORGANIZER;CN=KPS Agency:mailto:${CONTACT.email}`,
+    `SUMMARY:${t.value.eventTitle}`, `DESCRIPTION:${eventDetails.value.replace(/[,;]/g, '\\$&')}`, `ORGANIZER;CN=BNS Digital:mailto:${CONTACT.email}`,
     'END:VEVENT', 'END:VCALENDAR'
   ].join('\r\n')
   return `data:text/calendar;charset=utf-8,${encodeURIComponent(ics)}`
@@ -299,7 +299,7 @@ const icsHref = computed(() => {
 </script>
 
 <style scoped>
-.bk { background: var(--white); border: 1px solid var(--line); border-radius: 24px; padding: 32px; box-shadow: 0 30px 60px -40px rgba(23, 18, 61, .3); }
+.bk { background: var(--white); border: 1px solid var(--line); border-radius: 24px; padding: 32px; box-shadow: 0 30px 60px -40px rgba(10, 26, 71, .3); }
 .bk__pick { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 40px; }
 .bk__month { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
 .bk__month-t { font-size: 20px; font-weight: 700; }

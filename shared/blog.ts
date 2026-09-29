@@ -82,7 +82,7 @@ export function toMeta(path: string, raw: string): { meta: BlogMeta; body: strin
       sector: str('sector') || 'pme',
       service: str('service') || undefined,
       tags: arr('tags'),
-      author: str('author') || 'KPS Agency',
+      author: str('author') || 'BNS Digital',
       cover: str('cover') || undefined,
       coverAlt: str('coverAlt') || undefined,
       translation: str('translation') || undefined,

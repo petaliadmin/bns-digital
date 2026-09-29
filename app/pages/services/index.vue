@@ -28,13 +28,13 @@ const t = useLocaleText({
     home: 'Accueil', crumb: 'Expertises', h1: 'Six expertises. Une seule équipe. Un objectif : votre croissance.',
     lead: 'Chaque expertise se mobilise seule ou en synergie. C’est dans leur articulation — un site bien référencé, nourri par des campagnes rentables et des contenus engageants — que naît la performance durable.',
     more: 'Découvrir', ctaTitle: 'Un projet en tête ?', ctaText: 'Décrivez-nous votre besoin : nous revenons vers vous avec une recommandation claire et un devis personnalisé.',
-    title: 'Agence web & marketing digital : nos expertises', desc: 'Création de sites, applications métier et mobiles, SEO & GEO, publicité en ligne et social media : six expertises réunies dans une même agence à Paris.'
+    title: 'Agence web & marketing digital : nos expertises', desc: 'Création de sites, applications métier et mobiles, SEO & GEO, publicité en ligne et social media : six expertises réunies dans une agence basée à Dakar, pour la France, l’Europe et le Canada.'
   },
   en: {
     home: 'Home', crumb: 'Services', h1: 'Six areas of expertise. One team. One goal: your growth.',
     lead: 'Each service works on its own or in synergy with the others. Lasting performance comes from how they fit together — a well-ranked website, fuelled by profitable campaigns and engaging content.',
     more: 'Discover', ctaTitle: 'Got a project in mind?', ctaText: 'Tell us what you need: we’ll come back to you with a clear recommendation and a tailored quote.',
-    title: 'Web & digital marketing agency: our services', desc: 'Website design, custom business software and mobile apps, SEO & GEO, paid advertising and social media: six areas of expertise in one Paris agency.'
+    title: 'Web & digital marketing agency: our services', desc: 'Website design, custom business software and mobile apps, SEO & GEO, paid advertising and social media: six areas of expertise in one Dakar-based agency serving Canada and Europe.'
   }
 })
 usePageSeo({ title: () => t.value.title, description: () => t.value.desc })
@@ -44,7 +44,7 @@ useHead({
     type: 'application/ld+json',
     innerHTML: () => JSON.stringify({
       '@context': 'https://schema.org',
-      '@type': 'CollectionPage', '@id': `${site}${link.services()}#webpage`, url: `${site}${link.services()}`, name: t.value.title, inLanguage: en.value ? 'en' : 'fr-FR',
+      '@type': 'CollectionPage', '@id': `${site}${link.services()}#webpage`, url: `${site}${link.services()}`, name: t.value.title, inLanguage: en.value ? 'en' : 'fr',
       mainEntity: { '@type': 'ItemList', itemListElement: services.value.map((sv, i) => ({ '@type': 'ListItem', position: i + 1, url: `${site}${link.service(sv.slug)}`, name: serviceSeo.value[sv.slug]?.h1 ?? sv.crumb })) }
     })
   }]

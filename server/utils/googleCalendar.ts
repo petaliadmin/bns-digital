@@ -1,4 +1,5 @@
 import { createSign } from 'node:crypto'
+import { BOOKING } from '#shared/booking'
 
 // Client Google Agenda minimal (compte de service, JWT RS256) — sans dépendance externe.
 // Configuration : NUXT_GOOGLE_SERVICE_ACCOUNT_EMAIL, NUXT_GOOGLE_PRIVATE_KEY, NUXT_GOOGLE_CALENDAR_ID,
@@ -45,7 +46,7 @@ export async function busyPeriods(cfg: GoogleConfig, timeMin: string, timeMax: s
   const res = await $fetch<{ calendars: Record<string, { busy: { start: string; end: string }[]; errors?: unknown[] }> }>(`${api}/freeBusy`, {
     method: 'POST',
     headers: { authorization: `Bearer ${token}` },
-    body: { timeMin, timeMax, timeZone: 'Europe/Paris', items: [{ id: cfg.calendarId }] }
+    body: { timeMin, timeMax, timeZone: BOOKING.timeZone, items: [{ id: cfg.calendarId }] }
   })
   const cal = res.calendars[cfg.calendarId]
   if (!cal || cal.errors?.length) throw new Error(`freeBusy: agenda inaccessible (${JSON.stringify(cal?.errors ?? 'absent')})`)
@@ -64,12 +65,12 @@ export async function createEvent(cfg: GoogleConfig, ev: NewEvent) {
   const body = {
     summary: ev.summary,
     description: ev.description,
-    start: { dateTime: ev.start, timeZone: 'Europe/Paris' },
-    end: { dateTime: ev.end, timeZone: 'Europe/Paris' },
+    start: { dateTime: ev.start, timeZone: BOOKING.timeZone },
+    end: { dateTime: ev.end, timeZone: BOOKING.timeZone },
     ...(delegated && ev.attendee ? { attendees: [{ email: ev.attendee.email, displayName: ev.attendee.name }] } : {}),
-    ...(delegated && ev.meet ? { conferenceData: { createRequest: { requestId: `kps-${Date.now()}`, conferenceSolutionKey: { type: 'hangoutsMeet' } } } } : {}),
+    ...(delegated && ev.meet ? { conferenceData: { createRequest: { requestId: `bns-${Date.now()}`, conferenceSolutionKey: { type: 'hangoutsMeet' } } } } : {}),
     reminders: { useDefault: true },
-    extendedProperties: { private: { source: 'kps-website' } }
+    extendedProperties: { private: { source: 'bns-website' } }
   }
   const qs = new URLSearchParams({ conferenceDataVersion: '1', sendUpdates: delegated ? 'all' : 'none' })
   return await $fetch<{ id: string; htmlLink: string; hangoutLink?: string }>(`${api}/calendars/${encodeURIComponent(cfg.calendarId)}/events?${qs}`, {

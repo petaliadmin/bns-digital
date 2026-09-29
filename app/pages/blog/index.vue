@@ -68,12 +68,12 @@ const formatDate = (d: string) => new Intl.DateTimeFormat(en.value ? 'en-GB' : '
 usePageSeo({ title: () => t.value.title, description: () => t.value.desc })
 const site = useRuntimeConfig().public.siteUrl as string
 useHead({
-  link: [{ rel: 'alternate', type: 'application/rss+xml', title: 'KPS Agency — Blog', href: () => `${site}${en.value ? '/en' : ''}/blog/rss.xml` }],
+  link: [{ rel: 'alternate', type: 'application/rss+xml', title: 'BNS Digital — Blog', href: () => `${site}${en.value ? '/en' : ''}/blog/rss.xml` }],
   script: [{
     type: 'application/ld+json',
     innerHTML: () => JSON.stringify({
       '@context': 'https://schema.org', '@type': 'Blog', '@id': `${site}${link.blog()}#blog`, url: `${site}${link.blog()}`,
-      name: t.value.title, description: t.value.desc, inLanguage: en.value ? 'en-GB' : 'fr-FR', publisher: { '@id': `${site}/#organization` },
+      name: t.value.title, description: t.value.desc, inLanguage: en.value ? 'en' : 'fr', publisher: { '@id': `${site}/#organization` },
       blogPost: articles.value.map(a => ({ '@type': 'BlogPosting', headline: a.title, url: `${site}${link.article(a.slug)}`, datePublished: a.date }))
     })
   }]
@@ -91,7 +91,7 @@ useHead({
 .posts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
 .post { display: flex; }
 .post__link { display: flex; flex-direction: column; width: 100%; background: var(--white); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; color: var(--ink); transition: transform .2s, box-shadow .2s; }
-.post__link:hover { color: var(--ink); transform: translateY(-3px); box-shadow: 0 24px 48px -28px rgba(23, 18, 61, .35); }
+.post__link:hover { color: var(--ink); transform: translateY(-3px); box-shadow: 0 24px 48px -28px rgba(10, 26, 71, .35); }
 .post__visual { aspect-ratio: 16 / 9; overflow: hidden; background: var(--accent-soft); }
 .post__visual img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform .4s; }
 .post__link:hover .post__visual img { transform: scale(1.04); }

@@ -3,12 +3,12 @@ type Cell = [string, string]
 type WorkItem = { client: string; sector: string; title: string; metric: string }
 
 const fr = {
-  seo: { title: 'Agence digitale à Paris : site web, SEO & Ads', desc: 'Agence digitale à Paris pour PME et TPE : création de site web, application sur mesure, référencement Google & IA et publicité en ligne. Devis sous 48 h.' },
-  topbar: ['Devis gratuit sous 48 h', 'Sans engagement', 'Une équipe basée à Paris'],
+  seo: { title: 'Agence digitale pour la France et le Canada', desc: 'Agence digitale basée à Dakar pour les PME françaises, européennes et canadiennes : sites web, applications, SEO & GEO et publicité en ligne. Devis sous 48 h.' },
+  topbar: ['Devis gratuit sous 48 h', 'Sans engagement', 'Équipe à Dakar · clients en France, en Europe et au Canada'],
   hero: {
-    badge: 'Agence digitale à Paris pour PME & TPE', title: 'Votre croissance digitale, gérée de A à Z.',
-    lead: 'Site web, application sur mesure, référencement Google & IA, publicité en ligne : une seule équipe pour vous rendre visible, attirer des clients et les convertir.',
-    cta: 'Demander un devis gratuit', cta2: 'Voir nos réalisations', trust: ['Réponse sous 48 h', 'Interlocuteur dédié', 'Sans engagement']
+    badge: 'Agence digitale à Dakar pour la France, l’Europe et le Canada', title: 'Votre croissance digitale, gérée de A à Z.',
+    lead: 'Site web, application sur mesure, référencement Google & IA, publicité en ligne : une équipe francophone basée à Dakar, les standards d’une agence européenne et un budget maîtrisé.',
+    cta: 'Demander un devis gratuit', cta2: 'Voir nos réalisations', cta2Call: 'Réserver un appel', trust: ['Réponse sous 48 h', 'Interlocuteur dédié', 'Sans engagement']
   },
   services: {
     eyebrow: 'Nos services', h2: 'Tout ce qu’il faut pour exister et vendre en ligne.', p: 'Choisissez un service ou combinez-les. Chaque projet est piloté par un chef de projet unique, du brief au lancement.',
@@ -21,10 +21,26 @@ const fr = {
       { num: '?', slug: '', tag: 'Gratuit', title: 'Pas sûr de ce qu’il vous faut ?', desc: 'On analyse votre présence en ligne et on vous dit exactement par où commencer.', items: ['Audit offert', '30 min', 'Sans engagement'], cta: 'Demander mon audit', theme: 'soft' }
     ]
   },
+  dakar: {
+    eyebrow: 'Pourquoi BNS Digital', h2: 'Une équipe à Dakar. Des clients en France, en Europe et au Canada.',
+    p: 'Nous travaillons à distance avec des entreprises françaises, belges, suisses et canadiennes : les mêmes méthodes qu’une agence européenne, la même langue, presque les mêmes horaires.',
+    items: [
+      { t: 'Qualité agence, coût maîtrisé', d: 'Les standards et les méthodes d’une agence européenne, avec une structure de coûts plus légère : votre budget va davantage à la production.' },
+      { t: 'Un fuseau horaire proche', d: 'Dakar vit à l’heure GMT : 1 à 2 h de décalage avec Paris, Bruxelles ou Genève, et une matinée de travail en commun avec l’Est canadien.' },
+      { t: 'Une équipe francophone', d: 'Des échanges fluides en français, et en anglais pour vos marchés anglophones. Pas d’intermédiaire, pas de perte d’information.' },
+      { t: 'Un suivi dédié et réactif', d: 'Un chef de projet unique, des points réguliers en visio et un suivi transparent de l’avancement à chaque étape.' }
+    ],
+    clocksLabel: 'Heure actuelle', markets: 'Nos marchés',
+    clocks: [
+      { city: 'Dakar', tz: 'Africa/Dakar', note: 'GMT · notre équipe' },
+      { city: 'Paris · Bruxelles · Genève', tz: 'Europe/Paris', note: '+1 h en hiver, +2 h en été' },
+      { city: 'Montréal · Toronto', tz: 'America/Toronto', note: '−5 h en hiver, −4 h en été' }
+    ]
+  },
   method: {
-    eyebrow: 'Comment ça marche', h2: 'Simple, rapide, transparent.', p: 'Pas de jargon, pas de réunion inutile. Un process en 4 étapes, et vous validez tout avant la mise en ligne.',
+    eyebrow: 'Comment ça marche', h2: 'Simple, rapide, transparent.', p: 'Pas de jargon, pas de réunion inutile. Un process en 4 étapes, entièrement à distance, et vous validez tout avant la mise en ligne.',
     steps: [
-      { n: '1', time: 'Jour 1', title: 'Le brief', desc: 'Un appel de 30 min pour comprendre votre activité, vos objectifs et votre budget.' },
+      { n: '1', time: 'Jour 1', title: 'Le brief', desc: 'Un appel de 30 min en visio pour comprendre votre activité, vos objectifs et votre budget.' },
       { n: '2', time: 'Sous 48 h', title: 'La proposition', desc: 'Un devis clair, un planning et une maquette de principe. Vous validez, on démarre.' },
       { n: '3', time: 'Production', title: 'La création', desc: 'Design, développement ou campagne : vous suivez l’avancement et validez chaque étape.' },
       { n: '4', time: 'Lancement', title: 'La croissance', desc: 'Mise en ligne, suivi des résultats et optimisation continue. On reste à vos côtés.' }
@@ -33,40 +49,28 @@ const fr = {
   work: {
     eyebrow: 'Réalisations', h2a: 'Des projets concrets,', h2b: 'des résultats mesurés.', filterLabel: 'Filtrer les réalisations', alt: 'Réalisation', more: 'Voir le cas', all: 'Voir toutes les réalisations',
     filters: [{ id: 'all', label: 'Tous' }, { id: 'Web', label: 'Sites & apps' }, { id: 'Social', label: 'Social media' }, { id: 'ADS', label: 'Publicité' }],
-    items: {
-      'powercell-group': { client: 'PowerCell', sector: 'Énergie renouvelable', title: 'Site corporate international', metric: '' },
-      'yassir': { client: 'YASSIR', sector: 'Mobilité & livraison', title: 'Campagne ADS multi-plateforme', metric: '5M reach' },
-      'zayn': { client: 'ZAYN', sector: 'Retail', title: 'Campagne social media intégrée', metric: '308,8K couverture' },
-      'cushman-wakefield-veritas': { client: 'Cushman & W.', sector: 'Immobilier', title: 'Site Cushman & Wakefield Veritas', metric: '' },
-      'groupado-pro': { client: 'groupado PRO', sector: 'E-commerce B2B', title: 'Campagne ADS performance', metric: '6,4M impressions' },
-      'kpmg': { client: 'KPMG', sector: 'Audit & conseil', title: 'Audit et analyse d’audience', metric: '' },
-      'fibbl': { client: 'Fibbl', sector: 'SaaS B2B', title: 'Site produit SaaS', metric: '' },
-      'copenhagen-energy': { client: 'Copenhagen Energy', sector: 'Énergie', title: 'Site institutionnel', metric: '' },
-      'brasileia-cosmetics': { client: 'Brasileia', sector: 'Beauté', title: 'Campagne produit beauté', metric: '1,8M vues' },
-      'tunisia-franchise-show': { client: 'Tunisia Franchise Show', sector: 'Événementiel', title: 'Campagne événementielle', metric: '2,2M reach' },
-      'jardins-de-carthage': { client: 'Jardins de Carthage', sector: 'Santé', title: 'Branding & communication santé', metric: '' },
-      'dunstan': { client: 'Dunstan', sector: 'Animalier', title: 'Site e-commerce', metric: '' }
-    } as Record<string, WorkItem>
+    // Textes courts des réalisations mises en avant (clé = slug du projet dans content.ts)
+    items: {} as Record<string, WorkItem>
   },
   compare: {
-    eyebrow: 'Pourquoi KPS', h2: 'Le meilleur des deux mondes : la réactivité d’un freelance, la force d’une agence.',
-    caption: 'Comparatif KPS Agency, freelance, agence classique et recrutement interne', cols: ['Freelance', 'Agence classique', 'Recrutement interne'], yes: 'Oui', no: 'Non', hint: 'Faites glisser le tableau pour comparer',
+    eyebrow: 'Le comparatif', h2: 'La qualité d’une agence européenne, le budget d’une équipe basée à Dakar.',
+    caption: 'Comparatif BNS Digital, freelance, agence classique et recrutement interne', cols: ['Freelance', 'Agence classique', 'Recrutement interne'], yes: 'Oui', no: 'Non', hint: 'Faites glisser le tableau pour comparer',
     rows: [
       { label: 'Tous les services digitaux au même endroit', cells: [['y', ''], ['n', ''], ['y', ''], ['n', 'Plusieurs profils']] as Cell[] },
       { label: 'Interlocuteur unique et dédié', cells: [['y', ''], ['y', ''], ['n', 'Commercial + équipe'], ['y', '']] as Cell[] },
       { label: 'Délai de démarrage', cells: [['y', 'Sous 1 semaine'], ['-', 'Variable'], ['n', '3 à 6 semaines'], ['n', '2 à 3 mois']] as Cell[] },
       { label: 'Continuité si absence', cells: [['y', 'Équipe'], ['n', ''], ['y', ''], ['n', '']] as Cell[] },
-      { label: 'Coût adapté aux PME', cells: [['y', 'Sur devis'], ['y', ''], ['n', 'Élevé'], ['n', 'Salaire + charges']] as Cell[] },
+      { label: 'Budget maîtrisé', cells: [['y', 'Coûts de structure allégés'], ['y', ''], ['n', 'Élevé'], ['n', 'Salaire + charges']] as Cell[] },
       { label: 'Vous restez propriétaire de tout', cells: [['y', ''], ['-', 'Selon contrat'], ['-', 'Selon contrat'], ['y', '']] as Cell[] }
     ]
   },
   reviews: { eyebrow: 'Avis clients', h2: 'Ils en parlent mieux que nous.', stars: 'étoiles sur 5', count: 'avis Google', see: 'Voir la fiche' },
   booking: {
     eyebrow: 'Réserver un appel', h2: 'Parlons de votre projet, en 30 minutes.',
-    lead: 'Choisissez un créneau qui vous convient : nous faisons le point sur vos objectifs et vous repartez avec des premières recommandations concrètes.',
+    lead: 'Choisissez un créneau qui vous convient : les horaires s’affichent dans votre fuseau. Nous faisons le point sur vos objectifs et vous repartez avec des premières recommandations concrètes.',
     facts: [
       { t: '30 minutes', d: ' pour comprendre votre activité et vos priorités' },
-      { t: 'Du lundi au samedi', d: ', de 10 h à 17 h (heure de Paris)' },
+      { t: 'Du lundi au samedi', d: ', de 9 h à 18 h à Dakar (à partir de 10 h ou 11 h à Paris, le matin à Montréal)' },
       { t: 'Visio (kMeet) ou téléphone', d: ', selon votre préférence' },
       { t: 'Gratuit et sans engagement', d: ', devis sous 48 h si besoin' }
     ]
@@ -74,15 +78,15 @@ const fr = {
   faq: {
     h2: 'Vos questions, nos réponses.', p: 'Une autre question ? Écrivez-nous, on répond sous 24 h ouvrées.', cta: 'Poser une question',
     items: [
+      ['Comment travaillez-vous depuis Dakar avec des entreprises françaises et canadiennes ?', 'Entièrement à distance : appels en visio, échanges par e-mail et outils de suivi partagés. Un chef de projet dédié organise des points réguliers et vous validez chaque étape avant la suite.'],
+      ['Quel est le décalage horaire ?', 'Dakar est à l’heure GMT toute l’année. Il y a 1 h de décalage avec Paris, Bruxelles et Genève en hiver, 2 h en été ; et 4 à 5 h d’avance sur Montréal et Toronto. Nos appels ont lieu entre 9 h et 18 h, heure de Dakar.'],
       ['Combien coûte un site internet ?', 'Chaque projet est différent : nous établissons un devis gratuit et détaillé sous 48 h, après un appel pour comprendre vos besoins. Aucun frais caché, et le devis reste valable 30 jours.'],
       ['Comment se passe le paiement ?', '50 % à la commande, 50 % à la livraison, par virement ou carte bancaire. Les conditions précises figurent toujours dans votre devis.'],
       ['En combien de temps mon site sera-t-il en ligne ?', 'Cela dépend de la complexité du projet et de la transmission de vos contenus. Un planning indicatif, jalonné d’étapes de validation, figure dans votre devis, et nous vous tenons informé de l’avancement.'],
       ['Combien de modifications sont incluses ?', 'Chaque prestation comprend deux cycles de révision. Au-delà, les modifications font l’objet d’un complément de devis.'],
       ['Qu’est-ce que le GEO ?', 'Le Generative Engine Optimization consiste à optimiser votre contenu pour être cité par les IA comme ChatGPT, Gemini ou Perplexity, en complément du SEO classique.'],
-      ['Puis-je modifier mon site moi-même ?', 'Oui. Nous livrons un site facile à administrer et nous vous formons à son utilisation.'],
       ['Suis-je propriétaire de mon site et de mes comptes publicitaires ?', 'Oui. Les créations vous appartiennent dès le paiement intégral, et le nom de domaine, les contenus et les comptes ADS sont à votre nom.'],
-      ['Proposez-vous un suivi après la mise en ligne ?', 'Oui. 12 mois de maintenance technique sont inclus pour chaque site, e-commerce, application ou agent IA. Ensuite, un abonnement optionnel couvre les mises à jour de sécurité, le suivi des performances et l’optimisation SEO ou ADS.'],
-      ['Travaillez-vous uniquement à Paris ?', 'Nous sommes basés à Paris et accompagnons des entreprises partout en France et à l’international, en visio ou sur place.']
+      ['Proposez-vous un suivi après la mise en ligne ?', 'Oui. 12 mois de maintenance technique sont inclus pour chaque site, e-commerce, application ou agent IA. Ensuite, un abonnement optionnel couvre les mises à jour de sécurité, le suivi des performances et l’optimisation SEO ou ADS.']
     ] as [string, string][]
   },
   final: {
@@ -94,16 +98,16 @@ const fr = {
     need: 'Votre besoin', needs: ['Site web', 'Application', 'SEO / GEO', 'App mobile', 'Publicité'], msg: 'Votre projet en quelques mots', msgPh: 'Objectifs, délais, budget indicatif…',
     submit: 'Recevoir mon devis gratuit', sending: 'Envoi…', sent: 'Merci, demande envoyée', note: 'Vos données restent confidentielles. Réponse sous 48 h ouvrées.'
   },
-  footer: { desc: 'Agence digitale à Paris : création de sites, applications sur mesure, SEO & GEO, publicité en ligne pour les PME et TPE.', local: 'Agence digitale :', legal: 'Mentions légales', privacy: 'Confidentialité', terms: 'CGV' }
+  footer: { desc: 'Agence digitale basée à Dakar : sites web, applications sur mesure, SEO & GEO et publicité en ligne pour les entreprises en France, en Europe et au Canada.', local: 'Nos marchés :', legal: 'Mentions légales', privacy: 'Confidentialité', terms: 'CGV' }
 }
 
 const en: typeof fr = {
-  seo: { title: 'Digital agency in Paris: websites, SEO & ads', desc: 'Paris digital agency for SMEs and start-ups: website design, custom software, Google & AI search optimisation and paid ads. Free quote within 48 hours.' },
-  topbar: ['Free quote within 48 hours', 'No commitment', 'A Paris-based team'],
+  seo: { title: 'Digital agency for Canada, France & Europe', desc: 'Dakar-based digital agency for companies in Canada, France and Europe: websites, custom software, SEO & GEO and paid ads. Free quote within 48 hours.' },
+  topbar: ['Free quote within 48 hours', 'No commitment', 'Team in Dakar · clients in Canada, France and Europe'],
   hero: {
-    badge: 'Digital agency in Paris for SMEs', title: 'Your digital growth, handled end to end.',
-    lead: 'Websites, custom software, Google & AI search optimisation, paid ads: one team to make you visible, attract customers and convert them.',
-    cta: 'Get a free quote', cta2: 'See our work', trust: ['Reply within 48 hours', 'Dedicated contact', 'No commitment']
+    badge: 'Dakar-based digital agency for Canada, France and Europe', title: 'Your digital growth, handled end to end.',
+    lead: 'Websites, custom software, Google & AI search optimisation, paid ads: a bilingual team based in Dakar, the standards of a European agency and a controlled budget.',
+    cta: 'Get a free quote', cta2: 'See our work', cta2Call: 'Book a call', trust: ['Reply within 48 hours', 'Dedicated contact', 'No commitment']
   },
   services: {
     eyebrow: 'Our services', h2: 'Everything you need to exist and sell online.', p: 'Choose one service or combine them. Every project is run by a single project manager, from brief to launch.',
@@ -116,10 +120,26 @@ const en: typeof fr = {
       { num: '?', slug: '', tag: 'Free', title: 'Not sure what you need?', desc: 'We review your online presence and tell you exactly where to start.', items: ['Free audit', '30 min', 'No commitment'], cta: 'Request my audit', theme: 'soft' }
     ]
   },
+  dakar: {
+    eyebrow: 'Why BNS Digital', h2: 'A team in Dakar. Clients in Canada, France and Europe.',
+    p: 'We work remotely with Canadian, French, Belgian and Swiss companies: the same methods as a European agency, your language, and working hours that overlap with yours.',
+    items: [
+      { t: 'Agency quality, controlled cost', d: 'The standards and methods of a European agency, with a lighter cost structure: more of your budget goes into production.' },
+      { t: 'A convenient time zone', d: 'Dakar runs on GMT: 1 to 2 hours from Paris, Brussels or Geneva, and a shared working morning with Eastern Canada.' },
+      { t: 'A bilingual team', d: 'Smooth communication in English and French. No middleman, nothing lost in translation.' },
+      { t: 'Dedicated, responsive follow-up', d: 'A single project manager, regular video calls and transparent progress tracking at every stage.' }
+    ],
+    clocksLabel: 'Current time', markets: 'Our markets',
+    clocks: [
+      { city: 'Dakar', tz: 'Africa/Dakar', note: 'GMT · our team' },
+      { city: 'Paris · Brussels · Geneva', tz: 'Europe/Paris', note: '+1 h in winter, +2 h in summer' },
+      { city: 'Montreal · Toronto', tz: 'America/Toronto', note: '−5 h in winter, −4 h in summer' }
+    ]
+  },
   method: {
-    eyebrow: 'How it works', h2: 'Simple, fast, transparent.', p: 'No jargon, no pointless meetings. A 4-step process, and you sign off on everything before go-live.',
+    eyebrow: 'How it works', h2: 'Simple, fast, transparent.', p: 'No jargon, no pointless meetings. A 4-step process, fully remote, and you sign off on everything before go-live.',
     steps: [
-      { n: '1', time: 'Day 1', title: 'The brief', desc: 'A 30-minute call to understand your business, goals and budget.' },
+      { n: '1', time: 'Day 1', title: 'The brief', desc: 'A 30-minute video call to understand your business, goals and budget.' },
       { n: '2', time: 'Within 48 h', title: 'The proposal', desc: 'A clear quote, a schedule and an initial mock-up. You approve, we start.' },
       { n: '3', time: 'Production', title: 'The build', desc: 'Design, development or campaign: you follow progress and approve each step.' },
       { n: '4', time: 'Launch', title: 'Growth', desc: 'Go-live, results tracking and continuous optimisation. We stay by your side.' }
@@ -128,40 +148,27 @@ const en: typeof fr = {
   work: {
     eyebrow: 'Our work', h2a: 'Real projects,', h2b: 'measurable results.', filterLabel: 'Filter projects', alt: 'Project for', more: 'View project', all: 'See all our work',
     filters: [{ id: 'all', label: 'All' }, { id: 'Web', label: 'Websites & apps' }, { id: 'Social', label: 'Social media' }, { id: 'ADS', label: 'Paid ads' }],
-    items: {
-      'powercell-group': { client: 'PowerCell', sector: 'Renewable energy', title: 'International corporate website', metric: '' },
-      'yassir': { client: 'YASSIR', sector: 'Mobility & delivery', title: 'Multi-platform ad campaign', metric: '5M reach' },
-      'zayn': { client: 'ZAYN', sector: 'Retail', title: 'Integrated social media campaign', metric: '308.8K reach' },
-      'cushman-wakefield-veritas': { client: 'Cushman & W.', sector: 'Real estate', title: 'Cushman & Wakefield Veritas website', metric: '' },
-      'groupado-pro': { client: 'groupado PRO', sector: 'B2B e-commerce', title: 'Performance ad campaign', metric: '6.4M impressions' },
-      'kpmg': { client: 'KPMG', sector: 'Audit & consulting', title: 'Audience audit and analysis', metric: '' },
-      'fibbl': { client: 'Fibbl', sector: 'B2B SaaS', title: 'SaaS product website', metric: '' },
-      'copenhagen-energy': { client: 'Copenhagen Energy', sector: 'Energy', title: 'Corporate website', metric: '' },
-      'brasileia-cosmetics': { client: 'Brasileia', sector: 'Beauty', title: 'Beauty product campaign', metric: '1.8M views' },
-      'tunisia-franchise-show': { client: 'Tunisia Franchise Show', sector: 'Events', title: 'Event campaign', metric: '2.2M reach' },
-      'jardins-de-carthage': { client: 'Jardins de Carthage', sector: 'Healthcare', title: 'Healthcare branding & communication', metric: '' },
-      'dunstan': { client: 'Dunstan', sector: 'Pet products', title: 'E-commerce website', metric: '' }
-    }
+    items: {}
   },
   compare: {
-    eyebrow: 'Why KPS', h2: 'The best of both worlds: the agility of a freelancer, the strength of an agency.',
-    caption: 'Comparison of KPS Agency, freelancers, traditional agencies and in-house hiring', cols: ['Freelancer', 'Traditional agency', 'In-house hire'], yes: 'Yes', no: 'No', hint: 'Swipe the table to compare',
+    eyebrow: 'How we compare', h2: 'The quality of a European agency, the budget of a Dakar-based team.',
+    caption: 'Comparison of BNS Digital, freelancers, traditional agencies and in-house hiring', cols: ['Freelancer', 'Traditional agency', 'In-house hire'], yes: 'Yes', no: 'No', hint: 'Swipe the table to compare',
     rows: [
       { label: 'All digital services in one place', cells: [['y', ''], ['n', ''], ['y', ''], ['n', 'Several profiles']] },
       { label: 'Single, dedicated contact', cells: [['y', ''], ['y', ''], ['n', 'Sales rep + team'], ['y', '']] },
       { label: 'Time to start', cells: [['y', 'Within 1 week'], ['-', 'Varies'], ['n', '3 to 6 weeks'], ['n', '2 to 3 months']] },
       { label: 'Continuity during absences', cells: [['y', 'Team'], ['n', ''], ['y', ''], ['n', '']] },
-      { label: 'Pricing suited to SMEs', cells: [['y', 'On quote'], ['y', ''], ['n', 'High'], ['n', 'Salary + overheads']] },
+      { label: 'Controlled budget', cells: [['y', 'Lighter overheads'], ['y', ''], ['n', 'High'], ['n', 'Salary + overheads']] },
       { label: 'You own everything', cells: [['y', ''], ['-', 'Depends on contract'], ['-', 'Depends on contract'], ['y', '']] }
     ]
   },
   reviews: { eyebrow: 'Client reviews', h2: 'They say it better than we do.', stars: 'stars out of 5', count: 'Google reviews', see: 'See our profile' },
   booking: {
     eyebrow: 'Book a call', h2: 'Let’s talk about your project in 30 minutes.',
-    lead: 'Pick a time that suits you: we’ll review your goals together and you’ll leave with first concrete recommendations.',
+    lead: 'Pick a time that suits you — slots are shown in your own time zone. We’ll review your goals together and you’ll leave with first concrete recommendations.',
     facts: [
       { t: '30 minutes', d: ' to understand your business and priorities' },
-      { t: 'Monday to Saturday', d: ', 10 am to 5 pm (Paris time)' },
+      { t: 'Monday to Saturday', d: ', 9 am to 6 pm Dakar time (mornings in Toronto and Montreal)' },
       { t: 'Video (kMeet) or phone', d: ', whichever you prefer' },
       { t: 'Free, no commitment', d: ', quote within 48 hours if needed' }
     ]
@@ -169,15 +176,15 @@ const en: typeof fr = {
   faq: {
     h2: 'Your questions, answered.', p: 'Another question? Write to us — we reply within one business day.', cta: 'Ask a question',
     items: [
+      ['How do you work from Dakar with Canadian and European companies?', 'Fully remotely: video calls, email and shared tracking tools. A dedicated project manager runs regular check-ins and you approve each stage before we move on.'],
+      ['What is the time difference?', 'Dakar is on GMT all year round. It is 4 to 5 hours ahead of Toronto and Montreal, and 1 to 2 hours behind Paris, Brussels and Geneva. Our calls take place between 9 am and 6 pm Dakar time.'],
       ['How much does a website cost?', 'Every project is different: after a call to understand your needs, we send a free, detailed quote within 48 hours. No hidden fees, and the quote remains valid for 30 days.'],
       ['How does payment work?', '50% on order and 50% on delivery, by bank transfer or card. The exact terms are always set out in your quote.'],
       ['How long until my website is live?', 'It depends on the project’s complexity and when we receive your content. An indicative schedule with sign-off milestones is included in your quote, and we keep you updated on progress.'],
       ['How many revisions are included?', 'Every service includes two revision cycles. Further changes are covered by an additional quote.'],
       ['What is GEO?', 'Generative Engine Optimization means optimising your content so that AI tools such as ChatGPT, Gemini and Perplexity cite it, alongside traditional SEO.'],
-      ['Can I update my website myself?', 'Yes. We deliver a website that is easy to manage and train you to use it.'],
       ['Do I own my website and ad accounts?', 'Yes. You own the deliverables once they are paid in full, and your domain name, content and ad accounts are in your name.'],
-      ['Do you offer support after launch?', 'Yes. 12 months of technical maintenance are included for every website, online store, app or AI agent. After that, an optional subscription covers security updates, performance monitoring and SEO or ads optimisation.'],
-      ['Do you only work in Paris?', 'We are based in Paris and work with companies across France and internationally, by video call or in person.']
+      ['Do you offer support after launch?', 'Yes. 12 months of technical maintenance are included for every website, online store, app or AI agent. After that, an optional subscription covers security updates, performance monitoring and SEO or ads optimisation.']
     ]
   },
   final: {
@@ -189,7 +196,7 @@ const en: typeof fr = {
     need: 'What you need', needs: ['Website', 'Software', 'SEO / GEO', 'Mobile app', 'Paid ads'], msg: 'Your project in a few words', msgPh: 'Goals, timeline, indicative budget…',
     submit: 'Get my free quote', sending: 'Sending…', sent: 'Thank you, request sent', note: 'Your data stays confidential. Reply within 48 business hours.'
   },
-  footer: { desc: 'Paris digital agency: websites, custom software, SEO & GEO and paid ads for SMEs.', local: 'Digital agency:', legal: 'Legal notice', privacy: 'Privacy', terms: 'Terms' }
+  footer: { desc: 'Dakar-based digital agency: websites, custom software, SEO & GEO and paid ads for companies in Canada, France and Europe.', local: 'Our markets:', legal: 'Legal notice', privacy: 'Privacy', terms: 'Terms' }
 }
 
 export const HOME = { fr, en }

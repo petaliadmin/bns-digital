@@ -32,7 +32,7 @@ export function renderArticle(body: string) {
         return `<h${depth} id="${id}">${html}</h${depth}>\n`
       },
       link(this: { parser: { parseInline: (t: Tokens.Generic[]) => string } }, { href, title, tokens }: Tokens.Link) {
-        const external = /^https?:\/\//.test(href) && !href.startsWith('https://kps-agency.com')
+        const external = /^https?:\/\//.test(href) && !href.startsWith('https://bns-digital.com')
         return `<a href="${href}"${title ? ` title="${title}"` : ''}${external ? ' target="_blank" rel="noopener"' : ''}>${this.parser.parseInline(tokens)}</a>`
       },
       image({ href, title, text }: Tokens.Image) {

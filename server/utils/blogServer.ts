@@ -32,7 +32,7 @@ export async function blogRss(lang: BlogLang) {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>${lang === 'en' ? 'KPS Agency — Blog' : 'KPS Agency — Blog'}</title>
+    <title>${lang === 'en' ? 'BNS Digital — Blog' : 'BNS Digital — Blog'}</title>
     <link>${base}</link>
     <atom:link href="${base}/rss.xml" rel="self" type="application/rss+xml"/>
     <description>${lang === 'en' ? 'Digital marketing advice by industry: websites, SEO & GEO, paid ads and social media.' : 'Conseils digitaux par secteur : sites web, SEO & GEO, publicité en ligne et social media.'}</description>

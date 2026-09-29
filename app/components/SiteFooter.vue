@@ -5,7 +5,7 @@
         <div class="footer__brand">
           <SiteLogo light />
           <p class="footer__desc">{{ t.desc }}</p>
-          <address class="footer__contact">{{ CONTACT.address }} Paris<br><template v-if="!CONTACT.phone.startsWith('[')">{{ CONTACT.phone }}<br></template><a :href="`mailto:${CONTACT.email}`">{{ CONTACT.email }}</a></address>
+          <address class="footer__contact">{{ CONTACT.address }}<br><template v-if="!CONTACT.phone.startsWith('[')">{{ CONTACT.phone }}<br></template><a :href="`mailto:${CONTACT.email}`">{{ CONTACT.email }}</a></address>
         </div>
         <div v-for="c in footerCols" :key="c.title" class="footer__col">
           <div class="footer__title">{{ c.title }}</div>
@@ -28,8 +28,8 @@
 import { CONTACT } from '~/data/content'
 const { link, footerCols, footerLocal } = useSite()
 const t = useLocaleText({
-  fr: { desc: 'Agence digitale basée à Paris : création de sites, applications sur mesure, référencement SEO & GEO et marketing digital pour les entreprises qui veulent grandir.', local: 'Agence digitale :', rights: '© 2026 KPS Agency. Tous droits réservés.', terms: 'Conditions Générales', legal: 'Mentions légales', privacy: 'Confidentialité' },
-  en: { desc: 'Paris-based digital agency: website design, custom software, SEO & GEO and digital marketing for companies that want to grow.', local: 'Digital agency:', rights: '© 2026 KPS Agency. All rights reserved.', terms: 'Terms & conditions', legal: 'Legal notice', privacy: 'Privacy' }
+  fr: { desc: 'Agence digitale basée à Dakar : création de sites, applications sur mesure, référencement SEO & GEO et marketing digital pour les entreprises en France, en Europe et au Canada.', local: 'Nos marchés :', rights: '© 2026 BNS Digital. Tous droits réservés.', terms: 'Conditions Générales', legal: 'Mentions légales', privacy: 'Confidentialité' },
+  en: { desc: 'Dakar-based digital agency: website design, custom software, SEO & GEO and digital marketing for companies in Canada, France and Europe.', local: 'Our markets:', rights: '© 2026 BNS Digital. All rights reserved.', terms: 'Terms & conditions', legal: 'Legal notice', privacy: 'Privacy' }
 })
 </script>
 
