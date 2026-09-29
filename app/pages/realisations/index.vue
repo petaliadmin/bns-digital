@@ -14,16 +14,26 @@
       </dl>
     </section>
 
+    <!-- Réalisations regroupées par catégorie, avec un sommaire en tête -->
     <section v-if="hasWork" class="container work">
-      <div class="work__bar">
-        <div v-if="filters.length > 2" class="filters" role="group" :aria-label="t.filterLabel">
-          <button v-for="f in filters" :key="f.id" type="button" :aria-pressed="filter === f.id" :class="{ 'is-on': filter === f.id }" @click="filter = f.id">{{ f.label }}</button>
+      <nav v-if="groups.length > 1" class="cats" :aria-label="t.catsLabel">
+        <a v-for="g in groups" :key="g.cat" :href="`#${g.id}`" class="cats__item">{{ g.info.title }}<span class="cats__n">{{ g.items.length }}</span></a>
+      </nav>
+      <section v-for="g in groups" :id="g.id" :key="g.cat" class="group" :aria-labelledby="`${g.id}-h`">
+        <div class="group__head">
+          <div class="group__title">
+            <h2 :id="`${g.id}-h`" class="h2 h2--48">{{ g.info.title }}</h2>
+            <p class="group__desc">{{ g.info.desc }}</p>
+          </div>
+          <div class="group__side">
+            <span class="group__count">{{ g.items.length }} {{ g.items.length > 1 ? t.projects : t.project }}</span>
+            <NuxtLink :to="link.service(...g.service)" class="group__svc">{{ t.service }} →</NuxtLink>
+          </div>
         </div>
-        <span class="work__count" aria-live="polite">{{ list.length }} {{ t.projects }}</span>
-      </div>
-      <div class="grid grid-3">
-        <ProjectCard v-for="p in list" :key="p.slug" :project="p" bordered />
-      </div>
+        <div class="grid grid-3">
+          <ProjectCard v-for="p in g.items" :key="p.slug" :project="p" bordered />
+        </div>
+      </section>
     </section>
 
     <!-- Portfolio en cours de constitution : on oriente vers les expertises et la prise de contact -->
@@ -42,15 +52,16 @@
 </template>
 
 <script setup lang="ts">
-const { en, link, projects, hasWork } = useSite()
+import { CAT_SERVICE } from '~/data/content'
+
+const { en, link, projects, hasWork, catInfo, workCats } = useSite()
 // Chiffres clés du portfolio : à renseigner avec les résultats réels des projets BNS Digital
 const t = useLocaleText({
   fr: {
     eyebrow: 'Réalisations', h1: 'Des projets concrets. Des résultats mesurables.', lead: 'Sites corporate, plateformes SaaS, e-commerce : découvrez les projets que nous avons conçus pour des entreprises au Sénégal, en Afrique de l’Ouest et en France.',
     emptyH1: 'Nos études de cas arrivent bientôt.', emptyLead: 'Nous préparons la présentation détaillée de nos projets pour des entreprises en France, en Europe et au Canada.',
     emptyP: 'En attendant, parlons de votre projet : en 30 minutes, nous vous présentons notre approche et des exemples adaptés à votre secteur.', emptyCall: 'Réserver un appel', emptyServices: 'Voir nos expertises',
-    filterLabel: 'Filtrer les réalisations', filters: [{ id: 'all', label: 'Tous' }, { id: 'Web', label: 'Sites Web' }, { id: 'Social', label: 'Social/Médias' }, { id: 'ADS', label: 'ADS' }],
-    projects: 'projets', ctaTitle: 'Votre projet sera notre prochaine référence.', ctaLabel: 'Parler de votre projet',
+    catsLabel: 'Catégories de réalisations', project: 'projet', projects: 'projets', service: 'Découvrir l’offre', ctaTitle: 'Votre projet sera notre prochaine référence.', ctaLabel: 'Parler de votre projet',
     stats: [] as { v: string; l: string }[],
     title: 'Réalisations : sites web & campagnes digitales', desc: 'Sites corporate, plateformes SaaS et e-commerce : les projets web de BNS Digital pour des entreprises au Sénégal, en Afrique de l’Ouest et en France.'
   },
@@ -58,8 +69,7 @@ const t = useLocaleText({
     eyebrow: 'Our work', h1: 'Real projects. Measurable results.', lead: 'Corporate websites, SaaS platforms, e-commerce: explore the projects we have built for companies in Senegal, West Africa and France.',
     emptyH1: 'Our case studies are coming soon.', emptyLead: 'We are preparing detailed write-ups of our projects for companies in Canada, France and Europe.',
     emptyP: 'In the meantime, let’s talk about your project: in 30 minutes, we’ll walk you through our approach and examples relevant to your industry.', emptyCall: 'Book a call', emptyServices: 'See our services',
-    filterLabel: 'Filter projects', filters: [{ id: 'all', label: 'All' }, { id: 'Web', label: 'Websites' }, { id: 'Social', label: 'Social media' }, { id: 'ADS', label: 'Paid ads' }],
-    projects: 'projects', ctaTitle: 'Your project could be our next reference.', ctaLabel: 'Discuss your project',
+    catsLabel: 'Project categories', project: 'project', projects: 'projects', service: 'Discover the service', ctaTitle: 'Your project could be our next reference.', ctaLabel: 'Discuss your project',
     stats: [],
     title: 'Our work: websites & digital campaigns', desc: 'Corporate websites, SaaS platforms and e-commerce: BNS Digital web projects for companies in Senegal, West Africa and France.'
   }
@@ -78,9 +88,12 @@ useHead({
   }]
 })
 
-const filter = ref('all')
-const filters = computed(() => t.value.filters.filter(f => f.id === 'all' || projects.value.some(p => p.cat === f.id)))
-const list = computed(() => filter.value === 'all' ? projects.value : projects.value.filter(p => p.cat === filter.value))
+// Ancres stables (identiques en FR et EN) pour pouvoir partager un lien vers une catégorie
+const ANCHOR = { Plateforme: 'plateformes', Vitrine: 'sites-vitrines', Ecommerce: 'e-commerce', Social: 'social-media', ADS: 'publicite' } as const
+const groups = computed(() => workCats.map(cat => ({
+  cat, id: ANCHOR[cat], info: catInfo.value[cat], service: CAT_SERVICE[cat],
+  items: projects.value.filter(p => p.cat === cat)
+})))
 </script>
 
 <style scoped>
@@ -98,11 +111,19 @@ const list = computed(() => filter.value === 'all' ? projects.value : projects.v
 .empty { display: flex; flex-direction: column; gap: 28px; padding: 56px; border: 1px dashed var(--line-3); border-radius: 28px; background: var(--white); }
 .empty__p { font-size: 20px; line-height: 1.55; max-width: 720px; }
 .empty__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
-.work__bar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 32px; flex-wrap: wrap; }
-.filters { display: flex; gap: 8px; padding: 6px; background: var(--white); border: 1px solid var(--line); border-radius: 999px; flex-wrap: wrap; }
-.filters button { padding: 10px 18px; border: none; border-radius: 999px; font-size: 14px; font-weight: 600; background: transparent; color: var(--muted); }
-.filters button.is-on { background: var(--ink); color: var(--white); }
-.work__count { font-size: 15px; color: var(--muted-2); }
+.cats { position: sticky; top: 96px; z-index: 5; display: flex; gap: 8px; flex-wrap: wrap; align-self: flex-start; padding: 6px; margin-bottom: 16px; background: var(--white); border: 1px solid var(--line); border-radius: 999px; box-shadow: 0 12px 24px -20px rgba(10, 26, 71, .35); }
+.cats__item { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; font-size: 14px; font-weight: 600; color: var(--ink); }
+.cats__item:hover { background: var(--accent-soft); color: var(--accent); }
+.cats__n { min-width: 22px; padding: 2px 7px; border-radius: 99px; background: var(--ink); color: var(--white); font-size: 12px; text-align: center; }
+.work { display: flex; flex-direction: column; }
+.group { padding-top: 56px; scroll-margin-top: 170px; }
+.group + .group { margin-top: 24px; border-top: 1px solid var(--line); }
+.group__head { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; margin-bottom: 32px; }
+.group__title { display: flex; flex-direction: column; gap: 12px; max-width: 720px; }
+.group__desc { font-size: 17px; line-height: 1.55; color: var(--muted); }
+.group__side { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; flex: none; }
+.group__count { font-size: 14px; color: var(--muted-2); }
+.group__svc { font-size: 15px; font-weight: 600; color: var(--accent); }
 @media (max-width: 1180px) {
   .head { flex-direction: column; align-items: flex-start; gap: 24px; }
   .head__h1 { font-size: 56px; letter-spacing: -1.8px; }
@@ -110,10 +131,12 @@ const list = computed(() => filter.value === 'all' ? projects.value : projects.v
   .stats__item:nth-child(2) { border-right: none; }
 }
 @media (max-width: 720px) {
-  .filters { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; max-width: 100%; }
-  .filters::-webkit-scrollbar { display: none; }
-  .filters button { flex: none; white-space: nowrap; }
-  .work__bar { flex-wrap: nowrap; }
+  .cats { top: 72px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; max-width: 100%; }
+  .cats::-webkit-scrollbar { display: none; }
+  .cats__item { flex: none; white-space: nowrap; padding: 9px 12px; }
+  .group { padding-top: 40px; scroll-margin-top: 140px; }
+  .group__head { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .group__side { align-items: flex-start; }
   .head { padding-top: 56px; }
   .head__h1 { font-size: 40px; letter-spacing: -1.2px; }
   .stats__v { font-size: 38px; }

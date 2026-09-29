@@ -48,7 +48,7 @@ const fr = {
   },
   work: {
     eyebrow: 'Réalisations', h2a: 'Des projets concrets,', h2b: 'des résultats mesurés.', filterLabel: 'Filtrer les réalisations', alt: 'Réalisation', more: 'Voir le cas', all: 'Voir toutes les réalisations',
-    filters: [{ id: 'all', label: 'Tous' }, { id: 'Web', label: 'Sites & apps' }, { id: 'Social', label: 'Social media' }, { id: 'ADS', label: 'Publicité' }],
+    allLabel: 'Tous',
     // Textes courts des réalisations mises en avant (clé = slug du projet dans content.ts)
     items: {} as Record<string, WorkItem>
   },
@@ -147,7 +147,7 @@ const en: typeof fr = {
   },
   work: {
     eyebrow: 'Our work', h2a: 'Real projects,', h2b: 'measurable results.', filterLabel: 'Filter projects', alt: 'Project for', more: 'View project', all: 'See all our work',
-    filters: [{ id: 'all', label: 'All' }, { id: 'Web', label: 'Websites & apps' }, { id: 'Social', label: 'Social media' }, { id: 'ADS', label: 'Paid ads' }],
+    allLabel: 'All',
     items: {}
   },
   compare: {

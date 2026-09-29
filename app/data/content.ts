@@ -64,7 +64,19 @@ export const GOOGLE_REVIEWS_URL = ''
 export const REVIEWS: Review[] = []
 export const REVIEWS_AVG = REVIEWS.length ? REVIEWS.reduce((s, r) => s + r.rating, 0) / REVIEWS.length : 0
 
-export type ProjectCat = 'Web' | 'Social' | 'ADS'
+export type ProjectCat = 'Plateforme' | 'Vitrine' | 'Ecommerce' | 'Social' | 'ADS'
+/** Ordre d'affichage des catégories (page Réalisations, filtres de l'accueil) */
+export const CAT_ORDER: ProjectCat[] = ['Plateforme', 'Vitrine', 'Ecommerce', 'Social', 'ADS']
+/** Textes d'une catégorie : tag = étiquette des cartes, filter = bouton de filtre, title/desc = en-tête de section */
+export interface CatInfo { tag: string; filter: string; title: string; desc: string }
+/** Page service liée à chaque catégorie (slug FR + ancre éventuelle vers l'offre) */
+export const CAT_SERVICE: Record<ProjectCat, [string, string]> = {
+  Plateforme: ['application-metier', ''],
+  Vitrine: ['creation-site-web', '#offre-01'],
+  Ecommerce: ['creation-site-web', '#offre-04'],
+  Social: ['social-media', ''],
+  ADS: ['marketing-digital-ads', '']
+}
 export interface Project {
   slug: string
   cat: ProjectCat
@@ -85,23 +97,30 @@ const IMG = '/images/realisations/'
 export const project = (slug: string, cat: ProjectCat, client: string, label: string, desc: string, metric: string, bg: string, fg: string, url?: string): Project =>
   ({ slug, cat, client, label, desc, metric, bg, fg, img: `${IMG}${slug}.webp`, alt: `Réalisation ${client} — ${label}`, url })
 
-// Réalisations de BNS Digital (ordre éditorial). Si la liste est vide, le portfolio est masqué partout.
+// Réalisations de BNS Digital (ordre éditorial au sein de chaque catégorie, voir CAT_ORDER). Si la liste est vide, le portfolio est masqué partout.
 // Descriptions tirées des sites en ligne ; résultats chiffrés à compléter ([Résultat] n'est jamais affiché).
 // Visuels : captures d'écran des pages d'accueil (public/images/realisations).
 const R = '[Résultat]'
 export const PROJECTS: Project[] = [
-  project('petalia', 'Web', 'Petalia', 'Agritech · IoT & IA', 'Site de Petalia, plateforme d’agriculture intelligente en Afrique : capteurs IoT, intelligence artificielle et drones pour piloter les exploitations, présentation des solutions, offres et démo.', R, '#DCFCE7', '#166534', 'https://www.petalia.sn/'),
-  project('nagaw', 'Web', 'Nagaw', 'SaaS · Pilotage d’entreprise', 'Site produit de Nagaw, plateforme qui connecte les données et les outils d’une PME (ERP, CRM, comptabilité, Excel, API) et exécute analyses, rapports et tableaux de bord demandés en langage naturel.', R, '#E4EFE9', '#14532D', 'https://preprod.naagaw.com/'),
-  project('permis2', 'Web', 'PERMIS 2.0', 'EdTech · Permis de conduire', 'Plateforme PERMIS 2.0 pour le permis de conduire au Sénégal : révision du code de la route, examens blancs, comparateur d’auto-écoles et outil de gestion pour les écoles de conduite.', R, '#E0F2FE', '#075985', 'https://www.permis2.com/'),
-  project('power-energy-solutions', 'Web', 'Power Energy Solutions', 'Énergie & ingénierie', 'Site corporate de Power Energy Solutions, entreprise africaine d’ingénierie énergétique : conception, réalisation et maintenance de systèmes énergétiques et fourniture d’équipements industriels.', R, '#DDE3FF', '#1A2A8A', 'https://www.powerenergysolutions.sn/'),
-  project('vianego', 'Web', 'VIANEGO', 'Conseil · Intermédiation', 'Site bilingue de VIANEGO, cabinet d’intermédiation commerciale qui connecte entreprises, investisseurs et partenaires pour concrétiser des projets en Afrique de l’Ouest (agriculture, énergie, hydrocarbures).', R, '#FEF3C7', '#92400E', 'https://vianego.vercel.app/'),
-  project('le-jardin-d-enfants', 'Web', 'Le Jardin d’Enfants', 'E-commerce · Éducation', 'Boutique en ligne de ressources pédagogiques pour la maternelle : fiches imprimables par niveau, outils pour enseignants et parents, et ressources multilingues (wolof, bambara, lingala…).', R, '#FCE7F3', '#9D174D', 'https://lejardindenfants.com/'),
-  project('techub', 'Web', 'TechHub Africa', 'Plateforme · Écosystème tech', 'Plateforme TechHub Africa qui réunit l’écosystème technologique africain : annuaire de startups, carte de l’innovation, événements, offres d’emploi et communauté de développeurs.', R, '#EDE7F6', '#4C1D95', 'https://techub-beta.vercel.app/'),
-  project('petalia-soil', 'Web', 'Petalia Soil', 'Agritech · Place de marché', 'Petalia Soil, place de marché des terres agricoles : recherche de parcelles sur carte, analyse des paramètres du sol, cultures recommandées et mise en relation directe avec les propriétaires.', R, '#DCFCE7', '#166534', 'https://petalia-soil.vercel.app/'),
-  project('kps-agency', 'Web', 'KPS Agency', 'Agence créative · Paris', 'Site de KPS Agency, agence créative parisienne spécialisée dans le social media, les sites web et la publicité en ligne sur TikTok et Instagram.', R, '#E6ECF5', '#0B3A75', 'https://kps-agency.com/')
+  project('petalia', 'Vitrine', 'Petalia', 'Agritech · IoT & IA', 'Site de Petalia, plateforme d’agriculture intelligente en Afrique : capteurs IoT, intelligence artificielle et drones pour piloter les exploitations, présentation des solutions, offres et démo.', R, '#DCFCE7', '#166534', 'https://www.petalia.sn/'),
+  project('nagaw', 'Plateforme', 'Nagaw', 'SaaS · Pilotage d’entreprise', 'Plateforme Nagaw, qui connecte les données et les outils d’une PME (ERP, CRM, comptabilité, Excel, API) et exécute analyses, rapports et tableaux de bord demandés en langage naturel.', R, '#E4EFE9', '#14532D', 'https://preprod.naagaw.com/'),
+  project('permis2', 'Plateforme', 'PERMIS 2.0', 'EdTech · Permis de conduire', 'Plateforme PERMIS 2.0 pour le permis de conduire au Sénégal : révision du code de la route, examens blancs, comparateur d’auto-écoles et outil de gestion pour les écoles de conduite.', R, '#E0F2FE', '#075985', 'https://www.permis2.com/'),
+  project('power-energy-solutions', 'Vitrine', 'Power Energy Solutions', 'Énergie & ingénierie', 'Site corporate de Power Energy Solutions, entreprise africaine d’ingénierie énergétique : conception, réalisation et maintenance de systèmes énergétiques et fourniture d’équipements industriels.', R, '#DDE3FF', '#1A2A8A', 'https://www.powerenergysolutions.sn/'),
+  project('vianego', 'Vitrine', 'VIANEGO', 'Conseil · Intermédiation', 'Site bilingue de VIANEGO, cabinet d’intermédiation commerciale qui connecte entreprises, investisseurs et partenaires pour concrétiser des projets en Afrique de l’Ouest (agriculture, énergie, hydrocarbures).', R, '#FEF3C7', '#92400E', 'https://vianego.vercel.app/'),
+  project('le-jardin-d-enfants', 'Ecommerce', 'Le Jardin d’Enfants', 'E-commerce · Éducation', 'Boutique en ligne de ressources pédagogiques pour la maternelle : fiches imprimables par niveau, outils pour enseignants et parents, et ressources multilingues (wolof, bambara, lingala…).', R, '#FCE7F3', '#9D174D', 'https://lejardindenfants.com/'),
+  project('techub', 'Plateforme', 'TechHub Africa', 'Plateforme · Écosystème tech', 'Plateforme TechHub Africa qui réunit l’écosystème technologique africain : annuaire de startups, carte de l’innovation, événements, offres d’emploi et communauté de développeurs.', R, '#EDE7F6', '#4C1D95', 'https://techub-beta.vercel.app/'),
+  project('petalia-soil', 'Plateforme', 'Petalia Soil', 'Agritech · Place de marché', 'Petalia Soil, place de marché des terres agricoles : recherche de parcelles sur carte, analyse des paramètres du sol, cultures recommandées et mise en relation directe avec les propriétaires.', R, '#DCFCE7', '#166534', 'https://petalia-soil.vercel.app/'),
+  project('kps-agency', 'Vitrine', 'KPS Agency', 'Agence créative · Paris', 'Site de KPS Agency, agence créative parisienne spécialisée dans le social media, les sites web et la publicité en ligne sur TikTok et Instagram.', R, '#E6ECF5', '#0B3A75', 'https://kps-agency.com/')
 ]
 
-export const CAT_LABEL: Record<ProjectCat, string> = { Web: 'Site web', ADS: 'ADS', Social: 'Social/Médias' }
+export const CAT_INFO: Record<ProjectCat, CatInfo> = {
+  Plateforme: { tag: 'Plateforme', filter: 'Plateformes & SaaS', title: 'Plateformes & SaaS', desc: 'Applications web avec comptes utilisateurs, tableaux de bord, cartes interactives et places de marché.' },
+  Vitrine: { tag: 'Site vitrine', filter: 'Sites vitrines', title: 'Sites vitrines & corporate', desc: 'Sites de présentation pour des entreprises, des startups et des cabinets : image de marque, offres et prise de contact.' },
+  Ecommerce: { tag: 'E-commerce', filter: 'E-commerce', title: 'E-commerce', desc: 'Boutiques en ligne : catalogue, fiches produits, panier et paiement.' },
+  Social: { tag: 'Social/Médias', filter: 'Social media', title: 'Social media & contenus', desc: 'Stratégies éditoriales, visuels et vidéos courtes pour les réseaux sociaux.' },
+  ADS: { tag: 'ADS', filter: 'Publicité', title: 'Campagnes publicitaires', desc: 'Campagnes Google Ads, Meta Ads et TikTok Ads pilotées par la donnée.' }
+}
+export const CAT_LABEL = Object.fromEntries(CAT_ORDER.map(c => [c, CAT_INFO[c].tag])) as Record<ProjectCat, string>
 /** Vignette 800 px générée à côté de chaque visuel (cartes, listes) */
 export const thumb = (img: string) => img.replace(/\.webp$/, '-800.webp')
 

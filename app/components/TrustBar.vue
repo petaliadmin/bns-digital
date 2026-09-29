@@ -39,7 +39,7 @@ import { REVIEWS, REVIEWS_AVG } from '~/data/content'
 
 const { en, link, projects, hasWork, hasReviews } = useSite()
 const titleId = useId()
-const DOT = { Web: 'var(--accent)', ADS: 'var(--accent-mid)', Social: 'var(--accent-light)' } as const
+const DOT = { Plateforme: 'var(--accent)', Vitrine: 'var(--accent-light)', Ecommerce: 'var(--accent-mid)', ADS: 'var(--accent-mid)', Social: 'var(--accent-light)' } as const
 
 // Marques clientes, dans l'ordre éditorial des réalisations (défilé masqué tant qu'il n'y en a pas)
 const clients = computed(() => projects.value)

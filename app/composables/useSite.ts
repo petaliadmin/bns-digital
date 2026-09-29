@@ -1,5 +1,5 @@
-import { CAT_LABEL, LOCAL_PAGES, PROJECTS, REVIEWS, SERVICES, SERVICE_FAQ, SERVICE_SEO, type LocalPage, type Project, type Service } from '~/data/content'
-import { CAT_LABEL_EN, LOCAL_PAGES_EN, LOCAL_SLUG_EN, PROJECT_TEXT_EN, SERVICES_EN, SERVICE_FAQ_EN, SERVICE_SEO_EN, SERVICE_SLUG_EN } from '~/data/content.en'
+import { CAT_INFO, CAT_LABEL, CAT_ORDER, LOCAL_PAGES, PROJECTS, REVIEWS, SERVICES, SERVICE_FAQ, SERVICE_SEO, type LocalPage, type Project, type Service } from '~/data/content'
+import { CAT_INFO_EN, CAT_LABEL_EN, LOCAL_PAGES_EN, LOCAL_SLUG_EN, PROJECT_TEXT_EN, SERVICES_EN, SERVICE_FAQ_EN, SERVICE_SEO_EN, SERVICE_SLUG_EN } from '~/data/content.en'
 
 export type Lang = 'fr' | 'en'
 
@@ -25,6 +25,9 @@ export function useSite() {
   const serviceFaq = computed(() => (en.value ? SERVICE_FAQ_EN : SERVICE_FAQ))
   const serviceSeo = computed(() => (en.value ? SERVICE_SEO_EN : SERVICE_SEO))
   const catLabel = computed(() => (en.value ? CAT_LABEL_EN : CAT_LABEL))
+  const catInfo = computed(() => (en.value ? CAT_INFO_EN : CAT_INFO))
+  /** Catégories qui ont au moins un projet, dans l'ordre d'affichage */
+  const workCats = CAT_ORDER.filter(c => PROJECTS.some(p => p.cat === c))
   /** Portfolio et avis : sections masquées tant que les listes sont vides (content.ts) */
   const hasWork = PROJECTS.length > 0
   const hasReviews = REVIEWS.length > 0
@@ -69,5 +72,5 @@ export function useSite() {
   // Pages marchés (pays et villes servis depuis Dakar)
   const footerLocal = computed(() => LOCAL_PAGES.map(l => [en.value ? LOCAL_PAGES_EN[l.slug]!.crumb : l.crumb, link.local(l.slug)] as [string, string]))
 
-  return { en, locale, services, projects, hasWork, hasReviews, localPages, serviceFaq, serviceSeo, catLabel, serviceSlug, localSlug, link, footerCols, footerLocal }
+  return { en, locale, services, projects, hasWork, hasReviews, localPages, serviceFaq, serviceSeo, catLabel, catInfo, workCats, serviceSlug, localSlug, link, footerCols, footerLocal }
 }

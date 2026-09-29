@@ -111,7 +111,7 @@
                 <span class="work__cat">{{ pr.cat }}</span>
               </div>
               <div class="work__body">
-                <div class="work__sector">{{ pr.client }} · {{ pr.sector }}</div>
+                <div class="work__sector">{{ [pr.client, pr.sector].filter(Boolean).join(' · ') }}</div>
                 <div class="work__title">{{ pr.title }}</div>
                 <div class="work__foot"><span class="work__metric">{{ pr.metric }}</span><span class="work__more">{{ t.work.more }} →</span></div>
               </div>
@@ -264,7 +264,7 @@ import { CONTACT, REVIEWS, REVIEWS_AVG, GOOGLE_REVIEWS_URL, PROJECTS, organizati
 import { HOME } from '~/data/home'
 definePageMeta({ layout: false })
 
-const { en, locale, link, hasWork, hasReviews, footerCols, footerLocal } = useSite()
+const { en, locale, link, projects, hasWork, hasReviews, catLabel, catInfo, workCats, footerCols, footerLocal } = useSite()
 const site = useRuntimeConfig().public.siteUrl as string
 const STAR = 'M12 2l3 7 7 .6-5.3 4.7 1.6 7.2L12 17.8 5.7 21.5l1.6-7.2L2 9.6 9 9z'
 const BOOK_ICONS = [
@@ -309,16 +309,21 @@ useHead({
 })
 
 // Réalisations mises en avant : les 12 premières de content.ts ; textes courts propres à l'accueil si définis dans home.ts
-const catShort = computed(() => (en.value ? { Web: 'Web', ADS: 'Ads', Social: 'Social' } : { Web: 'Web', ADS: 'ADS', Social: 'Social' }))
 const filter = ref('all')
-const workFilters = computed(() => t.value.work.filters.filter(f => f.id === 'all' || PROJECTS.some(p => p.cat === f.id)))
-const shown = computed(() => PROJECTS.slice(0, 12)
+const workFilters = computed(() => [{ id: 'all', label: t.value.work.allLabel }, ...workCats.map(c => ({ id: c as string, label: catInfo.value[c].filter }))])
+// « Tous » : on pioche à tour de rôle dans chaque catégorie pour montrer la variété des projets
+const mixed = computed(() => {
+  const queues = workCats.map(c => PROJECTS.filter(p => p.cat === c))
+  const out: typeof PROJECTS = []
+  while (queues.some(q => q.length)) queues.forEach(q => q.length && out.push(q.shift()!))
+  return out
+})
+const shown = computed(() => (filter.value === 'all' ? mixed.value : PROJECTS.filter(p => p.cat === filter.value))
+  .slice(0, 6)
   .map((pr) => {
-    const txt = t.value.work.items[pr.slug] ?? { client: pr.client, sector: pr.label, title: pr.label, metric: pr.metric.startsWith('[') ? '' : pr.metric }
-    return { ...txt, slug: pr.slug, img: pr.img, bg: pr.bg, cat: catShort.value[pr.cat], type: pr.cat }
-  })
-  .filter(x => filter.value === 'all' || x.type === filter.value)
-  .slice(0, 6))
+    const txt = t.value.work.items[pr.slug] ?? { client: '', sector: projects.value.find(x => x.slug === pr.slug)!.label, title: pr.client, metric: pr.metric.startsWith('[') ? '' : pr.metric }
+    return { ...txt, slug: pr.slug, img: pr.img, bg: pr.bg, cat: catLabel.value[pr.cat], type: pr.cat }
+  }))
 
 const need = ref(0)
 const form = reactive({ name: '', company: '', email: '', msg: '' })

@@ -1,5 +1,5 @@
 // English content — same shapes as content.ts (French is the source of truth for structure, slugs and media).
-import type { Benefit, LocalPage, Offer, ProjectCat, Service, Step } from './content'
+import type { Benefit, CatInfo, LocalPage, Offer, ProjectCat, Service, Step } from './content'
 
 const o = (n: string, t: string, d: string, tags: string[]): Offer => ({ n, t, d, tags })
 const s = (n: string, t: string, d: string): Step => ({ n, t, d })
@@ -297,12 +297,19 @@ export const LOCAL_PAGES_EN: Record<string, Omit<LocalPage, 'slug' | 'refs'>> = 
   }
 }
 
-export const CAT_LABEL_EN: Record<ProjectCat, string> = { Web: 'Website', ADS: 'Paid ads', Social: 'Social media' }
+export const CAT_INFO_EN: Record<ProjectCat, CatInfo> = {
+  Plateforme: { tag: 'Platform', filter: 'Platforms & SaaS', title: 'Platforms & SaaS', desc: 'Web applications with user accounts, dashboards, interactive maps and marketplaces.' },
+  Vitrine: { tag: 'Website', filter: 'Websites', title: 'Corporate & showcase websites', desc: 'Websites for companies, startups and consulting firms: brand image, offers and lead generation.' },
+  Ecommerce: { tag: 'E-commerce', filter: 'E-commerce', title: 'E-commerce', desc: 'Online stores: catalogue, product pages, cart and checkout.' },
+  Social: { tag: 'Social media', filter: 'Social media', title: 'Social media & content', desc: 'Editorial strategies, visuals and short-form video for social networks.' },
+  ADS: { tag: 'Paid ads', filter: 'Paid ads', title: 'Ad campaigns', desc: 'Data-driven Google Ads, Meta Ads and TikTok Ads campaigns.' }
+}
+export const CAT_LABEL_EN = Object.fromEntries(Object.entries(CAT_INFO_EN).map(([c, i]) => [c, i.tag])) as Record<ProjectCat, string>
 
 /** Project texts, keyed by slug (client names, images and links come from content.ts) */
 export const PROJECT_TEXT_EN: Record<string, { label: string; desc?: string; metric?: string }> = {
   petalia: { label: 'Agritech · IoT & AI', desc: 'Website for Petalia, a smart farming platform in Africa: IoT sensors, artificial intelligence and drones to run farms, with solutions, plans and a demo request.' },
-  nagaw: { label: 'SaaS · Business management', desc: 'Product website for Nagaw, a platform that connects an SME’s data and tools (ERP, CRM, accounting, Excel, APIs) and runs analyses, reports and dashboards requested in plain language.' },
+  nagaw: { label: 'SaaS · Business management', desc: 'Nagaw, a platform that connects an SME’s data and tools (ERP, CRM, accounting, Excel, APIs) and runs analyses, reports and dashboards requested in plain language.' },
   permis2: { label: 'EdTech · Driving licence', desc: 'PERMIS 2.0, a driving licence platform for Senegal: highway code revision, mock exams, a driving school comparison tool and management software for driving schools.' },
   'power-energy-solutions': { label: 'Energy & engineering', desc: 'Corporate website for Power Energy Solutions, an African energy engineering company: design, delivery and maintenance of energy systems and supply of industrial equipment.' },
   vianego: { label: 'Consulting · Business development', desc: 'Bilingual website for VIANEGO, a business development firm connecting companies, investors and partners to deliver projects in West Africa (agriculture, energy, oil and gas).' },

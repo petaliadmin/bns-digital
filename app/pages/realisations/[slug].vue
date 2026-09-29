@@ -44,7 +44,7 @@
 </template>
 
 <script setup lang="ts">
-import type { ProjectCat } from '~/data/content'
+import { CAT_SERVICE } from '~/data/content'
 
 const route = useRoute()
 const { en, link, projects, services, catLabel } = useSite()
@@ -59,13 +59,12 @@ const t = useLocaleText({
 // Indicateurs chiffrés par projet (clé = slug), affichés sous le visuel
 const KPIS: Record<string, { v: string; fr: string; en: string }[]> = {}
 
-// Service mobilisé selon le type de projet : maillage interne vers la page d'expertise
-const SERVICE_BY_CAT: Record<ProjectCat, string> = { Web: 'web', ADS: 'ads', Social: 'social' }
 
 interface Block { k: string; t: string; d: string; link?: { to: string; label: string } }
 const c = computed(() => {
   const p = project.value!
-  const svc = services.value.find(s => s.key === SERVICE_BY_CAT[p.cat])!
+  // Service mobilisé selon la catégorie du projet : maillage interne vers la page d'expertise
+  const svc = services.value.find(s => s.slug === CAT_SERVICE[p.cat][0])!
   const hasDesc = !p.desc.startsWith('[')
   const sub = hasDesc
     ? p.desc
