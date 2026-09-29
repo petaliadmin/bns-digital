@@ -76,8 +76,8 @@ const t = useLocaleText({
   fr: {
     title: 'L’agence BNS Digital : une équipe digitale à Dakar', desc: 'BNS Digital, agence digitale basée à Dakar : six expertises (web, apps, SEO & GEO, Ads, social media) au service des entreprises en France, en Europe et au Canada.',
     eyebrow: 'L’agence', h1: 'Plus qu’une agence, votre co-pilote digital.',
-    lead: 'Depuis Dakar, nous accompagnons les entreprises françaises, européennes et canadiennes avec les standards d’une grande agence et un budget maîtrisé.',
-    intro: 'Basée à Dakar, BNS Digital réunit au sein d’une même équipe six expertises complémentaires : création de sites, applications métier, applications mobiles, référencement SEO & GEO, marketing digital et social media. Une équipe francophone et anglophone, à l’heure GMT, qui travaille à distance avec ses clients comme une extension de leurs propres équipes.',
+    lead: 'Depuis Dakar, nous livrons aux entreprises françaises, européennes et canadiennes des projets de qualité, à prix abordables et dans des délais courts grâce à l’IA.',
+    intro: 'Basée à Dakar, BNS Digital réunit au sein d’une même équipe six expertises complémentaires : création de sites, applications métier, applications mobiles, référencement SEO & GEO, marketing digital et social media. Une équipe francophone et anglophone, à l’heure GMT, qui intègre l’IA à chaque étape de production et travaille à distance avec ses clients comme une extension de leurs propres équipes.',
     adnEyebrow: 'Notre ADN', adnH2: 'Trois convictions guident chacun de nos projets.',
     adn: [
       { n: '01', t: 'Vision stratégique', d: 'Nous ne nous contentons pas d’exécuter. Nous construisons une feuille de route précise pour vous aider à gagner des parts de marché.' },
@@ -91,20 +91,20 @@ const t = useLocaleText({
       { n: '03', t: 'Production', d: 'Design, développement, contenus ou campagnes : nos équipes produisent avec exigence et vous associent à chaque jalon, lors de points réguliers en visio.' },
       { n: '04', t: 'Lancement & croissance', d: 'Mise en ligne, mesure des performances, optimisation continue. Un projet digital ne s’arrête pas le jour de sa livraison.' }
     ],
-    whyEyebrow: 'Pourquoi BNS Digital', whyH2: 'La qualité d’une agence européenne, depuis Dakar.',
+    whyEyebrow: 'Pourquoi BNS Digital', whyH2: 'Des prix abordables. Des projets livrés vite.',
     why: [
-      { tag: '# QUALITÉ', t: 'Coût maîtrisé, exigence intacte', d: 'Les méthodes d’une agence européenne avec une structure de coûts plus légère : votre budget va davantage à la production.' },
+      { tag: '# PRIX', t: 'Des prix abordables', d: 'Les standards d’une agence européenne à des tarifs accessibles aux PME : une structure légère et une production optimisée.' },
       { tag: '# GMT', t: 'Un fuseau horaire proche', d: '1 à 2 h de décalage avec Paris, Bruxelles et Genève ; une matinée de travail en commun avec Montréal et Toronto.' },
       { tag: '# FR · EN', t: 'Une équipe francophone', d: 'Des échanges fluides en français comme en anglais, sans intermédiaire.' },
-      { tag: '# SUIVI', t: 'Un chef de projet dédié', d: 'Un interlocuteur unique, des points réguliers en visio et un suivi transparent de l’avancement.' }
+      { tag: '# IA', t: 'Livré plus vite grâce à l’IA', d: 'Design, code, contenus, tests : nos équipes s’appuient sur l’IA pour raccourcir les délais, sous le contrôle d’un chef de projet dédié.' }
     ],
     reviewsEyebrow: 'Avis Google', reviewsH2: 'Ce que nos clients disent de nous.', ctaTitle: 'Envie de travailler avec nous ?', ctaLabel: 'Parler de votre projet'
   },
   en: {
     title: 'About BNS Digital: a digital team in Dakar', desc: 'BNS Digital, a Dakar-based digital agency: six areas of expertise (web, apps, SEO & GEO, ads, social media) serving companies in Canada, France and Europe.',
     eyebrow: 'About us', h1: 'More than an agency, your digital co-pilot.',
-    lead: 'From Dakar, we support Canadian, French and European companies with the standards of a large agency and a controlled budget.',
-    intro: 'Based in Dakar, BNS Digital brings six complementary areas of expertise together in one team: website design, business software, mobile apps, SEO & GEO, digital marketing and social media. A bilingual English- and French-speaking team on GMT, working remotely with clients as an extension of their own teams.',
+    lead: 'From Dakar, we deliver quality projects to Canadian, French and European companies, at affordable prices and on short timelines thanks to AI.',
+    intro: 'Based in Dakar, BNS Digital brings six complementary areas of expertise together in one team: website design, business software, mobile apps, SEO & GEO, digital marketing and social media. A bilingual English- and French-speaking team on GMT that builds AI into every production stage and works remotely with clients as an extension of their own teams.',
     adnEyebrow: 'Our DNA', adnH2: 'Three convictions guide every project we take on.',
     adn: [
       { n: '01', t: 'Strategic vision', d: 'We don’t just execute. We build a precise roadmap to help you win market share.' },
@@ -118,12 +118,12 @@ const t = useLocaleText({
       { n: '03', t: 'Production', d: 'Design, development, content or campaigns: our team delivers to a high standard and involves you at every milestone through regular video calls.' },
       { n: '04', t: 'Launch & growth', d: 'Go-live, performance tracking, continuous optimisation. A digital project doesn’t end on delivery day.' }
     ],
-    whyEyebrow: 'Why BNS Digital', whyH2: 'European agency quality, from Dakar.',
+    whyEyebrow: 'Why BNS Digital', whyH2: 'Affordable prices. Projects delivered fast.',
     why: [
-      { tag: '# QUALITY', t: 'Controlled cost, same standards', d: 'European agency methods with a lighter cost structure: more of your budget goes into production.' },
+      { tag: '# PRICING', t: 'Affordable prices', d: 'Agency standards at SME-friendly rates: a lean structure and optimised production.' },
       { tag: '# GMT', t: 'A convenient time zone', d: 'A shared working morning with Toronto and Montreal; only 1 to 2 hours from Paris, Brussels and Geneva.' },
       { tag: '# EN · FR', t: 'A bilingual team', d: 'Smooth communication in English and French, with no middleman.' },
-      { tag: '# FOLLOW-UP', t: 'A dedicated project manager', d: 'A single point of contact, regular video calls and transparent progress tracking.' }
+      { tag: '# AI', t: 'Delivered faster with AI', d: 'Design, code, content, testing: our team relies on AI to shorten timelines, overseen by a dedicated project manager.' }
     ],
     reviewsEyebrow: 'Google reviews', reviewsH2: 'What our clients say about us.', ctaTitle: 'Want to work with us?', ctaLabel: 'Discuss your project'
   }

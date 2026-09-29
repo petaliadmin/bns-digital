@@ -3,12 +3,12 @@ type Cell = [string, string]
 type WorkItem = { client: string; sector: string; title: string; metric: string }
 
 const fr = {
-  seo: { title: 'Agence digitale pour la France et le Canada', desc: 'Agence digitale basée à Dakar pour les PME françaises, européennes et canadiennes : sites web, applications, SEO & GEO et publicité en ligne. Devis sous 48 h.' },
-  topbar: ['Devis gratuit sous 48 h', 'Sans engagement', 'Équipe à Dakar · clients en France, en Europe et au Canada'],
+  seo: { title: 'Agence digitale pour la France et le Canada', desc: 'Sites web, applications, SEO et publicité à prix abordables, livrés vite grâce à l’IA : agence basée à Dakar pour les PME en France, en Europe et au Canada.' },
+  topbar: ['Prix abordables', 'Projets livrés vite grâce à l’IA', 'Devis gratuit sous 48 h'],
   hero: {
-    badge: 'Agence digitale à Dakar pour la France, l’Europe et le Canada', title: 'Votre croissance digitale, gérée de A à Z.',
-    lead: 'Site web, application sur mesure, référencement Google & IA, publicité en ligne : une équipe francophone basée à Dakar, les standards d’une agence européenne et un budget maîtrisé.',
-    cta: 'Demander un devis gratuit', cta2: 'Voir nos réalisations', cta2Call: 'Réserver un appel', trust: ['Réponse sous 48 h', 'Interlocuteur dédié', 'Sans engagement']
+    badge: 'Agence digitale à Dakar pour la France, l’Europe et le Canada', title: 'Des projets digitaux abordables, livrés vite.',
+    lead: 'Site web, application sur mesure, référencement, publicité en ligne : notre équipe basée à Dakar travaille avec les meilleurs outils d’IA pour livrer des projets de qualité plus vite, à des prix accessibles aux PME.',
+    cta: 'Demander un devis gratuit', cta2: 'Voir nos réalisations', cta2Call: 'Réserver un appel', trust: ['Prix abordables', 'Équipe augmentée par l’IA', 'Réponse sous 48 h']
   },
   services: {
     eyebrow: 'Nos services', h2: 'Tout ce qu’il faut pour exister et vendre en ligne.', p: 'Choisissez un service ou combinez-les. Chaque projet est piloté par un chef de projet unique, du brief au lancement.',
@@ -23,12 +23,12 @@ const fr = {
   },
   dakar: {
     eyebrow: 'Pourquoi BNS Digital', h2: 'Une équipe à Dakar. Des clients en France, en Europe et au Canada.',
-    p: 'Nous travaillons à distance avec des entreprises françaises, belges, suisses et canadiennes : les mêmes méthodes qu’une agence européenne, la même langue, presque les mêmes horaires.',
+    p: 'Des prix abordables, des délais courts grâce à l’IA, et une équipe qui parle votre langue à vos horaires : c’est ce que nous apportons aux entreprises françaises, belges, suisses et canadiennes.',
     items: [
-      { t: 'Qualité agence, coût maîtrisé', d: 'Les standards et les méthodes d’une agence européenne, avec une structure de coûts plus légère : votre budget va davantage à la production.' },
+      { t: 'Des prix abordables', d: 'Les standards d’une agence européenne à des tarifs accessibles aux PME et TPE : une structure légère à Dakar et une production accélérée par l’IA.' },
+      { t: 'Livré plus vite grâce à l’IA', d: 'Nos équipes utilisent l’IA pour le design, le code, les contenus et les tests : moins de tâches répétitives, des délais raccourcis et plus de temps pour la qualité.' },
       { t: 'Un fuseau horaire proche', d: 'Dakar vit à l’heure GMT : 1 à 2 h de décalage avec Paris, Bruxelles ou Genève, et une matinée de travail en commun avec l’Est canadien.' },
       { t: 'Une équipe francophone', d: 'Des échanges fluides en français, et en anglais pour vos marchés anglophones. Pas d’intermédiaire, pas de perte d’information.' },
-      { t: 'Un suivi dédié et réactif', d: 'Un chef de projet unique, des points réguliers en visio et un suivi transparent de l’avancement à chaque étape.' }
     ],
     clocksLabel: 'Heure actuelle', markets: 'Nos marchés',
     clocks: [
@@ -38,11 +38,11 @@ const fr = {
     ]
   },
   method: {
-    eyebrow: 'Comment ça marche', h2: 'Simple, rapide, transparent.', p: 'Pas de jargon, pas de réunion inutile. Un process en 4 étapes, entièrement à distance, et vous validez tout avant la mise en ligne.',
+    eyebrow: 'Comment ça marche', h2: 'Simple, rapide, transparent.', p: 'Pas de jargon, pas de réunion inutile. Un process en 4 étapes, accéléré par l’IA et entièrement à distance : vous validez tout avant la mise en ligne.',
     steps: [
       { n: '1', time: 'Jour 1', title: 'Le brief', desc: 'Un appel de 30 min en visio pour comprendre votre activité, vos objectifs et votre budget.' },
       { n: '2', time: 'Sous 48 h', title: 'La proposition', desc: 'Un devis clair, un planning et une maquette de principe. Vous validez, on démarre.' },
-      { n: '3', time: 'Production', title: 'La création', desc: 'Design, développement ou campagne : vous suivez l’avancement et validez chaque étape.' },
+      { n: '3', time: 'Production', title: 'La création', desc: 'Design, développement ou campagne, accélérés par l’IA : vous suivez l’avancement et validez chaque étape.' },
       { n: '4', time: 'Lancement', title: 'La croissance', desc: 'Mise en ligne, suivi des résultats et optimisation continue. On reste à vos côtés.' }
     ]
   },
@@ -53,14 +53,15 @@ const fr = {
     items: {} as Record<string, WorkItem>
   },
   compare: {
-    eyebrow: 'Le comparatif', h2: 'La qualité d’une agence européenne, le budget d’une équipe basée à Dakar.',
+    eyebrow: 'Le comparatif', h2: 'La qualité d’une agence, des prix abordables, des délais raccourcis par l’IA.',
     caption: 'Comparatif BNS Digital, freelance, agence classique et recrutement interne', cols: ['Freelance', 'Agence classique', 'Recrutement interne'], yes: 'Oui', no: 'Non', hint: 'Faites glisser le tableau pour comparer',
     rows: [
       { label: 'Tous les services digitaux au même endroit', cells: [['y', ''], ['n', ''], ['y', ''], ['n', 'Plusieurs profils']] as Cell[] },
       { label: 'Interlocuteur unique et dédié', cells: [['y', ''], ['y', ''], ['n', 'Commercial + équipe'], ['y', '']] as Cell[] },
       { label: 'Délai de démarrage', cells: [['y', 'Sous 1 semaine'], ['-', 'Variable'], ['n', '3 à 6 semaines'], ['n', '2 à 3 mois']] as Cell[] },
       { label: 'Continuité si absence', cells: [['y', 'Équipe'], ['n', ''], ['y', ''], ['n', '']] as Cell[] },
-      { label: 'Budget maîtrisé', cells: [['y', 'Coûts de structure allégés'], ['y', ''], ['n', 'Élevé'], ['n', 'Salaire + charges']] as Cell[] },
+      { label: 'Prix abordables', cells: [['y', 'Tarifs adaptés aux PME'], ['y', ''], ['n', 'Élevé'], ['n', 'Salaire + charges']] as Cell[] },
+      { label: 'Production accélérée par l’IA', cells: [['y', 'Design, code, contenus'], ['-', 'Variable'], ['-', 'Variable'], ['-', 'Variable']] as Cell[] },
       { label: 'Vous restez propriétaire de tout', cells: [['y', ''], ['-', 'Selon contrat'], ['-', 'Selon contrat'], ['y', '']] as Cell[] }
     ]
   },
@@ -78,6 +79,8 @@ const fr = {
   faq: {
     h2: 'Vos questions, nos réponses.', p: 'Une autre question ? Écrivez-nous, on répond sous 24 h ouvrées.', cta: 'Poser une question',
     items: [
+      ['Pourquoi vos prix sont-ils plus abordables ?', 'Pour deux raisons : une équipe basée à Dakar, avec des coûts de structure plus légers qu’en Europe ou au Canada, et une production accélérée par l’IA. Vous payez le travail utile, sans renoncer à la qualité.'],
+      ['Comment l’IA accélère-t-elle vos projets ?', 'Nos équipes utilisent des outils d’IA à chaque étape : maquettes et variantes de design, écriture et relecture du code, rédaction et traduction des contenus, tests. L’IA prend en charge les tâches répétitives ; nos experts gardent la main sur la stratégie, la qualité et la validation. Résultat : des délais plus courts.'],
       ['Comment travaillez-vous depuis Dakar avec des entreprises françaises et canadiennes ?', 'Entièrement à distance : appels en visio, échanges par e-mail et outils de suivi partagés. Un chef de projet dédié organise des points réguliers et vous validez chaque étape avant la suite.'],
       ['Quel est le décalage horaire ?', 'Dakar est à l’heure GMT toute l’année. Il y a 1 h de décalage avec Paris, Bruxelles et Genève en hiver, 2 h en été ; et 4 à 5 h d’avance sur Montréal et Toronto. Nos appels ont lieu entre 9 h et 18 h, heure de Dakar.'],
       ['Combien coûte un site internet ?', 'Chaque projet est différent : nous établissons un devis gratuit et détaillé sous 48 h, après un appel pour comprendre vos besoins. Aucun frais caché, et le devis reste valable 30 jours.'],
@@ -91,23 +94,23 @@ const fr = {
   },
   final: {
     h2: 'Parlons de votre projet.', p: '30 minutes pour comprendre vos besoins et vous proposer la bonne solution. Sans jargon, sans pression, sans engagement.',
-    list: ['Devis détaillé et gratuit sous 48 h', 'Un chef de projet dédié du début à la fin', 'Vous restez propriétaire de votre site et de vos comptes'], call: 'Ou réserver un appel directement'
+    list: ['Des prix abordables, sans frais cachés', 'Des délais courts grâce à l’IA', 'Devis détaillé et gratuit sous 48 h', 'Un chef de projet dédié du début à la fin'], call: 'Ou réserver un appel directement'
   },
   form: {
     name: 'Nom', namePh: 'Jean Dupont', company: 'Entreprise', companyPh: 'Votre société', email: 'E-mail professionnel', emailPh: 'vous@entreprise.fr',
     need: 'Votre besoin', needs: ['Site web', 'Application', 'SEO / GEO', 'App mobile', 'Publicité'], msg: 'Votre projet en quelques mots', msgPh: 'Objectifs, délais, budget indicatif…',
     submit: 'Recevoir mon devis gratuit', sending: 'Envoi…', sent: 'Merci, demande envoyée', note: 'Vos données restent confidentielles. Réponse sous 48 h ouvrées.'
   },
-  footer: { desc: 'Agence digitale basée à Dakar : sites web, applications sur mesure, SEO & GEO et publicité en ligne pour les entreprises en France, en Europe et au Canada.', local: 'Nos marchés :', legal: 'Mentions légales', privacy: 'Confidentialité', terms: 'CGV' }
+  footer: { desc: 'Agence digitale basée à Dakar : sites web, applications, SEO & GEO et publicité en ligne à prix abordables, livrés vite grâce à l’IA, pour la France, l’Europe et le Canada.', local: 'Nos marchés :', legal: 'Mentions légales', privacy: 'Confidentialité', terms: 'CGV' }
 }
 
 const en: typeof fr = {
-  seo: { title: 'Digital agency for Canada, France & Europe', desc: 'Dakar-based digital agency for companies in Canada, France and Europe: websites, custom software, SEO & GEO and paid ads. Free quote within 48 hours.' },
-  topbar: ['Free quote within 48 hours', 'No commitment', 'Team in Dakar · clients in Canada, France and Europe'],
+  seo: { title: 'Digital agency for Canada, France & Europe', desc: 'Websites, software, SEO and paid ads at affordable prices, delivered fast thanks to AI: a Dakar-based agency for SMEs in Canada, France and Europe.' },
+  topbar: ['Affordable prices', 'Fast, AI-powered delivery', 'Free quote within 48 hours'],
   hero: {
-    badge: 'Dakar-based digital agency for Canada, France and Europe', title: 'Your digital growth, handled end to end.',
-    lead: 'Websites, custom software, Google & AI search optimisation, paid ads: a bilingual team based in Dakar, the standards of a European agency and a controlled budget.',
-    cta: 'Get a free quote', cta2: 'See our work', cta2Call: 'Book a call', trust: ['Reply within 48 hours', 'Dedicated contact', 'No commitment']
+    badge: 'Dakar-based digital agency for Canada, France and Europe', title: 'Affordable digital projects, delivered fast.',
+    lead: 'Websites, custom software, SEO, paid ads: our Dakar-based team works with the best AI tools to deliver quality projects faster, at prices small businesses can afford.',
+    cta: 'Get a free quote', cta2: 'See our work', cta2Call: 'Book a call', trust: ['Affordable prices', 'AI-powered team', 'Reply within 48 hours']
   },
   services: {
     eyebrow: 'Our services', h2: 'Everything you need to exist and sell online.', p: 'Choose one service or combine them. Every project is run by a single project manager, from brief to launch.',
@@ -122,12 +125,12 @@ const en: typeof fr = {
   },
   dakar: {
     eyebrow: 'Why BNS Digital', h2: 'A team in Dakar. Clients in Canada, France and Europe.',
-    p: 'We work remotely with Canadian, French, Belgian and Swiss companies: the same methods as a European agency, your language, and working hours that overlap with yours.',
+    p: 'Affordable prices, short timelines thanks to AI, and a team that speaks your language during your hours: that’s what we bring to Canadian, French, Belgian and Swiss companies.',
     items: [
-      { t: 'Agency quality, controlled cost', d: 'The standards and methods of a European agency, with a lighter cost structure: more of your budget goes into production.' },
+      { t: 'Affordable prices', d: 'Agency standards at prices small businesses can afford: a lean team in Dakar and AI-accelerated production.' },
+      { t: 'Delivered faster with AI', d: 'Our team uses AI for design, code, content and testing: fewer repetitive tasks, shorter timelines and more time for quality.' },
       { t: 'A convenient time zone', d: 'Dakar runs on GMT: 1 to 2 hours from Paris, Brussels or Geneva, and a shared working morning with Eastern Canada.' },
       { t: 'A bilingual team', d: 'Smooth communication in English and French. No middleman, nothing lost in translation.' },
-      { t: 'Dedicated, responsive follow-up', d: 'A single project manager, regular video calls and transparent progress tracking at every stage.' }
     ],
     clocksLabel: 'Current time', markets: 'Our markets',
     clocks: [
@@ -137,11 +140,11 @@ const en: typeof fr = {
     ]
   },
   method: {
-    eyebrow: 'How it works', h2: 'Simple, fast, transparent.', p: 'No jargon, no pointless meetings. A 4-step process, fully remote, and you sign off on everything before go-live.',
+    eyebrow: 'How it works', h2: 'Simple, fast, transparent.', p: 'No jargon, no pointless meetings. A 4-step, AI-accelerated, fully remote process: you sign off on everything before go-live.',
     steps: [
       { n: '1', time: 'Day 1', title: 'The brief', desc: 'A 30-minute video call to understand your business, goals and budget.' },
       { n: '2', time: 'Within 48 h', title: 'The proposal', desc: 'A clear quote, a schedule and an initial mock-up. You approve, we start.' },
-      { n: '3', time: 'Production', title: 'The build', desc: 'Design, development or campaign: you follow progress and approve each step.' },
+      { n: '3', time: 'Production', title: 'The build', desc: 'Design, development or campaign, accelerated by AI: you follow progress and approve each step.' },
       { n: '4', time: 'Launch', title: 'Growth', desc: 'Go-live, results tracking and continuous optimisation. We stay by your side.' }
     ]
   },
@@ -151,14 +154,15 @@ const en: typeof fr = {
     items: {}
   },
   compare: {
-    eyebrow: 'How we compare', h2: 'The quality of a European agency, the budget of a Dakar-based team.',
+    eyebrow: 'How we compare', h2: 'Agency quality, affordable prices, timelines cut short by AI.',
     caption: 'Comparison of BNS Digital, freelancers, traditional agencies and in-house hiring', cols: ['Freelancer', 'Traditional agency', 'In-house hire'], yes: 'Yes', no: 'No', hint: 'Swipe the table to compare',
     rows: [
       { label: 'All digital services in one place', cells: [['y', ''], ['n', ''], ['y', ''], ['n', 'Several profiles']] },
       { label: 'Single, dedicated contact', cells: [['y', ''], ['y', ''], ['n', 'Sales rep + team'], ['y', '']] },
       { label: 'Time to start', cells: [['y', 'Within 1 week'], ['-', 'Varies'], ['n', '3 to 6 weeks'], ['n', '2 to 3 months']] },
       { label: 'Continuity during absences', cells: [['y', 'Team'], ['n', ''], ['y', ''], ['n', '']] },
-      { label: 'Controlled budget', cells: [['y', 'Lighter overheads'], ['y', ''], ['n', 'High'], ['n', 'Salary + overheads']] },
+      { label: 'Affordable prices', cells: [['y', 'SME-friendly rates'], ['y', ''], ['n', 'High'], ['n', 'Salary + overheads']] },
+      { label: 'AI-accelerated production', cells: [['y', 'Design, code, content'], ['-', 'Varies'], ['-', 'Varies'], ['-', 'Varies']] },
       { label: 'You own everything', cells: [['y', ''], ['-', 'Depends on contract'], ['-', 'Depends on contract'], ['y', '']] }
     ]
   },
@@ -176,6 +180,8 @@ const en: typeof fr = {
   faq: {
     h2: 'Your questions, answered.', p: 'Another question? Write to us — we reply within one business day.', cta: 'Ask a question',
     items: [
+      ['Why are your prices more affordable?', 'Two reasons: a team based in Dakar, with lower overheads than in Europe or Canada, and AI-accelerated production. You pay for useful work, without compromising on quality.'],
+      ['How does AI speed up your projects?', 'Our team uses AI tools at every stage: design mock-ups and variants, writing and reviewing code, drafting and translating content, testing. AI handles the repetitive tasks; our experts stay in charge of strategy, quality and sign-off. The result: shorter timelines.'],
       ['How do you work from Dakar with Canadian and European companies?', 'Fully remotely: video calls, email and shared tracking tools. A dedicated project manager runs regular check-ins and you approve each stage before we move on.'],
       ['What is the time difference?', 'Dakar is on GMT all year round. It is 4 to 5 hours ahead of Toronto and Montreal, and 1 to 2 hours behind Paris, Brussels and Geneva. Our calls take place between 9 am and 6 pm Dakar time.'],
       ['How much does a website cost?', 'Every project is different: after a call to understand your needs, we send a free, detailed quote within 48 hours. No hidden fees, and the quote remains valid for 30 days.'],
@@ -189,14 +195,14 @@ const en: typeof fr = {
   },
   final: {
     h2: 'Let’s talk about your project.', p: '30 minutes to understand your needs and suggest the right solution. No jargon, no pressure, no commitment.',
-    list: ['Free, detailed quote within 48 hours', 'A dedicated project manager from start to finish', 'You keep ownership of your website and accounts'], call: 'Or book a call directly'
+    list: ['Affordable prices, no hidden fees', 'Short timelines thanks to AI', 'Free, detailed quote within 48 hours', 'A dedicated project manager from start to finish'], call: 'Or book a call directly'
   },
   form: {
     name: 'Name', namePh: 'Jane Smith', company: 'Company', companyPh: 'Your company', email: 'Business email', emailPh: 'you@company.com',
     need: 'What you need', needs: ['Website', 'Software', 'SEO / GEO', 'Mobile app', 'Paid ads'], msg: 'Your project in a few words', msgPh: 'Goals, timeline, indicative budget…',
     submit: 'Get my free quote', sending: 'Sending…', sent: 'Thank you, request sent', note: 'Your data stays confidential. Reply within 48 business hours.'
   },
-  footer: { desc: 'Dakar-based digital agency: websites, custom software, SEO & GEO and paid ads for companies in Canada, France and Europe.', local: 'Our markets:', legal: 'Legal notice', privacy: 'Privacy', terms: 'Terms' }
+  footer: { desc: 'Dakar-based digital agency: websites, software, SEO & GEO and paid ads at affordable prices, delivered fast with AI, for Canada, France and Europe.', local: 'Our markets:', legal: 'Legal notice', privacy: 'Privacy', terms: 'Terms' }
 }
 
 export const HOME = { fr, en }

@@ -165,7 +165,7 @@ export const SERVICE_SEO_EN: Record<string, { title: string; h1: string; desc: s
 
 export const SERVICE_FAQ_EN: [string, string][] = [
   ['How much does this service cost?', 'Every project is unique: its budget depends on complexity, technologies and requested deadlines. After a first conversation, we send you a detailed quote, valid for 30 days. Payment is made in two instalments: 50% on order and 50% on delivery.'],
-  ['What are the timelines?', 'They depend on the nature and scope of the project, and on when we receive your content. An indicative schedule with sign-off milestones is set during scoping.'],
+  ['What are the timelines?', 'They depend on the nature and scope of the project, and on when we receive your content. Our team uses AI to shorten them, and an indicative schedule with sign-off milestones is set during scoping.'],
   ['How many revisions are included?', 'Two revision cycles are included in every service. Further requests are covered by an additional quote.'],
   ['What happens after delivery?', 'For websites, apps and AI agents, 12 months of technical maintenance are included. An ongoing support subscription can then take over. You own the deliverables once they are paid in full.'],
   ['Can we combine several services?', 'Yes — and that’s often where performance comes from: a well-ranked website, fuelled by consistent campaigns and content.']
@@ -180,7 +180,7 @@ export const LOCAL_PAGES_EN: Record<string, Omit<LocalPage, 'slug' | 'refs'>> = 
     sub: 'Website design, custom software, SEO & GEO and digital marketing: BNS Digital supports French companies with the standards of a Paris agency and a controlled budget.',
     svcTitle: 'All our services, working for French businesses.', whyTitle: 'Why work with a Dakar-based team?',
     why: [
-      b('Agency quality, controlled cost', 'The same methods and standards as a European agency, with a lighter cost structure: more of your budget goes into production.'),
+      b('Affordable, fast delivery', 'SME-friendly prices and short timelines: a team in Dakar and AI-accelerated production, without compromising on quality.'),
       b('Minimal time difference', 'Dakar runs on GMT: one hour behind Paris in winter, two in summer. Our working days overlap almost entirely.'),
       b('A French-speaking team', 'Smooth communication in French, content written for the French market and a good understanding of how it works.'),
       b('A dedicated project manager', 'A single point of contact, regular video calls and transparent follow-up at every stage.')
@@ -201,7 +201,7 @@ export const LOCAL_PAGES_EN: Record<string, Omit<LocalPage, 'slug' | 'refs'>> = 
     sub: 'Website design, custom software, SEO & GEO and digital marketing: BNS Digital supports companies in Paris and Île-de-France from Dakar, in French and at your pace.',
     svcTitle: 'All our services, working for Paris-based businesses.', whyTitle: 'Why work with BNS Digital from Paris?',
     why: [
-      b('A better-invested budget', 'A lighter cost structure than a Paris agency: for the same budget, more time spent on your project.'),
+      b('A better-invested budget', 'More affordable than a Paris agency, with AI-accelerated production: your project is delivered faster, for less.'),
       b('Nearly the same hours', 'Only one to two hours’ difference: meetings, approvals and adjustments happen within the day.'),
       b('Paris local SEO', 'Google Business Profile, local pages and structured data to rank in location-based searches in Paris and Île-de-France.'),
       b('A full team', 'Six areas of expertise to run your project end to end, with a single point of contact.')
@@ -223,7 +223,7 @@ export const LOCAL_PAGES_EN: Record<string, Omit<LocalPage, 'slug' | 'refs'>> = 
     why: [
       b('Multilingual websites', 'An architecture designed for several languages with correct hreflang tags, so every version ranks properly.'),
       b('One hour’s difference', 'Brussels and Dakar are one to two hours apart: we work the same hours as you.'),
-      b('Agency quality, controlled cost', 'European agency standards with a lighter cost structure.'),
+      b('Affordable, fast delivery', 'SME-friendly prices and short timelines: a team in Dakar and AI-accelerated production, without compromising on quality.'),
       b('GDPR compliance', 'Cookies, forms and legal notices that meet the European framework from day one.')
     ],
     refTitle: 'Some of our references',
@@ -241,7 +241,7 @@ export const LOCAL_PAGES_EN: Record<string, Omit<LocalPage, 'slug' | 'refs'>> = 
     sub: 'Websites, custom software, SEO and campaigns: BNS Digital supports companies in Geneva, Lausanne and across Switzerland with rigour, in French or English, at a controlled cost.',
     svcTitle: 'All our services, working for Swiss businesses.', whyTitle: 'Rigour, responsiveness and a controlled budget.',
     why: [
-      b('Strong value for money', 'Compared with Swiss rates, a Dakar-based team brings the same standards for a more contained budget.'),
+      b('Strong value for money', 'Compared with Swiss rates, a Dakar-based, AI-powered team brings the same standards, faster and for a more contained budget.'),
       b('Shared hours', 'One to two hours’ difference with Geneva and Zurich: your contacts are available during your office hours.'),
       b('Data protection', 'We build the requirements of the revised FADP (nFADP) and the GDPR into your websites and apps.'),
       b('French and English', 'Communication and content in French or English, as your business requires.')
@@ -263,7 +263,7 @@ export const LOCAL_PAGES_EN: Record<string, Omit<LocalPage, 'slug' | 'refs'>> = 
     why: [
       b('Bilingual websites', 'English and French on one website, with proper SEO for each language and French given its rightful place for the Quebec market.'),
       b('A head start on your day', 'Dakar is 4 to 5 hours ahead of Toronto and Montreal: a request sent at the end of your day can be handled before you wake up, and our shared mornings are for meetings.'),
-      b('Agency quality, controlled cost', 'North American agency standards with a lighter cost structure.'),
+      b('Affordable, fast delivery', 'SME-friendly prices and short timelines: a team in Dakar and AI-accelerated production, without compromising on quality.'),
       b('Privacy compliance', 'We build in the requirements of PIPEDA and Quebec’s Law 25: consent, privacy policy and forms.')
     ],
     refTitle: 'Some of our references',
@@ -284,7 +284,7 @@ export const LOCAL_PAGES_EN: Record<string, Omit<LocalPage, 'slug' | 'refs'>> = 
     why: [
       b('A French-speaking digital hub', 'Dakar is home to web, design and digital marketing talent working in French and English.'),
       b('Between time zones', 'On GMT, Dakar is one or two hours from Europe and four or five hours from Eastern Canada.'),
-      b('Agency quality, controlled cost', 'International agency methods with a lighter cost structure.'),
+      b('Affordable, fast delivery', 'SME-friendly prices and short timelines: a team in Dakar and AI-accelerated production, without compromising on quality.'),
       b('Dedicated follow-up', 'A single project manager, regular video calls and transparent communication.')
     ],
     refTitle: 'Some of our references',

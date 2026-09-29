@@ -46,14 +46,14 @@ const clients = computed(() => projects.value)
 
 const t = useLocaleText({
   fr: {
-    title: 'Une équipe basée à Dakar, au service des entreprises en France, en Europe et au Canada',
+    title: 'Prix abordables, projets livrés vite grâce à l’IA, pour les entreprises en France, en Europe et au Canada',
     countriesLabel: 'Nos marchés',
     countries: ['France', 'Belgique', 'Suisse', 'Canada', 'Sénégal'],
     projects: 'réalisations en ligne', rating: 'sur Google', ratingCount: 'avis', expertise: 'expertises réunies', countriesStat: 'marchés servis',
     tz: 'fuseau de Dakar, 1 à 2 h de Paris', langsL: 'langues de travail'
   },
   en: {
-    title: 'A Dakar-based team serving companies in Canada, France and Europe',
+    title: 'Affordable prices and fast, AI-powered delivery for companies in Canada, France and Europe',
     countriesLabel: 'Our markets',
     countries: ['Canada', 'France', 'Belgium', 'Switzerland', 'Senegal'],
     projects: 'projects showcased', rating: 'on Google', ratingCount: 'reviews', expertise: 'areas of expertise', countriesStat: 'markets served',

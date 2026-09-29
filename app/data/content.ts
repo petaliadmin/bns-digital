@@ -43,8 +43,8 @@ export const organizationSchema = (site: string, lang: 'fr' | 'en' = 'fr') => ({
   logo: { '@type': 'ImageObject', url: `${site}/logo-bns.webp`, width: 518, height: 206 },
   image: `${site}/og-image.jpg`,
   description: lang === 'en'
-    ? 'Dakar-based digital agency serving companies in France, Europe and Canada: website design, custom software, SEO & GEO, paid advertising and social media.'
-    : 'Agence digitale basée à Dakar au service des entreprises françaises, européennes et canadiennes : sites web, applications sur mesure, SEO & GEO, publicité en ligne et social media.',
+    ? 'Dakar-based digital agency serving companies in France, Europe and Canada: website design, custom software, SEO & GEO, paid ads and social media at affordable prices, delivered fast with AI.'
+    : 'Agence digitale basée à Dakar au service des entreprises françaises, européennes et canadiennes : sites web, applications, SEO & GEO, publicité et social media à prix abordables, livrés vite grâce à l’IA.',
   email: CONTACT.email,
   contactPoint: { '@type': 'ContactPoint', contactType: 'customer service', email: CONTACT.email, availableLanguage: ['French', 'English'], areaServed: ['FR', 'BE', 'CH', 'CA', 'SN'] },
   ...(filled(CONTACT.phone) ? { telephone: CONTACT.phone } : {}),
@@ -289,7 +289,7 @@ export const SERVICE_SEO: Record<string, { title: string; h1: string; desc: stri
 
 export const SERVICE_FAQ: [string, string][] = [
   ['Combien coûte ce service ?', 'Chaque projet est unique : son budget dépend de la complexité, des technologies et des délais demandés. Après un premier échange, nous vous remettons un devis détaillé, valable 30 jours. Le paiement se fait en deux temps : 50 % à la commande, 50 % à la livraison.'],
-  ['Quels sont les délais ?', 'Ils dépendent de la nature et de l’envergure du projet, ainsi que de la transmission de vos contenus. Un planning indicatif, jalonné d’étapes de validation, est établi dès le cadrage.'],
+  ['Quels sont les délais ?', 'Ils dépendent de la nature et de l’envergure du projet, ainsi que de la transmission de vos contenus. Nos équipes s’appuient sur l’IA pour les raccourcir, et un planning indicatif, jalonné d’étapes de validation, est établi dès le cadrage.'],
   ['Combien de révisions sont incluses ?', 'Deux cycles de révision sont inclus dans chaque prestation. Les demandes supplémentaires font l’objet d’un complément de devis.'],
   ['Que se passe-t-il après la livraison ?', 'Pour un site, une application ou un agent IA, 12 mois de maintenance technique sont inclus. Un abonnement de suivi peut ensuite prendre le relais. Les créations vous appartiennent dès le paiement intégral.'],
   ['Peut-on combiner plusieurs expertises ?', 'Oui, et c’est souvent là que naît la performance : un site bien référencé, nourri par des campagnes et des contenus cohérents.']
@@ -312,7 +312,7 @@ export const LOCAL_PAGES: LocalPage[] = [
     sub: 'Création de sites, applications sur mesure, référencement SEO & GEO et marketing digital : BNS Digital accompagne les entreprises françaises avec les standards d’une agence parisienne et un budget maîtrisé.',
     svcTitle: 'Toutes nos expertises, au service des entreprises françaises.', whyTitle: 'Pourquoi confier votre digital à une équipe basée à Dakar ?',
     why: [
-      b('Qualité agence, coût maîtrisé', 'Les mêmes méthodes et exigences qu’une agence européenne, avec une structure de coûts plus légère : votre budget va davantage à la production.'),
+      b('Prix abordables, livraison rapide', 'Des tarifs accessibles aux PME et des délais courts : une équipe à Dakar et une production accélérée par l’IA, sans renoncer à la qualité.'),
       b('Un décalage horaire minime', 'Dakar vit à l’heure GMT : une heure de décalage avec Paris en hiver, deux en été. Vos journées de travail et les nôtres se recouvrent presque entièrement.'),
       b('Une équipe francophone', 'Des échanges fluides en français, des contenus rédigés pour le marché français et une bonne connaissance de ses usages.'),
       b('Un chef de projet dédié', 'Un interlocuteur unique, des points réguliers en visio et un suivi transparent à chaque étape.')
@@ -333,7 +333,7 @@ export const LOCAL_PAGES: LocalPage[] = [
     sub: 'Création de sites, applications sur mesure, référencement SEO & GEO et marketing digital : BNS Digital accompagne les entreprises de Paris et d’Île-de-France depuis Dakar, en français et au même rythme que vous.',
     svcTitle: 'Toutes nos expertises, au service des entreprises parisiennes.', whyTitle: 'Pourquoi travailler avec BNS Digital depuis Paris ?',
     why: [
-      b('Un budget mieux investi', 'Une structure de coûts plus légère qu’une agence parisienne : à budget égal, davantage de temps consacré à votre projet.'),
+      b('Un budget mieux investi', 'Des prix plus abordables qu’une agence parisienne et une production accélérée par l’IA : votre projet est livré plus vite, pour moins cher.'),
       b('Les mêmes horaires, ou presque', 'Une à deux heures de décalage seulement : réunions, validations et ajustements se font dans la journée.'),
       b('Le SEO local parisien', 'Fiche Google, pages locales et données structurées pour être visible sur les recherches géolocalisées à Paris et en Île-de-France.'),
       b('Une équipe complète', 'Six expertises réunies pour mener votre projet de bout en bout, avec un seul interlocuteur.')
@@ -355,7 +355,7 @@ export const LOCAL_PAGES: LocalPage[] = [
     why: [
       b('Des sites multilingues', 'Une architecture pensée pour plusieurs langues et des balises hreflang correctes, pour un référencement propre sur chaque version.'),
       b('Une heure de décalage', 'Bruxelles et Dakar ont une à deux heures d’écart : nous travaillons sur les mêmes plages horaires que vous.'),
-      b('Qualité agence, coût maîtrisé', 'Les standards d’une agence européenne avec une structure de coûts plus légère.'),
+      b('Prix abordables, livraison rapide', 'Des tarifs accessibles aux PME et des délais courts : une équipe à Dakar et une production accélérée par l’IA, sans renoncer à la qualité.'),
       b('Conformité RGPD', 'Cookies, formulaires et mentions légales conformes au cadre européen dès la conception.')
     ],
     refTitle: 'Quelques-unes de nos références', refs: [],
@@ -373,7 +373,7 @@ export const LOCAL_PAGES: LocalPage[] = [
     sub: 'Sites web, applications sur mesure, référencement et campagnes : BNS Digital accompagne les entreprises de Genève, Lausanne et de toute la Suisse romande avec rigueur, en français et à coût maîtrisé.',
     svcTitle: 'Toutes nos expertises, au service des entreprises suisses.', whyTitle: 'Rigueur, réactivité et budget maîtrisé.',
     why: [
-      b('Un rapport qualité-prix solide', 'Face aux tarifs pratiqués en Suisse, une équipe basée à Dakar vous apporte les mêmes standards pour un budget plus contenu.'),
+      b('Un rapport qualité-prix solide', 'Face aux tarifs pratiqués en Suisse, une équipe basée à Dakar et outillée par l’IA vous apporte les mêmes standards, plus vite et pour un budget plus contenu.'),
       b('Des horaires en commun', 'Une à deux heures de décalage avec Genève et Zurich : vos interlocuteurs sont disponibles pendant vos heures de bureau.'),
       b('Protection des données', 'Nous intégrons les exigences de la nLPD et du RGPD dans la conception de vos sites et applications.'),
       b('Une équipe francophone', 'Des échanges et des contenus en français, avec une version anglaise si votre activité l’exige.')
@@ -395,7 +395,7 @@ export const LOCAL_PAGES: LocalPage[] = [
     why: [
       b('Des sites bilingues', 'Français et anglais sur un même site, avec un référencement propre pour chaque langue et la place du français assurée pour le marché québécois.'),
       b('De l’avance sur votre journée', 'Dakar a 4 à 5 heures d’avance sur Montréal : une demande envoyée en fin de journée peut être traitée avant votre réveil, et nos matinées communes servent aux échanges.'),
-      b('Qualité agence, coût maîtrisé', 'Les standards d’une agence nord-américaine avec une structure de coûts plus légère.'),
+      b('Prix abordables, livraison rapide', 'Des tarifs accessibles aux PME et des délais courts : une équipe à Dakar et une production accélérée par l’IA, sans renoncer à la qualité.'),
       b('Renseignements personnels', 'Nous intégrons les exigences de la Loi 25 et de la LPRPDE : consentement, politique de confidentialité, formulaires.')
     ],
     refTitle: 'Quelques-unes de nos références', refs: [],
@@ -416,7 +416,7 @@ export const LOCAL_PAGES: LocalPage[] = [
     why: [
       b('Un hub digital francophone', 'Dakar réunit des talents du web, du design et du marketing digital qui travaillent en français et en anglais.'),
       b('Au centre des fuseaux', 'À l’heure GMT, Dakar est à une ou deux heures de l’Europe et à quatre ou cinq heures de l’Est du Canada.'),
-      b('Qualité agence, coût maîtrisé', 'Des méthodes d’agence internationale avec une structure de coûts plus légère.'),
+      b('Prix abordables, livraison rapide', 'Des tarifs accessibles aux PME et des délais courts : une équipe à Dakar et une production accélérée par l’IA, sans renoncer à la qualité.'),
       b('Un suivi dédié', 'Un chef de projet unique, des points réguliers en visio et une communication transparente.')
     ],
     refTitle: 'Quelques-unes de nos références', refs: [],
