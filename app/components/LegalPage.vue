@@ -22,11 +22,11 @@
         <article v-for="(a, i) in articles" :id="`article-${i + 1}`" :key="a.t" class="art">
           <div class="art__n">{{ num(i) }}.</div>
           <div class="art__body">
-            <h3 class="art__t">{{ a.t }}</h3>
+            <component :is="articlesTitle ? 'h3' : 'h2'" class="art__t">{{ a.t }}</component>
             <template v-for="(b, j) in a.blocks" :key="j">
               <ul v-if="Array.isArray(b)" class="art__list"><li v-for="li in b" :key="li">{{ li }}</li></ul>
               <p v-else-if="typeof b === 'string'" class="art__p">{{ b }}</p>
-              <h4 v-else-if="'h' in b" class="art__sub">{{ b.h }}</h4>
+              <component :is="articlesTitle ? 'h4' : 'h3'" v-else-if="'h' in b" class="art__sub">{{ b.h }}</component>
               <dl v-else class="art__kv">
                 <div v-for="[k, v, href] in b.kv" :key="k" class="art__kv-row">
                   <dt>{{ k }}</dt>

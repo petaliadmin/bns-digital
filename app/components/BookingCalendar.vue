@@ -7,12 +7,12 @@
           <button type="button" class="bk__nav" :disabled="monthIndex === 0" :aria-label="t.prevMonth" @click="monthIndex--">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg>
           </button>
-          <h3 class="bk__month-t" aria-live="polite">{{ monthLabel }}</h3>
+          <component :is="hTag" class="bk__month-t" aria-live="polite">{{ monthLabel }}</component>
           <button type="button" class="bk__nav" :disabled="monthIndex >= months.length - 1" :aria-label="t.nextMonth" @click="monthIndex++">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
           </button>
         </div>
-        <div class="bk__grid" role="grid" :aria-label="t.calendar">
+        <div class="bk__grid" role="group" :aria-label="t.calendar">
           <span v-for="w in weekdays" :key="w" class="bk__wd" aria-hidden="true">{{ w }}</span>
           <template v-for="(c, i) in cells" :key="i">
             <span v-if="!c" class="bk__day bk__day--empty" />
@@ -42,7 +42,7 @@
           <button type="button" class="bk__retry" @click="load">{{ t.retry }}</button>
         </div>
         <template v-else-if="selectedDay">
-          <h3 class="bk__slots-t">{{ longDate(selectedDay.date) }}</h3>
+          <component :is="hTag" class="bk__slots-t">{{ longDate(selectedDay.date) }}</component>
           <p class="bk__muted">{{ t.duration }} · {{ tzNote }}</p>
           <div class="bk__slot-list">
             <button
@@ -102,7 +102,7 @@
     <!-- Étape 3 : confirmation -->
     <div v-else class="bk__done" role="status">
       <span class="bk__done-i"><IconCheck :size="30" /></span>
-      <h3 class="bk__done-h">{{ t.doneH }}</h3>
+      <component :is="hTag" class="bk__done-h">{{ t.doneH }}</component>
       <p class="bk__done-when">{{ longDate(selectedDay!.date) }} · {{ time(selectedSlot!.start) }} – {{ time(selectedSlot!.end) }}<template v-if="showAgency"> ({{ t.agency }} {{ time(selectedSlot!.start, BOOKING.timeZone) }})</template></p>
       <p class="bk__muted">{{ form.mode === 'phone' ? t.donePhone : result?.meetLink ? t.doneMeet : t.doneVisio }}<template v-if="result?.emailed"> {{ t.doneMail }}</template></p>
       <a v-if="result?.meetLink" :href="result.meetLink" target="_blank" rel="noopener" class="btn btn--primary btn--sm">{{ t.joinMeet }}</a>
@@ -117,6 +117,10 @@
 <script setup lang="ts">
 import { BOOKING, agencyDate, type DaySlots, type Slot } from '#shared/booking'
 import { CONTACT } from '~/data/content'
+
+// Niveau des titres internes : h3 sous un h2 de section (accueil), h2 directement sous le h1 (page Réserver un appel)
+const props = withDefaults(defineProps<{ headingLevel?: 2 | 3 }>(), { headingLevel: 3 })
+const hTag = computed(() => `h${props.headingLevel}`)
 
 const { en, locale, link } = useSite()
 const config = useRuntimeConfig()

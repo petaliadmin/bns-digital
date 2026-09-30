@@ -3,6 +3,8 @@ export default defineNuxtConfig({
   compatibilityDate: '2026-09-01',
   devtools: { enabled: false },
   css: ['@fontsource-variable/bricolage-grotesque', '@fontsource-variable/geist', '~/assets/css/main.css'],
+  // CSS des composants inséré dans le HTML : supprime les feuilles bloquantes au premier affichage (LCP)
+  features: { inlineStyles: true },
   runtimeConfig: {
     // Réservation d'appels (serveur uniquement) — voir .env.example
     calendarProvider: 'ksuite', // ksuite (CalDAV Infomaniak) | google

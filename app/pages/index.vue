@@ -134,7 +134,7 @@
             <thead>
               <tr>
                 <td />
-                <th scope="col" class="compare__us"><img src="/icon-192.png" alt="" width="28" height="28" class="compare__k">BNS Digital</th>
+                <th scope="col" class="compare__us"><img src="/icon-64.png" alt="" width="28" height="28" class="compare__k">BNS Digital</th>
                 <th v-for="h in t.compare.cols" :key="h" scope="col">{{ h }}</th>
               </tr>
             </thead>
@@ -190,7 +190,7 @@
             </li>
           </ul>
         </div>
-        <BookingCalendar />
+        <LazyBookingCalendar hydrate-on-visible />
       </section>
 
       <!-- FAQ -->

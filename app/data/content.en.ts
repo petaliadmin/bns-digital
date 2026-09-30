@@ -178,12 +178,12 @@ export const SERVICES_EN: Record<string, Omit<Service, 'slug' | 'key' | 'num' | 
 
 /** SEO tags for services (title ≤ 60 chars incl. brand, description 120–160 chars) */
 export const SERVICE_SEO_EN: Record<string, { title: string; h1: string; desc: string }> = {
-  'creation-site-web': { title: 'Website design agency: websites & e-commerce', h1: 'Website design for businesses', desc: 'Fast showcase websites, online stores and landing pages, optimised for Google and built to convert, for companies in Canada, France and Europe. Quote within 48 hours.' },
+  'creation-site-web': { title: 'Website design agency: websites & e-commerce', h1: 'Website design for businesses', desc: 'Fast websites, online stores and landing pages, optimised for Google and built to convert, for companies in Canada, France and Europe. Quote in 48 hours.' },
   'application-metier': { title: 'Custom business software development', h1: 'Custom business software', desc: 'Custom business software development: CRM, back office, client portals and automation tailored to your processes. Dakar-based team serving Canada and Europe.' },
   'application-mobile': { title: 'iOS & Android mobile app development', h1: 'iOS & Android mobile app development', desc: 'Design and development of iOS and Android mobile apps, from UX mock-ups to App Store and Google Play release, for companies in Canada, France and Europe.' },
-  'referencement-seo-geo': { title: 'SEO & GEO agency: Google and generative AI', h1: 'SEO & GEO agency', desc: 'SEO and GEO: audits, technical SEO, content and visibility in ChatGPT, Gemini and Perplexity, for the Canadian, French, Belgian or Swiss market, in English and French.' },
+  'referencement-seo-geo': { title: 'SEO & GEO agency: Google and generative AI', h1: 'SEO & GEO agency', desc: 'SEO and GEO: audits, technical SEO, content and visibility in ChatGPT, Gemini and Perplexity, for Canadian, French, Belgian and Swiss markets.' },
   'marketing-digital-ads': { title: 'Google Ads, Meta Ads & TikTok Ads agency', h1: 'Digital marketing & paid ads agency', desc: 'Data-driven Google Ads, Meta Ads and TikTok Ads campaigns in Canada, France and Europe: strategy, creative, delivery and continuous optimisation.' },
-  'social-media': { title: 'Social media agency: TikTok & Instagram content', h1: 'Social media & content agency', desc: 'Social media strategy, visual design and short-form video for TikTok and Instagram: content that strengthens your brand image and drives real engagement.' },
+  'social-media': { title: 'Social media agency: TikTok & Instagram', h1: 'Social media & content agency', desc: 'Social media strategy, visual design and short-form video for TikTok and Instagram: content that strengthens your brand image and drives real engagement.' },
   'ia-automatisation': { title: 'AI & automation agency: agents and chatbots', h1: 'AI & automation agency', desc: 'AI agents, chatbots, process automation and AI built into your tools, for SMEs in Canada, France and Europe. Free quote within 48 hours.' }
 }
 

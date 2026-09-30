@@ -14,7 +14,7 @@
         </ul>
         <p class="book__alt">{{ t.alt }} <NuxtLink :to="link.contact()">{{ t.altLink }}</NuxtLink></p>
       </div>
-      <BookingCalendar class="book__cal" />
+      <BookingCalendar class="book__cal" :heading-level="2" />
     </section>
   </div>
 </template>
@@ -29,7 +29,7 @@ const I = {
 }
 const t = useLocaleText({
   fr: {
-    title: 'Réserver un appel découverte gratuit (30 min)', desc: 'Réservez en ligne un appel découverte gratuit de 30 minutes avec BNS Digital, agence digitale basée à Dakar : visio ou téléphone, du lundi au samedi, horaires affichés dans votre fuseau.',
+    title: 'Réserver un appel découverte gratuit (30 min)', desc: 'Réservez en ligne un appel découverte gratuit de 30 minutes avec BNS Digital : visio ou téléphone, du lundi au samedi, horaires affichés dans votre fuseau.',
     home: 'Accueil', crumb: 'Réserver un appel', eyebrow: 'Réserver un appel', h1: 'Parlons de votre projet, en 30 minutes.',
     lead: 'Choisissez un créneau qui vous convient : nous faisons le point sur vos objectifs et vous repartez avec des premières recommandations concrètes.',
     facts: [

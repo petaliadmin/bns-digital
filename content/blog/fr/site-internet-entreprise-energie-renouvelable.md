@@ -1,6 +1,6 @@
 ---
 title: "Site internet pour une entreprise des énergies renouvelables : les 7 pages qui font la différence"
-seoTitle: "Site internet énergie renouvelable : 7 pages clés"
+seoTitle: "Site web énergie renouvelable : 7 pages clés"
 description: "Investisseurs, partenaires, clients B2B : les 7 pages indispensables au site d'une entreprise de l'énergie pour inspirer confiance et générer des contacts."
 date: 2026-09-29
 sector: energie

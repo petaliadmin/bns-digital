@@ -34,13 +34,13 @@ const t = useLocaleText({
     home: 'Accueil', crumb: 'Expertises', h1: 'Sept expertises. Une seule équipe. Un objectif : votre croissance.',
     lead: 'Chaque expertise se mobilise seule ou en synergie. C’est dans leur articulation — un site bien référencé, nourri par des campagnes rentables et des contenus engageants — que naît la performance durable.',
     more: 'Découvrir', customT: 'Un besoin sur mesure ?', customD: 'Plusieurs expertises à combiner, ou un projet qui ne rentre dans aucune case ? Décrivez-le-nous : nous vous proposons la bonne équipe.', customCta: 'Parler de votre projet', ctaTitle: 'Un projet en tête ?', ctaText: 'Décrivez-nous votre besoin : nous revenons vers vous avec une recommandation claire et un devis personnalisé.',
-    title: 'Agence web & marketing digital : nos expertises', desc: 'Création de sites, applications métier et mobiles, SEO & GEO, publicité, social media, IA et automatisation : sept expertises réunies dans une agence basée à Dakar, pour la France, l’Europe et le Canada.'
+    title: 'Nos expertises : web, IA & marketing digital', desc: 'Sites web, applications, IA & automatisation, SEO, publicité et social media : sept expertises à prix abordables, pour la France, l’Europe et le Canada.'
   },
   en: {
     home: 'Home', crumb: 'Services', h1: 'Seven areas of expertise. One team. One goal: your growth.',
     lead: 'Each service works on its own or in synergy with the others. Lasting performance comes from how they fit together — a well-ranked website, fuelled by profitable campaigns and engaging content.',
     more: 'Discover', customT: 'Something tailor-made?', customD: 'Several areas of expertise to combine, or a project that doesn’t fit any box? Tell us about it and we’ll put the right team together.', customCta: 'Discuss your project', ctaTitle: 'Got a project in mind?', ctaText: 'Tell us what you need: we’ll come back to you with a clear recommendation and a tailored quote.',
-    title: 'Web & digital marketing agency: our services', desc: 'Website design, custom business software and mobile apps, SEO & GEO, paid ads, social media, AI and automation: seven areas of expertise in one Dakar-based agency serving Canada and Europe.'
+    title: 'Web & digital marketing agency: our services', desc: 'Websites, software, AI & automation, SEO, paid ads and social media: seven areas of expertise at affordable prices, for Canada, France and Europe.'
   }
 })
 usePageSeo({ title: () => t.value.title, description: () => t.value.desc })

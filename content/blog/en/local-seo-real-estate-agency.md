@@ -1,6 +1,6 @@
 ---
 title: "Local SEO for real estate: attract sellers and buyers from Google"
-seoTitle: "Local SEO for real estate agencies: action plan"
+seoTitle: "Local SEO for real estate agencies: the plan"
 description: "Google Business Profile, neighbourhood pages, reviews: the local SEO plan that helps a real estate agency get found by sellers in its area."
 date: 2026-09-29
 sector: immobilier

@@ -74,7 +74,7 @@ import { REVIEWS, organizationSchema } from '~/data/content'
 const { en, link, hasReviews } = useSite()
 const t = useLocaleText({
   fr: {
-    title: 'L’agence BNS Digital : une équipe digitale à Dakar', desc: 'BNS Digital, agence digitale basée à Dakar : sept expertises (web, apps, IA, SEO & GEO, Ads, social media) au service des entreprises en France, en Europe et au Canada.',
+    title: 'L’agence : une équipe digitale à Dakar', desc: 'BNS Digital, agence basée à Dakar : sept expertises (web, apps, IA, SEO, Ads, social media) au service des entreprises en France, en Europe et au Canada.',
     eyebrow: 'L’agence', h1: 'Plus qu’une agence, votre co-pilote digital.',
     lead: 'Depuis Dakar, nous livrons aux entreprises françaises, européennes et canadiennes des projets de qualité, à prix abordables et dans des délais courts grâce à l’IA.',
     intro: 'Basée à Dakar, BNS Digital réunit au sein d’une même équipe sept expertises complémentaires : création de sites, applications métier, applications mobiles, IA & automatisation, référencement SEO & GEO, marketing digital et social media. Une équipe francophone et anglophone, à l’heure GMT, qui intègre l’IA à chaque étape de production et travaille à distance avec ses clients comme une extension de leurs propres équipes.',
@@ -101,7 +101,7 @@ const t = useLocaleText({
     reviewsEyebrow: 'Avis Google', reviewsH2: 'Ce que nos clients disent de nous.', ctaTitle: 'Envie de travailler avec nous ?', ctaLabel: 'Parler de votre projet'
   },
   en: {
-    title: 'About BNS Digital: a digital team in Dakar', desc: 'BNS Digital, a Dakar-based digital agency: seven areas of expertise (web, apps, AI, SEO & GEO, ads, social media) serving companies in Canada, France and Europe.',
+    title: 'About us: a digital team in Dakar', desc: 'BNS Digital, a Dakar-based agency: seven areas of expertise (web, apps, AI, SEO, ads, social media) serving companies in Canada, France and Europe.',
     eyebrow: 'About us', h1: 'More than an agency, your digital co-pilot.',
     lead: 'From Dakar, we deliver quality projects to Canadian, French and European companies, at affordable prices and on short timelines thanks to AI.',
     intro: 'Based in Dakar, BNS Digital brings seven complementary areas of expertise together in one team: website design, business software, mobile apps, AI & automation, SEO & GEO, digital marketing and social media. A bilingual English- and French-speaking team on GMT that builds AI into every production stage and works remotely with clients as an extension of their own teams.',

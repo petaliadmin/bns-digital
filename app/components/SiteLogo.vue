@@ -1,6 +1,6 @@
 <template>
   <NuxtLink :to="link.home()" class="logo" :class="{ 'logo--light': light }" :aria-label="en ? 'BNS Digital — home' : 'BNS Digital — accueil'">
-    <img src="/logo-bns.webp" alt="BNS Digital" width="518" height="206" class="logo__img">
+    <img src="/logo-bns-sm.webp" alt="BNS Digital" width="262" height="104" class="logo__img">
   </NuxtLink>
 </template>
 

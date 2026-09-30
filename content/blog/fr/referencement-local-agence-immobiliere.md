@@ -1,6 +1,6 @@
 ---
 title: "Référencement local pour l'immobilier : attirer vendeurs et acquéreurs depuis Google"
-seoTitle: "Référencement local agence immobilière : le plan"
+seoTitle: "SEO local pour agence immobilière : le plan"
 description: "Fiche Google, pages quartiers, avis clients : le plan d'action SEO local pour qu'une agence immobilière soit trouvée par les vendeurs de son secteur."
 date: 2026-09-29
 sector: immobilier

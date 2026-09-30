@@ -300,12 +300,12 @@ export const SERVICES: Service[] = [
 
 /** Balises SEO des services : titre ciblé (≤ 60 car. avec la marque) et description 120–160 car. */
 export const SERVICE_SEO: Record<string, { title: string; h1: string; desc: string }> = {
-  'creation-site-web': { title: 'Création de site web : vitrine & e-commerce', h1: 'Création de site web pour les entreprises', desc: 'Création de sites vitrines, e-commerce et landing pages rapides et optimisés pour Google, pour les entreprises en France, en Europe et au Canada. Devis sous 48 h.' },
+  'creation-site-web': { title: 'Création de site web : vitrine & e-commerce', h1: 'Création de site web pour les entreprises', desc: 'Sites vitrines, e-commerce et landing pages rapides, optimisés pour Google, pour les entreprises en France, en Europe et au Canada. Devis sous 48 h.' },
   'application-metier': { title: 'Développement d’application métier sur mesure', h1: 'Application métier sur mesure', desc: 'Développement d’applications métier sur mesure : CRM, back-office, portail client et automatisations. Équipe basée à Dakar, clients en France et au Canada.' },
   'application-mobile': { title: 'Création d’application mobile iOS & Android', h1: 'Création d’application mobile iOS & Android', desc: 'Conception et développement d’applications mobiles iOS et Android, de la maquette UX à la publication sur les stores. Pour la France, l’Europe et le Canada.' },
-  'referencement-seo-geo': { title: 'Agence SEO & GEO : Google et IA génératives', h1: 'Agence SEO & GEO', desc: 'Référencement naturel SEO et GEO : audit, SEO technique, contenus et visibilité dans ChatGPT, Gemini et Perplexity, sur le marché français, belge, suisse ou canadien.' },
-  'marketing-digital-ads': { title: 'Agence Google Ads, Meta Ads & TikTok Ads', h1: 'Agence marketing digital & publicité en ligne', desc: 'Campagnes Google Ads, Meta Ads et TikTok Ads pilotées par la donnée, en France, en Europe et au Canada : stratégie, création, diffusion et optimisation continue.' },
-  'social-media': { title: 'Agence social media : contenus TikTok & Instagram', h1: 'Agence social media & création de contenus', desc: 'Stratégie social media, création visuelle et vidéos courtes pour TikTok et Instagram : des contenus qui renforcent votre image et créent l’engagement.' },
+  'referencement-seo-geo': { title: 'Agence SEO & GEO : Google et IA génératives', h1: 'Agence SEO & GEO', desc: 'SEO et GEO : audit, SEO technique, contenus et visibilité dans ChatGPT, Gemini et Perplexity, sur les marchés français, belge, suisse et canadien.' },
+  'marketing-digital-ads': { title: 'Agence Google Ads, Meta Ads & TikTok Ads', h1: 'Agence marketing digital & publicité en ligne', desc: 'Campagnes Google Ads, Meta Ads et TikTok Ads pilotées par la donnée en France, en Europe et au Canada : stratégie, création, diffusion, optimisation.' },
+  'social-media': { title: 'Agence social media : TikTok & Instagram', h1: 'Agence social media & création de contenus', desc: 'Stratégie social media, création visuelle et vidéos courtes pour TikTok et Instagram : des contenus qui renforcent votre image et créent l’engagement.' },
   'ia-automatisation': { title: 'IA & automatisation : agents IA et chatbots', h1: 'Agence IA & automatisation', desc: 'Agents IA, chatbots, automatisation des processus et intégration de l’IA dans vos outils, pour les PME en France, en Europe et au Canada. Devis sous 48 h.' }
 }
 
@@ -345,7 +345,7 @@ export const LOCAL_AREA: Record<string, object> = {
 export const LOCAL_PAGES: LocalPage[] = [
   {
     slug: 'france', crumbParent: 'Agence digitale', crumb: 'France', eyebrow: 'Agence digitale pour les entreprises françaises',
-    title: 'Agence digitale pour les entreprises françaises', description: 'Sites web, applications, SEO & GEO et publicité en ligne pour les PME françaises : une équipe francophone basée à Dakar, à 1 ou 2 h de Paris, à coût maîtrisé.',
+    title: 'Agence digitale pour les PME françaises', description: 'Sites web, applications, SEO & GEO et publicité en ligne pour les PME françaises : une équipe francophone basée à Dakar, à 1 ou 2 h de Paris, à coût maîtrisé.',
     h1: 'L’agence digitale des PME françaises, basée à Dakar.',
     sub: 'Création de sites, applications sur mesure, référencement SEO & GEO et marketing digital : BNS Digital accompagne les entreprises françaises avec les standards d’une agence parisienne et un budget maîtrisé.',
     svcTitle: 'Toutes nos expertises, au service des entreprises françaises.', whyTitle: 'Pourquoi confier votre digital à une équipe basée à Dakar ?',
@@ -488,7 +488,7 @@ export const LOCAL_PAGES: LocalPage[] = [
   },
   {
     slug: 'toronto', crumbParent: 'Agence digitale', crumb: 'Toronto', eyebrow: 'Agence digitale pour les entreprises de Toronto',
-    title: 'Agence digitale pour les entreprises de Toronto', description: 'Sites web, applications, SEO & GEO et publicité en ligne pour les entreprises de Toronto et de l’Ontario : une équipe anglophone et francophone basée à Dakar.',
+    title: 'Agence digitale pour les PME de Toronto', description: 'Sites web, applications, SEO & GEO et publicité en ligne pour les entreprises de Toronto et de l’Ontario : une équipe anglophone et francophone basée à Dakar.',
     h1: 'Une agence digitale anglophone pour Toronto et l’Ontario.',
     sub: 'Sites web, applications sur mesure, référencement et campagnes : BNS Digital accompagne les entreprises de Toronto, du Grand Toronto et de tout l’Ontario, en anglais comme en français, à coût maîtrisé.',
     svcTitle: 'Toutes nos expertises, au service des entreprises de Toronto.', whyTitle: 'Pourquoi BNS Digital pour votre entreprise à Toronto ?',

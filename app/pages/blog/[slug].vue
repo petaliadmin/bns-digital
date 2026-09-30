@@ -103,7 +103,7 @@ useHead({
       '@context': 'https://schema.org', '@type': 'BlogPosting', '@id': `${site}${link.article(m.slug)}#article`,
       headline: m.title, description: m.description, url: `${site}${link.article(m.slug)}`, mainEntityOfPage: `${site}${link.article(m.slug)}`,
       datePublished: m.date, dateModified: m.updated ?? m.date, inLanguage: lang.value === 'en' ? 'en' : 'fr',
-      ...(m.cover ? { image: `${site}${m.cover}` } : {}),
+      image: `${site}${m.cover ?? '/og-image.jpg'}`,
       author: { '@type': 'Organization', name: m.author, url: `${site}/` },
       publisher: { '@id': `${site}/#organization` },
       articleSection: BLOG_SECTORS[m.sector]?.[lang.value] ?? m.sector, keywords: m.tags.join(', '),
