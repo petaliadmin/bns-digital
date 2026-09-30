@@ -41,10 +41,13 @@
           </div>
           <div class="grid grid-4 svc-grid m-swipe">
             <NuxtLink v-for="sv in t.services.items" :key="sv.num" :to="sv.slug ? link.service(sv.slug) : link.contact()" class="svc" :class="`svc--${sv.theme}`">
-              <div class="svc__top"><span class="svc__num">{{ sv.num }}</span><span class="svc__tag">{{ sv.tag }}</span></div>
+              <!-- Illustration du service : se comprend sans lire ; toute la carte mène au service -->
+              <div class="svc__art">
+                <ServiceArt :kind="SVC_ART[sv.slug] ?? 'audit'" :label="sv.title" :dark="sv.theme === 'dark'" />
+                <span class="svc__tag">{{ sv.tag }}</span>
+              </div>
               <h3 class="svc__title">{{ sv.title }}</h3>
               <p class="svc__desc">{{ sv.desc }}</p>
-              <div class="svc__pills"><span v-for="i in sv.items" :key="i">{{ i }}</span></div>
               <span class="svc__cta">{{ sv.cta }} <IconArrow :size="16" /></span>
             </NuxtLink>
           </div>
@@ -280,6 +283,11 @@ const WHY_ICONS = [
   'M4 5h16v11H8l-4 4zM8 9h8M8 12h5'
 ]
 const t = useLocaleText(HOME)
+// Illustration de chaque carte de service (clé = slug du service ; carte « audit » sans slug)
+const SVC_ART: Record<string, 'web' | 'app' | 'seo' | 'mobile' | 'ads' | 'social' | 'ai'> = {
+  'creation-site-web': 'web', 'application-metier': 'app', 'referencement-seo-geo': 'seo', 'application-mobile': 'mobile',
+  'marketing-digital-ads': 'ads', 'social-media': 'social', 'ia-automatisation': 'ai'
+}
 
 // Horloges des marchés : calculées côté client uniquement (pas d'écart d'hydratation), rafraîchies toutes les 30 s
 const now = ref<Date | null>(null)
@@ -366,24 +374,21 @@ async function submit() {
 .center-head .text-18 { max-width: 620px; }
 
 /* Services */
-.svc { display: flex; flex-direction: column; gap: 16px; padding: 28px; min-height: 320px; border: 1px solid var(--line); border-radius: 20px; transition: transform .2s ease; }
+.svc { display: flex; flex-direction: column; gap: 12px; padding: 24px; min-height: 320px; border: 1px solid var(--line); border-radius: 20px; transition: transform .2s ease; }
 .svc:hover { transform: translateY(-3px); }
 .svc--dark { background: var(--ink); color: var(--white); } .svc--dark:hover { color: var(--white); }
 .svc--light { background: var(--bg); color: var(--ink); } .svc--light:hover { color: var(--ink); }
 .svc--soft { background: var(--accent-soft); color: var(--ink); } .svc--soft:hover { color: var(--ink); }
-.svc__top { display: flex; justify-content: space-between; align-items: center; }
-.svc__num { display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 14px; font-family: var(--font-display); font-weight: 800; font-size: 18px; background: var(--white); color: var(--ink); }
-.svc--dark .svc__num, .svc--soft .svc__num { background: var(--accent); color: var(--white); }
-.svc__tag { font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line-2); }
-.svc--dark .svc__tag { border-color: var(--dark-line-2); }
-.svc--soft .svc__tag { border-color: var(--accent-tint-2); }
-.svc__title { font-size: 24px; line-height: 1.15; letter-spacing: -.5px; font-weight: 700; }
-.svc__desc { font-size: 16px; line-height: 1.55; color: var(--muted); }
+.svc__art { position: relative; margin: -12px -12px 4px; padding: 14px 10px 10px; border-radius: 14px; background: var(--accent-soft); overflow: hidden; }
+.svc--dark .svc__art { background: rgba(255, 255, 255, .06); }
+.svc--soft .svc__art { background: var(--white); }
+.svc:hover .svc__art :deep(.move) { transform: translateY(-4px); }
+.svc__tag { position: absolute; top: 10px; right: 10px; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: var(--white); color: var(--ink); box-shadow: 0 4px 12px -6px rgba(10, 26, 71, .35); }
+.svc--dark .svc__tag { background: var(--accent); color: var(--white); }
+.svc__title { font-size: 22px; line-height: 1.15; letter-spacing: -.5px; font-weight: 700; }
+.svc__desc { font-size: 15px; line-height: 1.5; color: var(--muted); }
 .svc--dark .svc__desc { color: var(--dark-muted); }
-.svc__pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
-.svc__pills span { font-size: 13px; padding: 6px 10px; border-radius: 8px; background: var(--white); }
-.svc--dark .svc__pills span { background: var(--dark-2); }
-.svc__cta { display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 600; }
+.svc__cta { display: flex; align-items: center; gap: 8px; margin-top: auto; font-size: 15px; font-weight: 600; }
 
 /* Pourquoi BNS Digital */
 .why { display: flex; flex-direction: column; gap: 14px; padding: 28px; min-height: 260px; }
