@@ -10,3 +10,6 @@ dist
 !.env.example
 *.log
 .DS_Store
+
+# Rapports d'audit SEO (locaux)
+bns-digital.com-audit/
