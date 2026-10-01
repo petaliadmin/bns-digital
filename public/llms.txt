@@ -34,6 +34,15 @@
 - [Blog : conseils digitaux par secteur](https://bns-digital.com/blog)
 - [Site internet pour une entreprise des énergies renouvelables](https://bns-digital.com/blog/site-internet-entreprise-energie-renouvelable)
 - [Référencement local pour l'immobilier](https://bns-digital.com/blog/referencement-local-agence-immobiliere)
+- [Loi 25 au Québec : rendre son site web conforme](https://bns-digital.com/blog/loi-25-quebec-site-web-conforme)
+- [Bandeau cookies conforme CNIL et RGPD](https://bns-digital.com/blog/bandeau-cookies-rgpd-cnil)
+- [Référencement local à Montréal](https://bns-digital.com/blog/referencement-local-montreal)
+- [Site web bilingue français-anglais : bonnes pratiques SEO](https://bns-digital.com/blog/site-web-bilingue-francais-anglais)
+- [Fiche Google : 8 réglages pour les PME](https://bns-digital.com/blog/fiche-google-business-profile-pme)
+- [GEO : être cité par ChatGPT et Perplexity](https://bns-digital.com/blog/geo-etre-cite-chatgpt-perplexity)
+- [Mentions légales obligatoires d'un site internet en France](https://bns-digital.com/blog/mentions-legales-site-internet-obligatoires)
+- [Accessibilité numérique et European Accessibility Act](https://bns-digital.com/blog/accessibilite-numerique-european-accessibility-act)
+- [Chatbot IA pour PME et AI Act](https://bns-digital.com/blog/chatbot-ia-pme-ai-act)
 
 ## Informations
 
@@ -63,3 +72,12 @@ BNS Digital is a Dakar-based digital agency (Senegal) serving companies in Canad
 - [Book a call](https://bns-digital.com/en/book-a-call)
 - [Contact & quote](https://bns-digital.com/en/contact)
 - [Blog](https://bns-digital.com/en/blog)
+- [Quebec Law 25 website compliance](https://bns-digital.com/en/blog/quebec-law-25-website-compliance)
+- [Cookie banner rules in France (CNIL & GDPR)](https://bns-digital.com/en/blog/cookie-banner-gdpr-france)
+- [Local SEO in Montreal](https://bns-digital.com/en/blog/local-seo-montreal)
+- [Bilingual English-French website SEO](https://bns-digital.com/en/blog/bilingual-website-english-french-seo)
+- [Google Business Profile: 8 key settings](https://bns-digital.com/en/blog/google-business-profile-small-business)
+- [GEO: get cited by ChatGPT and Perplexity](https://bns-digital.com/en/blog/geo-get-cited-chatgpt-perplexity)
+- [Legal notice requirements for websites in France](https://bns-digital.com/en/blog/legal-notice-french-website-requirements)
+- [Web accessibility and the European Accessibility Act](https://bns-digital.com/en/blog/web-accessibility-european-accessibility-act)
+- [AI chatbots for small businesses and the EU AI Act](https://bns-digital.com/en/blog/ai-chatbot-small-business-eu-ai-act)
