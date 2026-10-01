@@ -23,6 +23,10 @@ export default defineNuxtConfig({
     googleCalendarId: '',
     googleImpersonate: '',
     bookingAllowedOrigins: '',
+    // Supabase (serveur uniquement) : enregistrement des demandes de devis et des rendez-vous.
+    // Les contenus (réalisations, avis, blog) sont lus au build par modules/cms.ts avec NUXT_SUPABASE_KEY.
+    supabaseUrl: '',
+    supabaseSecretKey: '',
     public: {
       siteUrl: 'https://bns-digital.com',
       formEndpoint: '',

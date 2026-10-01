@@ -93,6 +93,13 @@ export function toMeta(path: string, raw: string): { meta: BlogMeta; body: strin
   }
 }
 
+/** Ajoute les articles Supabase aux fichiers Markdown ; même langue et même slug : l'article Supabase remplace le fichier */
+export function withCmsPosts<T extends { meta: BlogMeta }>(files: T[], cms: T[] = []) {
+  const key = (a: T) => `${a.meta.lang}/${a.meta.slug}`
+  const fromCms = new Set(cms.map(key))
+  return [...cms, ...files.filter(a => !fromCms.has(key(a)))]
+}
+
 /** Articles publiés (hors brouillons et dates futures), du plus récent au plus ancien */
 export function publishedOnly<T extends { meta: BlogMeta }>(list: T[], now = new Date()) {
   const today = now.toISOString().slice(0, 10)

@@ -5,7 +5,7 @@ import { BOOKING } from '#shared/booking'
 // Optionnel : sans NUXT_SMTP_USER / NUXT_SMTP_PASSWORD, aucun e-mail n'est envoyé.
 
 let transporter: Transporter | null = null
-function smtp() {
+export function smtp() {
   const c = useRuntimeConfig()
   if (!c.smtpUser || !c.smtpPassword) return null
   transporter ??= createTransport({

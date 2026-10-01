@@ -1,5 +1,7 @@
 // Contenus du site BNS Digital — agence digitale basée à Dakar, au service des entreprises européennes et canadiennes.
 // Les valeurs entre crochets [ ... ] sont des emplacements à compléter.
+// Réalisations et avis : lus dans Supabase au build quand il est configuré (voir supabase/README.md), sinon listes ci-dessous.
+import cms from '#cms'
 
 export const CONTACT = {
   email: 'contact@bns-digital.com',
@@ -61,7 +63,7 @@ export interface Review { name: string; /** AAAA-MM */ date: string; text: strin
 /** Lien vers la fiche Google de l'agence (vide tant qu'elle n'existe pas) */
 export const GOOGLE_REVIEWS_URL = ''
 // Tant que la liste est vide, les sections « Avis » sont masquées sur le site.
-export const REVIEWS: Review[] = []
+export const REVIEWS: Review[] = cms ? cms.reviews : []
 export const REVIEWS_AVG = REVIEWS.length ? REVIEWS.reduce((s, r) => s + r.rating, 0) / REVIEWS.length : 0
 
 export type ProjectCat = 'Plateforme' | 'Vitrine' | 'Ecommerce' | 'Social' | 'ADS'
@@ -89,6 +91,8 @@ export interface Project {
   img: string
   alt: string
   url?: string
+  /** Textes anglais (projets Supabase) ; sinon PROJECT_TEXT_EN */
+  en?: { label: string; desc?: string; metric?: string }
 }
 
 // Visuels : public/images/realisations/<slug>.webp (1600 px) + <slug>-800.webp (vignette)
@@ -101,7 +105,7 @@ export const project = (slug: string, cat: ProjectCat, client: string, label: st
 // Descriptions tirées des sites en ligne ; résultats chiffrés à compléter ([Résultat] n'est jamais affiché).
 // Visuels : captures d'écran des pages d'accueil (public/images/realisations).
 const R = '[Résultat]'
-export const PROJECTS: Project[] = [
+const LOCAL_PROJECTS: Project[] = [
   project('petalia', 'Vitrine', 'Petalia', 'Agritech · IoT & IA', 'Site de Petalia, plateforme d’agriculture intelligente en Afrique : capteurs IoT, intelligence artificielle et drones pour piloter les exploitations, présentation des solutions, offres et démo.', R, '#DCFCE7', '#166534', 'https://www.petalia.sn/'),
   project('nagaw', 'Plateforme', 'Nagaw', 'SaaS · Pilotage d’entreprise', 'Plateforme Nagaw, qui connecte les données et les outils d’une PME (ERP, CRM, comptabilité, Excel, API) et exécute analyses, rapports et tableaux de bord demandés en langage naturel.', R, '#E4EFE9', '#14532D', 'https://preprod.naagaw.com/'),
   project('permis2', 'Plateforme', 'PERMIS 2.0', 'EdTech · Permis de conduire', 'Plateforme PERMIS 2.0 pour le permis de conduire au Sénégal : révision du code de la route, examens blancs, comparateur d’auto-écoles et outil de gestion pour les écoles de conduite.', R, '#E0F2FE', '#075985', 'https://www.permis2.com/'),
@@ -112,6 +116,13 @@ export const PROJECTS: Project[] = [
   project('petalia-soil', 'Plateforme', 'Petalia Soil', 'Agritech · Place de marché', 'Petalia Soil, place de marché des terres agricoles : recherche de parcelles sur carte, analyse des paramètres du sol, cultures recommandées et mise en relation directe avec les propriétaires.', R, '#DCFCE7', '#166534', 'https://petalia-soil.vercel.app/'),
   project('kps-agency', 'Vitrine', 'KPS Agency', 'Agence créative · Paris', 'Site de KPS Agency, agence créative parisienne spécialisée dans le social media, les sites web et la publicité en ligne sur TikTok et Instagram.', R, '#E6ECF5', '#0B3A75', 'https://kps-agency.com/')
 ]
+export const PROJECTS: Project[] = cms
+  ? cms.projects.map(p => ({
+      ...project(p.slug, p.cat as ProjectCat, p.client, p.label, p.desc, p.metric, p.bg, p.fg, p.url ?? undefined),
+      ...(p.img ? { img: p.img } : {}),
+      ...(p.en ? { en: p.en } : {})
+    }))
+  : LOCAL_PROJECTS
 
 export const CAT_INFO: Record<ProjectCat, CatInfo> = {
   Plateforme: { tag: 'Plateforme', filter: 'Plateformes & SaaS', title: 'Plateformes & SaaS', desc: 'Applications web avec comptes utilisateurs, tableaux de bord, cartes interactives et places de marché.' },
@@ -122,7 +133,7 @@ export const CAT_INFO: Record<ProjectCat, CatInfo> = {
 }
 export const CAT_LABEL = Object.fromEntries(CAT_ORDER.map(c => [c, CAT_INFO[c].tag])) as Record<ProjectCat, string>
 /** Vignette 800 px générée à côté de chaque visuel (cartes, listes) */
-export const thumb = (img: string) => img.replace(/\.webp$/, '-800.webp')
+export const thumb = (img: string) => (/^https?:/.test(img) ? img : img.replace(/\.webp$/, '-800.webp'))
 
 /* ---------------- Services ---------------- */
 export interface Offer { n: string; t: string; d: string; tags: string[] }

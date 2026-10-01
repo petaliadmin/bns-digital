@@ -49,6 +49,8 @@
           <label class="field">{{ t.phone }}<input v-model="data.phone" type="tel" autocomplete="tel"></label>
         </div>
         <label class="field">{{ t.website }}<input v-model="data.website" type="url" placeholder="https://"></label>
+        <!-- Champ piège : invisible pour les humains -->
+        <label class="hp" aria-hidden="true">Fax<input v-model="data.hp" type="text" tabindex="-1" autocomplete="off"></label>
         <label class="consent"><input v-model="data.consent" type="checkbox"><span>{{ t.consent }} <NuxtLink :to="link.legal('#article-7')" target="_blank">{{ t.privacy }}</NuxtLink>.</span></label>
         <p v-if="error" class="wizard__error" role="alert">{{ error }}</p>
       </div>
@@ -136,7 +138,7 @@ const error = ref('')
 const sending = ref(false)
 const data = reactive({
   services: [typeof route.query.service === 'string' ? route.query.service : 'web'] as string[],
-  budget: '', timing: '', message: '', name: '', company: '', email: '', phone: '', website: '', consent: false
+  budget: '', timing: '', message: '', name: '', company: '', email: '', phone: '', website: '', consent: false, hp: ''
 })
 const toggle = (id: string) => {
   data.services = data.services.includes(id) ? data.services.filter(x => x !== id) : [...data.services, id]
@@ -150,9 +152,10 @@ async function onNext() {
   if (!data.consent) { error.value = t.value.errConsent; return }
   sending.value = true
   try {
-    // Brancher ici votre service de formulaire (Formspree, Brevo, API interne…) via NUXT_PUBLIC_FORM_ENDPOINT.
-    const endpoint = config.public.formEndpoint as string
-    if (endpoint) await $fetch(endpoint, { method: 'POST', body: { ...data, locale: locale.value } })
+    // API du site (Supabase + e-mail, server/api/contact.ts) ; NUXT_PUBLIC_FORM_ENDPOINT permet de la remplacer (Formspree, Brevo…).
+    const api = (config.public.bookingApi as string || '').replace(/\/$/, '')
+    const endpoint = (config.public.formEndpoint as string) || `${api}/api/contact`
+    await $fetch(endpoint, { method: 'POST', body: { ...data, locale: locale.value } })
     step.value = 4
   } catch {
     error.value = `${t.value.errSend} ${CONTACT.email}.`
@@ -195,6 +198,7 @@ legend.wizard__h { margin-bottom: 12px; }
 .fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 .field { display: flex; flex-direction: column; gap: 8px; font-size: 14px; font-weight: 600; }
 .field input, .field textarea { padding: 14px; border: 1px solid var(--line-2); border-radius: 12px; font-size: 15px; font-family: inherit; font-weight: 400; resize: none; color: var(--ink); }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .consent { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--muted); line-height: 1.5; }
 .consent input { width: 18px; height: 18px; margin-top: 1px; flex-shrink: 0; }
 .wizard__done { align-items: flex-start; gap: 18px; padding: 24px 0; }

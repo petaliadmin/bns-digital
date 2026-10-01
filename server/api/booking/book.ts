@@ -68,6 +68,16 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 502, statusMessage: 'Impossible de créer le rendez-vous' })
   }
 
+  // Copie dans Supabase (suivi des rendez-vous) : un échec est journalisé sans annuler la réservation déjà créée
+  const db = supabaseAdmin()
+  if (db) {
+    const { error } = await db.from('bookings').insert({
+      start_at: startIso, end_at: end, name, email, phone: phone || null, company: company || null, mode,
+      message: message || null, locale, visitor_tz: visitorTz, meet_link: created.meetLink, provider: provider.name
+    })
+    if (error) console.error('[booking] supabase', error)
+  }
+
   // Confirmation au client (avec invitation .ics) + notification à l'équipe, si SMTP configuré
   const ics = buildIcs({
     uid: `${randomUUID()}@bns-digital.com`, method: 'PUBLISH', start: startIso, end,

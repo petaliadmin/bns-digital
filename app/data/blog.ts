@@ -1,10 +1,11 @@
 import { Marked, type Tokens } from 'marked'
-import { publishedOnly, toMeta, type BlogLang, type BlogMeta } from '#shared/blog'
+import cms from '#cms'
+import { publishedOnly, toMeta, withCmsPosts, type BlogLang, type BlogMeta } from '#shared/blog'
 
-// Articles : un fichier Markdown par article dans content/blog/{fr,en}/ (inclus au build, pages prérendues).
+// Articles : un fichier Markdown par article dans content/blog/{fr,en}/, plus ceux de Supabase (inclus au build, pages prérendues).
 const files = import.meta.glob('../../content/blog/*/*.md', { query: '?raw', import: 'default', eager: true }) as Record<string, string>
 
-const all = Object.entries(files).map(([path, raw]) => toMeta(path, raw)).filter(Boolean) as { meta: BlogMeta; body: string }[]
+const all = withCmsPosts(Object.entries(files).map(([path, raw]) => toMeta(path, raw)).filter(Boolean) as { meta: BlogMeta; body: string }[], cms?.posts)
 const published = publishedOnly(all)
 
 export const blogArticles = (lang: BlogLang) => published.filter(a => a.meta.lang === lang).map(a => a.meta)

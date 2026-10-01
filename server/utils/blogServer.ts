@@ -1,6 +1,7 @@
-import { publishedOnly, toMeta, type BlogLang, type BlogMeta } from '#shared/blog'
+import cms from '#cms'
+import { publishedOnly, toMeta, withCmsPosts, type BlogLang, type BlogMeta } from '#shared/blog'
 
-// Articles du blog lus côté serveur (sitemap, flux RSS) depuis content/blog, embarqué via nitro.serverAssets
+// Articles du blog lus côté serveur (sitemap, flux RSS) depuis content/blog, embarqué via nitro.serverAssets, et depuis Supabase
 export async function serverArticles(lang?: BlogLang): Promise<BlogMeta[]> {
   const storage = useStorage('assets:blog')
   const keys = (await storage.getKeys()).filter(k => k.endsWith('.md')) // ex. « fr:mon-article.md »
@@ -9,7 +10,7 @@ export async function serverArticles(lang?: BlogLang): Promise<BlogMeta[]> {
     const text = typeof raw === 'string' ? raw : raw instanceof Uint8Array ? new TextDecoder().decode(raw) : String(raw ?? '')
     return toMeta(`/${key.replace(/:/g, '/')}`, text)
   }))
-  const published = publishedOnly(list.filter(Boolean) as { meta: BlogMeta; body: string }[]).map(a => a.meta)
+  const published = publishedOnly(withCmsPosts(list.filter(Boolean) as { meta: BlogMeta; body: string }[], cms?.posts)).map(a => a.meta)
   return lang ? published.filter(a => a.lang === lang) : published
 }
 
